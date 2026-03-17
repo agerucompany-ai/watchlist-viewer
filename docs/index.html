@@ -109,7 +109,7 @@ tr.tier1 td:first-child{border-left:3px solid var(--gold);padding-left:4px}
 <body>
 <header>
   <h1>ウォッチリスト</h1>
-  <span class="meta">2026-03-16 / 2026-03-17 10:09</span>
+  <span class="meta">2026-03-16 / 2026-03-17 10:22</span>
   <div class="controls">
     <input type="text" id="search" placeholder="検索...">
     <label><input type="checkbox" id="tier1Only"> T1</label>
@@ -287,8 +287,8 @@ function renderCards(items){
     }
     else if(tab==="earnings"){
       html+=`<div class="card-detail-grid">`;
-      html+=`<span class="lbl">営利</span><span class="val">${F(d.op_now,"mil")} / ${F(d.op_prev,"mil")} (${F(d.op_yoy,"chg")})</span>`;
       html+=`<span class="lbl">売上</span><span class="val">${F(d.sales_now,"mil")} / ${F(d.sales_prev,"mil")} (${F(d.sales_yoy,"chg")})</span>`;
+      html+=`<span class="lbl">営利</span><span class="val">${F(d.op_now,"mil")} / ${F(d.op_prev,"mil")} (${F(d.op_yoy,"chg")})</span>`;
       html+=`<span class="lbl">営利率</span><span class="val">${F(d.op_margin,"pct")}</span>`;
       html+=`<span class="lbl">決算</span><span class="val">${d.earnings_type||"-"}  増益${d.consecutive!==null?d.consecutive:"-"}期</span>`;
       html+=`</div>`;
