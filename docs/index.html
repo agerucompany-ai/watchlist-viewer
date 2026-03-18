@@ -116,6 +116,7 @@ tr.tier1 td:first-child{border-left:3px solid var(--gold);padding-left:4px}
     <input type="text" id="search" placeholder="検索...">
     <label><input type="checkbox" id="tier1Only"> T1</label>
     <label><input type="checkbox" id="judgeOnly"> 判定</label>
+    <a id="reportBtn" href="#" style="display:none;background:var(--blue);color:#fff;padding:4px 10px;border-radius:5px;font-size:11px;text-decoration:none;font-weight:600;white-space:nowrap">Grokレポート</a>
   </div>
 </header>
 <div class="tabs" id="tabs">
@@ -377,11 +378,18 @@ window.addEventListener("resize",render);
 // Load report map (code -> report URL)
 fetch("reports.json").then(r=>r.json()).then(data=>{
   window._reportMap={};
-  (data.reports||[]).forEach(rpt=>{
+  const reports=data.reports||[];
+  reports.forEach(rpt=>{
     (rpt.codes||[]).forEach(code=>{
-      window._reportMap[code]=rpt.url;
+      if(!window._reportMap[code])window._reportMap[code]=rpt.url;
     });
   });
+  if(reports.length>0){
+    const btn=document.getElementById("reportBtn");
+    btn.href=reports[0].url;
+    btn.style.display="inline-block";
+    btn.textContent="Grokレポート ("+reports[0].date+")";
+  }
   render();
 }).catch(()=>{});
 
