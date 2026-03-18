@@ -251,6 +251,8 @@ function renderTable(items){
         val=`<a class="code-link" href="https://kabutan.jp/stock/?code=${d.code}" target="_blank">${d.code}</a>`;
         if(d.is_tier1)val+=`<span class="t1-tag">T1</span>`;
         if(d.is_new)val+=`<span class="new-tag">NEW</span>`}
+      if(key==="name"&&window._reportMap&&window._reportMap[d.code]){
+        val=`<a href="${window._reportMap[d.code]}#stock-${d.code}" target="_blank" style="color:var(--text);text-decoration:underline dotted var(--blue)">${esc(d.name)}</a>`}
       html+=`<td${ac}>${val}</td>`});
     html+="</tr>"});
   document.getElementById("tbody").innerHTML=html;
@@ -278,7 +280,10 @@ function renderCards(items){
     // Header: always code + name + badge
     html+=`<div class="card-head">`;
     html+=`<a class="card-code" href="https://kabutan.jp/stock/?code=${d.code}" target="_blank">${d.code}</a>${t1tag}${newtag}`;
-    html+=`<span class="card-name">${esc(d.name)}</span>${badge}</div>`;
+    const nameHtml=window._reportMap&&window._reportMap[d.code]
+      ?`<a href="${window._reportMap[d.code]}#stock-${d.code}" target="_blank" style="color:var(--text);text-decoration:underline dotted var(--blue)">${esc(d.name)}</a>`
+      :esc(d.name);
+    html+=`<span class="card-name">${nameHtml}</span>${badge}</div>`;
 
     if(tab==="price"){
       const chgCls=d.change_pct>=0?"up":"down";
@@ -368,6 +373,17 @@ document.getElementById("search").addEventListener("input",render);
 document.getElementById("tier1Only").addEventListener("change",render);
 document.getElementById("judgeOnly").addEventListener("change",render);
 window.addEventListener("resize",render);
+
+// Load report map (code -> report URL)
+fetch("reports.json").then(r=>r.json()).then(data=>{
+  window._reportMap={};
+  (data.reports||[]).forEach(rpt=>{
+    (rpt.codes||[]).forEach(code=>{
+      window._reportMap[code]=rpt.url;
+    });
+  });
+  render();
+}).catch(()=>{});
 
 render();
 </script>
