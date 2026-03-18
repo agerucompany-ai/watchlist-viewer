@@ -76,6 +76,8 @@ tr.hidden-row{opacity:.4}
 .card.hidden-card{opacity:.4}
 .t1-tag{background:var(--gold);color:#000;font-size:8px;padding:0 3px;border-radius:2px;
   margin-left:3px;font-weight:700;vertical-align:middle}
+.t2-tag{background:var(--blue);color:#fff;font-size:8px;padding:0 3px;border-radius:2px;
+  margin-left:3px;font-weight:700;vertical-align:middle}
 
 /* ============================
    Mobile: Card layout (<= 768px)
@@ -119,7 +121,7 @@ tr.hidden-row{opacity:.4}
 <body>
 <header>
   <h1>ウォッチリスト</h1>
-  <span class="meta">2026-03-18 / 2026-03-18 20:47</span>
+  <span class="meta">2026-03-18 / 2026-03-18 20:50</span>
   <div class="controls">
     <input type="text" id="search" placeholder="検索...">
     <label><input type="checkbox" id="showAll"> 全銘柄</label>
@@ -287,7 +289,8 @@ function renderTable(items){
       let val=F(d[key],type);
       if(key==="code"){
         val=`<a class="code-link" href="https://kabutan.jp/stock/?code=${d.code}" target="_blank">${d.code}</a>`;
-        if(d.is_tier1)val+=`<span class="t1-tag">T1</span>`}
+        if(d.is_tier1)val+=`<span class="t1-tag">T1</span>`;
+        if(d.is_tier2)val+=`<span class="t2-tag">T2</span>`}
       if(key==="name"&&window._reportMap&&window._reportMap[d.code]){
         val=`<a href="${window._reportMap[d.code]}#stock-${d.code}" target="_blank" style="color:var(--text);text-decoration:underline dotted var(--blue)">${esc(d.name)}</a>`}
       html+=`<td${ac}>${val}</td>`});
@@ -314,7 +317,7 @@ function renderCards(items){
     const badge=d.judge==="☆"?`<span class="badge badge-star">☆</span>`:
       d.judge==="◎"?`<span class="badge badge-double">◎</span>`:
       d.judge==="○"?`<span class="badge badge-single">○</span>`:"";
-    const t1tag=d.is_tier1?`<span class="t1-tag">T1</span>`:"";
+    const t1tag=d.is_tier1?`<span class="t1-tag">T1</span>`:(d.is_tier2?`<span class="t2-tag">T2</span>`:"");
 
     html+=`<div class="card${t1}${hc}" data-code="${d.code}">`;
     // Hide/restore button
