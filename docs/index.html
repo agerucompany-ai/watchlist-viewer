@@ -127,7 +127,7 @@ tr.hidden-row{opacity:.4}
 <body>
 <header>
   <h1>ウォッチリスト</h1>
-  <span class="meta">2026-03-23 / 2026-03-24 01:15</span>
+  <span class="meta">2026-03-23 / 2026-03-24 01:27</span>
   <div class="controls">
     <input type="text" id="search" placeholder="検索...">
     <label><input type="checkbox" id="showAll"> 全銘柄</label>
@@ -404,9 +404,9 @@ function renderCards(items){
     else if(tab==="earnings"){
       html+=`<div class="card-detail-grid">`;
       html+=`<span class="lbl">売上</span><span class="val">${F(d.sales_now,"mil")} / ${F(d.sales_prev,"mil")} (${F(d.sales_yoy,"chg")})</span>`;
-      html+=`<span class="lbl">営利</span><span class="val">${F(d.op_now,"mil")} / ${F(d.op_prev,"mil")} (${F(d.op_yoy,"chg")})</span>`;
-      html+=`<span class="lbl">営利率</span><span class="val">${F(d.op_margin,"pct")}</span>`;
       html+=`<span class="lbl">売上総利益</span><span class="val">${F(d.gross_profit,"mil")}</span>`;
+      html+=`<span class="lbl">営業利益</span><span class="val">${F(d.op_now,"mil")} / ${F(d.op_prev,"mil")} (${F(d.op_yoy,"chg")})</span>`;
+      html+=`<span class="lbl">営業利益率</span><span class="val">${F(d.op_margin,"pct")}</span>`;
       html+=`<span class="lbl">経常利益</span><span class="val">${F(d.ordinary_profit,"mil")}</span>`;
       html+=`<span class="lbl">経常/総利益</span><span class="val">${F(d.profit_ratio,"ratio_pct")} ${F(d.profitability,"prof_badge")}</span>`;
       html+=`<span class="lbl">決算</span><span class="val">${d.earnings_type||"-"}  増益${d.consecutive!==null?d.consecutive:"-"}期</span>`;
