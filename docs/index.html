@@ -127,7 +127,7 @@ tr.hidden-row{opacity:.4}
 <body>
 <header>
   <h1>ウォッチリスト</h1>
-  <span class="meta">2026-03-24 / 2026-03-24 23:40</span>
+  <span class="meta">2026-03-24 / 2026-03-24 23:45</span>
   <div class="controls">
     <input type="text" id="search" placeholder="検索...">
     <label><input type="checkbox" id="showAll"> 全銘柄</label>
@@ -181,8 +181,17 @@ const isMobile=()=>window.innerWidth<=768;
 
 // --- Hidden stocks (localStorage, with server-side default sync) ---
 const DEFAULT_HIDDEN=["1798","269A","5078","4247","7060","4691","7670","4361","7806","6741","7102","6343","3441"];
+const HIDDEN_VERSION=2;
 function getHidden(){try{
-  if(!localStorage.getItem("hiddenStocks")){saveHidden(new Set(DEFAULT_HIDDEN))}
+  const ver=parseInt(localStorage.getItem("hiddenVersion")||"0");
+  if(ver<HIDDEN_VERSION){
+    // サーバー版が更新された→DEFAULT_HIDDENをマージ
+    const cur=new Set(JSON.parse(localStorage.getItem("hiddenStocks")||"[]"));
+    DEFAULT_HIDDEN.forEach(c=>cur.add(c));
+    saveHidden(cur);
+    localStorage.setItem("hiddenVersion",String(HIDDEN_VERSION));
+  }
+  if(!localStorage.getItem("hiddenStocks")){saveHidden(new Set(DEFAULT_HIDDEN));localStorage.setItem("hiddenVersion",String(HIDDEN_VERSION))}
   return new Set(JSON.parse(localStorage.getItem("hiddenStocks")||"[]"))
 }catch(e){return new Set(DEFAULT_HIDDEN)}}
 function saveHidden(set){localStorage.setItem("hiddenStocks",JSON.stringify([...set]))}
