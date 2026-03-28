@@ -213,7 +213,7 @@ const TABS={
     ["growth_type","成長タイプ","","text"],["bagger","期待倍率","r","f1"],
     ["future_price","予測株価","r","price"],["price","現在株価","r","price"],
     ["future_np","予測純利","r","mil"],["np0","純利(直近)","r","mil"],
-    ["per","PER","r","f1"],["judge","CNPER判定","","badge"]
+    ["per","PER","r","f1"],["judge","CNPER判定","","badge"],["memo","メモ","","memo"]
   ],
   earnings:[
     ["code","コード","","code"],["name","銘柄名","","text"],
@@ -222,7 +222,7 @@ const TABS={
     ["op_yoy","営利増減","r","chg"],["op_margin","営利率","r","pct"],
     ["ordinary_profit","経常利益","r","mil"],["profit_ratio","経常/総利益","r","ratio_pct"],
     ["profitability","収益性","","prof_badge"],
-    ["earnings_type","決算","","text"],["consecutive","増益","r","int"]
+    ["earnings_type","決算","","text"],["consecutive","増益","r","int"],["memo","メモ","","memo"]
   ],
   value:[
     ["code","コード","","code"],["name","銘柄名","","text"],
@@ -230,14 +230,14 @@ const TABS={
     ["cnper","CNPER","r","f1"],["nc_ratio","NC比率","r","pct"],
     ["top_holder","筆頭株主","","text"],["holder_pct","持株%","r","f1"],["activist","アクティビスト","","act_text"],
     ["np0","純利(直近)","r","mil"],["np1","純利(1期前)","r","mil"],
-    ["np2","純利(2期前)","r","mil"],["business","事業","","biz"]
+    ["np2","純利(2期前)","r","mil"],["business","事業","","biz"],["memo","メモ","","memo"]
   ],
   nc:[
     ["code","コード","","code"],["name","銘柄名","","text"],
     ["nc0","NC(直近)","r","mil"],["nc1","NC(1期前)","r","mil"],["nc2","NC(2期前)","r","mil"],
     ["ca0","流動資産(直)","r","mil"],["ca1","流動資産(1)","r","mil"],["ca2","流動資産(2)","r","mil"],
     ["inv0","有証(直)","r","mil"],["inv1","有証(1)","r","mil"],["inv2","有証(2)","r","mil"],
-    ["debt0","負債(直)","r","mil"],["debt1","負債(1)","r","mil"],["debt2","負債(2)","r","mil"]
+    ["debt0","負債(直)","r","mil"],["debt1","負債(1)","r","mil"],["debt2","負債(2)","r","mil"],["memo","メモ","","memo"]
   ]
 };
 
@@ -410,7 +410,6 @@ function renderCards(items){
       html+=`<span class="card-price">&yen;${d.price!==null?Number(d.price).toLocaleString():"-"}</span>`;
       html+=`<span class="card-change ${chgCls}">${chgStr}</span>`;
       html+=`</div>`;
-      if(d.memo)html+=`<div class="card-memo open">${esc(d.memo)}</div>`;
     }
     else if(tab==="earnings"){
       html+=`<div class="card-detail-grid">`;
@@ -445,6 +444,7 @@ function renderCards(items){
       html+=`<span class="lbl">負債</span><span class="val">${F(d.debt0,"mil")} → ${F(d.debt1,"mil")} → ${F(d.debt2,"mil")}</span>`;
       html+=`</div>`;
     }
+    if(d.memo)html+=`<div class="card-memo open">${esc(d.memo)}</div>`;
     html+=`</div>`});
   document.getElementById("cards").innerHTML=html;
 }
