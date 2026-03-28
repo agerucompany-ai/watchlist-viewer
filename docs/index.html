@@ -181,13 +181,15 @@ const isMobile=()=>window.innerWidth<=768;
 
 // --- Hidden stocks (localStorage, with server-side default sync) ---
 const DEFAULT_HIDDEN=["1798","269A","5078","4247","7060","4691","7670","7806","6741","7102","6343"];
-const HIDDEN_VERSION=2;
+const HIDDEN_VERSION=3;
 function getHidden(){try{
   const ver=parseInt(localStorage.getItem("hiddenVersion")||"0");
   if(ver<HIDDEN_VERSION){
     // サーバー版が更新された→DEFAULT_HIDDENをマージ
     const cur=new Set(JSON.parse(localStorage.getItem("hiddenStocks")||"[]"));
     DEFAULT_HIDDEN.forEach(c=>cur.add(c));
+    // v3: 非表示解除された銘柄をlocalStorageからも削除
+    ["4361","3441"].forEach(c=>cur.delete(c));
     saveHidden(cur);
     localStorage.setItem("hiddenVersion",String(HIDDEN_VERSION));
   }
