@@ -1,5 +1,5 @@
 {
   "_comment": "Google Drive API settings for debates.html. Replace placeholder values with your own. apiKey: Google Cloud API key restricted to Drive API + HTTP referrers (e.g. https://*.github.io/*). folderId: ID of a Drive folder shared as 'Anyone with the link can view'.",
-  "apiKey": "REPLACE_WITH_YOUR_GOOGLE_API_KEY",
+  "apiKey": "AIzaSyBSyTi8T_YMAlj_E7UOaLe8K7uS9s9f-Ys",
   "folderId": "1BDnZpg-F7DO1GHI4aqt4FZTUuDzZqHa7"
 }
