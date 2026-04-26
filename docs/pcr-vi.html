@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PCR / 日経VI / スプレッド・モメンタム</title>
+<link rel="apple-touch-icon" href="data:,">
+<style>
+:root{--bg:#0d1117;--bg2:#161b22;--bg3:#21262d;--border:#30363d;--text:#c9d1d9;
+  --muted:#8b949e;--blue:#58a6ff;--green:#3fb950;--red:#f85149;--gold:#FFD700;--orange:#FFA500;--purple:#a371f7}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Hiragino Sans",sans-serif;
+  background:var(--bg);color:var(--text);font-size:13px;min-height:100vh;padding:14px}
+header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:14px;flex-wrap:wrap;gap:8px}
+h1{font-size:16px;color:var(--blue)}
+.meta{font-size:11px;color:var(--muted)}
+nav a{color:var(--muted);text-decoration:none;font-size:11px;margin-right:10px}
+nav a:hover{color:var(--blue)}
+
+.summary{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px;margin-bottom:14px}
+.kpi{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:10px}
+.kpi .label{font-size:10px;color:var(--muted);margin-bottom:3px}
+.kpi .value{font-size:18px;font-weight:700;color:var(--text)}
+.kpi .sub{font-size:10px;color:var(--muted);margin-top:2px}
+.up{color:var(--green)}.down{color:var(--red)}
+
+.chart-box{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:10px;margin-bottom:14px}
+.chart-box h2{font-size:13px;color:var(--muted);margin-bottom:6px;font-weight:600}
+.chart-wrap{position:relative;height:280px}
+@media(max-width:700px){.chart-wrap{height:220px}}
+
+table{width:100%;border-collapse:collapse;font-size:11px;margin-top:10px}
+th{background:var(--bg3);color:var(--muted);font-weight:600;padding:5px 7px;text-align:right;border-bottom:1px solid var(--border)}
+th:first-child,td:first-child{text-align:left}
+td{padding:4px 7px;border-bottom:1px solid rgba(48,54,61,.5);text-align:right;color:var(--text)}
+.notes{font-size:11px;color:var(--muted);background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:10px;margin-top:14px;line-height:1.6}
+.notes b{color:var(--text)}
+.error{background:#3a1414;border:1px solid var(--red);color:#ffb4b4;padding:8px;border-radius:6px;margin-bottom:10px}
+</style>
+</head>
+<body>
+<header>
+  <div>
+    <h1>📊 PCR / 日経VI トラッカー</h1>
+    <nav><a href="index.html">← ウォッチリスト</a><a href="debates.html">ディベート</a></nav>
+  </div>
+  <div class="meta" id="meta">読込中…</div>
+</header>
+
+<div id="error-box"></div>
+
+<div class="summary" id="summary"></div>
+
+<div class="chart-box">
+  <h2>PCR と 日経VI（左軸: PCR / 右軸: VI）</h2>
+  <div class="chart-wrap"><canvas id="chartPcrVi"></canvas></div>
+</div>
+
+<div class="chart-box">
+  <h2>PCR-VIスプレッド（PCR ÷ 日経VI）</h2>
+  <div class="chart-wrap"><canvas id="chartSpread"></canvas></div>
+</div>
+
+<div class="chart-box">
+  <h2>スプレッド・モメンタム（短期MA<sub>5</sub> − 長期MA<sub>20</sub>）</h2>
+  <div class="chart-wrap"><canvas id="chartMomentum"></canvas></div>
+</div>
+
+<div class="chart-box">
+  <h2>直近20営業日</h2>
+  <div style="overflow-x:auto">
+    <table id="recent-table">
+      <thead><tr><th>日付</th><th>PCR</th><th>日経VI</th><th>スプレッド</th><th>MA5</th><th>MA20</th><th>モメンタム</th><th>限月</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</div>
+
+<div class="notes">
+<b>指標の見方</b><br>
+・<b>PCR</b> = フロント限月のプット建玉 ÷ コール建玉。1.0以上で下落ヘッジ厚（弱気）、低位は強気・楽観。<br>
+・<b>日経VI</b> = 投資家が想定する向こう30日の日経平均ボラ。20以下は穏やか、30超は警戒。<br>
+・<b>PCR÷VI</b>（スプレッド）= テールリスクと買い圧力を一体評価。記事の SKEW÷VIX に倣う日本版。<br>
+・<b>モメンタム</b> = MA<sub>5</sub> − MA<sub>20</sub>。プラス転換は弱気/警戒の高まり、マイナス転換は楽観回帰の兆し。<br>
+データ源: J-Quants V2（オプション建玉, T+1反映） / Yahoo Finance（^NKVI.OS）。毎平日朝に自動更新。
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script>
+const fmtNum = (v, d=3) => v == null ? '-' : Number(v).toFixed(d);
+const fmtInt = v => v == null ? '-' : Number(v).toLocaleString();
+
+function dirClass(v){ return v == null ? '' : (v >= 0 ? 'up' : 'down'); }
+
+async function load(){
+  try{
+    const res = await fetch('data/pcr_vi.json?_t=' + Date.now());
+    if(!res.ok) throw new Error('fetch failed: ' + res.status);
+    const payload = await res.json();
+    render(payload);
+  }catch(e){
+    document.getElementById('error-box').innerHTML =
+      '<div class="error">データ読込失敗: ' + e.message + '<br>' +
+      'データファイル(data/pcr_vi.json)が未生成の可能性。サーバー側で /run/pcr-vi-update を実行してください。</div>';
+    document.getElementById('meta').textContent = '';
+  }
+}
+
+function render(payload){
+  const records = (payload.records || []).filter(r => r.pcr != null);
+  if(records.length === 0){
+    document.getElementById('error-box').innerHTML = '<div class="error">レコードが空です</div>';
+    return;
+  }
+  const last = records[records.length - 1];
+  const prev = records.length >= 2 ? records[records.length - 2] : null;
+  document.getElementById('meta').textContent =
+    `最新: ${last.date} / 全${records.length}件 / 生成: ${payload.generated_at || '-'}`;
+
+  const dPcr = prev ? (last.pcr - prev.pcr) : null;
+  const dVi  = prev && last.vi != null && prev.vi != null ? (last.vi - prev.vi) : null;
+  const dSp  = prev && last.spread != null && prev.spread != null ? (last.spread - prev.spread) : null;
+
+  document.getElementById('summary').innerHTML = `
+    <div class="kpi"><div class="label">PCR</div><div class="value">${fmtNum(last.pcr,3)}</div>
+      <div class="sub ${dirClass(dPcr)}">${dPcr==null?'':(dPcr>=0?'+':'')+fmtNum(dPcr,3)}</div></div>
+    <div class="kpi"><div class="label">日経VI</div><div class="value">${fmtNum(last.vi,2)}</div>
+      <div class="sub ${dirClass(dVi)}">${dVi==null?'':(dVi>=0?'+':'')+fmtNum(dVi,2)}</div></div>
+    <div class="kpi"><div class="label">スプレッド (PCR÷VI)</div><div class="value">${fmtNum(last.spread,4)}</div>
+      <div class="sub ${dirClass(dSp)}">${dSp==null?'':(dSp>=0?'+':'')+fmtNum(dSp,4)}</div></div>
+    <div class="kpi"><div class="label">モメンタム (MA5−MA20)</div><div class="value ${dirClass(last.momentum)}">${fmtNum(last.momentum,4)}</div>
+      <div class="sub">${last.momentum>=0?'弱気バイアス↑':'楽観バイアス↑'}</div></div>
+    <div class="kpi"><div class="label">プット建玉</div><div class="value">${fmtInt(last.put_oi)}</div><div class="sub">枚</div></div>
+    <div class="kpi"><div class="label">コール建玉</div><div class="value">${fmtInt(last.call_oi)}</div><div class="sub">枚</div></div>
+  `;
+
+  const labels = records.map(r => r.date);
+  Chart.defaults.color = '#8b949e';
+  Chart.defaults.borderColor = 'rgba(48,54,61,0.6)';
+  Chart.defaults.font.family = '-apple-system,BlinkMacSystemFont,"Segoe UI","Hiragino Sans",sans-serif';
+
+  const commonScales = (extra={}) => ({
+    x: { ticks: { maxTicksLimit: 10, autoSkip: true }, grid: { display: false } },
+    ...extra,
+  });
+
+  new Chart(document.getElementById('chartPcrVi'), {
+    type: 'line',
+    data: {
+      labels,
+      datasets: [
+        { label: 'PCR', data: records.map(r=>r.pcr), yAxisID: 'y',
+          borderColor: '#58a6ff', backgroundColor: 'rgba(88,166,255,.15)', tension: .25, pointRadius: 0, borderWidth: 2 },
+        { label: '日経VI', data: records.map(r=>r.vi), yAxisID: 'y2',
+          borderColor: '#FFA500', backgroundColor: 'rgba(255,165,0,.10)', tension: .25, pointRadius: 0, borderWidth: 2 },
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false, interaction: {mode:'index',intersect:false},
+      scales: commonScales({
+        y:  { position: 'left',  title:{display:true,text:'PCR'} },
+        y2: { position: 'right', title:{display:true,text:'日経VI'}, grid:{drawOnChartArea:false} },
+      }),
+      plugins: { legend: { position: 'top' } },
+    }
+  });
+
+  new Chart(document.getElementById('chartSpread'), {
+    type: 'line',
+    data: { labels, datasets: [
+      { label: 'PCR ÷ 日経VI', data: records.map(r=>r.spread),
+        borderColor: '#a371f7', backgroundColor: 'rgba(163,113,247,.18)', tension: .25, pointRadius: 0, borderWidth: 2, fill: true },
+    ]},
+    options: { responsive:true, maintainAspectRatio:false, scales: commonScales({y:{}}) }
+  });
+
+  new Chart(document.getElementById('chartMomentum'), {
+    type: 'line',
+    data: { labels, datasets: [
+      { label: 'モメンタム (MA5−MA20)', data: records.map(r=>r.momentum),
+        borderColor: '#3fb950',
+        segment: {
+          borderColor: ctx => (ctx.p1.parsed.y >= 0 ? '#f85149' : '#3fb950'),
+        },
+        backgroundColor: 'rgba(63,185,80,.10)',
+        tension: .2, pointRadius: 0, borderWidth: 2 },
+    ]},
+    options: {
+      responsive:true, maintainAspectRatio:false,
+      scales: commonScales({ y: { suggestedMin: -0.05, suggestedMax: 0.05 } }),
+      plugins: { legend: { display: false } },
+    }
+  });
+
+  // 直近20件テーブル
+  const tail = records.slice(-20).reverse();
+  const tbody = document.querySelector('#recent-table tbody');
+  tbody.innerHTML = tail.map(r => `
+    <tr>
+      <td>${r.date}</td>
+      <td>${fmtNum(r.pcr,3)}</td>
+      <td>${fmtNum(r.vi,2)}</td>
+      <td>${fmtNum(r.spread,4)}</td>
+      <td>${fmtNum(r.ma_short,4)}</td>
+      <td>${fmtNum(r.ma_long,4)}</td>
+      <td class="${dirClass(r.momentum)}">${fmtNum(r.momentum,4)}</td>
+      <td>${r.contract_month || '-'}</td>
+    </tr>`).join('');
+}
+
+load();
+</script>
+</body>
+</html>
