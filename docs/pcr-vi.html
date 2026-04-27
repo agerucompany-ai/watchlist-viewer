@@ -90,8 +90,8 @@ td{padding:4px 7px;border-bottom:1px solid rgba(48,54,61,.5);text-align:right;co
 
 <div class="notes">
 <b>指標の見方</b><br>
-・<b>PCR</b> = フロント限月の<b>OTM</b>プット建玉 ÷ <b>OTM</b>コール建玉。<br>
-&emsp;<small>OTMコール=ストライク>原資産価格、OTMプット=ストライク&lt;原資産価格。ITMはセンチメントと無関係なため除外。</small><br>
+・<b>PCR (全体OI)</b> = フロント限月の全プット建玉 ÷ 全コール建玉（メディア標準）。1.0以上で下落ヘッジ厚（弱気）、低位は強気・楽観。<br>
+&emsp;<small>補助: PCR(OTM) = ATM±20%レンジ内のみ。壁分析・センチメントの細かい温度感に。</small><br>
 ・<b>日経VI</b> = 投資家が想定する向こう30日の日経平均ボラ。20以下は穏やか、30超は警戒。<br>
 ・<b>PCR÷VI</b>（スプレッド）= テールリスクと買い圧力を一体評価。記事の SKEW÷VIX に倣う日本版。<br>
 ・<b>モメンタム</b> = MA<sub>5</sub> − MA<sub>20</sub>。プラス転換は弱気/警戒の高まり、マイナス転換は楽観回帰の兆し。<br>
@@ -163,14 +163,14 @@ function render(payload){
       <div class="sub ${dirClass(dN)}">${dN==null?'':(dN>=0?'+':'')+fmtNum(dN,0)}</div></div>
     <div class="kpi"><div class="label">シグナル</div><div class="value"><span class="pill ${lastSig.cls}" style="font-size:14px">${lastSig.label}</span></div>
       <div class="sub">モメンタム ${fmtNum(last.momentum,4)}</div></div>
-    <div class="kpi"><div class="label">PCR (OTM)</div><div class="value">${fmtNum(last.pcr,3)}</div>
-      <div class="sub ${dirClass(dPcr)}">${dPcr==null?'':(dPcr>=0?'+':'')+fmtNum(dPcr,3)}</div></div>
+    <div class="kpi"><div class="label">PCR (全体OI)</div><div class="value">${fmtNum(last.pcr,3)}</div>
+      <div class="sub ${dirClass(dPcr)}">${dPcr==null?'':(dPcr>=0?'+':'')+fmtNum(dPcr,3)}${last.pcr_otm!=null?` / OTM ${fmtNum(last.pcr_otm,3)}`:''}</div></div>
     <div class="kpi"><div class="label">日経VI</div><div class="value">${fmtNum(last.vi,2)}</div>
       <div class="sub ${dirClass(dVi)}">${dVi==null?'':(dVi>=0?'+':'')+fmtNum(dVi,2)}</div></div>
     <div class="kpi"><div class="label">スプレッド (PCR÷VI)</div><div class="value">${fmtNum(last.spread,4)}</div>
       <div class="sub ${dirClass(dSp)}">${dSp==null?'':(dSp>=0?'+':'')+fmtNum(dSp,4)}</div></div>
-    <div class="kpi"><div class="label">プット/コールOTM建玉</div><div class="value">${fmtInt(last.put_oi)} / ${fmtInt(last.call_oi)}</div>
-      <div class="sub">枚（フロント限月）</div></div>
+    <div class="kpi"><div class="label">プット/コール建玉</div><div class="value">${fmtInt(last.put_oi)} / ${fmtInt(last.call_oi)}</div>
+      <div class="sub">枚（フロント限月 全体OI）</div></div>
   `;
 
   const labels = records.map(r => r.date);
