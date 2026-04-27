@@ -1,0 +1,18 @@
+{
+ "generated_at": "2026-04-27T10:51:05",
+ "records": [
+  {
+   "date": "2026-04-24",
+   "pcr": 0.4711,
+   "call_oi": 117609,
+   "put_oi": 55406,
+   "contract_month": "2026-05",
+   "base_vol": 27.487,
+   "vi": 29.59,
+   "spread": 0.01592,
+   "ma_short": null,
+   "ma_long": null,
+   "momentum": null
+  }
+ ]
+}
