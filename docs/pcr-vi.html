@@ -36,6 +36,12 @@ td{padding:4px 7px;border-bottom:1px solid rgba(48,54,61,.5);text-align:right;co
 .notes{font-size:11px;color:var(--muted);background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:10px;margin-top:14px;line-height:1.6}
 .notes b{color:var(--text)}
 .error{background:#3a1414;border:1px solid var(--red);color:#ffb4b4;padding:8px;border-radius:6px;margin-bottom:10px}
+.legend-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:6px;font-size:10px;color:var(--muted)}
+.legend-row .pill{padding:2px 7px;border-radius:10px;color:#000;font-weight:700}
+.signal-buy{background:#3fb950}
+.signal-test{background:#a5d6a7}
+.signal-cau{background:#FFD54F}
+.signal-sell{background:#ef5350;color:#fff}
 </style>
 </head>
 <body>
@@ -62,6 +68,12 @@ td{padding:4px 7px;border-bottom:1px solid rgba(48,54,61,.5);text-align:right;co
 </div>
 
 <div class="chart-box">
+  <h2>日経平均（売買シグナル: 買い / 打 / 退避 / 売り）</h2>
+  <div class="legend-row" id="signal-legend"></div>
+  <div class="chart-wrap"><canvas id="chartN225"></canvas></div>
+</div>
+
+<div class="chart-box">
   <h2>スプレッド・モメンタム（短期MA<sub>5</sub> − 長期MA<sub>20</sub>）</h2>
   <div class="chart-wrap"><canvas id="chartMomentum"></canvas></div>
 </div>
@@ -78,11 +90,13 @@ td{padding:4px 7px;border-bottom:1px solid rgba(48,54,61,.5);text-align:right;co
 
 <div class="notes">
 <b>指標の見方</b><br>
-・<b>PCR</b> = フロント限月のプット建玉 ÷ コール建玉。1.0以上で下落ヘッジ厚（弱気）、低位は強気・楽観。<br>
+・<b>PCR</b> = フロント限月の<b>OTM</b>プット建玉 ÷ <b>OTM</b>コール建玉。<br>
+&emsp;<small>OTMコール=ストライク>原資産価格、OTMプット=ストライク&lt;原資産価格。ITMはセンチメントと無関係なため除外。</small><br>
 ・<b>日経VI</b> = 投資家が想定する向こう30日の日経平均ボラ。20以下は穏やか、30超は警戒。<br>
 ・<b>PCR÷VI</b>（スプレッド）= テールリスクと買い圧力を一体評価。記事の SKEW÷VIX に倣う日本版。<br>
 ・<b>モメンタム</b> = MA<sub>5</sub> − MA<sub>20</sub>。プラス転換は弱気/警戒の高まり、マイナス転換は楽観回帰の兆し。<br>
-データ源: J-Quants V2（オプション建玉, T+1反映） / Yahoo Finance（^NKVI.OS）。毎平日朝に自動更新。
+・<b>シグナル</b>はモメンタム値の分位（25/50/75パーセンタイル）で4区分：買い ≤ 打 ≤ 退避 ≤ 売り。<br>
+データ源: J-Quants V2（オプション建玉, T+1反映） / Yahoo Finance（^NKVI.OS, ^N225）。毎平日朝に自動更新。
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
@@ -120,18 +134,43 @@ function render(payload){
   const dPcr = prev ? (last.pcr - prev.pcr) : null;
   const dVi  = prev && last.vi != null && prev.vi != null ? (last.vi - prev.vi) : null;
   const dSp  = prev && last.spread != null && prev.spread != null ? (last.spread - prev.spread) : null;
+  const dN   = prev && last.n225 != null && prev.n225 != null ? (last.n225 - prev.n225) : null;
+
+  // モメンタムの分位数からシグナル閾値（NaN除外）
+  const moms = records.map(r=>r.momentum).filter(v=>v!=null).sort((a,b)=>a-b);
+  const q = p => moms.length ? moms[Math.max(0, Math.min(moms.length-1, Math.floor(moms.length*p)))] : 0;
+  const Q25 = q(0.25), Q50 = q(0.50), Q75 = q(0.75);
+
+  function signalOf(m){
+    if(m == null) return {label:'-', cls:''};
+    if(m <= Q25) return {label:'買い', cls:'signal-buy'};
+    if(m <= Q50) return {label:'打',   cls:'signal-test'};
+    if(m <= Q75) return {label:'退避', cls:'signal-cau'};
+    return {label:'売り', cls:'signal-sell'};
+  }
+  const lastSig = signalOf(last.momentum);
+
+  document.getElementById('signal-legend').innerHTML =
+    `判定基準（モメンタム分位）: ` +
+    `<span class="pill signal-buy">買い ≤ ${fmtNum(Q25,4)}</span>` +
+    `<span class="pill signal-test">打 ≤ ${fmtNum(Q50,4)}</span>` +
+    `<span class="pill signal-cau">退避 ≤ ${fmtNum(Q75,4)}</span>` +
+    `<span class="pill signal-sell">売り > ${fmtNum(Q75,4)}</span>` +
+    `<span style="margin-left:auto">最新: <b style="color:var(--text)">${lastSig.label}</b></span>`;
 
   document.getElementById('summary').innerHTML = `
-    <div class="kpi"><div class="label">PCR</div><div class="value">${fmtNum(last.pcr,3)}</div>
+    <div class="kpi"><div class="label">日経平均</div><div class="value">${fmtNum(last.n225,0)}</div>
+      <div class="sub ${dirClass(dN)}">${dN==null?'':(dN>=0?'+':'')+fmtNum(dN,0)}</div></div>
+    <div class="kpi"><div class="label">シグナル</div><div class="value"><span class="pill ${lastSig.cls}" style="font-size:14px">${lastSig.label}</span></div>
+      <div class="sub">モメンタム ${fmtNum(last.momentum,4)}</div></div>
+    <div class="kpi"><div class="label">PCR (OTM)</div><div class="value">${fmtNum(last.pcr,3)}</div>
       <div class="sub ${dirClass(dPcr)}">${dPcr==null?'':(dPcr>=0?'+':'')+fmtNum(dPcr,3)}</div></div>
     <div class="kpi"><div class="label">日経VI</div><div class="value">${fmtNum(last.vi,2)}</div>
       <div class="sub ${dirClass(dVi)}">${dVi==null?'':(dVi>=0?'+':'')+fmtNum(dVi,2)}</div></div>
     <div class="kpi"><div class="label">スプレッド (PCR÷VI)</div><div class="value">${fmtNum(last.spread,4)}</div>
       <div class="sub ${dirClass(dSp)}">${dSp==null?'':(dSp>=0?'+':'')+fmtNum(dSp,4)}</div></div>
-    <div class="kpi"><div class="label">モメンタム (MA5−MA20)</div><div class="value ${dirClass(last.momentum)}">${fmtNum(last.momentum,4)}</div>
-      <div class="sub">${last.momentum>=0?'弱気バイアス↑':'楽観バイアス↑'}</div></div>
-    <div class="kpi"><div class="label">プット建玉</div><div class="value">${fmtInt(last.put_oi)}</div><div class="sub">枚</div></div>
-    <div class="kpi"><div class="label">コール建玉</div><div class="value">${fmtInt(last.call_oi)}</div><div class="sub">枚</div></div>
+    <div class="kpi"><div class="label">プット/コールOTM建玉</div><div class="value">${fmtInt(last.put_oi)} / ${fmtInt(last.call_oi)}</div>
+      <div class="sub">枚（フロント限月）</div></div>
   `;
 
   const labels = records.map(r => r.date);
@@ -172,6 +211,52 @@ function render(payload){
         borderColor: '#a371f7', backgroundColor: 'rgba(163,113,247,.18)', tension: .25, pointRadius: 0, borderWidth: 2, fill: true },
     ]},
     options: { responsive:true, maintainAspectRatio:false, scales: commonScales({y:{}}) }
+  });
+
+  // 日経平均 + シグナル
+  const sigColor = { '買い':'#3fb950', '打':'#a5d6a7', '退避':'#FFD54F', '売り':'#ef5350' };
+  const n225Pts = records.map(r => r.n225);
+  const sigLabels = records.map(r => signalOf(r.momentum).label);
+  const pointColors = sigLabels.map(s => sigColor[s] || 'rgba(255,255,255,0.2)');
+
+  new Chart(document.getElementById('chartN225'), {
+    type: 'line',
+    data: {
+      labels,
+      datasets: [
+        {
+          label: '日経225',
+          data: n225Pts,
+          borderColor: '#58a6ff',
+          backgroundColor: 'rgba(88,166,255,.10)',
+          borderWidth: 1.5,
+          tension: .15,
+          pointRadius: ctx => sigLabels[ctx.dataIndex] === '買い' || sigLabels[ctx.dataIndex] === '売り' ? 3.5 : 2,
+          pointBackgroundColor: pointColors,
+          pointBorderColor: pointColors,
+          fill: false,
+        }
+      ]
+    },
+    options: {
+      responsive:true, maintainAspectRatio:false,
+      interaction: {mode:'index',intersect:false},
+      scales: commonScales({ y: { ticks: { callback: v => Number(v).toLocaleString() } } }),
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            afterBody: items => {
+              const i = items[0]?.dataIndex;
+              if(i == null) return '';
+              const r = records[i];
+              const sig = signalOf(r.momentum).label;
+              return `シグナル: ${sig}\nPCR: ${fmtNum(r.pcr,3)} / VI: ${fmtNum(r.vi,2)}\nモメンタム: ${fmtNum(r.momentum,4)}`;
+            }
+          }
+        }
+      }
+    }
   });
 
   new Chart(document.getElementById('chartMomentum'), {
