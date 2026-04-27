@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-04-27T16:06:15",
+ "generated_at": "2026-04-27T16:56:13",
  "records": [
   {
    "date": "2025-04-10",
@@ -4260,6 +4260,25 @@
    "base_vol": 27.487,
    "vi": 29.59,
    "spread": 0.01592,
+   "ma_short": 22.30284,
+   "ma_long": 5.63944,
+   "momentum": 16.6634,
+   "n225": 59716.18
+  },
+  {
+   "date": "2026-04-27",
+   "pcr": 2.0778,
+   "pcr_otm": 2.3431,
+   "call_oi": 57378,
+   "put_oi": 119219,
+   "call_oi_otm": 26367,
+   "put_oi_otm": 61780,
+   "underlying": 60537.36,
+   "contract_month": "2026-05",
+   "base_vol": 26.962,
+   "vi": null,
+   "n225": null,
+   "spread": null,
    "ma_short": 22.30284,
    "ma_long": 5.63944,
    "momentum": 16.6634
