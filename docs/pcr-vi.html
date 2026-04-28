@@ -154,15 +154,13 @@ function render(payload){
   // モメンタム値の昇順配列(クリップ計算用に共有)
   const moms = records.map(r=>r.momentum).filter(v=>v!=null).sort((a,b)=>a-b);
 
-  // 記事「プラスになれば買い、減速すれば売り」を 4状態の連続サイクルとして実装。
-  // 買い → 退避 → 売り → 打 → 買い の循環。
-  // 遷移はノイズ抑制のため「2連続の方向変化」または「ゼロクロス」で確認。
-  //   買い: ROC10 > 0 で勢いあり (買い継続中)
-  //   退避: 高値圏で 2連続 減速 = 記事の「減速すれば売り」初期サイン
-  //   売り: 退避 状態で ROC10 ≤ 0 に転落 → 売り継続
-  //   打  : 売り 中に 2連続 反発 = 底打ち打診
-  //   再・買い: 打 状態で ROC10 > 0 に復帰
-  // また 退避→買い／打→売り の戻りも「2連続の逆方向変化」で許容（無理に進めない）。
+  // 記事「プラスになれば買い、減速すれば売り」を 4状態の単方向循環ステートマシンで実装。
+  //   買い → (2連続減速) → 退避 → (ROC≤0) → 売り → (2連続反発) → 打 → (ROC>0) → 買い → …
+  //
+  // 設計方針: 戻り遷移は許可しない（買い→退避→買い の往復を排除）。
+  //  - 一旦 退避 に入ったら、必ず 売り を経由してから次の 買い に戻る
+  //  - 一旦 打 に入ったら、必ず 買い を経由してから次の 売り に下がる
+  // これにより シグナルが「買い→退避→売り→打→買い」の連続性を持つ。
   const SIGNAL_CLS = {'買い':'signal-buy','退避':'signal-cau','売り':'signal-sell','打':'signal-test'};
   const computedSignals = (() => {
     const out = new Array(records.length).fill(null);
@@ -178,15 +176,9 @@ function render(payload){
       if(state == null){ state = (m > 0 ? '買い' : '売り'); }
       switch(state){
         case '買い': if(consecDown >= 2) state = '退避'; break;
-        case '退避':
-          if(m <= 0) state = '売り';
-          else if(consecUp >= 2) state = '買い';
-          break;
-        case '売り': if(consecUp >= 2) state = '打'; break;
-        case '打':
-          if(m > 0) state = '買い';
-          else if(consecDown >= 2) state = '売り';
-          break;
+        case '退避': if(m <= 0)         state = '売り'; break;
+        case '売り': if(consecUp   >= 2) state = '打';   break;
+        case '打'  : if(m >  0)         state = '買い'; break;
       }
       out[i] = state;
       prevMom = m;
