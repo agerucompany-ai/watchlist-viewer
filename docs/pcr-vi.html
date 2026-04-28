@@ -84,11 +84,6 @@ td{padding:4px 7px;border-bottom:1px solid rgba(48,54,61,.5);text-align:right;co
 </div>
 
 <div class="chart-box">
-  <h2>TOPIX(1306) と 米10年金利（左軸: TOPIX(1306) / 右軸: 米10Y %）</h2>
-  <div class="chart-wrap"><canvas id="chartTopixUs10"></canvas></div>
-</div>
-
-<div class="chart-box">
   <h2>直近20営業日</h2>
   <div style="overflow-x:auto">
     <table id="recent-table">
@@ -309,15 +304,34 @@ function render(payload){
     ]},
     options: {
       responsive:true, maintainAspectRatio:false,
+      // 異常値で軸が引き伸ばされ細かい動きが潰れるのを防ぐため、
+      // 中央95%(=p2.5..p97.5) ＋ パディング でY軸をクリップ。
+      // クリップ外の値も折れ線は描画され続け、ツールチップで実値は確認可能。
       scales: commonScales({
-        y: {
-          ticks: { callback: v => Number(v).toFixed(1) + '%' },
-          grid: {
-            color: ctx => ctx.tick.value === 0 ? 'rgba(255,255,255,.35)' : 'rgba(48,54,61,.6)'
+        y: (() => {
+          const sorted = moms;  // 既にソート済みのmomentum配列
+          if (sorted.length < 5) return { ticks:{ callback: v => Number(v).toFixed(1)+'%' } };
+          const p = f => sorted[Math.max(0, Math.min(sorted.length-1, Math.floor(sorted.length*f)))];
+          let lo = p(0.025), hi = p(0.975);
+          const span = Math.max(hi - lo, 4);   // 最低4%幅は確保
+          const pad = span * 0.1;
+          lo = Math.floor(lo - pad);
+          hi = Math.ceil(hi + pad);
+          return {
+            min: lo, max: hi,
+            ticks: { callback: v => Number(v).toFixed(1) + '%' },
+            grid: { color: ctx => ctx.tick.value === 0 ? 'rgba(255,255,255,.35)' : 'rgba(48,54,61,.6)' }
+          };
+        })()
+      }),
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: ctx => `ROC10: ${ctx.parsed.y == null ? '-' : ctx.parsed.y.toFixed(2) + '%'}`
           }
         }
-      }),
-      plugins: { legend: { display: false } },
+      },
     }
   });
 
@@ -339,30 +353,6 @@ function render(payload){
         scales: commonScales({
           y:  { position:'left',  title:{display:true,text:'USDJPY'} },
           y2: { position:'right', title:{display:true,text:'VIX'}, grid:{drawOnChartArea:false} },
-        }),
-        plugins: { legend: { position: 'top' } },
-      }
-    });
-  }
-
-  // TOPIX(1306) × 米10Y 二軸
-  if (records.some(r => r.topix != null) || records.some(r => r.us10y != null)) {
-    new Chart(document.getElementById('chartTopixUs10'), {
-      type: 'line',
-      data: {
-        labels,
-        datasets: [
-          { label: 'TOPIX(1306)', data: records.map(r=>r.topix), yAxisID: 'y',
-            borderColor: '#58a6ff', backgroundColor: 'rgba(88,166,255,.10)', tension: .25, pointRadius: 0, borderWidth: 2 },
-          { label: '米10年金利 %', data: records.map(r=>r.us10y), yAxisID: 'y2',
-            borderColor: '#a371f7', backgroundColor: 'rgba(163,113,247,.10)', tension: .25, pointRadius: 0, borderWidth: 2 },
-        ]
-      },
-      options: {
-        responsive:true, maintainAspectRatio:false, interaction:{mode:'index',intersect:false},
-        scales: commonScales({
-          y:  { position:'left',  title:{display:true,text:'TOPIX(1306)'} },
-          y2: { position:'right', title:{display:true,text:'米10Y %'}, grid:{drawOnChartArea:false} },
         }),
         plugins: { legend: { position: 'top' } },
       }
