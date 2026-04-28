@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PCR / 日経VI / スプレッド・モメンタム</title>
+<title>PCR / 日経VI / 主要市場指標</title>
 <link rel="apple-touch-icon" href="data:,">
 <style>
 :root{--bg:#0d1117;--bg2:#161b22;--bg3:#21262d;--border:#30363d;--text:#c9d1d9;
@@ -47,7 +47,7 @@ td{padding:4px 7px;border-bottom:1px solid rgba(48,54,61,.5);text-align:right;co
 <body>
 <header>
   <div>
-    <h1>📊 PCR / 日経VI トラッカー</h1>
+    <h1>📊 PCR / 日経VI / 主要市場指標 トラッカー</h1>
     <nav><a href="index.html">← ウォッチリスト</a><a href="debates.html">ディベート</a></nav>
   </div>
   <div class="meta" id="meta">読込中…</div>
@@ -68,21 +68,34 @@ td{padding:4px 7px;border-bottom:1px solid rgba(48,54,61,.5);text-align:right;co
 </div>
 
 <div class="chart-box">
-  <h2>日経平均（売買シグナル: 買い / 打 / 退避 / 売り）</h2>
+  <h2>日経平均（モメンタムでマーカー着色）</h2>
   <div class="legend-row" id="signal-legend"></div>
   <div class="chart-wrap"><canvas id="chartN225"></canvas></div>
 </div>
 
 <div class="chart-box">
-  <h2>スプレッド・モメンタム（短期MA<sub>5</sub> − 長期MA<sub>20</sub>）</h2>
+  <h2>PCR÷VI モメンタム — ROC(10営業日) <span style="color:var(--muted);font-weight:400">単位: %</span></h2>
   <div class="chart-wrap"><canvas id="chartMomentum"></canvas></div>
+</div>
+
+<div class="chart-box">
+  <h2>主要市場指標（左軸: USDJPY / 右軸: VIX）</h2>
+  <div class="chart-wrap"><canvas id="chartFxVix"></canvas></div>
+</div>
+
+<div class="chart-box">
+  <h2>TOPIX と 米10年金利（左軸: TOPIX / 右軸: 米10Y %）</h2>
+  <div class="chart-wrap"><canvas id="chartTopixUs10"></canvas></div>
 </div>
 
 <div class="chart-box">
   <h2>直近20営業日</h2>
   <div style="overflow-x:auto">
     <table id="recent-table">
-      <thead><tr><th>日付</th><th>PCR</th><th>日経VI</th><th>スプレッド</th><th>MA5</th><th>MA20</th><th>モメンタム</th><th>限月</th></tr></thead>
+      <thead><tr>
+        <th>日付</th><th>PCR</th><th>VI</th><th>スプレッド</th><th>モメンタム%</th>
+        <th>日経225</th><th>TOPIX</th><th>USDJPY</th><th>VIX</th><th>米10Y</th><th>限月</th>
+      </tr></thead>
       <tbody></tbody>
     </table>
   </div>
@@ -94,9 +107,11 @@ td{padding:4px 7px;border-bottom:1px solid rgba(48,54,61,.5);text-align:right;co
 &emsp;<small>補助: PCR(OTM) = ATM±20%レンジ内のみ。壁分析・センチメントの細かい温度感に。</small><br>
 ・<b>日経VI</b> = 投資家が想定する向こう30日の日経平均ボラ。20以下は穏やか、30超は警戒。<br>
 ・<b>PCR÷VI</b>（スプレッド）= テールリスクと買い圧力を一体評価。記事の SKEW÷VIX に倣う日本版。<br>
-・<b>モメンタム</b> = MA<sub>5</sub> − MA<sub>20</sub>。プラス転換は弱気/警戒の高まり、マイナス転換は楽観回帰の兆し。<br>
-・<b>シグナル</b>はモメンタム値の分位（25/50/75パーセンタイル）で4区分：買い ≤ 打 ≤ 退避 ≤ 売り。<br>
-データ源: J-Quants V2（オプション建玉, T+1反映） / Yahoo Finance（^NKVI.OS, ^N225）。毎平日朝に自動更新。
+・<b>モメンタム</b> = スプレッドの ROC(10営業日) = (今日 ÷ 10営業日前 − 1) × 100。<br>
+&emsp;<small>記事「市場予測指標で市場の動きを考えてみる」(株おじさん) のシグナル: 「<b>プラスになれば買い、減速すれば売り</b>」。</small><br>
+・<b>シグナル分位</b>はモメンタム値のパーセンタイル(25/50/75) で 4 区分（参考表示）。<br>
+・<b>市場指標</b> = USDJPY / VIX(米国) / TOPIX / 米10年金利。日経/オプション動向と合わせて環境判定に使用。<br>
+データ源: J-Quants V2（オプション建玉, T+1反映） / Yahoo Finance（^NKVI.OS, ^N225, ^TOPX, USDJPY=X, ^VIX, ^TNX）。毎平日朝に自動更新。
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
@@ -151,26 +166,39 @@ function render(payload){
   const lastSig = signalOf(last.momentum);
 
   document.getElementById('signal-legend').innerHTML =
-    `判定基準（モメンタム分位）: ` +
-    `<span class="pill signal-buy">買い ≤ ${fmtNum(Q25,4)}</span>` +
-    `<span class="pill signal-test">打 ≤ ${fmtNum(Q50,4)}</span>` +
-    `<span class="pill signal-cau">退避 ≤ ${fmtNum(Q75,4)}</span>` +
-    `<span class="pill signal-sell">売り > ${fmtNum(Q75,4)}</span>` +
+    `モメンタム(ROC10) 分位による参考シグナル: ` +
+    `<span class="pill signal-buy">買い ≤ ${fmtNum(Q25,2)}%</span>` +
+    `<span class="pill signal-test">打 ≤ ${fmtNum(Q50,2)}%</span>` +
+    `<span class="pill signal-cau">退避 ≤ ${fmtNum(Q75,2)}%</span>` +
+    `<span class="pill signal-sell">売り > ${fmtNum(Q75,2)}%</span>` +
     `<span style="margin-left:auto">最新: <b style="color:var(--text)">${lastSig.label}</b></span>`;
+
+  const dT  = prev && last.topix != null && prev.topix != null ? (last.topix - prev.topix) : null;
+  const dFx = prev && last.usdjpy != null && prev.usdjpy != null ? (last.usdjpy - prev.usdjpy) : null;
+  const dVx = prev && last.vix != null && prev.vix != null ? (last.vix - prev.vix) : null;
+  const dUs = prev && last.us10y != null && prev.us10y != null ? (last.us10y - prev.us10y) : null;
 
   document.getElementById('summary').innerHTML = `
     <div class="kpi"><div class="label">日経平均</div><div class="value">${fmtNum(last.n225,0)}</div>
       <div class="sub ${dirClass(dN)}">${dN==null?'':(dN>=0?'+':'')+fmtNum(dN,0)}</div></div>
-    <div class="kpi"><div class="label">シグナル</div><div class="value"><span class="pill ${lastSig.cls}" style="font-size:14px">${lastSig.label}</span></div>
-      <div class="sub">モメンタム ${fmtNum(last.momentum,4)}</div></div>
+    <div class="kpi"><div class="label">モメンタム ROC10</div><div class="value ${dirClass(last.momentum)}">${last.momentum==null?'-':(last.momentum>=0?'+':'')+fmtNum(last.momentum,2)}%</div>
+      <div class="sub">分位シグナル: <span class="pill ${lastSig.cls}">${lastSig.label}</span></div></div>
     <div class="kpi"><div class="label">PCR (全体OI)</div><div class="value">${fmtNum(last.pcr,3)}</div>
       <div class="sub ${dirClass(dPcr)}">${dPcr==null?'':(dPcr>=0?'+':'')+fmtNum(dPcr,3)}${last.pcr_otm!=null?` / OTM ${fmtNum(last.pcr_otm,3)}`:''}</div></div>
     <div class="kpi"><div class="label">日経VI</div><div class="value">${fmtNum(last.vi,2)}</div>
       <div class="sub ${dirClass(dVi)}">${dVi==null?'':(dVi>=0?'+':'')+fmtNum(dVi,2)}</div></div>
     <div class="kpi"><div class="label">スプレッド (PCR÷VI)</div><div class="value">${fmtNum(last.spread,4)}</div>
       <div class="sub ${dirClass(dSp)}">${dSp==null?'':(dSp>=0?'+':'')+fmtNum(dSp,4)}</div></div>
+    <div class="kpi"><div class="label">TOPIX</div><div class="value">${fmtNum(last.topix,1)}</div>
+      <div class="sub ${dirClass(dT)}">${dT==null?'':(dT>=0?'+':'')+fmtNum(dT,1)}</div></div>
+    <div class="kpi"><div class="label">USDJPY</div><div class="value">${fmtNum(last.usdjpy,2)}</div>
+      <div class="sub ${dirClass(dFx)}">${dFx==null?'':(dFx>=0?'+':'')+fmtNum(dFx,2)}</div></div>
+    <div class="kpi"><div class="label">VIX (米国)</div><div class="value">${fmtNum(last.vix,2)}</div>
+      <div class="sub ${dirClass(dVx)}">${dVx==null?'':(dVx>=0?'+':'')+fmtNum(dVx,2)}</div></div>
+    <div class="kpi"><div class="label">米10年金利</div><div class="value">${fmtNum(last.us10y,2)}%</div>
+      <div class="sub ${dirClass(dUs)}">${dUs==null?'':(dUs>=0?'+':'')+fmtNum(dUs,2)}</div></div>
     <div class="kpi"><div class="label">プット/コール建玉</div><div class="value">${fmtInt(last.put_oi)} / ${fmtInt(last.call_oi)}</div>
-      <div class="sub">枚（フロント限月 全体OI）</div></div>
+      <div class="sub">枚（フロント限月）</div></div>
   `;
 
   const labels = records.map(r => r.date);
@@ -251,7 +279,7 @@ function render(payload){
               if(i == null) return '';
               const r = records[i];
               const sig = signalOf(r.momentum).label;
-              return `シグナル: ${sig}\nPCR: ${fmtNum(r.pcr,3)} / VI: ${fmtNum(r.vi,2)}\nモメンタム: ${fmtNum(r.momentum,4)}`;
+              return `シグナル: ${sig}\nPCR: ${fmtNum(r.pcr,3)} / VI: ${fmtNum(r.vi,2)}\nROC10: ${r.momentum==null?'-':fmtNum(r.momentum,2)+'%'}`;
             }
           }
         }
@@ -262,7 +290,7 @@ function render(payload){
   new Chart(document.getElementById('chartMomentum'), {
     type: 'line',
     data: { labels, datasets: [
-      { label: 'モメンタム (MA5−MA20)', data: records.map(r=>r.momentum),
+      { label: 'モメンタム ROC(10) %', data: records.map(r=>r.momentum),
         borderColor: '#3fb950',
         segment: {
           borderColor: ctx => (ctx.p1.parsed.y >= 0 ? '#f85149' : '#3fb950'),
@@ -272,10 +300,65 @@ function render(payload){
     ]},
     options: {
       responsive:true, maintainAspectRatio:false,
-      scales: commonScales({ y: { suggestedMin: -0.05, suggestedMax: 0.05 } }),
+      scales: commonScales({
+        y: {
+          ticks: { callback: v => Number(v).toFixed(1) + '%' },
+          grid: {
+            color: ctx => ctx.tick.value === 0 ? 'rgba(255,255,255,.35)' : 'rgba(48,54,61,.6)'
+          }
+        }
+      }),
       plugins: { legend: { display: false } },
     }
   });
+
+  // USDJPY × VIX 二軸
+  if (records.some(r => r.usdjpy != null) || records.some(r => r.vix != null)) {
+    new Chart(document.getElementById('chartFxVix'), {
+      type: 'line',
+      data: {
+        labels,
+        datasets: [
+          { label: 'USDJPY', data: records.map(r=>r.usdjpy), yAxisID: 'y',
+            borderColor: '#FFD700', backgroundColor: 'rgba(255,215,0,.10)', tension: .25, pointRadius: 0, borderWidth: 2 },
+          { label: 'VIX', data: records.map(r=>r.vix), yAxisID: 'y2',
+            borderColor: '#f85149', backgroundColor: 'rgba(248,81,73,.10)', tension: .25, pointRadius: 0, borderWidth: 2 },
+        ]
+      },
+      options: {
+        responsive:true, maintainAspectRatio:false, interaction:{mode:'index',intersect:false},
+        scales: commonScales({
+          y:  { position:'left',  title:{display:true,text:'USDJPY'} },
+          y2: { position:'right', title:{display:true,text:'VIX'}, grid:{drawOnChartArea:false} },
+        }),
+        plugins: { legend: { position: 'top' } },
+      }
+    });
+  }
+
+  // TOPIX × 米10Y 二軸
+  if (records.some(r => r.topix != null) || records.some(r => r.us10y != null)) {
+    new Chart(document.getElementById('chartTopixUs10'), {
+      type: 'line',
+      data: {
+        labels,
+        datasets: [
+          { label: 'TOPIX', data: records.map(r=>r.topix), yAxisID: 'y',
+            borderColor: '#58a6ff', backgroundColor: 'rgba(88,166,255,.10)', tension: .25, pointRadius: 0, borderWidth: 2 },
+          { label: '米10年金利 %', data: records.map(r=>r.us10y), yAxisID: 'y2',
+            borderColor: '#a371f7', backgroundColor: 'rgba(163,113,247,.10)', tension: .25, pointRadius: 0, borderWidth: 2 },
+        ]
+      },
+      options: {
+        responsive:true, maintainAspectRatio:false, interaction:{mode:'index',intersect:false},
+        scales: commonScales({
+          y:  { position:'left',  title:{display:true,text:'TOPIX'} },
+          y2: { position:'right', title:{display:true,text:'米10Y %'}, grid:{drawOnChartArea:false} },
+        }),
+        plugins: { legend: { position: 'top' } },
+      }
+    });
+  }
 
   // 直近20件テーブル
   const tail = records.slice(-20).reverse();
@@ -286,9 +369,12 @@ function render(payload){
       <td>${fmtNum(r.pcr,3)}</td>
       <td>${fmtNum(r.vi,2)}</td>
       <td>${fmtNum(r.spread,4)}</td>
-      <td>${fmtNum(r.ma_short,4)}</td>
-      <td>${fmtNum(r.ma_long,4)}</td>
-      <td class="${dirClass(r.momentum)}">${fmtNum(r.momentum,4)}</td>
+      <td class="${dirClass(r.momentum)}">${r.momentum==null?'-':(r.momentum>=0?'+':'')+fmtNum(r.momentum,2)}%</td>
+      <td>${fmtNum(r.n225,0)}</td>
+      <td>${fmtNum(r.topix,1)}</td>
+      <td>${fmtNum(r.usdjpy,2)}</td>
+      <td>${fmtNum(r.vix,2)}</td>
+      <td>${fmtNum(r.us10y,2)}</td>
       <td>${r.contract_month || '-'}</td>
     </tr>`).join('');
 }
