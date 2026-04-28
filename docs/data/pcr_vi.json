@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-04-27T23:30:09",
+ "generated_at": "2026-04-28T03:31:47",
  "records": [
   {
    "date": "2025-04-10",
@@ -5084,12 +5084,12 @@
    "underlying": 60537.36,
    "contract_month": "2026-05",
    "base_vol": 26.962,
-   "vi": null,
-   "n225": null,
-   "spread": null,
-   "ma_short": 0.07077,
-   "ma_long": 0.05526,
-   "momentum": 0.0155
+   "vi": 29.55,
+   "n225": 60537.36,
+   "spread": 0.07031,
+   "ma_short": 0.07194,
+   "ma_long": 0.05728,
+   "momentum": 0.01466
   }
  ]
 }
