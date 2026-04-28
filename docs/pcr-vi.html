@@ -79,8 +79,8 @@ td{padding:4px 7px;border-bottom:1px solid rgba(48,54,61,.5);text-align:right;co
 </div>
 
 <div class="chart-box">
-  <h2>主要市場指標（左軸: USDJPY / 右軸: VIX）</h2>
-  <div class="chart-wrap"><canvas id="chartFxVix"></canvas></div>
+  <h2>S&amp;P500 モメンタム — ROC(10営業日) <span style="color:var(--muted);font-weight:400">単位: %、Y軸 ±15% 固定</span></h2>
+  <div class="chart-wrap"><canvas id="chartSp500Momentum"></canvas></div>
 </div>
 
 <div class="chart-box">
@@ -157,7 +157,7 @@ td{padding:4px 7px;border-bottom:1px solid rgba(48,54,61,.5);text-align:right;co
 ・<b>モメンタム</b> = スプレッドの ROC(10営業日) = (今日 ÷ 10営業日前 − 1) × 100。<br>
 &emsp;<small>記事「市場予測指標で市場の動きを考えてみる」(株おじさん) のシグナル: 「<b>プラスになれば買い、減速すれば売り</b>」。</small><br>
 ・<b>市場指標</b> = USDJPY / VIX(米国) / TOPIX(1306) / 米10年金利。日経/オプション動向と合わせて環境判定に使用。<br>
-データ源: J-Quants V2（オプション建玉, T+1反映） / Yahoo Finance（^NKVI.OS, ^N225, 1306.T, USDJPY=X, ^VIX, ^TNX）。毎平日朝に自動更新。
+データ源: J-Quants V2（オプション建玉, T+1反映） / Yahoo Finance（^NKVI.OS, ^N225, 1306.T, USDJPY=X, ^VIX, ^TNX, ^GSPC）。毎平日朝に自動更新。グラフ表示は2024-04-01以降。
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
@@ -281,13 +281,35 @@ function render(payload){
       <div class="sub ${dirClass(dFx)}">${dFx==null?'':(dFx>=0?'+':'')+fmtNum(dFx,2)}</div></div>
     <div class="kpi"><div class="label">VIX (米国)</div><div class="value">${fmtNum(last.vix,2)}</div>
       <div class="sub ${dirClass(dVx)}">${dVx==null?'':(dVx>=0?'+':'')+fmtNum(dVx,2)}</div></div>
+    <div class="kpi"><div class="label">S&P500</div><div class="value">${fmtNum(last.sp500,0)}</div>
+      <div class="sub ${dirClass(prev && last.sp500!=null && prev.sp500!=null ? last.sp500-prev.sp500 : null)}">${prev && last.sp500!=null && prev.sp500!=null ? ((last.sp500-prev.sp500>=0?'+':'')+fmtNum(last.sp500-prev.sp500,1)) : ''}</div></div>
     <div class="kpi"><div class="label">米10年金利</div><div class="value">${fmtNum(last.us10y,2)}%</div>
       <div class="sub ${dirClass(dUs)}">${dUs==null?'':(dUs>=0?'+':'')+fmtNum(dUs,2)}</div></div>
     <div class="kpi"><div class="label">プット/コール建玉</div><div class="value">${fmtInt(last.put_oi)} / ${fmtInt(last.call_oi)}</div>
       <div class="sub">枚（フロント限月）</div></div>
   `;
 
-  const labels = records.map(r => r.date);
+  // 全チャートで横軸の左端を統一 (バックテスト/テーブルはfullで残す)
+  const DISPLAY_START = '2024-04-01';
+  const startIdx = Math.max(0, records.findIndex(r => r.date >= DISPLAY_START));
+  const dRecs = records.slice(startIdx);
+  const labels = dRecs.map(r => r.date);
+
+  // S&P500 ROC(10営業日)：dRecs内の連続する有効sp500値で計算
+  const sp500Mom = dRecs.map((r, i) => {
+    if (r.sp500 == null) return null;
+    let count = 0;
+    for (let j = i - 1; j >= 0; j--) {
+      if (dRecs[j].sp500 != null) {
+        count++;
+        if (count === 10) {
+          return (r.sp500 / dRecs[j].sp500 - 1) * 100;
+        }
+      }
+    }
+    return null;
+  });
+
   Chart.defaults.color = '#8b949e';
   Chart.defaults.borderColor = 'rgba(48,54,61,0.6)';
   Chart.defaults.font.family = '-apple-system,BlinkMacSystemFont,"Segoe UI","Hiragino Sans",sans-serif';
@@ -302,9 +324,9 @@ function render(payload){
     data: {
       labels,
       datasets: [
-        { label: 'PCR', data: records.map(r=>r.pcr), yAxisID: 'y',
+        { label: 'PCR', data: dRecs.map(r=>r.pcr), yAxisID: 'y',
           borderColor: '#58a6ff', backgroundColor: 'rgba(88,166,255,.15)', tension: .25, pointRadius: 0, borderWidth: 2 },
-        { label: '日経VI', data: records.map(r=>r.vi), yAxisID: 'y2',
+        { label: '日経VI', data: dRecs.map(r=>r.vi), yAxisID: 'y2',
           borderColor: '#FFA500', backgroundColor: 'rgba(255,165,0,.10)', tension: .25, pointRadius: 0, borderWidth: 2 },
       ]
     },
@@ -321,7 +343,7 @@ function render(payload){
   new Chart(document.getElementById('chartSpread'), {
     type: 'line',
     data: { labels, datasets: [
-      { label: 'PCR ÷ 日経VI', data: records.map(r=>r.spread),
+      { label: 'PCR ÷ 日経VI', data: dRecs.map(r=>r.spread),
         borderColor: '#a371f7', backgroundColor: 'rgba(163,113,247,.18)', tension: .25, pointRadius: 0, borderWidth: 2, fill: true },
     ]},
     options: { responsive:true, maintainAspectRatio:false, scales: commonScales({y:{}}) }
@@ -330,8 +352,10 @@ function render(payload){
   // 日経平均 + シグナル
   // 表示ラベル(買い場/弱含み/中立) ベースの色マッピング — 買い場を最も強調
   const sigColor = { '買い場':'#3fb950', '弱含み':'#FFD54F', '中立':'rgba(165,214,167,0.5)' };
-  const n225Pts = records.map(r => r.n225);
-  const sigLabels = records.map((_, i) => signalOf(i).label);
+  // signalOf は元の records index を引数に取るので、表示用にスライスをかける
+  const sigLabelsAll = records.map((_, i) => signalOf(i).label);
+  const sigLabels = sigLabelsAll.slice(startIdx);
+  const n225Pts = dRecs.map(r => r.n225);
   const pointColors = sigLabels.map(s => sigColor[s] || 'rgba(255,255,255,0.2)');
 
   new Chart(document.getElementById('chartN225'), {
@@ -364,8 +388,8 @@ function render(payload){
             afterBody: items => {
               const i = items[0]?.dataIndex;
               if(i == null) return '';
-              const r = records[i];
-              const sig = signalOf(i).label;
+              const r = dRecs[i];
+              const sig = sigLabels[i];
               return `シグナル: ${sig}\nPCR: ${fmtNum(r.pcr,3)} / VI: ${fmtNum(r.vi,2)}\nROC10: ${r.momentum==null?'-':fmtNum(r.momentum,2)+'%'}`;
             }
           }
@@ -377,7 +401,7 @@ function render(payload){
   new Chart(document.getElementById('chartMomentum'), {
     type: 'line',
     data: { labels, datasets: [
-      { label: 'モメンタム ROC(10) %', data: records.map(r=>r.momentum),
+      { label: 'モメンタム ROC(10) %', data: dRecs.map(r=>r.momentum),
         borderColor: '#3fb950',
         segment: {
           borderColor: ctx => (ctx.p1.parsed.y >= 0 ? '#f85149' : '#3fb950'),
@@ -406,33 +430,41 @@ function render(payload){
     }
   });
 
-  // USDJPY × VIX 二軸
-  if (records.some(r => r.usdjpy != null) || records.some(r => r.vix != null)) {
-    new Chart(document.getElementById('chartFxVix'), {
+  // S&P500 モメンタム ROC(10営業日)
+  if (sp500Mom.some(v => v != null)) {
+    new Chart(document.getElementById('chartSp500Momentum'), {
       type: 'line',
-      data: {
-        labels,
-        datasets: [
-          { label: 'USDJPY', data: records.map(r=>r.usdjpy), yAxisID: 'y',
-            borderColor: '#FFD700', backgroundColor: 'rgba(255,215,0,.10)', tension: .25, pointRadius: 0, borderWidth: 2 },
-          { label: 'VIX', data: records.map(r=>r.vix), yAxisID: 'y2',
-            borderColor: '#f85149', backgroundColor: 'rgba(248,81,73,.10)', tension: .25, pointRadius: 0, borderWidth: 2 },
-        ]
-      },
+      data: { labels, datasets: [
+        { label: 'S&P500 ROC(10) %', data: sp500Mom,
+          borderColor: '#FFD700',
+          segment: { borderColor: ctx => (ctx.p1.parsed.y >= 0 ? '#3fb950' : '#f85149') },
+          backgroundColor: 'rgba(255,215,0,.10)',
+          tension: .2, pointRadius: 0, borderWidth: 2 },
+      ]},
       options: {
-        responsive:true, maintainAspectRatio:false, interaction:{mode:'index',intersect:false},
+        responsive:true, maintainAspectRatio:false,
         scales: commonScales({
-          y:  { position:'left',  title:{display:true,text:'USDJPY'} },
-          y2: { position:'right', title:{display:true,text:'VIX'}, grid:{drawOnChartArea:false} },
+          y: {
+            min: -15, max: 15,
+            ticks: { callback: v => Number(v).toFixed(0) + '%' },
+            grid: { color: ctx => ctx.tick.value === 0 ? 'rgba(255,255,255,.35)' : 'rgba(48,54,61,.6)' }
+          }
         }),
-        plugins: { legend: { position: 'top' } },
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: ctx => `S&P500 ROC10: ${ctx.parsed.y == null ? '-' : ctx.parsed.y.toFixed(2) + '%'}`
+            }
+          }
+        },
       }
     });
   }
 
   // 日経平均 直近1ヶ月ズーム (フルチャートと同じシグナル着色)
   const ZOOM_DAYS = 22; // 営業日換算で約1ヶ月
-  const zoomStart = Math.max(0, records.length - ZOOM_DAYS);
+  const zoomStart = Math.max(0, dRecs.length - ZOOM_DAYS);
   const zoomLabels = labels.slice(zoomStart);
   const zoomN225   = n225Pts.slice(zoomStart);
   const zoomColors = pointColors.slice(zoomStart);
@@ -468,7 +500,7 @@ function render(payload){
             afterBody: items => {
               const i = items[0]?.dataIndex;
               if(i == null) return '';
-              const r = records[zoomStart + i];
+              const r = dRecs[zoomStart + i];
               const sig = zoomSig[i];
               return `シグナル: ${sig}\nPCR: ${fmtNum(r.pcr,3)} / VI: ${fmtNum(r.vi,2)}\nROC10: ${r.momentum==null?'-':fmtNum(r.momentum,2)+'%'}`;
             }
