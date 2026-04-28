@@ -84,6 +84,11 @@ td{padding:4px 7px;border-bottom:1px solid rgba(48,54,61,.5);text-align:right;co
 </div>
 
 <div class="chart-box">
+  <h2>日経平均 直近1ヶ月ズーム（モメンタムマーカー着色）</h2>
+  <div class="chart-wrap"><canvas id="chartN225Zoom"></canvas></div>
+</div>
+
+<div class="chart-box">
   <h2>直近20営業日</h2>
   <div style="overflow-x:auto">
     <table id="recent-table">
@@ -361,6 +366,54 @@ function render(payload){
       }
     });
   }
+
+  // 日経平均 直近1ヶ月ズーム (フルチャートと同じシグナル着色)
+  const ZOOM_DAYS = 22; // 営業日換算で約1ヶ月
+  const zoomStart = Math.max(0, records.length - ZOOM_DAYS);
+  const zoomLabels = labels.slice(zoomStart);
+  const zoomN225   = n225Pts.slice(zoomStart);
+  const zoomColors = pointColors.slice(zoomStart);
+  const zoomSig    = sigLabels.slice(zoomStart);
+
+  new Chart(document.getElementById('chartN225Zoom'), {
+    type: 'line',
+    data: {
+      labels: zoomLabels,
+      datasets: [
+        {
+          label: '日経225 (1ヶ月)',
+          data: zoomN225,
+          borderColor: '#58a6ff',
+          backgroundColor: 'rgba(88,166,255,.10)',
+          borderWidth: 1.8,
+          tension: .15,
+          pointRadius: ctx => zoomSig[ctx.dataIndex] === '買い' || zoomSig[ctx.dataIndex] === '売り' ? 5 : 4,
+          pointBackgroundColor: zoomColors,
+          pointBorderColor: zoomColors,
+          fill: false,
+        }
+      ]
+    },
+    options: {
+      responsive:true, maintainAspectRatio:false,
+      interaction: {mode:'index',intersect:false},
+      scales: commonScales({ y: { ticks: { callback: v => Number(v).toLocaleString() } } }),
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            afterBody: items => {
+              const i = items[0]?.dataIndex;
+              if(i == null) return '';
+              const r = records[zoomStart + i];
+              const sig = zoomSig[i];
+              return `シグナル: ${sig}\nPCR: ${fmtNum(r.pcr,3)} / VI: ${fmtNum(r.vi,2)}\nROC10: ${r.momentum==null?'-':fmtNum(r.momentum,2)+'%'}`;
+            }
+          }
+        }
+      }
+    }
+  });
 
   // 直近20件テーブル
   const tail = records.slice(-20).reverse();
