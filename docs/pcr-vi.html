@@ -84,7 +84,7 @@ td{padding:4px 7px;border-bottom:1px solid rgba(48,54,61,.5);text-align:right;co
 </div>
 
 <div class="chart-box">
-  <h2>TOPIX と 米10年金利（左軸: TOPIX / 右軸: 米10Y %）</h2>
+  <h2>TOPIX(1306) と 米10年金利（左軸: TOPIX(1306) / 右軸: 米10Y %）</h2>
   <div class="chart-wrap"><canvas id="chartTopixUs10"></canvas></div>
 </div>
 
@@ -94,7 +94,7 @@ td{padding:4px 7px;border-bottom:1px solid rgba(48,54,61,.5);text-align:right;co
     <table id="recent-table">
       <thead><tr>
         <th>日付</th><th>PCR</th><th>VI</th><th>スプレッド</th><th>モメンタム%</th>
-        <th>日経225</th><th>TOPIX</th><th>USDJPY</th><th>VIX</th><th>米10Y</th><th>限月</th>
+        <th>日経225</th><th>TOPIX(1306)</th><th>USDJPY</th><th>VIX</th><th>米10Y</th><th>限月</th>
       </tr></thead>
       <tbody></tbody>
     </table>
@@ -110,8 +110,8 @@ td{padding:4px 7px;border-bottom:1px solid rgba(48,54,61,.5);text-align:right;co
 ・<b>モメンタム</b> = スプレッドの ROC(10営業日) = (今日 ÷ 10営業日前 − 1) × 100。<br>
 &emsp;<small>記事「市場予測指標で市場の動きを考えてみる」(株おじさん) のシグナル: 「<b>プラスになれば買い、減速すれば売り</b>」。</small><br>
 ・<b>シグナル分位</b>はモメンタム値のパーセンタイル(25/50/75) で 4 区分（参考表示）。<br>
-・<b>市場指標</b> = USDJPY / VIX(米国) / TOPIX / 米10年金利。日経/オプション動向と合わせて環境判定に使用。<br>
-データ源: J-Quants V2（オプション建玉, T+1反映） / Yahoo Finance（^NKVI.OS, ^N225, ^TOPX, USDJPY=X, ^VIX, ^TNX）。毎平日朝に自動更新。
+・<b>市場指標</b> = USDJPY / VIX(米国) / TOPIX(1306) / 米10年金利。日経/オプション動向と合わせて環境判定に使用。<br>
+データ源: J-Quants V2（オプション建玉, T+1反映） / Yahoo Finance（^NKVI.OS, ^N225, 1306.T, USDJPY=X, ^VIX, ^TNX）。毎平日朝に自動更新。
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
@@ -189,7 +189,7 @@ function render(payload){
       <div class="sub ${dirClass(dVi)}">${dVi==null?'':(dVi>=0?'+':'')+fmtNum(dVi,2)}</div></div>
     <div class="kpi"><div class="label">スプレッド (PCR÷VI)</div><div class="value">${fmtNum(last.spread,4)}</div>
       <div class="sub ${dirClass(dSp)}">${dSp==null?'':(dSp>=0?'+':'')+fmtNum(dSp,4)}</div></div>
-    <div class="kpi"><div class="label">TOPIX</div><div class="value">${fmtNum(last.topix,1)}</div>
+    <div class="kpi"><div class="label">TOPIX(1306)</div><div class="value">${fmtNum(last.topix,1)}</div>
       <div class="sub ${dirClass(dT)}">${dT==null?'':(dT>=0?'+':'')+fmtNum(dT,1)}</div></div>
     <div class="kpi"><div class="label">USDJPY</div><div class="value">${fmtNum(last.usdjpy,2)}</div>
       <div class="sub ${dirClass(dFx)}">${dFx==null?'':(dFx>=0?'+':'')+fmtNum(dFx,2)}</div></div>
@@ -336,14 +336,14 @@ function render(payload){
     });
   }
 
-  // TOPIX × 米10Y 二軸
+  // TOPIX(1306) × 米10Y 二軸
   if (records.some(r => r.topix != null) || records.some(r => r.us10y != null)) {
     new Chart(document.getElementById('chartTopixUs10'), {
       type: 'line',
       data: {
         labels,
         datasets: [
-          { label: 'TOPIX', data: records.map(r=>r.topix), yAxisID: 'y',
+          { label: 'TOPIX(1306)', data: records.map(r=>r.topix), yAxisID: 'y',
             borderColor: '#58a6ff', backgroundColor: 'rgba(88,166,255,.10)', tension: .25, pointRadius: 0, borderWidth: 2 },
           { label: '米10年金利 %', data: records.map(r=>r.us10y), yAxisID: 'y2',
             borderColor: '#a371f7', backgroundColor: 'rgba(163,113,247,.10)', tension: .25, pointRadius: 0, borderWidth: 2 },
@@ -352,7 +352,7 @@ function render(payload){
       options: {
         responsive:true, maintainAspectRatio:false, interaction:{mode:'index',intersect:false},
         scales: commonScales({
-          y:  { position:'left',  title:{display:true,text:'TOPIX'} },
+          y:  { position:'left',  title:{display:true,text:'TOPIX(1306)'} },
           y2: { position:'right', title:{display:true,text:'米10Y %'}, grid:{drawOnChartArea:false} },
         }),
         plugins: { legend: { position: 'top' } },
