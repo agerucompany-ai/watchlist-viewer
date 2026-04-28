@@ -151,26 +151,35 @@ function render(payload){
   const dSp  = prev && last.spread != null && prev.spread != null ? (last.spread - prev.spread) : null;
   const dN   = prev && last.n225 != null && prev.n225 != null ? (last.n225 - prev.n225) : null;
 
-  // モメンタムの分位数からシグナル閾値（NaN除外）
-  const moms = records.map(r=>r.momentum).filter(v=>v!=null).sort((a,b)=>a-b);
-  const q = p => moms.length ? moms[Math.max(0, Math.min(moms.length-1, Math.floor(moms.length*p)))] : 0;
-  const Q25 = q(0.25), Q50 = q(0.50), Q75 = q(0.75);
-
-  function signalOf(m){
-    if(m == null) return {label:'-', cls:''};
-    if(m <= Q25) return {label:'買い', cls:'signal-buy'};
-    if(m <= Q50) return {label:'打',   cls:'signal-test'};
-    if(m <= Q75) return {label:'退避', cls:'signal-cau'};
-    return {label:'売り', cls:'signal-sell'};
+  // 記事「プラスになれば買い、減速すれば売り」(株おじさん) に準じた判定
+  //   買い: ROC10 > 0 かつ 前日比 上昇 (勢い継続)
+  //   退避: ROC10 > 0 だが 前日比 下降 (減速 = 記事の「売り」初期サイン)
+  //   売り: ROC10 ≤ 0 かつ 前日比 下降 (マイナス圏で更に悪化)
+  //   打:   ROC10 ≤ 0 だが 前日比 上昇 (底打ち気味、買い直前)
+  function signalOf(curIdx){
+    if(curIdx == null || curIdx < 0) return {label:'-', cls:''};
+    const r = records[curIdx];
+    if(!r || r.momentum == null) return {label:'-', cls:''};
+    // 直近の有効momentumを遡って参照
+    let prevMom = null;
+    for(let j = curIdx - 1; j >= 0; j--){
+      if(records[j].momentum != null){ prevMom = records[j].momentum; break; }
+    }
+    const m = r.momentum;
+    const rising = (prevMom == null) ? true : (m >= prevMom);
+    if(m > 0 &&  rising) return {label:'買い', cls:'signal-buy'};
+    if(m > 0 && !rising) return {label:'退避', cls:'signal-cau'};
+    if(m <= 0 && !rising) return {label:'売り', cls:'signal-sell'};
+    return {label:'打', cls:'signal-test'};
   }
-  const lastSig = signalOf(last.momentum);
+  const lastSig = signalOf(records.length - 1);
 
   document.getElementById('signal-legend').innerHTML =
-    `モメンタム(ROC10) 分位による参考シグナル: ` +
-    `<span class="pill signal-buy">買い ≤ ${fmtNum(Q25,2)}%</span>` +
-    `<span class="pill signal-test">打 ≤ ${fmtNum(Q50,2)}%</span>` +
-    `<span class="pill signal-cau">退避 ≤ ${fmtNum(Q75,2)}%</span>` +
-    `<span class="pill signal-sell">売り > ${fmtNum(Q75,2)}%</span>` +
+    `判定 (記事「プラスになれば買い／減速すれば売り」準拠): ` +
+    `<span class="pill signal-buy">買い: ROC&gt;0 & 上昇</span>` +
+    `<span class="pill signal-cau">退避: ROC&gt;0 & 減速</span>` +
+    `<span class="pill signal-sell">売り: ROC≤0 & 下降</span>` +
+    `<span class="pill signal-test">打: ROC≤0 & 反転</span>` +
     `<span style="margin-left:auto">最新: <b style="color:var(--text)">${lastSig.label}</b></span>`;
 
   const dT  = prev && last.topix != null && prev.topix != null ? (last.topix - prev.topix) : null;
@@ -244,7 +253,7 @@ function render(payload){
   // 日経平均 + シグナル
   const sigColor = { '買い':'#3fb950', '打':'#a5d6a7', '退避':'#FFD54F', '売り':'#ef5350' };
   const n225Pts = records.map(r => r.n225);
-  const sigLabels = records.map(r => signalOf(r.momentum).label);
+  const sigLabels = records.map((_, i) => signalOf(i).label);
   const pointColors = sigLabels.map(s => sigColor[s] || 'rgba(255,255,255,0.2)');
 
   new Chart(document.getElementById('chartN225'), {
@@ -278,7 +287,7 @@ function render(payload){
               const i = items[0]?.dataIndex;
               if(i == null) return '';
               const r = records[i];
-              const sig = signalOf(r.momentum).label;
+              const sig = signalOf(i).label;
               return `シグナル: ${sig}\nPCR: ${fmtNum(r.pcr,3)} / VI: ${fmtNum(r.vi,2)}\nROC10: ${r.momentum==null?'-':fmtNum(r.momentum,2)+'%'}`;
             }
           }
