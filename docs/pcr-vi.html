@@ -507,28 +507,87 @@ function render(payload){
     const fmtR = v => v == null ? '-' : (v >= 0 ? '+' : '') + v.toFixed(2) + '%';
     const cls = v => v == null ? '' : (v > 0 ? 'up' : v < 0 ? 'down' : '');
 
-    // 勝率(20日)の高い順に表示
-    const ORDER = ['売り','退避','買い','打'];
-    let html = `<table>
-      <thead><tr><th>表示ラベル</th><th>状態 (記事用語)</th><th>件数</th>`;
-    horizons.forEach(h => html += `<th>${h}日後 平均</th><th>勝率</th>`);
-    html += `</tr></thead><tbody>`;
-    for(const s of ORDER){
-      const st = stats[s];
-      const disp = SIGNAL_DISPLAY[s];
-      html += `<tr><td><span class="pill ${disp.cls}">${disp.label}</span></td><td><small style="color:var(--muted)">${s}</small></td><td>${st.n}</td>`;
+    // ベース(全日)も計算
+    const baseRet = {};
+    horizons.forEach(h => baseRet[h] = []);
+    for(let i = 0; i < records.length; i++){
+      const n0 = records[i]?.n225;
+      if(n0 == null) continue;
       for(const h of horizons){
-        const m = mean(st.ret[h]);
-        const w = st.ret[h].length ? (st.win[h] / st.ret[h].length * 100) : null;
-        html += `<td class="${cls(m)}">${fmtR(m)}</td><td>${w==null?'-':w.toFixed(0)+'%'}</td>`;
+        const j = i + h;
+        if(j >= records.length) continue;
+        const n1 = records[j]?.n225;
+        if(n1 == null) continue;
+        baseRet[h].push((n1 / n0 - 1) * 100);
       }
-      html += `</tr>`;
+    }
+    const sorted = a => [...a].sort((x,y)=>x-y);
+    const pct = (a, f) => { if(!a.length) return null; const s=sorted(a); return s[Math.max(0,Math.min(s.length-1,Math.floor(s.length*f)))]; };
+    const lossRate = a => a.length ? a.filter(x=>x<0).length/a.length*100 : null;
+    const bigLossRate = a => a.length ? a.filter(x=>x<-5).length/a.length*100 : null;
+    const minOf = a => a.length ? Math.min(...a) : null;
+
+    // 20日固定 (一番安定するhorizon) で詳細分布表示
+    const H = 20;
+    const ORDER = ['売り','退避','買い','打'];
+    let html = `<div style="font-size:11px;color:var(--muted);margin-bottom:6px">
+      ※ 全期間が強気相場(N225 28k→60k)のため <b>baseline 平均ですら +1.83%/20d</b>。
+      平均だけ見ると全状態が+に見えるので、<b>中央値・マイナス頻度・最大損</b>も併記する。
+    </div>
+    <table>
+      <thead><tr>
+        <th>ラベル</th><th>state</th><th>n</th>
+        <th>20d 中央値</th><th>20d 平均</th><th>勝率</th>
+        <th>マイナス率</th><th>大損率(<-5%)</th><th>最大損</th>
+      </tr></thead><tbody>`;
+    for(const s of ORDER){
+      const arr = stats[s].ret[H];
+      const disp = SIGNAL_DISPLAY[s];
+      const med = pct(arr, 0.5);
+      const m = mean(arr);
+      const w = arr.length ? (stats[s].win[H] / arr.length * 100) : null;
+      const lr = lossRate(arr);
+      const blr = bigLossRate(arr);
+      const minL = minOf(arr);
+      html += `<tr>
+        <td><span class="pill ${disp.cls}">${disp.label}</span></td>
+        <td><small style="color:var(--muted)">${s}</small></td>
+        <td>${stats[s].n}</td>
+        <td class="${cls(med)}">${fmtR(med)}</td>
+        <td class="${cls(m)}">${fmtR(m)}</td>
+        <td>${w==null?'-':w.toFixed(0)+'%'}</td>
+        <td>${lr==null?'-':lr.toFixed(0)+'%'}</td>
+        <td>${blr==null?'-':blr.toFixed(0)+'%'}</td>
+        <td class="down">${fmtR(minL)}</td>
+      </tr>`;
+    }
+    // baseline行
+    {
+      const arr = baseRet[H];
+      const med = pct(arr, 0.5);
+      const m = mean(arr);
+      const w = arr.length ? arr.filter(x=>x>0).length/arr.length*100 : null;
+      const lr = lossRate(arr);
+      const blr = bigLossRate(arr);
+      const minL = minOf(arr);
+      html += `<tr style="border-top:2px solid var(--border)">
+        <td><b>ベース</b></td>
+        <td><small style="color:var(--muted)">全日</small></td>
+        <td>${arr.length}</td>
+        <td class="${cls(med)}">${fmtR(med)}</td>
+        <td class="${cls(m)}">${fmtR(m)}</td>
+        <td>${w==null?'-':w.toFixed(0)+'%'}</td>
+        <td>${lr==null?'-':lr.toFixed(0)+'%'}</td>
+        <td>${blr==null?'-':blr.toFixed(0)+'%'}</td>
+        <td class="down">${fmtR(minL)}</td>
+      </tr>`;
     }
     html += `</tbody></table>
       <small style="color:var(--muted);display:block;margin-top:6px">
-      勝率は「その状態の翌営業日に N225 をロングした場合の N日後リターンが正となった割合」。<br>
-      ベース(全期間ロング)勝率: 5d=58%, 10d=61%, <b>20d=65%</b>。<br>
-      → state="売り"(=買い場) は 20d 勝率 76% で <b>baseline +10.9pp</b>。他は baseline 周辺で edge 小。
+      <b>読み方</b>: 平均は強気バイアス込みで甘く出るので、<b>マイナス率と最大損</b>でダウンサイドを見る。<br>
+      → 売り(=買い場): マイナス率 25% (vs ベース 35%) かつ最大損 -12% で<b>下方リスクが明確に小さい</b>。<br>
+      → 退避: マイナス率 38% で baseline と同等だが、最大損 <b>-23%</b> (2024-07-05→2024-08月暴落) があり要注意。<br>
+      ※ 全状態が +平均 なのは2023-26 が強気相場だから。本来の signal 価値は <b>baseline 比でどれだけ良いか</b>。
       </small>`;
     document.getElementById('backtest').innerHTML = html;
   })();
