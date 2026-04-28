@@ -74,7 +74,7 @@ td{padding:4px 7px;border-bottom:1px solid rgba(48,54,61,.5);text-align:right;co
 </div>
 
 <div class="chart-box">
-  <h2>PCR÷VI モメンタム — ROC(10営業日) <span style="color:var(--muted);font-weight:400">単位: %、Y軸は外れ値クリップ(±30%上限)</span></h2>
+  <h2>PCR÷VI モメンタム — ROC(10営業日) <span style="color:var(--muted);font-weight:400">単位: %、Y軸 ±100% 固定</span></h2>
   <div class="chart-wrap"><canvas id="chartMomentum"></canvas></div>
 </div>
 
@@ -101,6 +101,32 @@ td{padding:4px 7px;border-bottom:1px solid rgba(48,54,61,.5);text-align:right;co
   </div>
 </div>
 
+<div class="chart-box">
+  <h2>シグナル状態遷移ルール</h2>
+  <div style="font-size:11.5px;line-height:1.7;color:var(--text)">
+  記事「市場予測指標で市場の動きを考えてみる」(株おじさん) の<b>「プラスになれば買い／減速すれば売り」</b>
+  を、4状態の単方向ステートマシンで実装したもの。記事の元ルールではなく、当ページ独自の補助解釈。
+  <table style="margin-top:6px;width:auto">
+    <thead><tr><th style="text-align:left">遷移</th><th style="text-align:left">条件</th><th style="text-align:left">意味</th></tr></thead>
+    <tbody>
+      <tr><td>買い → 退避</td><td>ROC10 が <b>2営業日連続で減少</b></td><td>勢いに陰りが出た</td></tr>
+      <tr><td>退避 → 売り</td><td>ROC10 が <b>0以下</b> に転落</td><td>記事「減速すれば売り」を確認</td></tr>
+      <tr><td>売り → 打</td><td>ROC10 が <b>2営業日連続で上昇</b></td><td>底打ち打診</td></tr>
+      <tr><td>打 → 買い</td><td>ROC10 が <b>0超</b> に復帰</td><td>記事「プラスになれば買い」を確認</td></tr>
+    </tbody>
+  </table>
+  <small style="color:var(--muted)">
+  ※ 戻り遷移（買い⇄退避 など）は禁止。必ず 買い→退避→売り→打→買い の順で循環。<br>
+  ※ 「2連続」「ゼロクロス」のしきい値は<b>記事に明記なし</b>のヒューリスティック。実データで予測力を別途検証する必要あり（下の検証表を参照）。
+  </small>
+  </div>
+</div>
+
+<div class="chart-box">
+  <h2>シグナル別 N225 フォワードリターン検証 <span style="color:var(--muted);font-weight:400">(全データを後付けで集計)</span></h2>
+  <div id="backtest" style="font-size:11.5px"></div>
+</div>
+
 <div class="notes">
 <b>指標の見方</b><br>
 ・<b>PCR (全体OI)</b> = フロント限月の全プット建玉 ÷ 全コール建玉（メディア標準）。1.0以上で下落ヘッジ厚（弱気）、低位は強気・楽観。<br>
@@ -109,7 +135,6 @@ td{padding:4px 7px;border-bottom:1px solid rgba(48,54,61,.5);text-align:right;co
 ・<b>PCR÷VI</b>（スプレッド）= テールリスクと買い圧力を一体評価。記事の SKEW÷VIX に倣う日本版。<br>
 ・<b>モメンタム</b> = スプレッドの ROC(10営業日) = (今日 ÷ 10営業日前 − 1) × 100。<br>
 &emsp;<small>記事「市場予測指標で市場の動きを考えてみる」(株おじさん) のシグナル: 「<b>プラスになれば買い、減速すれば売り</b>」。</small><br>
-・<b>シグナル分位</b>はモメンタム値のパーセンタイル(25/50/75) で 4 区分（参考表示）。<br>
 ・<b>市場指標</b> = USDJPY / VIX(米国) / TOPIX(1306) / 米10年金利。日経/オプション動向と合わせて環境判定に使用。<br>
 データ源: J-Quants V2（オプション建玉, T+1反映） / Yahoo Finance（^NKVI.OS, ^N225, 1306.T, USDJPY=X, ^VIX, ^TNX）。毎平日朝に自動更新。
 </div>
@@ -330,25 +355,13 @@ function render(payload){
     ]},
     options: {
       responsive:true, maintainAspectRatio:false,
-      // 異常値(2025-04-23 の +91% 級)で軸が引き伸ばされ細かい動きが潰れるのを防ぐため、
-      // 中央70%(p15..p85) + パディング でY軸をクリップ。さらに±30%でハードキャップ。
-      // クリップ外の点も折れ線は描画され続け、ツールチップで実値は確認可能。
+      // Y軸は ±100% で固定。それ以上の異常値も折れ線とツールチップで実値確認可能。
       scales: commonScales({
-        y: (() => {
-          const sorted = moms;  // 既にソート済みのmomentum配列
-          if (sorted.length < 5) return { ticks:{ callback: v => Number(v).toFixed(1)+'%' } };
-          const p = f => sorted[Math.max(0, Math.min(sorted.length-1, Math.floor(sorted.length*f)))];
-          let lo = Math.max(-30, p(0.15));
-          let hi = Math.min( 30, p(0.85));
-          const pad = Math.max((hi - lo) * 0.1, 1);
-          lo = Math.floor(lo - pad);
-          hi = Math.ceil(hi + pad);
-          return {
-            min: lo, max: hi,
-            ticks: { callback: v => Number(v).toFixed(1) + '%' },
-            grid: { color: ctx => ctx.tick.value === 0 ? 'rgba(255,255,255,.35)' : 'rgba(48,54,61,.6)' }
-          };
-        })()
+        y: {
+          min: -100, max: 100,
+          ticks: { callback: v => Number(v).toFixed(0) + '%' },
+          grid: { color: ctx => ctx.tick.value === 0 ? 'rgba(255,255,255,.35)' : 'rgba(48,54,61,.6)' }
+        }
       }),
       plugins: {
         legend: { display: false },
@@ -432,6 +445,57 @@ function render(payload){
       }
     }
   });
+
+  // ── シグナル別フォワードリターン検証 ───────────────────────────
+  // 各シグナル発生日の N営業日後 N225 リターンを集計。
+  // 注意: これは*後付け検証* (in-sample backtest)。本物のフォワード性能ではない。
+  (() => {
+    const horizons = [5, 10, 20];
+    const stats = {};
+    const labels4 = ['買い','退避','売り','打'];
+    labels4.forEach(s => { stats[s] = { n: 0, ret: {}, win: {} };
+      horizons.forEach(h => { stats[s].ret[h] = []; stats[s].win[h] = 0; }); });
+
+    for(let i = 0; i < records.length; i++){
+      const sig = computedSignals[i];
+      const n0 = records[i]?.n225;
+      if(!sig || n0 == null) continue;
+      stats[sig].n++;
+      for(const h of horizons){
+        const j = i + h;
+        if(j >= records.length) continue;
+        const n1 = records[j]?.n225;
+        if(n1 == null) continue;
+        const r = (n1 / n0 - 1) * 100;
+        stats[sig].ret[h].push(r);
+        if(r > 0) stats[sig].win[h]++;
+      }
+    }
+    const mean = a => a.length ? a.reduce((x,y)=>x+y,0)/a.length : null;
+    const fmtR = v => v == null ? '-' : (v >= 0 ? '+' : '') + v.toFixed(2) + '%';
+    const cls = v => v == null ? '' : (v > 0 ? 'up' : v < 0 ? 'down' : '');
+
+    let html = `<table>
+      <thead><tr><th>シグナル</th><th>件数</th>`;
+    horizons.forEach(h => html += `<th>${h}日後 平均</th><th>勝率</th>`);
+    html += `</tr></thead><tbody>`;
+    for(const s of labels4){
+      const st = stats[s];
+      html += `<tr><td><span class="pill ${SIGNAL_CLS[s]}">${s}</span></td><td>${st.n}</td>`;
+      for(const h of horizons){
+        const m = mean(st.ret[h]);
+        const w = st.ret[h].length ? (st.win[h] / st.ret[h].length * 100) : null;
+        html += `<td class="${cls(m)}">${fmtR(m)}</td><td>${w==null?'-':w.toFixed(0)+'%'}</td>`;
+      }
+      html += `</tr>`;
+    }
+    html += `</tbody></table>
+      <small style="color:var(--muted);display:block;margin-top:6px">
+      期待される性能: 買い/打 で平均リターン > 0、退避/売り で 平均リターン &lt; 0。<br>
+      無相関ならどの状態でもベース市場リターン(2024-26は強気相場)に収束し、シグナル価値なし。
+      </small>`;
+    document.getElementById('backtest').innerHTML = html;
+  })();
 
   // 直近20件テーブル
   const tail = records.slice(-20).reverse();
