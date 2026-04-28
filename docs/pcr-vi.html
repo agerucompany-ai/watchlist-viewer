@@ -146,6 +146,9 @@ function render(payload){
   const dSp  = prev && last.spread != null && prev.spread != null ? (last.spread - prev.spread) : null;
   const dN   = prev && last.n225 != null && prev.n225 != null ? (last.n225 - prev.n225) : null;
 
+  // モメンタム値の昇順配列(クリップ計算用に共有)
+  const moms = records.map(r=>r.momentum).filter(v=>v!=null).sort((a,b)=>a-b);
+
   // 記事「プラスになれば買い、減速すれば売り」(株おじさん) に準じた判定
   //   買い: ROC10 > 0 かつ 前日比 上昇 (勢い継続)
   //   退避: ROC10 > 0 だが 前日比 下降 (減速 = 記事の「売り」初期サイン)
