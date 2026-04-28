@@ -74,7 +74,7 @@ td{padding:4px 7px;border-bottom:1px solid rgba(48,54,61,.5);text-align:right;co
 </div>
 
 <div class="chart-box">
-  <h2>PCR÷VI モメンタム — ROC(10営業日) <span style="color:var(--muted);font-weight:400">単位: %</span></h2>
+  <h2>PCR÷VI モメンタム — ROC(10営業日) <span style="color:var(--muted);font-weight:400">単位: %、Y軸は外れ値クリップ(±30%上限)</span></h2>
   <div class="chart-wrap"><canvas id="chartMomentum"></canvas></div>
 </div>
 
@@ -304,17 +304,17 @@ function render(payload){
     ]},
     options: {
       responsive:true, maintainAspectRatio:false,
-      // 異常値で軸が引き伸ばされ細かい動きが潰れるのを防ぐため、
-      // 中央95%(=p2.5..p97.5) ＋ パディング でY軸をクリップ。
-      // クリップ外の値も折れ線は描画され続け、ツールチップで実値は確認可能。
+      // 異常値(2025-04-23 の +91% 級)で軸が引き伸ばされ細かい動きが潰れるのを防ぐため、
+      // 中央70%(p15..p85) + パディング でY軸をクリップ。さらに±30%でハードキャップ。
+      // クリップ外の点も折れ線は描画され続け、ツールチップで実値は確認可能。
       scales: commonScales({
         y: (() => {
           const sorted = moms;  // 既にソート済みのmomentum配列
           if (sorted.length < 5) return { ticks:{ callback: v => Number(v).toFixed(1)+'%' } };
           const p = f => sorted[Math.max(0, Math.min(sorted.length-1, Math.floor(sorted.length*f)))];
-          let lo = p(0.025), hi = p(0.975);
-          const span = Math.max(hi - lo, 4);   // 最低4%幅は確保
-          const pad = span * 0.1;
+          let lo = Math.max(-30, p(0.15));
+          let hi = Math.min( 30, p(0.85));
+          const pad = Math.max((hi - lo) * 0.1, 1);
           lo = Math.floor(lo - pad);
           hi = Math.ceil(hi + pad);
           return {
