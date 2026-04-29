@@ -86,7 +86,7 @@ td{padding:4px 7px;border-bottom:1px solid rgba(48,54,61,.5);text-align:right;co
 </div>
 
 <div class="chart-box">
-  <h2>S&amp;P500 モメンタム — ROC(10営業日) <span style="color:var(--muted);font-weight:400">単位: %、Y軸 ±15% 固定</span></h2>
+  <h2>S&amp;P500 モメンタム — SKEW÷VIX の ROC(10営業日) <span style="color:var(--muted);font-weight:400">単位: %、Y軸 ±50% 固定 / 日経 PCR÷VI と並列の指標</span></h2>
   <div class="chart-wrap"><canvas id="chartSp500Momentum"></canvas></div>
 </div>
 
@@ -170,7 +170,8 @@ td{padding:4px 7px;border-bottom:1px solid rgba(48,54,61,.5);text-align:right;co
 ・<b>モメンタム</b> = スプレッドの ROC(10営業日) = (今日 ÷ 10営業日前 − 1) × 100。<br>
 &emsp;<small>記事「市場予測指標で市場の動きを考えてみる」(株おじさん) のシグナル: 「<b>プラスになれば買い、減速すれば売り</b>」。</small><br>
 ・<b>市場指標</b> = USDJPY / VIX(米国) / TOPIX(1306) / 米10年金利。日経/オプション動向と合わせて環境判定に使用。<br>
-データ源: J-Quants V2（オプション建玉, T+1反映） / Yahoo Finance（^NKVI.OS, ^N225, 1306.T, USDJPY=X, ^VIX, ^TNX, ^GSPC）。毎平日朝に自動更新。グラフ表示は2024-04-01以降。
+データ源: J-Quants V2（オプション建玉, T+1反映） / Yahoo Finance（^NKVI.OS, ^N225, 1306.T, USDJPY=X, ^VIX, ^TNX, ^GSPC, ^SKEW）。毎平日朝に自動更新。グラフ表示は2024-04-01以降。<br>
+SP500シグナル = SKEW÷VIX の ROC(10営業日) を日経 PCR÷VI と同じ4状態マシンで判定（米国側が SKEW÷VIX、日本側が PCR÷VI で並列）。
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
@@ -308,20 +309,51 @@ function render(payload){
   const dRecs = records.slice(startIdx);
   const labels = dRecs.map(r => r.date);
 
-  // S&P500 ROC(10営業日)：dRecs内の連続する有効sp500値で計算
-  const sp500Mom = dRecs.map((r, i) => {
-    if (r.sp500 == null) return null;
+  // 米国センチメント比率: SKEW ÷ VIX (記事で日経の PCR÷VI と並列に扱われる指標)
+  const skewVix = dRecs.map(r => (r.skew != null && r.vix != null && r.vix > 0) ? r.skew / r.vix : null);
+
+  // SP500 モメンタム = SKEW÷VIX の ROC(10営業日)
+  // dRecs 内の連続する有効 skewVix 値で 10ステップ前を参照
+  const sp500Mom = dRecs.map((_, i) => {
+    if (skewVix[i] == null) return null;
     let count = 0;
     for (let j = i - 1; j >= 0; j--) {
-      if (dRecs[j].sp500 != null) {
+      if (skewVix[j] != null) {
         count++;
         if (count === 10) {
-          return (r.sp500 / dRecs[j].sp500 - 1) * 100;
+          const ago = skewVix[j];
+          if (ago > 0) return (skewVix[i] / ago - 1) * 100;
+          return null;
         }
       }
     }
     return null;
   });
+
+  // SP500 専用の状態マシン (日経と独立、同ロジック)
+  //   買い → (2連続減速) → 退避 → (ROC≤0) → 売り → (2連続反発) → 打 → (ROC>0) → 買い
+  const sp500Signals = (() => {
+    const out = new Array(dRecs.length).fill(null);
+    let state = null, prevMom = null, cd = 0, cu = 0;
+    for(let i = 0; i < dRecs.length; i++){
+      const m = sp500Mom[i];
+      if(m == null){ out[i] = state; continue; }
+      if(prevMom != null){
+        if(m < prevMom){ cd++; cu = 0; }
+        else if(m > prevMom){ cu++; cd = 0; }
+      }
+      if(state == null){ state = (m > 0 ? '買い' : '売り'); }
+      switch(state){
+        case '買い': if(cd >= 2) state = '退避'; break;
+        case '退避': if(m <= 0)  state = '売り'; break;
+        case '売り': if(cu >= 2) state = '打';   break;
+        case '打':   if(m >  0)  state = '買い'; break;
+      }
+      out[i] = state;
+      prevMom = m;
+    }
+    return out;
+  })();
 
   Chart.defaults.color = '#8b949e';
   Chart.defaults.borderColor = 'rgba(48,54,61,0.6)';
@@ -448,7 +480,7 @@ function render(payload){
     new Chart(document.getElementById('chartSp500Momentum'), {
       type: 'line',
       data: { labels, datasets: [
-        { label: 'S&P500 ROC(10) %', data: sp500Mom,
+        { label: 'SKEW÷VIX ROC(10) %', data: sp500Mom,
           borderColor: '#FFD700',
           segment: { borderColor: ctx => (ctx.p1.parsed.y >= 0 ? '#3fb950' : '#f85149') },
           backgroundColor: 'rgba(255,215,0,.10)',
@@ -458,7 +490,7 @@ function render(payload){
         responsive:true, maintainAspectRatio:false,
         scales: commonScales({
           y: {
-            min: -15, max: 15,
+            min: -50, max: 50,
             ticks: { callback: v => Number(v).toFixed(0) + '%' },
             grid: { color: ctx => ctx.tick.value === 0 ? 'rgba(255,255,255,.35)' : 'rgba(48,54,61,.6)' }
           }
@@ -467,7 +499,7 @@ function render(payload){
           legend: { display: false },
           tooltip: {
             callbacks: {
-              label: ctx => `S&P500 ROC10: ${ctx.parsed.y == null ? '-' : ctx.parsed.y.toFixed(2) + '%'}`
+              label: ctx => `SKEW÷VIX ROC10: ${ctx.parsed.y == null ? '-' : ctx.parsed.y.toFixed(2) + '%'}`
             }
           }
         },
@@ -475,8 +507,10 @@ function render(payload){
     });
   }
 
-  // S&P500 + シグナル着色 (N225と同じロジック)
+  // S&P500 + シグナル着色 (米国側 = SKEW÷VIX ROC10 で独立計算)
   const sp500Pts = dRecs.map(r => r.sp500);
+  const sp500SigLabels = sp500Signals.map(s => s ? (SIGNAL_DISPLAY[s]?.label || '-') : '-');
+  const sp500PointColors = sp500SigLabels.map(s => sigColor[s] || 'rgba(255,255,255,0.2)');
   if (sp500Pts.some(v => v != null)) {
     new Chart(document.getElementById('chartSp500'), {
       type: 'line',
@@ -490,9 +524,9 @@ function render(payload){
           borderWidth: 1.5,
           tension: .15,
           spanGaps: true,
-          pointRadius: ctx => sigLabels[ctx.dataIndex] === '買い場' ? 4.5 : (sigLabels[ctx.dataIndex] === '弱含み' ? 3 : 1.5),
-          pointBackgroundColor: pointColors,
-          pointBorderColor: pointColors,
+          pointRadius: ctx => sp500SigLabels[ctx.dataIndex] === '買い場' ? 4.5 : (sp500SigLabels[ctx.dataIndex] === '弱含み' ? 3 : 1.5),
+          pointBackgroundColor: sp500PointColors,
+          pointBorderColor: sp500PointColors,
           fill: false,
         }]
       },
@@ -508,8 +542,9 @@ function render(payload){
                 const i = items[0]?.dataIndex;
                 if(i == null) return '';
                 const r = dRecs[i];
-                const sig = sigLabels[i];
-                return `シグナル: ${sig}\nS&P500: ${fmtNum(r.sp500,2)} / N225: ${fmtNum(r.n225,0)}\nROC10: ${r.momentum==null?'-':fmtNum(r.momentum,2)+'%'}`;
+                const sig = sp500SigLabels[i];
+                const sv  = skewVix[i];
+                return `SP500シグナル: ${sig}\nSKEW: ${fmtNum(r.skew,2)} / VIX: ${fmtNum(r.vix,2)} / SKEW÷VIX: ${sv==null?'-':sv.toFixed(3)}\nSKEW÷VIX ROC10: ${sp500Mom[i]==null?'-':fmtNum(sp500Mom[i],2)+'%'}`;
               }
             }
           }
@@ -526,6 +561,8 @@ function render(payload){
   const zoomSp500  = sp500Pts.slice(zoomStart);
   const zoomColors = pointColors.slice(zoomStart);
   const zoomSig    = sigLabels.slice(zoomStart);
+  const zoomSp500Sig    = sp500SigLabels.slice(zoomStart);
+  const zoomSp500Colors = sp500PointColors.slice(zoomStart);
 
   new Chart(document.getElementById('chartN225Zoom'), {
     type: 'line',
@@ -567,7 +604,7 @@ function render(payload){
     }
   });
 
-  // S&P500 直近1ヶ月ズーム (シグナル着色 = N225と共通)
+  // S&P500 直近1ヶ月ズーム (米国側 = SKEW÷VIX ROC10 で独立計算)
   if (zoomSp500.some(v => v != null)) {
     new Chart(document.getElementById('chartSp500Zoom'), {
       type: 'line',
@@ -581,9 +618,9 @@ function render(payload){
           borderWidth: 1.8,
           tension: .15,
           spanGaps: true,
-          pointRadius: ctx => zoomSig[ctx.dataIndex] === '買い場' ? 6 : (zoomSig[ctx.dataIndex] === '弱含み' ? 4.5 : 3),
-          pointBackgroundColor: zoomColors,
-          pointBorderColor: zoomColors,
+          pointRadius: ctx => zoomSp500Sig[ctx.dataIndex] === '買い場' ? 6 : (zoomSp500Sig[ctx.dataIndex] === '弱含み' ? 4.5 : 3),
+          pointBackgroundColor: zoomSp500Colors,
+          pointBorderColor: zoomSp500Colors,
           fill: false,
         }]
       },
@@ -599,8 +636,9 @@ function render(payload){
                 const i = items[0]?.dataIndex;
                 if(i == null) return '';
                 const r = dRecs[zoomStart + i];
-                const sig = zoomSig[i];
-                return `シグナル: ${sig}\nS&P500: ${fmtNum(r.sp500,2)} / N225: ${fmtNum(r.n225,0)}\nROC10: ${r.momentum==null?'-':fmtNum(r.momentum,2)+'%'}`;
+                const sig = zoomSp500Sig[i];
+                const sv  = skewVix[zoomStart + i];
+                return `SP500シグナル: ${sig}\nSKEW: ${fmtNum(r.skew,2)} / VIX: ${fmtNum(r.vix,2)} / SKEW÷VIX: ${sv==null?'-':sv.toFixed(3)}\nROC10: ${sp500Mom[zoomStart+i]==null?'-':fmtNum(sp500Mom[zoomStart+i],2)+'%'}`;
               }
             }
           }
