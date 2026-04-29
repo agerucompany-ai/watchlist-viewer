@@ -84,6 +84,16 @@ td{padding:4px 7px;border-bottom:1px solid rgba(48,54,61,.5);text-align:right;co
 </div>
 
 <div class="chart-box">
+  <h2>S&amp;P500（モメンタムマーカー着色 / 2024-04 以降）</h2>
+  <div class="chart-wrap"><canvas id="chartSp500"></canvas></div>
+</div>
+
+<div class="chart-box">
+  <h2>S&amp;P500 直近1ヶ月ズーム（モメンタムマーカー着色）</h2>
+  <div class="chart-wrap"><canvas id="chartSp500Zoom"></canvas></div>
+</div>
+
+<div class="chart-box">
   <h2>日経平均 直近1ヶ月ズーム（モメンタムマーカー着色）</h2>
   <div class="chart-wrap"><canvas id="chartN225Zoom"></canvas></div>
 </div>
@@ -462,11 +472,55 @@ function render(payload){
     });
   }
 
+  // S&P500 + シグナル着色 (N225と同じロジック)
+  const sp500Pts = dRecs.map(r => r.sp500);
+  if (sp500Pts.some(v => v != null)) {
+    new Chart(document.getElementById('chartSp500'), {
+      type: 'line',
+      data: {
+        labels,
+        datasets: [{
+          label: 'S&P500',
+          data: sp500Pts,
+          borderColor: '#FFD700',
+          backgroundColor: 'rgba(255,215,0,.10)',
+          borderWidth: 1.5,
+          tension: .15,
+          spanGaps: true,
+          pointRadius: ctx => sigLabels[ctx.dataIndex] === '買い場' ? 4.5 : (sigLabels[ctx.dataIndex] === '弱含み' ? 3 : 1.5),
+          pointBackgroundColor: pointColors,
+          pointBorderColor: pointColors,
+          fill: false,
+        }]
+      },
+      options: {
+        responsive:true, maintainAspectRatio:false,
+        interaction: {mode:'index',intersect:false},
+        scales: commonScales({ y: { ticks: { callback: v => Number(v).toLocaleString() } } }),
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              afterBody: items => {
+                const i = items[0]?.dataIndex;
+                if(i == null) return '';
+                const r = dRecs[i];
+                const sig = sigLabels[i];
+                return `シグナル: ${sig}\nS&P500: ${fmtNum(r.sp500,2)} / N225: ${fmtNum(r.n225,0)}\nROC10: ${r.momentum==null?'-':fmtNum(r.momentum,2)+'%'}`;
+              }
+            }
+          }
+        }
+      }
+    });
+  }
+
   // 日経平均 直近1ヶ月ズーム (フルチャートと同じシグナル着色)
   const ZOOM_DAYS = 22; // 営業日換算で約1ヶ月
   const zoomStart = Math.max(0, dRecs.length - ZOOM_DAYS);
   const zoomLabels = labels.slice(zoomStart);
   const zoomN225   = n225Pts.slice(zoomStart);
+  const zoomSp500  = sp500Pts.slice(zoomStart);
   const zoomColors = pointColors.slice(zoomStart);
   const zoomSig    = sigLabels.slice(zoomStart);
 
@@ -509,6 +563,48 @@ function render(payload){
       }
     }
   });
+
+  // S&P500 直近1ヶ月ズーム (シグナル着色 = N225と共通)
+  if (zoomSp500.some(v => v != null)) {
+    new Chart(document.getElementById('chartSp500Zoom'), {
+      type: 'line',
+      data: {
+        labels: zoomLabels,
+        datasets: [{
+          label: 'S&P500 (1ヶ月)',
+          data: zoomSp500,
+          borderColor: '#FFD700',
+          backgroundColor: 'rgba(255,215,0,.10)',
+          borderWidth: 1.8,
+          tension: .15,
+          spanGaps: true,
+          pointRadius: ctx => zoomSig[ctx.dataIndex] === '買い場' ? 6 : (zoomSig[ctx.dataIndex] === '弱含み' ? 4.5 : 3),
+          pointBackgroundColor: zoomColors,
+          pointBorderColor: zoomColors,
+          fill: false,
+        }]
+      },
+      options: {
+        responsive:true, maintainAspectRatio:false,
+        interaction: {mode:'index',intersect:false},
+        scales: commonScales({ y: { ticks: { callback: v => Number(v).toLocaleString() } } }),
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              afterBody: items => {
+                const i = items[0]?.dataIndex;
+                if(i == null) return '';
+                const r = dRecs[zoomStart + i];
+                const sig = zoomSig[i];
+                return `シグナル: ${sig}\nS&P500: ${fmtNum(r.sp500,2)} / N225: ${fmtNum(r.n225,0)}\nROC10: ${r.momentum==null?'-':fmtNum(r.momentum,2)+'%'}`;
+              }
+            }
+          }
+        }
+      }
+    });
+  }
 
   // ── シグナル別フォワードリターン検証 ───────────────────────────
   // 各シグナル発生日の N営業日後 N225 リターンを集計。
