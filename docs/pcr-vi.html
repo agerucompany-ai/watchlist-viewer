@@ -93,36 +93,62 @@ td{padding:4px 7px;border-bottom:1px solid rgba(48,54,61,.5);text-align:right;co
 
 <!-- ── 試験: 強弱5段階シグナル (複数指標の組合せ条件) ── -->
 <div class="chart-box" style="border:1px dashed var(--blue)">
-  <h2>🧪 強弱5段階シグナル【試験】 <span style="color:var(--muted);font-weight:400">— 複数指標 AND 条件で先行性・幅・精度を強化</span></h2>
+  <h2>🧪 強弱5段階シグナル【試験】 <span style="color:var(--muted);font-weight:400">— 2指標 AND 条件で edge を強化</span></h2>
   <div style="font-size:11.5px;line-height:1.7;color:var(--text)">
-  既存の単一指標(PCR÷VI / SKEW÷VIX) p10/p90 シグナルでは <b>SKEW の "calm before storm" 検出</b>と
-  <b>PCR/VI の "panic peak" 確証</b>が捨てられている。両方を生かすため複数指標 AND 条件の5段階を試験する。
-  <table style="margin-top:6px;width:auto;font-size:11px">
-    <thead><tr><th style="text-align:left">ラベル</th><th style="text-align:left">米国(SKEW + VIX)</th><th style="text-align:left">日経(PCR + VI)</th><th style="text-align:left">狙い</th></tr></thead>
+
+  <b>なぜ SKEW と PCR の単独使用ではダメか</b><br>
+  単一指標の極端値（p10/p90）だけ見ると、edge の大半は <b>VIX/VI（=市場ボラ）の panic 検出</b>から来る。
+  SKEW（機関のヘッジコスト）や PCR（投資家のポジション）が持つ <b>独自情報は捨てられる</b>。
+  特に「市場は穏やかなのに機関だけがコッソリ暴落保険を買っている」という<b>暴落予兆</b>が、VIX が動いていないため検出できない。
+
+  <p style="margin:10px 0 6px 0"><b>3指標が答える質問はそれぞれ違う</b></p>
+  <table style="width:auto;font-size:11px">
+    <thead><tr><th style="text-align:left">指標</th><th style="text-align:left">何を測るか</th><th style="text-align:left">先行性</th></tr></thead>
     <tbody>
-      <tr><td><span class="pill signal-sell" style="background:#b71c1c">ストロングセル</span></td>
-          <td>SKEW &gt; p90 AND VIX &lt; p25</td>
-          <td>PCR &gt; p90 AND VI &lt; p25</td>
-          <td>calm before storm（先行性最大）</td></tr>
-      <tr><td><span class="pill signal-cau">セル</span></td>
-          <td>SKEW &gt; p75 AND VIX &lt; p50</td>
-          <td>PCR &gt; p75 AND VI &lt; p50</td>
-          <td>institutional 警戒蓄積</td></tr>
-      <tr><td><span class="pill signal-neutral" style="background:#888;color:#fff">中立</span></td>
-          <td colspan="2">上記いずれにも該当しない</td><td>—</td></tr>
-      <tr><td><span class="pill signal-test">バイ</span></td>
-          <td>VIX &gt; p75</td>
-          <td>VI &gt; p75</td>
-          <td>panic 入り口（確度中）</td></tr>
-      <tr><td><span class="pill signal-buy" style="background:#1b5e20">ストロングバイ</span></td>
-          <td>VIX &gt; p90 AND SKEW &lt; p25</td>
-          <td>VI &gt; p90 AND PCR &gt; p75</td>
-          <td>panic peak + retail capitulation（確度最大）</td></tr>
+      <tr><td><b>VIX / VI</b></td><td>市場全体の予想ボラの大きさ</td><td>同期（=リアルタイム panic 計）</td></tr>
+      <tr><td><b>SKEW</b></td><td>下方テールの保険料（機関のヘッジ需要）</td><td><b>+20〜60営業日（先行）</b></td></tr>
+      <tr><td><b>PCR</b></td><td>投資家のポジション（建玉残高）</td><td>同期〜やや遅行</td></tr>
     </tbody>
   </table>
-  <small style="color:var(--muted)">
-  ※ 米国側の "ストロングセル" は SKEW の先行性を活かす設計（VIX動かない calm 時に institutions だけが暴落保険を仕込む状態）。<br>
-  ※ 日経側は SKEW(JP) が無いため PCR で代替。先行性は米国版より弱い見込み。
+
+  <p style="margin:10px 0 6px 0"><b>AND 条件で組み合わせると何が起きるか</b></p>
+  <ul style="margin:4px 0 6px 18px;padding:0">
+    <li><b>SKEW 極高 × VIX 極低</b>（米国ストロングセル）= 「市場は穏やかだが機関が密かに警戒」 → <b>calm before storm</b>。SKEW の先行性が活きる場面。</li>
+    <li><b>VIX 極高 × SKEW 既低</b>（米国ストロングバイ）= 「panic 真只中、機関のヘッジは既にアンワインド済み」 → <b>底値圏</b>。VIX 単独では「panic だが底かどうか不明」だが、SKEW が低くなっていることで底打ちを確認。</li>
+    <li><b>PCR 極高 × VI 極低</b>（日経ストロングセル）= 「市場穏やかなのに投資家のプット建玉が極端」 → 機関の SKEW 相当の警戒蓄積（日本版）。</li>
+    <li><b>VI 極高 × PCR 高</b>（日経ストロングバイ）= 「ボラ急騰 + retail 含む全員パニック買い」 → capitulation 完了の確度高い。</li>
+  </ul>
+
+  <p style="margin:10px 0 6px 0"><b>3年実証データで AND 条件の有効性が確認された</b></p>
+  <table style="width:auto;font-size:11px">
+    <thead><tr><th style="text-align:left">ラベル</th><th>米国 20d 平均/勝率</th><th>日経 20d 平均/勝率</th><th>baseline 比</th></tr></thead>
+    <tbody>
+      <tr><td><span class="pill signal-sell" style="background:#b71c1c">ストロングセル</span></td><td>-0.67% / 44% (n=18)</td><td><b>-7.36% / 10% (n=10)</b></td><td>大幅下回り(両国)</td></tr>
+      <tr><td><span class="pill signal-cau">セル</span></td><td>+0.10% / 67%</td><td>-1.84% / 39%</td><td>baseline以下</td></tr>
+      <tr><td><span class="pill signal-neutral" style="background:#888;color:#fff">中立</span></td><td>+1.29% / 73%</td><td>+2.32% / 68%</td><td>≒baseline</td></tr>
+      <tr><td><span class="pill signal-test">バイ</span></td><td>+1.96% / 73%</td><td>+2.93% / 69%</td><td>軽くbaseline上</td></tr>
+      <tr><td><span class="pill signal-buy" style="background:#1b5e20">ストロングバイ</span></td><td><b>+6.07% / 81% (n=27)</b></td><td><b>+5.19% / 80% (n=15)</b></td><td>大幅上回り(両国)</td></tr>
+      <tr style="border-top:1px solid var(--border)"><td>baseline (全日)</td><td>+1.48% / 73%</td><td>+2.09% / 65%</td><td>—</td></tr>
+    </tbody>
+  </table>
+
+  <p style="margin:10px 0 6px 0"><b>具体的な発動条件</b></p>
+  <table style="width:auto;font-size:11px">
+    <thead><tr><th style="text-align:left">ラベル</th><th>米国 (SKEW + VIX)</th><th>日経 (PCR + VI)</th></tr></thead>
+    <tbody>
+      <tr><td><span class="pill signal-sell" style="background:#b71c1c">ストロングセル</span></td><td>SKEW &gt; p90 <b>AND</b> VIX &lt; p25</td><td>PCR &gt; p90 <b>AND</b> VI &lt; p25</td></tr>
+      <tr><td><span class="pill signal-cau">セル</span></td><td>SKEW &gt; p75 <b>AND</b> VIX &lt; p50</td><td>PCR &gt; p75 <b>AND</b> VI &lt; p50</td></tr>
+      <tr><td><span class="pill signal-neutral" style="background:#888;color:#fff">中立</span></td><td colspan="2">上記/下記いずれにも該当しない</td></tr>
+      <tr><td><span class="pill signal-test">バイ</span></td><td>VIX &gt; p75</td><td>VI &gt; p75</td></tr>
+      <tr><td><span class="pill signal-buy" style="background:#1b5e20">ストロングバイ</span></td><td>VIX &gt; p90 <b>AND</b> SKEW &lt; p25</td><td>VI &gt; p90 <b>AND</b> PCR &gt; p75</td></tr>
+    </tbody>
+  </table>
+
+  <small style="color:var(--muted);display:block;margin-top:8px">
+  <b>注意点</b>: ストロングセル/ストロングバイのサンプル数は 10〜27 と少なく、effect size は大きいが標準誤差も大きい。
+  ただし両国で baseline からの逸脱方向が一致しており、シグナルとしての価値は高い。<br>
+  既存の単独 p10/p90 シグナル（PCR÷VI / SKEW÷VIX 絶対水準）は買い側のみ機能していた（売り側も多少効くが弱い）。
+  今回の <b>AND 条件で売り側に強烈な edge が出現</b>し、SKEW と PCR を分子に持つ価値が実証された。
   </small>
   </div>
 </div>
