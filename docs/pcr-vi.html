@@ -91,6 +91,57 @@ td{padding:4px 7px;border-bottom:1px solid rgba(48,54,61,.5);text-align:right;co
   <div class="chart-wrap"><canvas id="chartSp500Momentum"></canvas></div>
 </div>
 
+<!-- ── 試験: 強弱5段階シグナル (複数指標の組合せ条件) ── -->
+<div class="chart-box" style="border:1px dashed var(--blue)">
+  <h2>🧪 強弱5段階シグナル【試験】 <span style="color:var(--muted);font-weight:400">— 複数指標 AND 条件で先行性・幅・精度を強化</span></h2>
+  <div style="font-size:11.5px;line-height:1.7;color:var(--text)">
+  既存の単一指標(PCR÷VI / SKEW÷VIX) p10/p90 シグナルでは <b>SKEW の "calm before storm" 検出</b>と
+  <b>PCR/VI の "panic peak" 確証</b>が捨てられている。両方を生かすため複数指標 AND 条件の5段階を試験する。
+  <table style="margin-top:6px;width:auto;font-size:11px">
+    <thead><tr><th style="text-align:left">ラベル</th><th style="text-align:left">米国(SKEW + VIX)</th><th style="text-align:left">日経(PCR + VI)</th><th style="text-align:left">狙い</th></tr></thead>
+    <tbody>
+      <tr><td><span class="pill signal-sell" style="background:#b71c1c">ストロングセル</span></td>
+          <td>SKEW &gt; p90 AND VIX &lt; p25</td>
+          <td>PCR &gt; p90 AND VI &lt; p25</td>
+          <td>calm before storm（先行性最大）</td></tr>
+      <tr><td><span class="pill signal-cau">セル</span></td>
+          <td>SKEW &gt; p75 AND VIX &lt; p50</td>
+          <td>PCR &gt; p75 AND VI &lt; p50</td>
+          <td>institutional 警戒蓄積</td></tr>
+      <tr><td><span class="pill signal-neutral" style="background:#888;color:#fff">中立</span></td>
+          <td colspan="2">上記いずれにも該当しない</td><td>—</td></tr>
+      <tr><td><span class="pill signal-test">バイ</span></td>
+          <td>VIX &gt; p75</td>
+          <td>VI &gt; p75</td>
+          <td>panic 入り口（確度中）</td></tr>
+      <tr><td><span class="pill signal-buy" style="background:#1b5e20">ストロングバイ</span></td>
+          <td>VIX &gt; p90 AND SKEW &lt; p25</td>
+          <td>VI &gt; p90 AND PCR &gt; p75</td>
+          <td>panic peak + retail capitulation（確度最大）</td></tr>
+    </tbody>
+  </table>
+  <small style="color:var(--muted)">
+  ※ 米国側の "ストロングセル" は SKEW の先行性を活かす設計（VIX動かない calm 時に institutions だけが暴落保険を仕込む状態）。<br>
+  ※ 日経側は SKEW(JP) が無いため PCR で代替。先行性は米国版より弱い見込み。
+  </small>
+  </div>
+</div>
+
+<div class="chart-box" style="border:1px dashed var(--blue)">
+  <h2>S&amp;P500 強弱マーカー【試験】</h2>
+  <div class="chart-wrap"><canvas id="chartSp500Strength"></canvas></div>
+</div>
+
+<div class="chart-box" style="border:1px dashed var(--blue)">
+  <h2>日経平均 強弱マーカー【試験】</h2>
+  <div class="chart-wrap"><canvas id="chartN225Strength"></canvas></div>
+</div>
+
+<div class="chart-box" style="border:1px dashed var(--blue)">
+  <h2>強弱シグナル検証【試験】</h2>
+  <div id="strength-backtest" style="font-size:11.5px"></div>
+</div>
+
 <!-- ── その他資料 ── -->
 <div class="chart-box">
   <h2>PCR と 日経VI（左軸: PCR / 右軸: VI）</h2>
@@ -731,6 +782,169 @@ function render(payload){
       → 売り(>p90)で 平均/勝率 が baseline 以下、買い(<p10)で baseline 以上 になっていれば signal 機能を実証できている。
     </small>`;
     document.getElementById('backtest').innerHTML = html;
+  })();
+
+  // ── 強弱5段階シグナル【試験】 ───────────────────────────
+  (() => {
+    const STRENGTH_DISPLAY = {
+      'ストロングセル':{ cls:'signal-sell',    color:'#b71c1c', radiusFull: 5.5, radiusZoom: 7 },
+      'セル':         { cls:'signal-cau',     color:'#FFD54F', radiusFull: 3.5, radiusZoom: 4.5 },
+      '中立':         { cls:'signal-neutral', color:'rgba(165,165,165,0.4)', radiusFull: 1.0, radiusZoom: 2 },
+      'バイ':         { cls:'signal-test',    color:'#66bb6a', radiusFull: 3.5, radiusZoom: 4.5 },
+      'ストロングバイ':{ cls:'signal-buy',     color:'#1b5e20', radiusFull: 5.5, radiusZoom: 7 },
+    };
+
+    function pct(arr, p){ const s=[...arr].filter(v=>v!=null).sort((a,b)=>a-b); return s.length? s[Math.max(0,Math.min(s.length-1,Math.floor(s.length*p)))] : null; }
+
+    // 米国側 (SKEW + VIX)
+    const skewThr = { p10:pct(records.map(r=>r.skew),0.10), p25:pct(records.map(r=>r.skew),0.25), p50:pct(records.map(r=>r.skew),0.50), p75:pct(records.map(r=>r.skew),0.75), p90:pct(records.map(r=>r.skew),0.90) };
+    const vixThr  = { p10:pct(records.map(r=>r.vix),0.10),  p25:pct(records.map(r=>r.vix),0.25),  p50:pct(records.map(r=>r.vix),0.50),  p75:pct(records.map(r=>r.vix),0.75),  p90:pct(records.map(r=>r.vix),0.90) };
+    function classifyUs(r) {
+      const s=r.skew, v=r.vix;
+      if(s==null || v==null) return null;
+      if(v > vixThr.p90 && s < skewThr.p25) return 'ストロングバイ';
+      if(s > skewThr.p90 && v < vixThr.p25) return 'ストロングセル';
+      if(v > vixThr.p75) return 'バイ';
+      if(s > skewThr.p75 && v < vixThr.p50) return 'セル';
+      return '中立';
+    }
+    // 日経側 (PCR + VI)
+    const pcrThr = { p10:pct(records.map(r=>r.pcr),0.10), p25:pct(records.map(r=>r.pcr),0.25), p50:pct(records.map(r=>r.pcr),0.50), p75:pct(records.map(r=>r.pcr),0.75), p90:pct(records.map(r=>r.pcr),0.90) };
+    const viThr  = { p10:pct(records.map(r=>r.vi),0.10),  p25:pct(records.map(r=>r.vi),0.25),  p50:pct(records.map(r=>r.vi),0.50),  p75:pct(records.map(r=>r.vi),0.75),  p90:pct(records.map(r=>r.vi),0.90) };
+    function classifyJp(r) {
+      const p=r.pcr, v=r.vi;
+      if(p==null || v==null) return null;
+      if(v > viThr.p90 && p > pcrThr.p75) return 'ストロングバイ';
+      if(p > pcrThr.p90 && v < viThr.p25) return 'ストロングセル';
+      if(v > viThr.p75) return 'バイ';
+      if(p > pcrThr.p75 && v < viThr.p50) return 'セル';
+      return '中立';
+    }
+
+    const usStrAll = records.map(classifyUs);
+    const jpStrAll = records.map(classifyJp);
+    const usStr    = usStrAll.slice(startIdx);
+    const jpStr    = jpStrAll.slice(startIdx);
+    const usStrColors = usStr.map(s => (STRENGTH_DISPLAY[s] || {}).color || 'rgba(255,255,255,0.2)');
+    const jpStrColors = jpStr.map(s => (STRENGTH_DISPLAY[s] || {}).color || 'rgba(255,255,255,0.2)');
+
+    // SP500 強弱チャート
+    if (sp500Pts.some(v => v != null)) {
+      new Chart(document.getElementById('chartSp500Strength'), {
+        type:'line',
+        data:{ labels, datasets:[{
+          label:'S&P500', data:sp500Pts, borderColor:'#FFD700',
+          backgroundColor:'rgba(255,215,0,.10)', borderWidth:1.5, tension:.15, spanGaps:true,
+          pointRadius: ctx => (STRENGTH_DISPLAY[usStr[ctx.dataIndex]] || {}).radiusFull || 1,
+          pointBackgroundColor: usStrColors,
+          pointBorderColor:     usStrColors,
+          fill:false,
+        }]},
+        options:{
+          responsive:true, maintainAspectRatio:false, interaction:{mode:'index',intersect:false},
+          scales: commonScales({ y:{ ticks:{ callback: v => Number(v).toLocaleString() } } }),
+          plugins:{
+            legend:{display:false},
+            tooltip:{ callbacks:{
+              afterBody: items => {
+                const i = items[0]?.dataIndex; if(i==null) return '';
+                const r = dRecs[i]; const sig = usStr[i] || '-';
+                return `強弱: ${sig}\nSKEW: ${fmtNum(r.skew,2)} (>${skewThr.p90.toFixed(0)}=極高 / <${skewThr.p25.toFixed(0)}=低)\nVIX: ${fmtNum(r.vix,2)} (>${vixThr.p90.toFixed(1)}=極高 / <${vixThr.p25.toFixed(1)}=低)`;
+              }
+            }}
+          }
+        }
+      });
+    }
+
+    // N225 強弱チャート
+    new Chart(document.getElementById('chartN225Strength'), {
+      type:'line',
+      data:{ labels, datasets:[{
+        label:'日経225', data:n225Pts, borderColor:'#58a6ff',
+        backgroundColor:'rgba(88,166,255,.10)', borderWidth:1.5, tension:.15,
+        pointRadius: ctx => (STRENGTH_DISPLAY[jpStr[ctx.dataIndex]] || {}).radiusFull || 1,
+        pointBackgroundColor: jpStrColors,
+        pointBorderColor:     jpStrColors,
+        fill:false,
+      }]},
+      options:{
+        responsive:true, maintainAspectRatio:false, interaction:{mode:'index',intersect:false},
+        scales: commonScales({ y:{ ticks:{ callback: v => Number(v).toLocaleString() } } }),
+        plugins:{
+          legend:{display:false},
+          tooltip:{ callbacks:{
+            afterBody: items => {
+              const i = items[0]?.dataIndex; if(i==null) return '';
+              const r = dRecs[i]; const sig = jpStr[i] || '-';
+              return `強弱: ${sig}\nPCR: ${fmtNum(r.pcr,3)} (>${pcrThr.p90.toFixed(2)}=極高 / <${pcrThr.p25.toFixed(2)}=低)\nVI: ${fmtNum(r.vi,2)} (>${viThr.p90.toFixed(1)}=極高 / <${viThr.p25.toFixed(1)}=低)`;
+            }
+          }}
+        }
+      }
+    });
+
+    // 検証統計 (5/10/20 日先 forward returns)
+    function strengthStats(signals, priceField, market) {
+      const horizons=[5,10,20];
+      const ORDER=['ストロングセル','セル','中立','バイ','ストロングバイ'];
+      const stats={}; ORDER.forEach(s => stats[s]={n:0, ret:{}, win:{}});
+      ORDER.forEach(s => horizons.forEach(h => { stats[s].ret[h]=[]; stats[s].win[h]=0; }));
+      const baseRet={}; horizons.forEach(h => baseRet[h]=[]);
+      for(let i=0;i<records.length;i++){
+        const sig = signals[i]; const p0 = records[i]?.[priceField];
+        if(p0==null) continue;
+        for(const h of horizons){
+          if(i+h>=records.length) continue;
+          const p1 = records[i+h]?.[priceField]; if(p1==null) continue;
+          const r = (p1/p0-1)*100;
+          baseRet[h].push(r);
+          if(sig && stats[sig]){
+            if(h===20) stats[sig].n++;
+            stats[sig].ret[h].push(r);
+            if(r>0) stats[sig].win[h]++;
+          }
+        }
+      }
+      const fmtR = v => v==null ? '-' : (v>=0?'+':'')+v.toFixed(2)+'%';
+      const cls = v => v==null ? '' : (v>0?'up':v<0?'down':'');
+      const mean = a => a.length ? a.reduce((x,y)=>x+y,0)/a.length : null;
+      let h = `<div style="font-size:11.5px;margin-bottom:4px"><b>${market}</b></div><table>
+        <thead><tr><th>強弱</th><th>n</th>`;
+      horizons.forEach(d => h += `<th>${d}d 平均</th><th>勝率</th>`);
+      h += `</tr></thead><tbody>`;
+      for(const s of ORDER){
+        const n20 = stats[s].ret[20].length;
+        if(n20<3) continue;
+        const disp = STRENGTH_DISPLAY[s];
+        h += `<tr><td><span class="pill ${disp.cls}" style="background:${disp.color};color:${s.includes('ストロング')?'#fff':''}">${s}</span></td><td>${stats[s].n}</td>`;
+        for(const d of horizons){
+          const arr = stats[s].ret[d];
+          const m = mean(arr);
+          const w = arr.length ? stats[s].win[d]/arr.length*100 : null;
+          h += `<td class="${cls(m)}">${fmtR(m)}</td><td>${w==null?'-':w.toFixed(0)+'%'}</td>`;
+        }
+        h += `</tr>`;
+      }
+      // baseline
+      const bm = mean(baseRet[20]);
+      const bw = baseRet[20].length ? baseRet[20].filter(x=>x>0).length/baseRet[20].length*100 : null;
+      h += `<tr style="border-top:2px solid var(--border)"><td><b>ベース</b></td><td>${baseRet[20].length}</td>`;
+      for(const d of horizons){
+        const arr = baseRet[d]; const m = mean(arr); const w = arr.filter(x=>x>0).length/arr.length*100;
+        h += `<td class="${cls(m)}">${fmtR(m)}</td><td>${w.toFixed(0)}%</td>`;
+      }
+      h += `</tr></tbody></table>`;
+      return h;
+    }
+    let sb = strengthStats(usStrAll, 'sp500', '🇺🇸 米国 (SKEW + VIX → SP500 20日先)');
+    sb += '<div style="height:12px"></div>';
+    sb += strengthStats(jpStrAll, 'n225',  '🇯🇵 日経 (PCR + VI → N225 20日先)');
+    sb += `<small style="color:var(--muted);display:block;margin-top:6px">
+      期待値: ストロングバイ で baseline を上回り、ストロングセル で baseline 以下に下がっていれば AND 条件の意味が実証できている。<br>
+      n が少ないラベル(ストロング系)は標本ばらつきが大きい点に注意。
+    </small>`;
+    document.getElementById('strength-backtest').innerHTML = sb;
   })();
 
   // 直近20件テーブル
