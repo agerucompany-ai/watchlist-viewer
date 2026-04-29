@@ -57,6 +57,40 @@ td{padding:4px 7px;border-bottom:1px solid rgba(48,54,61,.5);text-align:right;co
 
 <div class="summary" id="summary"></div>
 
+<!-- ── 日経平均 ── -->
+<div class="chart-box">
+  <h2>日経平均 直近1ヶ月ズーム（モメンタムマーカー着色）</h2>
+  <div class="chart-wrap"><canvas id="chartN225Zoom"></canvas></div>
+</div>
+
+<div class="chart-box">
+  <h2>日経平均 長期（モメンタムでマーカー着色 / 2024-04 以降）</h2>
+  <div class="legend-row" id="signal-legend"></div>
+  <div class="chart-wrap"><canvas id="chartN225"></canvas></div>
+</div>
+
+<div class="chart-box">
+  <h2>日経モメンタム — PCR÷VI ROC(10営業日) <span style="color:var(--muted);font-weight:400">単位: %、Y軸 ±100% 固定</span></h2>
+  <div class="chart-wrap"><canvas id="chartMomentum"></canvas></div>
+</div>
+
+<!-- ── S&P500 ── -->
+<div class="chart-box">
+  <h2>S&amp;P500 直近1ヶ月ズーム（モメンタムマーカー着色）</h2>
+  <div class="chart-wrap"><canvas id="chartSp500Zoom"></canvas></div>
+</div>
+
+<div class="chart-box">
+  <h2>S&amp;P500 長期（モメンタムマーカー着色 / 2024-04 以降）</h2>
+  <div class="chart-wrap"><canvas id="chartSp500"></canvas></div>
+</div>
+
+<div class="chart-box">
+  <h2>S&amp;P500 モメンタム — ROC(10営業日) <span style="color:var(--muted);font-weight:400">単位: %、Y軸 ±15% 固定</span></h2>
+  <div class="chart-wrap"><canvas id="chartSp500Momentum"></canvas></div>
+</div>
+
+<!-- ── その他資料 ── -->
 <div class="chart-box">
   <h2>PCR と 日経VI（左軸: PCR / 右軸: VI）</h2>
   <div class="chart-wrap"><canvas id="chartPcrVi"></canvas></div>
@@ -65,37 +99,6 @@ td{padding:4px 7px;border-bottom:1px solid rgba(48,54,61,.5);text-align:right;co
 <div class="chart-box">
   <h2>PCR-VIスプレッド（PCR ÷ 日経VI）</h2>
   <div class="chart-wrap"><canvas id="chartSpread"></canvas></div>
-</div>
-
-<div class="chart-box">
-  <h2>日経平均（モメンタムでマーカー着色）</h2>
-  <div class="legend-row" id="signal-legend"></div>
-  <div class="chart-wrap"><canvas id="chartN225"></canvas></div>
-</div>
-
-<div class="chart-box">
-  <h2>PCR÷VI モメンタム — ROC(10営業日) <span style="color:var(--muted);font-weight:400">単位: %、Y軸 ±100% 固定</span></h2>
-  <div class="chart-wrap"><canvas id="chartMomentum"></canvas></div>
-</div>
-
-<div class="chart-box">
-  <h2>S&amp;P500 モメンタム — ROC(10営業日) <span style="color:var(--muted);font-weight:400">単位: %、Y軸 ±15% 固定</span></h2>
-  <div class="chart-wrap"><canvas id="chartSp500Momentum"></canvas></div>
-</div>
-
-<div class="chart-box">
-  <h2>S&amp;P500（モメンタムマーカー着色 / 2024-04 以降）</h2>
-  <div class="chart-wrap"><canvas id="chartSp500"></canvas></div>
-</div>
-
-<div class="chart-box">
-  <h2>S&amp;P500 直近1ヶ月ズーム（モメンタムマーカー着色）</h2>
-  <div class="chart-wrap"><canvas id="chartSp500Zoom"></canvas></div>
-</div>
-
-<div class="chart-box">
-  <h2>日経平均 直近1ヶ月ズーム（モメンタムマーカー着色）</h2>
-  <div class="chart-wrap"><canvas id="chartN225Zoom"></canvas></div>
 </div>
 
 <div class="chart-box">
@@ -414,7 +417,7 @@ function render(payload){
       { label: 'モメンタム ROC(10) %', data: dRecs.map(r=>r.momentum),
         borderColor: '#3fb950',
         segment: {
-          borderColor: ctx => (ctx.p1.parsed.y >= 0 ? '#f85149' : '#3fb950'),
+          borderColor: ctx => (ctx.p1.parsed.y >= 0 ? '#3fb950' : '#f85149'),
         },
         backgroundColor: 'rgba(63,185,80,.10)',
         tension: .2, pointRadius: 0, borderWidth: 2 },
