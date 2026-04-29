@@ -726,10 +726,10 @@ function render(payload){
     </div>`;
     html += renderTable('日経 (PCR÷VI 絶対水準) → N225 20日先', jpSignalAll, 'n225', 'PCR÷VI', jpClassifier);
     html += renderTable('米国 (SKEW÷VIX 絶対水準) → SP500 20日先', usSignalAll, 'sp500', 'SKEW÷VIX', usClassifier);
-      <small style="color:var(--muted);display:block;margin-top:6px">
+    html += `<small style="color:var(--muted);display:block;margin-top:6px">
       <b>読み方</b>: 平均は強気バイアス込みで甘く出るので、<b>マイナス率と最大損</b>でダウンサイドを見る。<br>
       → 売り(>p90)で 平均/勝率 が baseline 以下、買い(<p10)で baseline 以上 になっていれば signal 機能を実証できている。
-      </small>`;
+    </small>`;
     document.getElementById('backtest').innerHTML = html;
   })();
 
