@@ -124,11 +124,11 @@ td{padding:4px 7px;border-bottom:1px solid rgba(48,54,61,.5);text-align:right;co
   <table style="margin-top:6px;width:auto">
     <thead><tr><th style="text-align:left">ラベル</th><th style="text-align:left">水準</th><th style="text-align:left">意味</th></tr></thead>
     <tbody>
-      <tr><td><span class="pill signal-sell">警戒</span></td><td>&gt; p90</td><td>テールヘッジ買いが極端に厚い高値圏。下落リスク高い</td></tr>
-      <tr><td><span class="pill signal-cau">弱含み</span></td><td>p75 〜 p90</td><td>警戒寄り、利食い検討</td></tr>
+      <tr><td><span class="pill signal-sell">売り</span></td><td>&gt; p90</td><td>テールヘッジ買いが極端に厚い高値圏。下落リスク高い</td></tr>
+      <tr><td><span class="pill signal-cau">退避</span></td><td>p75 〜 p90</td><td>警戒寄り、利食い検討</td></tr>
       <tr><td><span class="pill signal-neutral" style="background:#888;color:#fff">中立</span></td><td>p25 〜 p75</td><td>普通の状態</td></tr>
       <tr><td><span class="pill signal-test">打診買い</span></td><td>p10 〜 p25</td><td>低水準、買い候補</td></tr>
-      <tr><td><span class="pill signal-buy">買い場</span></td><td>&lt; p10</td><td>パニック終了サイン、強・買いゾーン</td></tr>
+      <tr><td><span class="pill signal-buy">買い</span></td><td>&lt; p10</td><td>パニック終了サイン、強・買いゾーン</td></tr>
     </tbody>
   </table>
   <small style="color:var(--muted)">
@@ -215,12 +215,13 @@ function render(payload){
   // 同じ閾値ロジックを PCR÷VI (日経シグナル) にも適用。
   //
   // 旧ステートマシン(4状態 ROC10 ベース) は廃止。
+  // 記事(株おじさん)の用語: 売り / 退避 / 打診買い / 買い  +  中立(中央レンジ)
   const LEVEL_DISPLAY = {
-    '警戒':    { cls: 'signal-sell',    color: '#ef5149', radiusFull: 4.5, radiusZoom: 6   },
-    '弱含み':  { cls: 'signal-cau',     color: '#FFD54F', radiusFull: 3,   radiusZoom: 4.5 },
+    '売り':    { cls: 'signal-sell',    color: '#ef5149', radiusFull: 4.5, radiusZoom: 6   },
+    '退避':    { cls: 'signal-cau',     color: '#FFD54F', radiusFull: 3,   radiusZoom: 4.5 },
     '中立':    { cls: 'signal-neutral', color: 'rgba(165,165,165,0.4)', radiusFull: 1.2, radiusZoom: 2.5 },
     '打診買い':{ cls: 'signal-test',    color: '#a5d6a7', radiusFull: 3,   radiusZoom: 4.5 },
-    '買い場':  { cls: 'signal-buy',     color: '#3fb950', radiusFull: 4.5, radiusZoom: 6   },
+    '買い':    { cls: 'signal-buy',     color: '#3fb950', radiusFull: 4.5, radiusZoom: 6   },
   };
   function makeLevelClassifier(values) {
     const sorted = values.filter(v => v != null).sort((a,b)=>a-b);
@@ -230,9 +231,9 @@ function render(payload){
     const t = { p10: p(0.10), p25: p(0.25), p50: p(0.5), p75: p(0.75), p90: p(0.90) };
     const classify = v => {
       if (v == null) return null;
-      if (v > t.p90) return '警戒';
-      if (v > t.p75) return '弱含み';
-      if (v < t.p10) return '買い場';
+      if (v > t.p90) return '売り';
+      if (v > t.p75) return '退避';
+      if (v < t.p10) return '買い';
       if (v < t.p25) return '打診買い';
       return '中立';
     };
@@ -255,12 +256,12 @@ function render(payload){
   const lastUsSig = usSignalAll[records.length - 1] || '-';
 
   document.getElementById('signal-legend').innerHTML =
-    `<b>絶対水準ベース判定</b> (記事「市場予測指標」準拠 / 3年データの分位閾値): ` +
-    `<span class="pill signal-sell">警戒 (>p90)</span>` +
-    `<span class="pill signal-cau">弱含み (p75〜p90)</span>` +
+    `<b>絶対水準ベース判定</b> (記事「市場予測指標」(株おじさん) 準拠 / 3年データ分位閾値): ` +
+    `<span class="pill signal-sell">売り (>p90)</span>` +
+    `<span class="pill signal-cau">退避 (p75〜p90)</span>` +
     `<span class="pill signal-neutral" style="background:#888;color:#fff">中立 (p25〜p75)</span>` +
     `<span class="pill signal-test">打診買い (p10〜p25)</span>` +
-    `<span class="pill signal-buy">買い場 (<p10)</span>` +
+    `<span class="pill signal-buy">買い (<p10)</span>` +
     `<span style="margin-left:auto">最新: 日経 <b>${lastJpSig}</b> / 米国 <b>${lastUsSig}</b></span>`;
 
   const dT  = prev && last.topix != null && prev.topix != null ? (last.topix - prev.topix) : null;
@@ -617,7 +618,7 @@ function render(payload){
   // を 20日先 N225/SP500 リターンで検証。
   (() => {
     const horizons = [5, 10, 20];
-    const LABELS5 = ['警戒','弱含み','中立','打診買い','買い場'];
+    const LABELS5 = ['売り','退避','中立','打診買い','買い'];
 
     function buildStats(signals, priceField) {
       const stats = {};
@@ -727,7 +728,7 @@ function render(payload){
     html += renderTable('米国 (SKEW÷VIX 絶対水準) → SP500 20日先', usSignalAll, 'sp500', 'SKEW÷VIX', usClassifier);
       <small style="color:var(--muted);display:block;margin-top:6px">
       <b>読み方</b>: 平均は強気バイアス込みで甘く出るので、<b>マイナス率と最大損</b>でダウンサイドを見る。<br>
-      → 警戒(>p90)で 平均/勝率 が baseline 以下、買い場(<p10)で baseline 以上 になっていれば signal 機能を実証できている。
+      → 売り(>p90)で 平均/勝率 が baseline 以下、買い(<p10)で baseline 以上 になっていれば signal 機能を実証できている。
       </small>`;
     document.getElementById('backtest').innerHTML = html;
   })();
