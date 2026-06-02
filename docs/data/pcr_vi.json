@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-06-01T23:30:10",
+ "generated_at": "2026-06-02T23:30:11",
  "records": [
   {
    "date": "2023-04-04",
@@ -17430,14 +17430,36 @@
    "underlying": 66934.33,
    "contract_month": "2026-06",
    "base_vol": 29.08,
-   "vi": null,
-   "n225": null,
+   "vi": 28.54,
+   "n225": 66934.33,
    "topix": 417.5,
    "usdjpy": 159.353,
    "vix": 16.05,
    "us10y": 4.475,
    "sp500": 7599.96,
    "skew": 142.46,
+   "spread": 0.06677,
+   "momentum": 8.003
+  },
+  {
+   "date": "2026-06-02",
+   "pcr": 1.9213,
+   "pcr_otm": 2.4946,
+   "call_oi": 104327,
+   "put_oi": 200442,
+   "call_oi_otm": 22940,
+   "put_oi_otm": 57227,
+   "underlying": 66734.24,
+   "contract_month": "2026-06",
+   "base_vol": 28.912,
+   "vi": null,
+   "n225": null,
+   "topix": 415.8,
+   "usdjpy": 159.636,
+   "vix": 15.77,
+   "us10y": 4.455,
+   "sp500": 7609.78,
+   "skew": 143.24,
    "spread": null,
    "momentum": null
   }
