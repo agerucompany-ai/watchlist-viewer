@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-05T23:30:11",
+ "generated_at": "2026-07-06T23:30:11",
  "records": [
   {
    "date": "2023-04-04",
@@ -17946,6 +17946,28 @@
    "skew": null,
    "spread": 0.04668,
    "momentum": -12.881
+  },
+  {
+   "date": "2026-07-06",
+   "pcr": 1.6112,
+   "pcr_otm": 1.5346,
+   "call_oi": 63865,
+   "put_oi": 102900,
+   "call_oi_otm": 33133,
+   "put_oi_otm": 50845,
+   "underlying": 69737.69,
+   "contract_month": "2026-07",
+   "base_vol": 33.627,
+   "vi": null,
+   "n225": null,
+   "topix": 435.4,
+   "usdjpy": 161.452,
+   "vix": 15.57,
+   "us10y": 4.479,
+   "sp500": 7537.43,
+   "skew": 145.38,
+   "spread": null,
+   "momentum": null
   }
  ]
 }
