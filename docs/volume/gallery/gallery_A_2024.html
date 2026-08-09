@@ -134,8 +134,18 @@ async function loadRemote() {
   try {
     const r = await fetch(API);
     const remote = await r.json();
-    const merged = Object.assign({}, tags(), remote);
+    const local = tags();
+    const merged = Object.assign({}, local, remote);
     localStorage.setItem(TKEY, JSON.stringify(merged));
+    // ローカルにしかないタグ(旧ページで付けた分)をサーバーへ一括アップロード
+    const missing = {};
+    for (const k in local) {
+      if (!(k in remote) && local[k] !== "未分類") missing[k] = local[k];
+    }
+    if (Object.keys(missing).length) {
+      fetch(API, { method: "POST", headers: { "Content-Type": "text/plain" },
+                   body: JSON.stringify({ tags: missing }) }).catch(() => {});
+    }
   } catch (e) {}
 }
 function counts() {
