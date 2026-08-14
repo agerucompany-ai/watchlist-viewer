@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>アクティビスト保有マップ</title>
+<style>
+:root{--bg:#0d1117;--bg2:#161b22;--bg3:#21262d;--border:#30363d;--text:#c9d1d9;
+  --muted:#8b949e;--blue:#58a6ff;--green:#3fb950;--red:#f85149;--gold:#d29922;--orange:#FFA500;--purple:#a371f7}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Hiragino Sans",sans-serif;
+  background:var(--bg);color:var(--text);font-size:13px;-webkit-text-size-adjust:100%;line-height:1.6}
+header{background:var(--bg2);padding:10px 14px;border-bottom:1px solid var(--border);
+  position:sticky;top:0;z-index:10;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+header h1{font-size:15px;color:var(--gold)}
+header .meta{font-size:11px;color:var(--muted)}
+header a.back{background:var(--bg3);color:var(--blue);padding:4px 10px;border-radius:5px;
+  font-size:11px;text-decoration:none;font-weight:600;border:1px solid var(--border);white-space:nowrap}
+.wrap{max-width:1080px;margin:0 auto;padding:14px}
+section{margin-bottom:26px}
+h2{font-size:14px;color:var(--blue);border-left:3px solid var(--blue);padding-left:8px;margin-bottom:8px}
+h2.warn{color:var(--red);border-left-color:var(--red)}
+h3{font-size:13px;color:var(--gold);margin:14px 0 6px}
+p.note{font-size:11px;color:var(--muted);margin:4px 0 8px}
+.tbl{overflow-x:auto;border:1px solid var(--border);border-radius:6px}
+table{width:100%;border-collapse:collapse;min-width:640px}
+th{background:var(--bg3);color:var(--muted);font-size:11px;padding:6px 8px;text-align:left;white-space:nowrap;position:sticky;top:0}
+td{padding:5px 8px;border-top:1px solid var(--border);font-size:12px;white-space:nowrap}
+tr:nth-child(even){background:var(--bg2)}
+td.r,th.r{text-align:right}
+.neg{color:var(--red);font-weight:600}
+.pos{color:var(--green)}
+.flat{color:var(--orange)}
+.fund{font-size:11px;color:var(--purple)}
+a.code{color:var(--blue);text-decoration:none}
+.badge{display:inline-block;padding:1px 6px;border-radius:4px;font-size:10px;font-weight:700;margin-right:4px}
+.b-red{background:var(--red);color:#000}
+.b-org{background:var(--orange);color:#000}
+.b-grn{background:var(--green);color:#000}
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:10px 12px;margin-bottom:8px}
+.card b{color:var(--text)}
+.rank{color:var(--gold);font-weight:700;margin-right:6px}
+ul{padding-left:18px}
+li{margin-bottom:4px;font-size:12px}
+.small{font-size:11px;color:var(--muted)}
+footer{padding:14px;font-size:11px;color:var(--muted);border-top:1px solid var(--border);margin-top:20px}
+</style>
+</head>
+<body>
+<header>
+  <a class="back" href="index.html">← ウォッチリスト</a>
+  <h1>アクティビスト保有マップ</h1>
+  <span class="meta">株価: 2026/8/14終値 ・ 作成: 2026/8/15 ・ 大量保有報告書(EDINET)ベース</span>
+</header>
+<div class="wrap">
+
+<section>
+<h2 class="warn">① 取得単価割れ銘柄（アクティビストの平均取得価格より安く買える銘柄）</h2>
+<p class="note">推定平均取得単価＝大量保有報告書の「取得資金÷保有株数」（村上系のみ取得期間の株価平均による代替推定）。誤差±10〜20%を見込むこと。</p>
+<div class="tbl"><table>
+<thead><tr><th>銘柄</th><th>コード</th><th>ファンド</th><th class="r">保有割合</th><th class="r">推定取得単価</th><th class="r">現在株価</th><th class="r">乖離</th><th>メモ</th></tr></thead>
+<tbody>
+<tr><td>ガンホー・オンライン</td><td><a class="code" href="https://kabutan.jp/stock/?code=3765">3765</a></td><td class="fund">ストラテジックキャピタル</td><td class="r">13.67%</td><td class="r">約2,868円</td><td class="r">2,448円</td><td class="r neg">-14.6%</td><td>保有目的に「第三者による買収(非公開化)」提案を明記</td></tr>
+<tr><td>ソフト99コーポレーション</td><td><a class="code" href="https://kabutan.jp/stock/?code=4464">4464</a></td><td class="fund">エフィッシモ</td><td class="r">53.15%</td><td class="r">約3,924円</td><td class="r">3,580円</td><td class="r neg">-8.8%</td><td>過半数保有。エフィッシモ唯一の単価割れ</td></tr>
+<tr><td>プラスアルファ・コンサルティング</td><td><a class="code" href="https://kabutan.jp/stock/?code=4071">4071</a></td><td class="fund">オアシス</td><td class="r">16.29%</td><td class="r">約2,369円</td><td class="r">2,224円</td><td class="r neg">-6.1%</td><td>2026/7に買い増し報告</td></tr>
+<tr><td>オリエントコーポレーション</td><td><a class="code" href="https://kabutan.jp/stock/?code=8585">8585</a></td><td class="fund">ストラテジックキャピタル</td><td class="r">12.80%</td><td class="r">約931円</td><td class="r">874円</td><td class="r neg">-6.1%</td><td>買い増し中(2026/6報告)。株主提案対象</td></tr>
+<tr><td>東邦HD</td><td><a class="code" href="https://kabutan.jp/stock/?code=8129">8129</a></td><td class="fund">3Dインベストメント</td><td class="r">21.19%</td><td class="r">約4,013円</td><td class="r">3,821円</td><td class="r neg">-4.8%</td><td>医薬品卸。5%超16銘柄中唯一の単価割れ</td></tr>
+</tbody>
+</table></div>
+
+<h3>取得単価近辺（±6%圏）＝アクティビストのコストとほぼ同値で買える銘柄</h3>
+<div class="tbl"><table>
+<thead><tr><th>銘柄</th><th>コード</th><th>ファンド</th><th class="r">保有割合</th><th class="r">推定取得単価</th><th class="r">現在株価</th><th class="r">乖離</th><th>メモ</th></tr></thead>
+<tbody>
+<tr><td>プリモグローバルHD</td><td><a class="code" href="https://kabutan.jp/stock/?code=367A">367A</a></td><td class="fund">村上貴輝(長男)</td><td class="r">9.66%</td><td class="r">約2,784円</td><td class="r">2,840円</td><td class="r flat">+2.0%</td><td>2026/7末報告</td></tr>
+<tr><td>小林製薬</td><td><a class="code" href="https://kabutan.jp/stock/?code=4967">4967</a></td><td class="fund">オアシス</td><td class="r">13.37%</td><td class="r">約5,459円</td><td class="r">5,566円</td><td class="r flat">+2.0%</td><td>総会でCEO選任に一般株主過半が反対＝改革圧力継続</td></tr>
+<tr><td>京浜急行電鉄</td><td><a class="code" href="https://kabutan.jp/stock/?code=9006">9006</a></td><td class="fund">村上系(ATRA+野村絢)</td><td class="r">9.14%</td><td class="r">約1,486円*</td><td class="r">1,518.5円</td><td class="r flat">+2.2%</td><td>*期間平均。直近買い増し分(1,550〜1,630円)は割れの可能性</td></tr>
+<tr><td>ADワークスグループ</td><td><a class="code" href="https://kabutan.jp/stock/?code=2982">2982</a></td><td class="fund">村上貴輝(長男)</td><td class="r">9.18%</td><td class="r">約406円</td><td class="r">425円</td><td class="r flat">+4.6%</td><td></td></tr>
+<tr><td>ニップン</td><td><a class="code" href="https://kabutan.jp/stock/?code=2001">2001</a></td><td class="fund">ストラテジックキャピタル</td><td class="r">7.09%</td><td class="r">約2,723円</td><td class="r">2,869円</td><td class="r flat">+5.4%</td><td>報告書に「8月末までに増配等の重要提案予定」と明記</td></tr>
+<tr><td>あすか製薬HD</td><td><a class="code" href="https://kabutan.jp/stock/?code=4886">4886</a></td><td class="fund">NAVF/ダルトン</td><td class="r">21.32%</td><td class="r">約1,995円</td><td class="r">2,111円</td><td class="r flat">+5.8%</td><td>共同保有21%超</td></tr>
+</tbody>
+</table></div>
+</section>
+
+<section>
+<h2>② 直近パフォーマンス評価（2024〜2026/8）</h2>
+<div class="card"><span class="rank">1位</span><b>3Dインベストメント・パートナーズ ◎</b><br>
+富士ソフトでKKR対ベインのTOB合戦を誘発し9,850円で応募(巨額実現益)。サッポロHDは不動産子会社の4,770億円譲渡が実現し株価約2倍。大量保有残高増加は主要勢最大の+2,490億円。2026年は東宝に新キャンペーン。</div>
+<div class="card"><span class="rank">2位</span><b>村上系（シティインデックスイレブンス/レノ/野村絢ほか） ◎</b><br>
+フジ・メディアHDを経営危機直後から買い進め筆頭株主化→2,349億円の自社株買いに応じ約760億円の売却益(報道ベース)を1年強で実現。養命酒TOB・ウェーブロック/芦森応募などイグジット多数。残高+1,707億円。</div>
+<div class="card"><span class="rank">3位</span><b>ダルトン/NAVF ◎</b><br>
+数値で裏付けられる唯一の私募系: 2025年£建て+17.4%、5年で英国上場日本株投信トップ。2026年YTD+18.6%。増配(3.25p→5.52p)。</div>
+<div class="card"><span class="rank">4位</span><b>エフィッシモ ○</b>（旧村上系最大手）<br>
+リコー24.8%・帝人19.3%・第一生命11.0%の集中保有が株高で残高+2,155億円(国内最大)。太平洋工業MBOでは価格を2,050円→3,036円に引き上げさせ現金化。リターン自体は非開示。</div>
+<div class="card"><span class="rank">5位</span><b>ストラテジックキャピタル ○</b>（丸木強・旧村上系）<br>
+HFM APAC Awards 2025受賞・R&Iファンド大賞2026優秀賞。主力12銘柄中10銘柄が含み益(平均+30%前後)。山洋電気・ノリタケを高値圏で利食い、KHネオケム・ニップン等へ回転中。</div>
+<div class="card"><span class="rank">-</span><b>オアシス ○</b>
+活動量は首位(2024年12件)だがサン電子(+778%)以外の大型案件(花王・カドカワ等)は回収前。 / <b>アスリード・キャピタル ×</b> 2022年以降動きなく実質休眠のため対象外。</div>
+<p class="note">私募ファンドはリターン非開示のため、評価は残高増減とキャンペーン出口からの推定。2025-26年は日経平均66,000円台の強気相場であり、残高増＝運用スキルとは限らない。</p>
+</section>
+
+<section>
+<h2>③ 村上系（シティインデックスイレブンス/レノ/エスグラント/野村絢/フォルティス/ATRA等・グループ合算）</h2>
+<div class="tbl"><table>
+<thead><tr><th>銘柄</th><th>コード</th><th class="r">保有割合</th><th class="r">推定取得単価*</th><th class="r">現在株価</th><th class="r">乖離</th><th>報告日/メモ</th></tr></thead>
+<tbody>
+<tr><td>サンケイリアルエステート投資法人</td><td><a class="code" href="https://kabutan.jp/stock/?code=2972">2972</a></td><td class="r">19.35%超</td><td class="r">約98,800円</td><td class="r">112,300円</td><td class="r pos">+13.7%</td><td>2026/8/7さらに増加報告</td></tr>
+<tr><td>エクセディ</td><td><a class="code" href="https://kabutan.jp/stock/?code=7278">7278</a></td><td class="r">約10.2%</td><td class="r">約3,485円</td><td class="r">6,170円</td><td class="r pos">+77%</td><td>10.91%から漸減中</td></tr>
+<tr><td>アルプスアルパイン</td><td><a class="code" href="https://kabutan.jp/stock/?code=6770">6770</a></td><td class="r">9.8〜10.8%</td><td class="r">約1,621円</td><td class="r">2,210.5円</td><td class="r pos">+36%</td><td>2026/4報告</td></tr>
+<tr><td>京浜急行電鉄</td><td><a class="code" href="https://kabutan.jp/stock/?code=9006">9006</a></td><td class="r">9.14%</td><td class="r">約1,486円</td><td class="r">1,518.5円</td><td class="r flat">+2.2%</td><td>直近も買い増し中(2026/7)</td></tr>
+<tr><td>日本製紙</td><td><a class="code" href="https://kabutan.jp/stock/?code=3863">3863</a></td><td class="r">8.73%</td><td class="r">約1,319円</td><td class="r">1,420円</td><td class="r pos">+7.6%</td><td>2026/7/15増加報告</td></tr>
+<tr><td>三井松島HD</td><td><a class="code" href="https://kabutan.jp/stock/?code=1518">1518</a></td><td class="r">約8.5%</td><td class="r">約1,309円</td><td class="r">2,349円</td><td class="r pos">+79%</td><td></td></tr>
+<tr><td>平和不動産</td><td><a class="code" href="https://kabutan.jp/stock/?code=8803">8803</a></td><td class="r">約8.3%</td><td class="r">約2,156円</td><td class="r">2,357円</td><td class="r pos">+9.3%</td><td></td></tr>
+<tr><td>新光商事</td><td><a class="code" href="https://kabutan.jp/stock/?code=8141">8141</a></td><td class="r">8.24%</td><td class="r">不明</td><td class="r">1,570円</td><td class="r">—</td><td>ピーク15.66%→TOB応募で売却進行中</td></tr>
+<tr><td>ヤマダHD</td><td><a class="code" href="https://kabutan.jp/stock/?code=9831">9831</a></td><td class="r">6.26%</td><td class="r">約641円</td><td class="r">692.9円</td><td class="r pos">+8.1%</td><td>2026/7/28・新規性高い</td></tr>
+<tr><td>三菱製紙</td><td><a class="code" href="https://kabutan.jp/stock/?code=3864">3864</a></td><td class="r">6.12%</td><td class="r">約1,069円</td><td class="r">1,152円</td><td class="r pos">+7.8%</td><td>2026/7新規→8月買い増し</td></tr>
+<tr><td>エア・ウォーター</td><td><a class="code" href="https://kabutan.jp/stock/?code=4088">4088</a></td><td class="r">約5.7%</td><td class="r">約2,214円</td><td class="r">2,534円</td><td class="r pos">+14%</td><td></td></tr>
+<tr><td>王子HD</td><td><a class="code" href="https://kabutan.jp/stock/?code=3861">3861</a></td><td class="r">5.58%</td><td class="r">約600円</td><td class="r">875.6円</td><td class="r pos">+46%</td><td>フォルティス名義</td></tr>
+<tr><td>レンゴー</td><td><a class="code" href="https://kabutan.jp/stock/?code=3941">3941</a></td><td class="r">約5.0%</td><td class="r">約1,221円</td><td class="r">1,636.5円</td><td class="r pos">+34%</td><td>紙パルプ業界を面で保有</td></tr>
+<tr><td>KPPグループHD</td><td><a class="code" href="https://kabutan.jp/stock/?code=9274">9274</a></td><td class="r">5.04%</td><td class="r">約921円</td><td class="r">1,095円</td><td class="r pos">+19%</td><td></td></tr>
+<tr><td>日本紙パルプ商事</td><td><a class="code" href="https://kabutan.jp/stock/?code=8032">8032</a></td><td class="r">約5%</td><td class="r">約834円</td><td class="r">1,247円</td><td class="r pos">+50%</td><td></td></tr>
+</tbody>
+</table></div>
+<p class="note">*村上系のみ取得資金の開示転載が乏しく、取得期間の株価平均による代替推定（誤差大きめ）。フェローテック(6890)は野村絢4.41%・実データで取得約2,357円→現在9,110円(+286%)、利食い中。5%未満の報道ベース保有: テレ朝HD1.86%・近鉄・京阪1.2%・名鉄約2%・あおぞら銀・科研製薬・DeNA(回転売買)ほか多数。</p>
+<h3>村上貴輝（長男）名義</h3>
+<div class="tbl"><table>
+<thead><tr><th>銘柄</th><th>コード</th><th class="r">保有割合</th><th class="r">推定取得単価</th><th class="r">現在株価</th><th class="r">乖離</th><th>報告日</th></tr></thead>
+<tbody>
+<tr><td>メタルアート</td><td><a class="code" href="https://kabutan.jp/stock/?code=5644">5644</a></td><td class="r">22.17%</td><td class="r">約6,211円</td><td class="r">7,390円</td><td class="r pos">+19%</td><td>2026/8/5</td></tr>
+<tr><td>プリモグローバルHD</td><td><a class="code" href="https://kabutan.jp/stock/?code=367A">367A</a></td><td class="r">9.66%</td><td class="r">約2,784円</td><td class="r">2,840円</td><td class="r flat">+2.0%</td><td>2026/7/30</td></tr>
+<tr><td>ADワークスグループ</td><td><a class="code" href="https://kabutan.jp/stock/?code=2982">2982</a></td><td class="r">9.18%</td><td class="r">約406円</td><td class="r">425円</td><td class="r flat">+4.6%</td><td>2026/7/3</td></tr>
+<tr><td>ダイキョーニシカワ</td><td><a class="code" href="https://kabutan.jp/stock/?code=4246">4246</a></td><td class="r">6.06%</td><td class="r">約876円</td><td class="r">1,127円</td><td class="r pos">+29%</td><td>2026/4/23</td></tr>
+</tbody>
+</table></div>
+</section>
+
+<section>
+<h2>④ エフィッシモ・キャピタル・マネージメント（旧村上系）</h2>
+<div class="tbl"><table>
+<thead><tr><th>銘柄</th><th>コード</th><th class="r">保有割合</th><th class="r">推定取得単価</th><th class="r">現在株価</th><th class="r">乖離</th><th>報告日</th></tr></thead>
+<tbody>
+<tr><td>ソフト99コーポレーション</td><td><a class="code" href="https://kabutan.jp/stock/?code=4464">4464</a></td><td class="r">53.15%</td><td class="r">約3,924円</td><td class="r">3,580円</td><td class="r neg">-8.8%</td><td>2026/5/7</td></tr>
+<tr><td>川崎汽船</td><td><a class="code" href="https://kabutan.jp/stock/?code=9107">9107</a></td><td class="r">35.84%</td><td class="r">約266円</td><td class="r">3,030円</td><td class="r pos">+1,041%</td><td>2026/6/9</td></tr>
+<tr><td>サンケン電気</td><td><a class="code" href="https://kabutan.jp/stock/?code=6707">6707</a></td><td class="r">34.37%</td><td class="r">約4,798円</td><td class="r">8,280円</td><td class="r pos">+72.6%</td><td>2026/6/16</td></tr>
+<tr><td>日産車体</td><td><a class="code" href="https://kabutan.jp/stock/?code=7222">7222</a></td><td class="r">29.68%</td><td class="r">約789円</td><td class="r">962円</td><td class="r pos">+21.9%</td><td>2024/9</td></tr>
+<tr><td>不動テトラ</td><td><a class="code" href="https://kabutan.jp/stock/?code=1813">1813</a></td><td class="r">27.28%</td><td class="r">約2,007円</td><td class="r">2,864円</td><td class="r pos">+42.7%</td><td>2026/2</td></tr>
+<tr><td>リコー</td><td><a class="code" href="https://kabutan.jp/stock/?code=7752">7752</a></td><td class="r">24.77%</td><td class="r">約1,248円</td><td class="r">1,678円</td><td class="r pos">+34.5%</td><td>2026/6/15</td></tr>
+<tr><td>UACJ</td><td><a class="code" href="https://kabutan.jp/stock/?code=5741">5741</a></td><td class="r">24.28%</td><td class="r">約810円</td><td class="r">2,407円</td><td class="r pos">+197%</td><td>2026/2</td></tr>
+<tr><td>ライフネット生命</td><td><a class="code" href="https://kabutan.jp/stock/?code=7157">7157</a></td><td class="r">21.13%</td><td class="r">約894円</td><td class="r">1,504円</td><td class="r pos">+68.3%</td><td>2026/4</td></tr>
+<tr><td>関東電化工業</td><td><a class="code" href="https://kabutan.jp/stock/?code=4047">4047</a></td><td class="r">19.83%</td><td class="r">約967円</td><td class="r">2,630円</td><td class="r pos">+172%</td><td>2026/2</td></tr>
+<tr><td>富士紡HD</td><td><a class="code" href="https://kabutan.jp/stock/?code=3104">3104</a></td><td class="r">19.70%</td><td class="r">約1,549円</td><td class="r">3,645円</td><td class="r pos">+135%</td><td>2026/4</td></tr>
+<tr><td>帝人</td><td><a class="code" href="https://kabutan.jp/stock/?code=3401">3401</a></td><td class="r">19.26%</td><td class="r">約1,394円</td><td class="r">1,762円</td><td class="r pos">+26.4%</td><td>2026/4/21買い増し</td></tr>
+<tr><td>タムロン</td><td><a class="code" href="https://kabutan.jp/stock/?code=7740">7740</a></td><td class="r">17.38%</td><td class="r">約507円</td><td class="r">1,434円</td><td class="r pos">+183%</td><td>2026/4</td></tr>
+<tr><td>アイネス</td><td><a class="code" href="https://kabutan.jp/stock/?code=9742">9742</a></td><td class="r">15.76%</td><td class="r">約1,619円</td><td class="r">2,370円</td><td class="r pos">+46.4%</td><td>2026/6/17</td></tr>
+<tr><td>オリエンタル白石</td><td><a class="code" href="https://kabutan.jp/stock/?code=1786">1786</a></td><td class="r">11.85%</td><td class="r">約147円</td><td class="r">353円</td><td class="r pos">+140%</td><td>2026/2</td></tr>
+<tr><td>第一生命HD</td><td><a class="code" href="https://kabutan.jp/stock/?code=8750">8750</a></td><td class="r">10.99%</td><td class="r">約431円</td><td class="r">1,874円</td><td class="r pos">+335%</td><td>2026/2</td></tr>
+<tr><td>コニカミノルタ</td><td><a class="code" href="https://kabutan.jp/stock/?code=4902">4902</a></td><td class="r">10.60%</td><td class="r">約458円</td><td class="r">690.9円</td><td class="r pos">+50.8%</td><td>2026/6/2</td></tr>
+<tr><td>大阪製鐵</td><td><a class="code" href="https://kabutan.jp/stock/?code=5449">5449</a></td><td class="r">6.19%</td><td class="r">約2,372円</td><td class="r">2,705円</td><td class="r pos">+14.0%</td><td>SCも12.37%保有</td></tr>
+</tbody>
+</table></div>
+<p class="note">単価不明(特例報告): 近畿車輛9.75%・バッファロー9.28%・西松屋7.60%・テクノスマート6.60%・ナイガイ5.97%。売却済み: 太平洋工業(MBO 3,036円で現金化)・大平洋金属・セゾンテクノロジー。</p>
+</section>
+
+<section>
+<h2>⑤ ストラテジックキャピタル（丸木強・旧村上系）</h2>
+<div class="tbl"><table>
+<thead><tr><th>銘柄</th><th>コード</th><th class="r">保有割合</th><th class="r">推定取得単価</th><th class="r">現在株価</th><th class="r">乖離</th><th>報告日/メモ</th></tr></thead>
+<tbody>
+<tr><td>KHネオケム</td><td><a class="code" href="https://kabutan.jp/stock/?code=4189">4189</a></td><td class="r">18.24%</td><td class="r">約2,706円</td><td class="r">3,430円</td><td class="r pos">+26.8%</td><td>2026/8/3</td></tr>
+<tr><td>ゴールドクレスト</td><td><a class="code" href="https://kabutan.jp/stock/?code=8871">8871</a></td><td class="r">16.28%</td><td class="r">約2,476円</td><td class="r">3,295円</td><td class="r pos">+33.1%</td><td>買い増し中</td></tr>
+<tr><td>A&amp;DホロンHD</td><td><a class="code" href="https://kabutan.jp/stock/?code=7745">7745</a></td><td class="r">15.72%</td><td class="r">約2,485円</td><td class="r">2,916円</td><td class="r pos">+17.3%</td><td>買い増し中</td></tr>
+<tr><td>ガンホー・オンライン</td><td><a class="code" href="https://kabutan.jp/stock/?code=3765">3765</a></td><td class="r">13.67%</td><td class="r">約2,868円</td><td class="r">2,448円</td><td class="r neg">-14.6%</td><td>非公開化を提案</td></tr>
+<tr><td>山洋電気</td><td><a class="code" href="https://kabutan.jp/stock/?code=6516">6516</a></td><td class="r">13.18%</td><td class="r">約3,081円</td><td class="r">5,900円</td><td class="r pos">+91.5%</td><td>6,500〜7,200円で利食い中</td></tr>
+<tr><td>オリエントコーポレーション</td><td><a class="code" href="https://kabutan.jp/stock/?code=8585">8585</a></td><td class="r">12.80%</td><td class="r">約931円</td><td class="r">874円</td><td class="r neg">-6.1%</td><td>買い増し中</td></tr>
+<tr><td>イエローハット</td><td><a class="code" href="https://kabutan.jp/stock/?code=9882">9882</a></td><td class="r">12.74%</td><td class="r">約1,268円</td><td class="r">1,761円</td><td class="r pos">+38.9%</td><td>売却進行中</td></tr>
+<tr><td>大阪製鐵</td><td><a class="code" href="https://kabutan.jp/stock/?code=5449">5449</a></td><td class="r">12.37%</td><td class="r">約2,381円</td><td class="r">2,705円</td><td class="r pos">+13.6%</td><td>エフィッシモも6.19%</td></tr>
+<tr><td>京阪神ビルディング</td><td><a class="code" href="https://kabutan.jp/stock/?code=8818">8818</a></td><td class="r">9.17%</td><td class="r">約793円</td><td class="r">1,105円</td><td class="r pos">+39.3%</td><td>売却進行中</td></tr>
+<tr><td>ニップン</td><td><a class="code" href="https://kabutan.jp/stock/?code=2001">2001</a></td><td class="r">7.09%</td><td class="r">約2,723円</td><td class="r">2,869円</td><td class="r flat">+5.4%</td><td>8月末までに重要提案予定と明記</td></tr>
+<tr><td>ヨドコウ</td><td><a class="code" href="https://kabutan.jp/stock/?code=5451">5451</a></td><td class="r">5.63%</td><td class="r">約854円</td><td class="r">1,437円</td><td class="r pos">+68.3%</td><td>売却進行中</td></tr>
+<tr><td>ノリタケ</td><td><a class="code" href="https://kabutan.jp/stock/?code=5331">5331</a></td><td class="r">4.36%</td><td class="r">約2,327円</td><td class="r">3,870円</td><td class="r pos">+66.3%</td><td>4,000円超で利食い・5%割れ</td></tr>
+</tbody>
+</table></div>
+<p class="note">EDINET原本PDF確認済で単価の信頼度は6ファンド中最高。売却済み: ゼロ・ダイドーリミテッド。5%未満で株主提案対象: 日本製鉄・日産自動車・日産車体・みずほFG等。</p>
+</section>
+
+<section>
+<h2>⑥ 3Dインベストメント・パートナーズ</h2>
+<div class="tbl"><table>
+<thead><tr><th>銘柄</th><th>コード</th><th class="r">保有割合</th><th class="r">推定取得単価</th><th class="r">現在株価</th><th class="r">乖離</th><th>報告日</th></tr></thead>
+<tbody>
+<tr><td>東邦HD</td><td><a class="code" href="https://kabutan.jp/stock/?code=8129">8129</a></td><td class="r">21.19%</td><td class="r">約4,013円</td><td class="r">3,821円</td><td class="r neg">-4.8%</td><td>2025/8</td></tr>
+<tr><td>サッポロHD</td><td><a class="code" href="https://kabutan.jp/stock/?code=2501">2501</a></td><td class="r">19.44%</td><td class="r">約1,020円(分割調整)</td><td class="r">2,050円</td><td class="r pos">+101%</td><td>不動産分離が実現</td></tr>
+<tr><td>スクウェア・エニックスHD</td><td><a class="code" href="https://kabutan.jp/stock/?code=9684">9684</a></td><td class="r">18.53%</td><td class="r">約2,756円</td><td class="r">2,930.5円</td><td class="r pos">+6.3%</td><td>2026/3/3</td></tr>
+<tr><td>東北新社</td><td><a class="code" href="https://kabutan.jp/stock/?code=2329">2329</a></td><td class="r">17.36%</td><td class="r">約307円</td><td class="r">490円</td><td class="r pos">+59.5%</td><td>2024/11</td></tr>
+<tr><td>西武HD</td><td><a class="code" href="https://kabutan.jp/stock/?code=9024">9024</a></td><td class="r">13.91%</td><td class="r">約2,486円</td><td class="r">3,348円</td><td class="r pos">+34.7%</td><td>2026/7/9</td></tr>
+<tr><td>三井倉庫HD</td><td><a class="code" href="https://kabutan.jp/stock/?code=9302">9302</a></td><td class="r">11.15%</td><td class="r">約2,735円</td><td class="r">3,385円</td><td class="r pos">+23.8%</td><td>2025/9</td></tr>
+<tr><td>ワコールHD</td><td><a class="code" href="https://kabutan.jp/stock/?code=3591">3591</a></td><td class="r">10.77%</td><td class="r">約3,770円</td><td class="r">4,336円</td><td class="r pos">+15.0%</td><td>2024/11</td></tr>
+<tr><td>Jフロント リテイリング</td><td><a class="code" href="https://kabutan.jp/stock/?code=3086">3086</a></td><td class="r">9.23%</td><td class="r">約2,281円</td><td class="r">2,914円</td><td class="r pos">+27.8%</td><td>2026/7/8</td></tr>
+</tbody>
+</table></div>
+<p class="note">他にメディシノバ11.22%・日鉄ソリューションズ・デジタルHD・ジャパンマテリアル・エイベックス・カシオ等(5〜10%圏・単価未取得)。富士ソフトは22.01%→TOB応募で全株売却済。2026年は東宝へ新キャンペーン。</p>
+</section>
+
+<section>
+<h2>⑦ オアシス・マネジメント</h2>
+<div class="tbl"><table>
+<thead><tr><th>銘柄</th><th>コード</th><th class="r">保有割合</th><th class="r">推定取得単価</th><th class="r">現在株価</th><th class="r">乖離</th><th>報告日</th></tr></thead>
+<tbody>
+<tr><td>アインHD</td><td><a class="code" href="https://kabutan.jp/stock/?code=9627">9627</a></td><td class="r">20.93%</td><td class="r">約5,257円</td><td class="r">6,178円</td><td class="r pos">+17.5%</td><td>2026/8/6</td></tr>
+<tr><td>エス・エム・エス</td><td><a class="code" href="https://kabutan.jp/stock/?code=2175">2175</a></td><td class="r">20.31%</td><td class="r">約1,660円</td><td class="r">2,353円</td><td class="r pos">+41.8%</td><td>2026/7/30</td></tr>
+<tr><td>カカクコム</td><td><a class="code" href="https://kabutan.jp/stock/?code=2371">2371</a></td><td class="r">19.52%</td><td class="r">約2,223円</td><td class="r">3,715円</td><td class="r pos">+67.1%</td><td>2026/7/8</td></tr>
+<tr><td>サン電子</td><td><a class="code" href="https://kabutan.jp/stock/?code=6736">6736</a></td><td class="r">18.45%</td><td class="r">約919円</td><td class="r">8,070円</td><td class="r pos">+778%</td><td>Cellebrite関連の大勝ち</td></tr>
+<tr><td>ニッコンHD</td><td><a class="code" href="https://kabutan.jp/stock/?code=9072">9072</a></td><td class="r">17.67%</td><td class="r">約3,751円</td><td class="r">5,386円</td><td class="r pos">+43.6%</td><td>2026/7/29</td></tr>
+<tr><td>プラスアルファ・コンサルティング</td><td><a class="code" href="https://kabutan.jp/stock/?code=4071">4071</a></td><td class="r">16.29%</td><td class="r">約2,369円</td><td class="r">2,224円</td><td class="r neg">-6.1%</td><td>2026/7/22</td></tr>
+<tr><td>KADOKAWA</td><td><a class="code" href="https://kabutan.jp/stock/?code=9468">9468</a></td><td class="r">15.25%</td><td class="r">約3,084円</td><td class="r">3,521円</td><td class="r pos">+14.2%</td><td>2026/6/23</td></tr>
+<tr><td>クスリのアオキHD</td><td><a class="code" href="https://kabutan.jp/stock/?code=3549">3549</a></td><td class="r">14.05%</td><td class="r">約3,048円</td><td class="r">4,035円</td><td class="r pos">+32.4%</td><td>2026/5/13</td></tr>
+<tr><td>小林製薬</td><td><a class="code" href="https://kabutan.jp/stock/?code=4967">4967</a></td><td class="r">13.37%</td><td class="r">約5,459円</td><td class="r">5,566円</td><td class="r flat">+2.0%</td><td>2026/5/13</td></tr>
+<tr><td>花王</td><td><a class="code" href="https://kabutan.jp/stock/?code=4452">4452</a></td><td class="r">12.63%</td><td class="r">約3,087円(分割調整)</td><td class="r">3,533円</td><td class="r pos">+14.4%</td><td>臨時総会請求など攻勢継続</td></tr>
+<tr><td>インターネットイニシアティブ</td><td><a class="code" href="https://kabutan.jp/stock/?code=3774">3774</a></td><td class="r">9.07%</td><td class="r">約2,700円</td><td class="r">3,504円</td><td class="r pos">+29.8%</td><td>2026/7/1</td></tr>
+<tr><td>マネックスグループ</td><td><a class="code" href="https://kabutan.jp/stock/?code=8698">8698</a></td><td class="r">5.15%</td><td class="r">不明</td><td class="r">692円</td><td class="r">—</td><td>2026/6/30新規</td></tr>
+</tbody>
+</table></div>
+<p class="note">5%超投資先は70件超あり上表は主要抜粋。オアシスは現物+デリバティブ併用が常態のため保有割合はスワップ込み。</p>
+</section>
+
+<section>
+<h2>⑧ NAVF/ダルトン（共同保有合算）</h2>
+<div class="tbl"><table>
+<thead><tr><th>銘柄</th><th>コード</th><th class="r">保有割合</th><th class="r">推定取得単価</th><th class="r">現在株価</th><th class="r">乖離</th><th>報告日</th></tr></thead>
+<tbody>
+<tr><td>栄研化学</td><td><a class="code" href="https://kabutan.jp/stock/?code=4549">4549</a></td><td class="r">31.01%</td><td class="r">約2,004円</td><td class="r">2,287円</td><td class="r pos">+14.2%</td><td>2026/7/24</td></tr>
+<tr><td>ヘリオステクノHD</td><td><a class="code" href="https://kabutan.jp/stock/?code=6927">6927</a></td><td class="r">28.74%</td><td class="r">約884円</td><td class="r">969円</td><td class="r pos">+9.6%</td><td>2026/4/8</td></tr>
+<tr><td>あすか製薬HD</td><td><a class="code" href="https://kabutan.jp/stock/?code=4886">4886</a></td><td class="r">21.32%</td><td class="r">約1,995円</td><td class="r">2,111円</td><td class="r flat">+5.8%</td><td>2026/4/8</td></tr>
+<tr><td>文化シヤッター</td><td><a class="code" href="https://kabutan.jp/stock/?code=5930">5930</a></td><td class="r">18.97%</td><td class="r">約1,544円</td><td class="r">1,847円</td><td class="r pos">+19.6%</td><td>2026/7/24</td></tr>
+<tr><td>明星工業</td><td><a class="code" href="https://kabutan.jp/stock/?code=1976">1976</a></td><td class="r">13.61%</td><td class="r">約1,276円</td><td class="r">1,875円</td><td class="r pos">+46.9%</td><td>2026/8/12</td></tr>
+<tr><td>ザ・パック</td><td><a class="code" href="https://kabutan.jp/stock/?code=3950">3950</a></td><td class="r">10.08%</td><td class="r">約1,242円</td><td class="r">1,467円</td><td class="r pos">+18.1%</td><td>2026/7/2</td></tr>
+</tbody>
+</table></div>
+<p class="note">他に那須電機鉄工・インテージHD(2026/7新規)等、計40銘柄超に分散。NAVFは2026/4時点で現金15%とやや守備的。</p>
+</section>
+
+<section>
+<h2>⑨ データの読み方・注意</h2>
+<ul>
+<li><b>推定平均取得単価</b>は大量保有報告書の「取得資金÷保有株数」の機械計算（借入・デリバティブ含む概算）。株式分割は主要銘柄のみ調整済。<b>村上系だけは取得資金の転載が乏しく、取得期間の株価平均による代替推定</b>で誤差±10〜20%。</li>
+<li>保有割合は最新報告書時点の値。報告日以降の±1%未満の増減や5%割れ売却は捕捉できない。村上系はDeNAのように数週間で5%を跨ぐ回転売買をするため鮮度に特に注意。</li>
+<li>取得単価割れ＝アクティビストが失敗した銘柄ではなく、「彼らのコスト以下で相乗りできる」状態。ただしガンホー・オリコ・東邦HDのように<b>キャンペーンが長期化して市場が織り込みを剥落させたケース</b>でもあり、カタリスト(提案・TOB・総会)の時期を確認してから判断すること。</li>
+<li>2025-26年は日経平均66,000円台の強気相場。含み益の大半は市場全体の上昇要因を含む。</li>
+</ul>
+</section>
+
+</div>
+<footer>作成 2026/8/15 ・ 出典: EDINET大量保有報告書(IRBANK/ufocatch/M&amp;A Online経由)、日経・Bloomberg・株探ほか ・ 株価は2026/8/14終値(Yahoo Finance)</footer>
+</body>
+</html>
