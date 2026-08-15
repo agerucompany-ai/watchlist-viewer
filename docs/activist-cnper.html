@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>アクティビスト銘柄CNPER分析</title>
+<style>
+:root{--bg:#0d1117;--bg2:#161b22;--bg3:#21262d;--border:#30363d;--text:#c9d1d9;
+  --muted:#8b949e;--blue:#58a6ff;--green:#3fb950;--red:#f85149;--gold:#d29922;--orange:#FFA500;--purple:#a371f7}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Hiragino Sans",sans-serif;
+  background:var(--bg);color:var(--text);font-size:13px;-webkit-text-size-adjust:100%;line-height:1.6}
+header{background:var(--bg2);padding:10px 14px;border-bottom:1px solid var(--border);
+  position:sticky;top:0;z-index:10;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+header h1{font-size:15px;color:var(--gold)}
+header .meta{font-size:11px;color:var(--muted)}
+header a.back{background:var(--bg3);color:var(--blue);padding:4px 10px;border-radius:5px;
+  font-size:11px;text-decoration:none;font-weight:600;border:1px solid var(--border);white-space:nowrap}
+.wrap{max-width:1280px;margin:0 auto;padding:14px}
+h2{font-size:14px;color:var(--blue);border-left:3px solid var(--blue);padding-left:8px;margin-bottom:8px}
+p.note{font-size:11px;color:var(--muted);margin:4px 0 10px}
+.tbl{overflow-x:auto;border:1px solid var(--border);border-radius:6px}
+table{width:100%;border-collapse:collapse;min-width:1150px}
+th{background:var(--bg3);color:var(--muted);font-size:11px;padding:6px 8px;text-align:left;white-space:nowrap;position:sticky;top:0}
+td{padding:5px 8px;border-top:1px solid var(--border);font-size:12px;white-space:nowrap}
+tr:nth-child(even){background:var(--bg2)}
+tr.hitrow td:first-child{border-left:3px solid var(--gold)}
+td.r,th.r{text-align:right}
+.neg{color:var(--red);font-weight:600}
+.pos{color:var(--green)}
+.flat{color:var(--orange)}
+.fund{font-size:11px;color:var(--purple)}
+.muted2{color:var(--muted)}
+a.code{color:var(--blue);text-decoration:none}
+.badge{display:inline-block;padding:1px 6px;border-radius:4px;font-size:10px;font-weight:700;margin-right:4px}
+.b-red{background:var(--red);color:#000}
+.b-org{background:var(--orange);color:#000}
+.b-grn{background:#FFFFCC;color:#333}
+.b-gold{background:#FFD700;color:#000}
+.cnper-hit{color:var(--green);font-weight:700}
+td.memo{white-space:normal;min-width:220px;max-width:340px;font-size:11px;color:var(--muted);line-height:1.4}
+footer{padding:14px;font-size:11px;color:var(--muted);border-top:1px solid var(--border);margin-top:20px}
+</style>
+</head>
+<body>
+<header>
+  <a class="back" href="activist.html">← アクティビスト保有マップ</a>
+  <h1>アクティビスト銘柄CNPER分析</h1>
+  <span class="meta">株価: 2026/08/14終値 ・ 作成: 2026/08/15 14:06 ・ J-Quants財務データ</span>
+</header>
+<div class="wrap">
+
+<h2>取得単価+20%以内の30銘柄 × ウォッチリスト基準CNPER判定（CNPER昇順）</h2>
+<p class="note">
+CNPER＝PER×(1−ネットキャッシュ比率)。NC＝流動資産＋投資有価証券×70%−負債合計。四半期純利益は年換算してPERを算出。
+<span class="cnper-hit">CNPER≤10</span>がウォッチリストの割安基準（左端に金線）。
+判定: <span class="badge b-gold">☆ 連増益+50%成長</span><span class="badge b-org">◎ 50%成長</span><span class="badge b-grn">○ 連増益</span>（いずれもCNPER≤10が前提）。
+<span class="badge b-red">割れ</span>=アクティビスト推定取得単価未満、<span class="badge b-org">圏内</span>=取得単価+20%以内。
+東北新社は乖離+59.5%で基準外だが個別依頼により掲載。
+</p>
+<div class="tbl"><table>
+<thead><tr>
+<th></th><th>銘柄</th><th>コード</th><th>ファンド(保有割合)</th>
+<th class="r">推定取得単価</th><th class="r">現在株価</th><th class="r">乖離</th>
+<th class="r">時価総額</th><th class="r">PER</th><th class="r">CNPER</th><th class="r">NC比率</th>
+<th class="r">連続増益</th><th>判定</th><th>一言(業績トレンド)</th>
+</tr></thead>
+<tbody>
+<tr class="hitrow"><td><span class="badge b-red">割れ</span></td><td>ガンホー・オンライン・エンターテイメント</td><td><a class="code" href="https://kabutan.jp/stock/?code=3765" target="_blank">3765</a></td><td class="fund">ストラテジックC 13.7%</td><td class="r">約2,868円</td><td class="r">2,448円</td><td class="r neg">-14.6%</td><td class="r">1,301億円</td><td class="r">18.8</td><td class="r cnper-hit">0.4</td><td class="r pos">98.1%</td><td class="r">1</td><td></td><td class="memo">2Q営利+27%・売上+2%</td></tr>
+<tr class="hitrow"><td><span class="badge b-org">圏内</span></td><td>ADワークスグループ</td><td><a class="code" href="https://kabutan.jp/stock/?code=2982" target="_blank">2982</a></td><td class="fund">村上貴輝 9.2%</td><td class="r">約406円</td><td class="r">425円</td><td class="r flat">+4.7%</td><td class="r">215億円</td><td class="r">4.6</td><td class="r cnper-hit">2.9</td><td class="r pos">36.1%</td><td class="r">0</td><td></td><td class="memo">2Q営利-15%・売上-12%</td></tr>
+<tr class="hitrow"><td><span class="badge b-org">圏内</span></td><td>メタルアート</td><td><a class="code" href="https://kabutan.jp/stock/?code=5644" target="_blank">5644</a></td><td class="fund">村上貴輝 22.2%</td><td class="r">約6,211円</td><td class="r">7,390円</td><td class="r pos">+19.0%</td><td class="r">233億円</td><td class="r">13.0</td><td class="r cnper-hit">7.9</td><td class="r pos">39.0%</td><td class="r">2</td><td><span class="badge b-gold">☆ 連増益+50%成長</span></td><td class="memo">1Q営利+66%・売上+2%・増益2期連続</td></tr>
+<tr class="hitrow"><td><span class="badge b-org">圏内</span></td><td>三菱製紙</td><td><a class="code" href="https://kabutan.jp/stock/?code=3864" target="_blank">3864</a></td><td class="fund">村上系 6.1%</td><td class="r">約1,069円</td><td class="r">1,152円</td><td class="r pos">+7.8%</td><td class="r">515億円</td><td class="r">6.0</td><td class="r cnper-hit">8.6</td><td class="r neg">-43.4%</td><td class="r">1</td><td><span class="badge b-org">◎ 50%成長</span></td><td class="memo">1Q営利+132%・売上-2%</td></tr>
+<tr class="hitrow"><td><span class="badge b-org">圏内</span></td><td>ニップン</td><td><a class="code" href="https://kabutan.jp/stock/?code=2001" target="_blank">2001</a></td><td class="fund">ストラテジックC 7.1%</td><td class="r">約2,723円</td><td class="r">2,869円</td><td class="r flat">+5.4%</td><td class="r">2,431億円</td><td class="r">14.2</td><td class="r cnper-hit">9.8</td><td class="r pos">31.1%</td><td class="r">0</td><td></td><td class="memo">1Q営利-22%・売上+3%</td></tr>
+<tr><td><span class="badge b-org">圏内</span></td><td>あすか製薬HD</td><td><a class="code" href="https://kabutan.jp/stock/?code=4886" target="_blank">4886</a></td><td class="fund">NAVF 21.3%</td><td class="r">約1,995円</td><td class="r">2,111円</td><td class="r flat">+5.8%</td><td class="r">607億円</td><td class="r">28.5</td><td class="r">10.3</td><td class="r pos">64.0%</td><td class="r">0</td><td></td><td class="memo">1Q営利-52%・売上-10%</td></tr>
+<tr><td><span class="badge b-org">圏内</span></td><td>ザ・パック</td><td><a class="code" href="https://kabutan.jp/stock/?code=3950" target="_blank">3950</a></td><td class="fund">NAVF 10.1%</td><td class="r">約1,242円</td><td class="r">1,467円</td><td class="r pos">+18.1%</td><td class="r">876億円</td><td class="r">21.5</td><td class="r">12.6</td><td class="r pos">41.2%</td><td class="r">1</td><td></td><td class="memo">2Q営利+4%・売上+6%</td></tr>
+<tr><td><span class="badge b-org">圏内</span></td><td>ヘリオステクノHD</td><td><a class="code" href="https://kabutan.jp/stock/?code=6927" target="_blank">6927</a></td><td class="fund">NAVF 28.7%</td><td class="r">約884円</td><td class="r">969円</td><td class="r pos">+9.6%</td><td class="r">221億円</td><td class="r">30.7</td><td class="r">14.4</td><td class="r pos">53.0%</td><td class="r">1</td><td></td><td class="memo">1Q営利+528%・売上+74%</td></tr>
+<tr><td><span class="badge b-org">圏内</span></td><td>スクウェア・エニックスHD</td><td><a class="code" href="https://kabutan.jp/stock/?code=9684" target="_blank">9684</a></td><td class="fund">3D 18.5%</td><td class="r">約2,756円</td><td class="r">2,930.5円</td><td class="r pos">+6.3%</td><td class="r">1.1兆円</td><td class="r">20.3</td><td class="r">14.9</td><td class="r ">26.7%</td><td class="r">1</td><td></td><td class="memo">1Q営利+89%・売上+32%</td></tr>
+<tr><td><span class="badge b-red">割れ</span></td><td>プラスアルファ・コンサルティング</td><td><a class="code" href="https://kabutan.jp/stock/?code=4071" target="_blank">4071</a></td><td class="fund">オアシス 16.3%</td><td class="r">約2,369円</td><td class="r">2,224円</td><td class="r neg">-6.1%</td><td class="r">943億円</td><td class="r">19.3</td><td class="r">16.1</td><td class="r ">16.4%</td><td class="r">5</td><td></td><td class="memo">3Q営利+21%・売上+12%・増益5期連続</td></tr>
+<tr><td><span class="badge b-org">圏内</span></td><td>プリモグローバルHD</td><td><a class="code" href="https://kabutan.jp/stock/?code=367A" target="_blank">367A</a></td><td class="fund">村上貴輝 9.7%</td><td class="r">約2,784円</td><td class="r">2,840円</td><td class="r flat">+2.0%</td><td class="r">248億円</td><td class="r">10.6</td><td class="r">17.7</td><td class="r neg">-66.8%</td><td class="r">1</td><td></td><td class="memo">3Q営利+18%・売上+14%</td></tr>
+<tr><td><span class="badge b-org">圏内</span></td><td>ヤマダHD</td><td><a class="code" href="https://kabutan.jp/stock/?code=9831" target="_blank">9831</a></td><td class="fund">村上系 6.3%</td><td class="r">約641円</td><td class="r">692.9円</td><td class="r pos">+8.1%</td><td class="r">6,699億円</td><td class="r">16.8</td><td class="r">18.0</td><td class="r neg">-7.5%</td><td class="r">1</td><td></td><td class="memo">1Q営利+17%・売上+11%</td></tr>
+<tr><td><span class="badge b-red">割れ</span></td><td>東邦HD</td><td><a class="code" href="https://kabutan.jp/stock/?code=8129" target="_blank">8129</a></td><td class="fund">3D 21.2%</td><td class="r">約4,013円</td><td class="r">3,821円</td><td class="r neg">-4.8%</td><td class="r">2,790億円</td><td class="r">29.6</td><td class="r">19.2</td><td class="r pos">35.1%</td><td class="r">0</td><td></td><td class="memo">1Q営利-36%・売上+6%</td></tr>
+<tr><td><span class="badge" style="background:var(--purple);color:#000">基準外</span></td><td>東北新社</td><td><a class="code" href="https://kabutan.jp/stock/?code=2329" target="_blank">2329</a></td><td class="fund">3D 17.4%</td><td class="r">約307円</td><td class="r">490円</td><td class="r pos">+59.6%</td><td class="r">687億円</td><td class="r">61.6</td><td class="r">21.3</td><td class="r pos">65.5%</td><td class="r">0</td><td></td><td class="memo">1Q営利-48%・売上+6%・基準外(+59.5%)・個別依頼銘柄</td></tr>
+<tr><td><span class="badge b-org">圏内</span></td><td>アインHD</td><td><a class="code" href="https://kabutan.jp/stock/?code=9627" target="_blank">9627</a></td><td class="fund">オアシス 20.9%</td><td class="r">約5,257円</td><td class="r">6,178円</td><td class="r pos">+17.5%</td><td class="r">2,189億円</td><td class="r">12.7</td><td class="r">22.8</td><td class="r neg">-79.5%</td><td class="r">1</td><td></td><td class="memo">FY営利+77%・売上+42%</td></tr>
+<tr><td><span class="badge b-org">圏内</span></td><td>花王</td><td><a class="code" href="https://kabutan.jp/stock/?code=4452" target="_blank">4452</a></td><td class="fund">オアシス 12.6%</td><td class="r">約3,087円</td><td class="r">3,533円</td><td class="r pos">+14.4%</td><td class="r">3.2兆円</td><td class="r">24.4</td><td class="r">23.0</td><td class="r ">5.9%</td><td class="r">3</td><td></td><td class="memo">2Q営利+38%・売上+8%・増益3期連続</td></tr>
+<tr><td><span class="badge b-org">圏内</span></td><td>エア・ウォーター</td><td><a class="code" href="https://kabutan.jp/stock/?code=4088" target="_blank">4088</a></td><td class="fund">村上系 5.7%</td><td class="r">約2,214円</td><td class="r">2,534円</td><td class="r pos">+14.5%</td><td class="r">5,822億円</td><td class="r">15.5</td><td class="r">23.9</td><td class="r neg">-54.0%</td><td class="r">1</td><td></td><td class="memo">1Q営利-5%・売上-6%</td></tr>
+<tr><td><span class="badge b-org">圏内</span></td><td>A&amp;DホロンHD</td><td><a class="code" href="https://kabutan.jp/stock/?code=7745" target="_blank">7745</a></td><td class="fund">ストラテジックC 15.7%</td><td class="r">約2,485円</td><td class="r">2,916円</td><td class="r pos">+17.3%</td><td class="r">812億円</td><td class="r">47.0</td><td class="r">29.7</td><td class="r pos">36.9%</td><td class="r">0</td><td></td><td class="memo">1Q営利-53%・売上-1%</td></tr>
+<tr><td><span class="badge b-org">圏内</span></td><td>ワコールHD</td><td><a class="code" href="https://kabutan.jp/stock/?code=3591" target="_blank">3591</a></td><td class="fund">3D 10.8%</td><td class="r">約3,770円</td><td class="r">4,336円</td><td class="r pos">+15.0%</td><td class="r">2,276億円</td><td class="r">36.6</td><td class="r">31.0</td><td class="r ">15.3%</td><td class="r">0</td><td></td><td class="memo">1Q営利-91%・売上+9%</td></tr>
+<tr><td><span class="badge b-org">圏内</span></td><td>KPPグループHD</td><td><a class="code" href="https://kabutan.jp/stock/?code=9274" target="_blank">9274</a></td><td class="fund">村上系 5.0%</td><td class="r">約921円</td><td class="r">1,095円</td><td class="r pos">+18.9%</td><td class="r">736億円</td><td class="r">18.2</td><td class="r">31.5</td><td class="r neg">-73.0%</td><td class="r">0</td><td></td><td class="memo">1Q営利-7%・売上+7%</td></tr>
+<tr><td><span class="badge b-org">圏内</span></td><td>栄研化学</td><td><a class="code" href="https://kabutan.jp/stock/?code=4549" target="_blank">4549</a></td><td class="fund">NAVF 31.0%</td><td class="r">約2,004円</td><td class="r">2,287円</td><td class="r pos">+14.1%</td><td class="r">790億円</td><td class="r">44.4</td><td class="r">36.9</td><td class="r ">16.8%</td><td class="r">0</td><td></td><td class="memo">1Q営利-17%・売上+5%</td></tr>
+<tr><td><span class="badge b-org">圏内</span></td><td>京浜急行電鉄</td><td><a class="code" href="https://kabutan.jp/stock/?code=9006" target="_blank">9006</a></td><td class="fund">村上系 9.1%</td><td class="r">約1,486円</td><td class="r">1,518.5円</td><td class="r flat">+2.2%</td><td class="r">4,187億円</td><td class="r">22.2</td><td class="r">47.4</td><td class="r neg">-113.5%</td><td class="r">0</td><td></td><td class="memo">1Q営利-9%・売上+2%</td></tr>
+<tr><td><span class="badge b-org">圏内</span></td><td>平和不動産</td><td><a class="code" href="https://kabutan.jp/stock/?code=8803" target="_blank">8803</a></td><td class="fund">村上系 8.3%</td><td class="r">約2,156円</td><td class="r">2,357円</td><td class="r pos">+9.3%</td><td class="r">1,674億円</td><td class="r">25.9</td><td class="r">57.5</td><td class="r neg">-122.5%</td><td class="r">0</td><td></td><td class="memo">1Q営利-19%・売上-16%</td></tr>
+<tr><td><span class="badge b-red">割れ</span></td><td>オリエントコーポレーション</td><td><a class="code" href="https://kabutan.jp/stock/?code=8585" target="_blank">8585</a></td><td class="fund">ストラテジックC 12.8%</td><td class="r">約931円</td><td class="r">874円</td><td class="r neg">-6.1%</td><td class="r">1,502億円</td><td class="r">66.7</td><td class="r">88.7</td><td class="r neg">-32.9%</td><td class="r">0</td><td></td><td class="memo">1Q営利-58%・売上-7%</td></tr>
+<tr><td><span class="badge b-org">圏内</span></td><td>小林製薬</td><td><a class="code" href="https://kabutan.jp/stock/?code=4967" target="_blank">4967</a></td><td class="fund">オアシス 13.4%</td><td class="r">約5,459円</td><td class="r">5,566円</td><td class="r flat">+2.0%</td><td class="r">4,344億円</td><td class="r">191.2</td><td class="r">145.4</td><td class="r ">24.0%</td><td class="r">0</td><td></td><td class="memo">2Q営利-67%・売上+3%</td></tr>
+<tr><td><span class="badge b-org">圏内</span></td><td>日本製紙</td><td><a class="code" href="https://kabutan.jp/stock/?code=3863" target="_blank">3863</a></td><td class="fund">村上系 8.7%</td><td class="r">約1,319円</td><td class="r">1,420円</td><td class="r pos">+7.7%</td><td class="r">1,651億円</td><td class="r">-</td><td class="r muted2">-</td><td class="r neg">-259.6%</td><td class="r">0</td><td></td><td class="memo">1Q営利-47%・売上+7%・直近純利益赤字→PER/CNPER算出不可</td></tr>
+<tr><td><span class="badge b-org">圏内</span></td><td>大阪製鐵</td><td><a class="code" href="https://kabutan.jp/stock/?code=5449" target="_blank">5449</a></td><td class="fund">SC 12.4%+エフィッシモ6.2%</td><td class="r">約2,381円</td><td class="r">2,705円</td><td class="r pos">+13.6%</td><td class="r">1,144億円</td><td class="r">-</td><td class="r muted2">-</td><td class="r pos">35.6%</td><td class="r">1</td><td></td><td class="memo">1Q営利+62%・売上-10%・直近純利益赤字→PER/CNPER算出不可</td></tr>
+<tr><td><span class="badge b-org">圏内</span></td><td>KADOKAWA</td><td><a class="code" href="https://kabutan.jp/stock/?code=9468" target="_blank">9468</a></td><td class="fund">オアシス 15.3%</td><td class="r">約3,084円</td><td class="r">3,521円</td><td class="r pos">+14.2%</td><td class="r">5,246億円</td><td class="r">-</td><td class="r muted2">-</td><td class="r ">29.1%</td><td class="r">0</td><td></td><td class="memo">1Q営利-45%・売上+5%・直近純利益赤字→PER/CNPER算出不可</td></tr>
+<tr><td><span class="badge b-org">圏内</span></td><td>文化シヤッター</td><td><a class="code" href="https://kabutan.jp/stock/?code=5930" target="_blank">5930</a></td><td class="fund">NAVF 19.0%</td><td class="r">約1,544円</td><td class="r">1,847円</td><td class="r pos">+19.6%</td><td class="r">1,333億円</td><td class="r">-</td><td class="r muted2">-</td><td class="r pos">32.0%</td><td class="r">0</td><td></td><td class="memo">1Q営業赤字転落・売上+3%・直近純利益赤字→PER/CNPER算出不可</td></tr>
+<tr><td><span class="badge" style="background:var(--muted);color:#000">REIT</span></td><td>サンケイリアルエステート</td><td><a class="code" href="https://kabutan.jp/stock/?code=2972" target="_blank">2972</a></td><td class="fund">村上系 19.4%</td><td class="r">約98,800円</td><td class="r">112,300円</td><td class="r pos">+13.7%</td><td class="r">525億円</td><td class="r">-</td><td class="r muted2">-</td><td class="r neg">-83.0%</td><td class="r">0</td><td></td><td class="memo">REIT(不動産投資法人)・事業会社と財務体系が異なるためCNPER対象外</td></tr>
+</tbody>
+</table></div>
+<p class="note">PER「-」は直近純利益が赤字またはデータなしでCNPER算出不可。REITの2972サンケイリアルエステートは財務体系が異なるため対象外として末尾に掲載。</p>
+
+</div>
+<footer>データ: J-Quants API（財務・株価）・大量保有報告書(EDINET)ベースの推定取得単価。CNPER・判定はウォッチリスト(watchlist_updater)と同一ロジック。投資判断は自己責任で。</footer>
+</body>
+</html>
