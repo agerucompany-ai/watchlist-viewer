@@ -44,6 +44,10 @@ ul{padding-left:18px}
 li{margin-bottom:4px;font-size:12px}
 .small{font-size:11px;color:var(--muted)}
 footer{padding:14px;font-size:11px;color:var(--muted);border-top:1px solid var(--border);margin-top:20px}
+details{margin:8px 0}
+details summary{cursor:pointer;color:var(--blue);font-size:12px;padding:6px 10px;background:var(--bg3);
+  border:1px solid var(--border);border-radius:6px;user-select:none}
+details[open] summary{border-radius:6px 6px 0 0}
 </style>
 </head>
 <body>
@@ -185,7 +189,7 @@ HFM APAC Awards 2025受賞・R&Iファンド大賞2026優秀賞。主力12銘柄
 <tr><td>東邦HD</td><td><a class="code" href="https://kabutan.jp/stock/?code=8129">8129</a></td><td class="r">21.19%</td><td class="r">約4,013円</td><td class="r">3,821円</td><td class="r neg">-4.8%</td><td>2025/8</td></tr>
 <tr><td>サッポロHD</td><td><a class="code" href="https://kabutan.jp/stock/?code=2501">2501</a></td><td class="r">19.44%</td><td class="r">約1,020円(分割調整)</td><td class="r">2,050円</td><td class="r pos">+101%</td><td>不動産分離が実現</td></tr>
 <tr><td>スクウェア・エニックスHD</td><td><a class="code" href="https://kabutan.jp/stock/?code=9684">9684</a></td><td class="r">18.53%</td><td class="r">約2,756円</td><td class="r">2,930.5円</td><td class="r pos">+6.3%</td><td>2026/3/3</td></tr>
-<tr><td>東北新社</td><td><a class="code" href="https://kabutan.jp/stock/?code=2329">2329</a></td><td class="r">17.36%</td><td class="r">約307円</td><td class="r">490円</td><td class="r pos">+59.5%</td><td>2024/11</td></tr>
+<tr><td>東北新社</td><td><a class="code" href="https://kabutan.jp/stock/?code=2329">2329</a></td><td class="r">17.36%</td><td class="r">約307円</td><td class="r">490円</td><td class="r pos">+59.5%</td><td>8/14の1Q減益(営業-48%)で年初来安値・通期予想非開示。3Dは17.36%維持(2024/11以降変更なし)だが買収提案拒否後2年膠着。NC411億=時価総額の6割・利回り5.5%</td></tr>
 <tr><td>西武HD</td><td><a class="code" href="https://kabutan.jp/stock/?code=9024">9024</a></td><td class="r">13.91%</td><td class="r">約2,486円</td><td class="r">3,348円</td><td class="r pos">+34.7%</td><td>2026/7/9</td></tr>
 <tr><td>三井倉庫HD</td><td><a class="code" href="https://kabutan.jp/stock/?code=9302">9302</a></td><td class="r">11.15%</td><td class="r">約2,735円</td><td class="r">3,385円</td><td class="r pos">+23.8%</td><td>2025/9</td></tr>
 <tr><td>ワコールHD</td><td><a class="code" href="https://kabutan.jp/stock/?code=3591">3591</a></td><td class="r">10.77%</td><td class="r">約3,770円</td><td class="r">4,336円</td><td class="r pos">+15.0%</td><td>2024/11</td></tr>
@@ -234,7 +238,177 @@ HFM APAC Awards 2025受賞・R&Iファンド大賞2026優秀賞。主力12銘柄
 </section>
 
 <section>
-<h2>⑨ データの読み方・注意</h2>
+<h2>⑨ ファンド別エグジット実績・年次推移（2020〜2026/8）</h2>
+<p class="note">大量保有報告書の履歴から「5%割れ・全部売却・TOB応募・上場廃止」をエグジットとして抽出し、案件別リターンを推定。リターンは配当除きのキャピタルのみ(実質は上振れ)。年率=(1+R)^(12/保有月数)-1。</p>
+
+<h3>年次推移マトリクス（エグジット年ベースの平均リターン、括弧内は件数）</h3>
+<div class="tbl"><table>
+<thead><tr><th>年</th><th class="r">村上系</th><th class="r">エフィッシモ</th><th class="r">ストラテジックC</th><th class="r">3D</th><th class="r">オアシス</th><th class="r">NAVF(公表NAV・£)</th></tr></thead>
+<tbody>
+<tr><td>2020</td><td class="r neg">-8% (3)</td><td class="r pos">+36% (2)</td><td class="r">—</td><td class="r">—</td><td class="r pos">+39% (1)</td><td class="r pos">+5.5%</td></tr>
+<tr><td>2021</td><td class="r pos">+26% (4)</td><td class="r pos">+49% (1)</td><td class="r">—</td><td class="r">—</td><td class="r pos">+53% (2)</td><td class="r pos">+22.3%</td></tr>
+<tr><td>2022</td><td class="r pos">+31% (7)</td><td class="r">—</td><td class="r pos">+19% (1)</td><td class="r">—</td><td class="r">—</td><td class="r pos">+3.5%</td></tr>
+<tr><td>2023</td><td class="r pos">+31% (8)</td><td class="r pos">+110% (1)</td><td class="r pos">+48% (3)</td><td class="r pos">+32% (1)</td><td class="r">—</td><td class="r pos">+23.1%</td></tr>
+<tr><td>2024</td><td class="r pos">+21% (8)</td><td class="r">—</td><td class="r pos">+96% (5)</td><td class="r pos">+87% (3)</td><td class="r pos">+16% (1)</td><td class="r pos">+15.2%</td></tr>
+<tr><td>2025</td><td class="r pos">+16% (11)</td><td class="r pos">+74% (1)</td><td class="r pos">+40% (2)</td><td class="r">—</td><td class="r pos">+41% (3)</td><td class="r pos">+17.4%</td></tr>
+<tr><td>2026(〜8月)</td><td class="r pos">+56% (9)</td><td class="r pos">+10% (1)</td><td class="r pos">+8% (1)</td><td class="r">—</td><td class="r pos">+70% (1)</td><td class="r pos">約+9% YTD</td></tr>
+</tbody>
+</table></div>
+
+<h3>通算サマリー（1銘柄あたりのパフォーマンス・保有期間・年率）</h3>
+<div class="tbl"><table>
+<thead><tr><th>ファンド</th><th class="r">件数</th><th class="r">勝率</th><th class="r">平均リターン</th><th class="r">平均保有月数</th><th class="r">年率目安</th><th>スタイル</th></tr></thead>
+<tbody>
+<tr><td class="fund">村上系</td><td class="r">50</td><td class="r">92% (46勝3敗1分)</td><td class="r pos">+28% (中央値+25%)</td><td class="r">15.2ヶ月</td><td class="r">年率中央値 約+22%</td><td>短期回転型。2024年以降は平均12ヶ月前後に高速化。負けはレオパレス-41%/大平洋金属-45%/三井住友建設-19%の3件のみ</td></tr>
+<tr><td class="fund">エフィッシモ</td><td class="r">6</td><td class="r">83%</td><td class="r pos">+53%</td><td class="r">45ヶ月</td><td class="r">約+13%</td><td>超長期集中型。東芝+110%(77ヶ月)・ニチイ学館+76%(71ヶ月)。直近は大平洋金属+74%/20ヶ月と回転が速まる傾向</td></tr>
+<tr><td class="fund">ストラテジックキャピタル</td><td class="r">12</td><td class="r">100%</td><td class="r pos">+61%</td><td class="r">42ヶ月</td><td class="r">約+20%</td><td>中長期・株主提案型。高配当化を要求するため実質リターンはさらに上。2024年が突出(5件・平均+96%)</td></tr>
+<tr><td class="fund">3Dインベストメント</td><td class="r">4</td><td class="r">100%</td><td class="r pos">+73%</td><td class="r">28ヶ月</td><td class="r">約+29%</td><td>大型集中・M&A誘発型。富士ソフト+203%(35ヶ月)が代表。継続保有14銘柄が多く母数は少ない</td></tr>
+<tr><td class="fund">オアシス</td><td class="r">8</td><td class="r">100%</td><td class="r pos">+45%</td><td class="r">27ヶ月</td><td class="r">約+29%</td><td>TOB局面の回収巧者。フジテック+57%・トプコン+50〜65%/8ヶ月・東京ドーム+41%。マクロミルのようなTOBアーブも</td></tr>
+<tr><td class="fund">NAVF/ダルトン</td><td class="r">—</td><td class="r">—</td><td class="r pos">設定来NAV+157.2%</td><td class="r">—</td><td class="r">年率約+17%(£)</td><td>唯一の公表リターン(2020/2設定)。2022〜24年は円安寄与大で円建て実力は各年5〜10pt低い</td></tr>
+</tbody>
+</table></div>
+<p class="note">3D・オアシスの「勝率100%」は主要案件ベース。irbankの投資先一覧には非表示分(3Dで13件・オアシスで65件)があり、小型の損切り案件が隠れている可能性がある。村上系のみ全5名義の報告履歴1,446件を悉皆調査した50件で、勝率92%が最も実態に近い。</p>
+
+<h3>村上系のエグジット4類型（出口の読み方）</h3>
+<ul>
+<li><b>① 自己株TOB応募型</b>(西松建設・大豊建設・ジャフコ・三井松島・パイオラックス): 確実だがリターン控えめ。年率+8〜26%</li>
+<li><b>② 還元発表直後の市場売り抜け型</b>(愛知製鋼・フジ・メディア・髙島屋・クレハ): 年率が最も高い。発表翌日〜数週間で売る</li>
+<li><b>③ 第三者TOB便乗型</b>(島忠・JSR・グローセル・マンダム+114%・三井住建道路): TOB合戦・価格引き上げの鞘取り</li>
+<li><b>④ 解体型</b>(日本アジアグループ・養命酒製造): 自ら買収して非公開化→資産切り売り。少数株主は相乗り不可</li>
+</ul>
+
+<details><summary>村上系 全50案件の明細（2020〜2026/8）</summary>
+<div class="tbl"><table>
+<thead><tr><th>銘柄</th><th>コード</th><th>エグジット</th><th class="r">保有月</th><th class="r">取得→売却(推定)</th><th class="r">リターン</th><th class="r">年率</th><th>備考</th></tr></thead>
+<tbody>
+<tr><td>芝浦機械</td><td>6104</td><td>2020/12</td><td class="r">24</td><td class="r">~2,300→~2,400円</td><td class="r flat">~+3%</td><td class="r">+1.5%</td><td>TOB撤回後に市場売却</td></tr>
+<tr><td>レオパレス21</td><td>8848</td><td>2020/10-12</td><td class="r">19</td><td class="r">~270→~160円</td><td class="r neg">~-41%</td><td class="r neg">-28%</td><td>最大級の失敗・損切り</td></tr>
+<tr><td>島忠</td><td>8184</td><td>2020/11</td><td class="r">1</td><td class="r">~4,850→~5,500円</td><td class="r pos">~+13%</td><td class="r">超短期</td><td>TOB合戦の鞘取り</td></tr>
+<tr><td>フージャースHD</td><td>3284</td><td>2021/03</td><td class="r">21</td><td class="r">~620→684円</td><td class="r pos">~+10%</td><td class="r">+6%</td><td>自己株TOB応募</td></tr>
+<tr><td>三信電気</td><td>8150</td><td>2021/07-08</td><td class="r">52</td><td class="r">~1,600→2,249円</td><td class="r pos">~+41%</td><td class="r">+8%</td><td>自己株TOB2回で撤退</td></tr>
+<tr><td>西松建設</td><td>1820</td><td>2021/11-12</td><td class="r">19</td><td class="r">~2,500→3,626円</td><td class="r pos">~+45%</td><td class="r">+26%</td><td>自己株TOB+伊藤忠へ相対譲渡</td></tr>
+<tr><td>SBI新生銀行</td><td>8303</td><td>2021/12</td><td class="r">1.5</td><td class="r">~1,870→2,000円</td><td class="r pos">~+7%</td><td class="r">超短期</td><td>SBIのTOB鞘取り</td></tr>
+<tr><td>東洋建設</td><td>1890</td><td>2022/03-05</td><td class="r">15</td><td class="r">~570→~780円</td><td class="r pos">~+37%</td><td class="r">+29%</td><td>インフロニアTOB局面で売却</td></tr>
+<tr><td>住友大阪セメント</td><td>5232</td><td>2022/04</td><td class="r">2</td><td class="r">~3,000→~3,100円</td><td class="r flat">~+3%</td><td class="r">超短期</td><td>短期イン&アウト</td></tr>
+<tr><td>大豊建設</td><td>1822</td><td>2022/06-07</td><td class="r">25</td><td class="r">~3,400→4,730円</td><td class="r pos">~+39%</td><td class="r">+17%</td><td>麻生の自己株TOBへ応募</td></tr>
+<tr><td>富士石油</td><td>5017</td><td>2022/08</td><td class="r">15</td><td class="r">~230→~400円</td><td class="r pos">~+70%</td><td class="r">+53%</td><td>資源高局面で売却</td></tr>
+<tr><td>クレディセゾン</td><td>8253</td><td>2022/10</td><td class="r">6</td><td class="r">~1,400→~1,700円</td><td class="r pos">~+20%</td><td class="r">+44%</td><td></td></tr>
+<tr><td>日清紡HD</td><td>3105</td><td>2022/10</td><td class="r">8</td><td class="r">~1,000→~1,100円</td><td class="r pos">~+10%</td><td class="r">+15%</td><td></td></tr>
+<tr><td>セントラル硝子</td><td>4044</td><td>2022/11</td><td class="r">30</td><td class="r">~2,500→~3,400円</td><td class="r pos">~+36%</td><td class="r">+13%</td><td>4名義同日一斉0%</td></tr>
+<tr><td>ジャフコG</td><td>8595</td><td>2023/01</td><td class="r">5.5</td><td class="r">~2,100→2,500円</td><td class="r pos">~+19%</td><td class="r">+46%</td><td>自己株TOB応募・残5.8%継続</td></tr>
+<tr><td>ホシデン</td><td>6804</td><td>2023/05</td><td class="r">19</td><td class="r">~1,500→~1,800円</td><td class="r pos">~+20%</td><td class="r">+12%</td><td></td></tr>
+<tr><td>三井住友建設(1回目)</td><td>1821</td><td>2023/07</td><td class="r">20</td><td class="r">~430→~350円</td><td class="r neg">~-19%</td><td class="r neg">-12%</td><td>業績悪化で損切り</td></tr>
+<tr><td>中国塗料</td><td>4617</td><td>2023/08</td><td class="r">38</td><td class="r">~700→~1,250円</td><td class="r pos">~+75%</td><td class="r">+19%</td><td></td></tr>
+<tr><td>ヨロズ</td><td>7294</td><td>2023/08</td><td class="r">36</td><td class="r">~1,100→~1,150円</td><td class="r flat">~+5%</td><td class="r">+2%</td><td></td></tr>
+<tr><td>東亜建設工業</td><td>1885</td><td>2023/08-11</td><td class="r">37</td><td class="r">~680→~1,000円</td><td class="r pos">~+47%</td><td class="r">+13%</td><td></td></tr>
+<tr><td>藤倉コンポジット</td><td>5121</td><td>2023/12</td><td class="r">7</td><td class="r">~1,000→~1,300円</td><td class="r pos">~+30%</td><td class="r">+57%</td><td>村上貴輝名義</td></tr>
+<tr><td>コスモエネルギーHD</td><td>5021</td><td>2023/12</td><td class="r">20</td><td class="r">3,495→6,052円</td><td class="r pos">+73%</td><td class="r">+39%</td><td>岩谷産業へ相対譲渡・売却益約400億円(単価は開示確定)</td></tr>
+<tr><td>グローセル</td><td>9995</td><td>2024/01</td><td class="r">2</td><td class="r">~595→620円</td><td class="r flat">~+4%</td><td class="r">超短期</td><td>ミネベアミツミTOBアーブ</td></tr>
+<tr><td>焼津水産化学</td><td>2812</td><td>2024/03</td><td class="r">7</td><td class="r">~1,050→~1,050円</td><td class="r flat">~0%</td><td class="r">0%</td><td>MBO不成立に追い込むも出口なし</td></tr>
+<tr><td>JSR</td><td>4185</td><td>2024/04</td><td class="r">1未満</td><td class="r">4,348→4,350円</td><td class="r flat">+0.05%</td><td class="r">超短期</td><td>JICのTOBアーブ(463億円投下)</td></tr>
+<tr><td>リケンNPR</td><td>6209</td><td>2024/05</td><td class="r">5</td><td class="r">~2,400→~3,100円</td><td class="r pos">~+30%</td><td class="r">+88%</td><td>村上貴輝名義</td></tr>
+<tr><td>あおぞら銀行</td><td>8304</td><td>2024/06</td><td class="r">4</td><td class="r">~2,450→~3,200円</td><td class="r pos">~+31%</td><td class="r">+125%</td><td>赤字急落時取得→大和提携で売却</td></tr>
+<tr><td>ダイドーリミテッド</td><td>3205</td><td>2024/07</td><td class="r">1</td><td class="r">~800→~1,095円</td><td class="r pos">~+37%</td><td class="r">超短期</td><td>増配発表翌日のS高で全株売却</td></tr>
+<tr><td>レスター</td><td>3156</td><td>2024/09</td><td class="r">73</td><td class="r">~1,200→~1,800円</td><td class="r pos">~+50%</td><td class="r">+7%</td><td>エスグラント長期保有の手仕舞い</td></tr>
+<tr><td>科研製薬</td><td>4521</td><td>2024/11</td><td class="r">6</td><td class="r">~3,800→~4,600円</td><td class="r pos">~+20%</td><td class="r">+44%</td><td></td></tr>
+<tr><td>パイオラックス</td><td>5988</td><td>2025/02-04</td><td class="r">7</td><td class="r">~2,390→2,497円</td><td class="r flat">~+4.5%</td><td class="r">+8%</td><td>自己株TOB応募</td></tr>
+<tr><td>王子HD(往復)</td><td>3861</td><td>2025/02-04</td><td class="r">2</td><td class="r">~620→~680円</td><td class="r pos">~+10%</td><td class="r">超短期</td><td>短期往復(現在は再取得し5.58%)</td></tr>
+<tr><td>古河機械金属</td><td>5715</td><td>2025/02</td><td class="r">1.5</td><td class="r">~2,000→~2,300円</td><td class="r pos">~+15%</td><td class="r">超短期</td><td></td></tr>
+<tr><td>愛知製鋼</td><td>5482</td><td>2025/05</td><td class="r">7.5</td><td class="r">~1,400→~1,850円</td><td class="r pos">~+32%</td><td class="r">+56%</td><td>自社株買い発表翌日に売却</td></tr>
+<tr><td>クレハ</td><td>4023</td><td>2025/04-06</td><td class="r">20</td><td class="r">~1,900→~2,950円</td><td class="r pos">~+60%</td><td class="r">+33%</td><td>大型自社株買いを引き出し売却</td></tr>
+<tr><td>大平洋金属</td><td>5541</td><td>2025/06</td><td class="r">43</td><td class="r">~2,700→~1,400円</td><td class="r neg">~-45%</td><td class="r neg">-15%</td><td>ニッケル市況悪化で損切り</td></tr>
+<tr><td>三井松島HD(1回目)</td><td>1518</td><td>2025/07-08</td><td class="r">15</td><td class="r">~4,300→5,000円</td><td class="r pos">~+16%</td><td class="r">+13%</td><td>自己株TOB応募(現在も別途保有中)</td></tr>
+<tr><td>日本特殊塗料</td><td>4619</td><td>2025/08</td><td class="r">4</td><td class="r">~1,300→~1,500円</td><td class="r pos">~+15%</td><td class="r">+52%</td><td></td></tr>
+<tr><td>三井住友建設(2回目)</td><td>1821</td><td>2025/09</td><td class="r">18</td><td class="r">~470→600円</td><td class="r pos">~+28%</td><td class="r">+18%</td><td>インフロニアTOBへ全株応募</td></tr>
+<tr><td>イリソ電子</td><td>6908</td><td>2025/09</td><td class="r">13</td><td class="r">~2,400→~3,000円</td><td class="r pos">~+25%</td><td class="r">+23%</td><td></td></tr>
+<tr><td>メガチップス</td><td>6875</td><td>2025/11</td><td class="r">2</td><td class="r">~5,800→~7,000円</td><td class="r pos">~+20%</td><td class="r">超短期</td><td>半導体ラリーで短期売却</td></tr>
+<tr><td>フェローテックHD</td><td>6890</td><td>2026/01</td><td class="r">3</td><td class="r">~4,500→~5,900円</td><td class="r pos">~+31%</td><td class="r">+194%</td><td>残4.41%は継続保有</td></tr>
+<tr><td>フジ・メディアHD</td><td>4676</td><td>2026/02</td><td class="r">11</td><td class="r">~2,700→3,839円</td><td class="r pos">~+42%</td><td class="r">+47%</td><td>2,350億円の自社株買いへ売却。初回取得2,201円は開示確認</td></tr>
+<tr><td>髙島屋</td><td>8233</td><td>2026/02</td><td class="r">5.5</td><td class="r">~1,400→~2,150円</td><td class="r pos">~+54%</td><td class="r">+156%</td><td>200億円自社株買い等を引き出し売却</td></tr>
+<tr><td>マンダム</td><td>4917</td><td>2026/02</td><td class="r">5.5</td><td class="r">~1,450→3,105円</td><td class="r pos">~+114%</td><td class="r">超短期高倍率</td><td>MBO価格を1,960→3,105円に引き上げさせ応募</td></tr>
+<tr><td>山村硝子</td><td>5210</td><td>2026/02-04</td><td class="r">22</td><td class="r">~1,500→~3,300円</td><td class="r pos">~+120%</td><td class="r">+54%</td><td>村上貴輝名義。残3.77%</td></tr>
+<tr><td>芦森工業</td><td>3526</td><td>2026/03</td><td class="r">7</td><td class="r">~4,120→4,140円</td><td class="r flat">~+0.5%</td><td class="r">+1%</td><td>豊田合成TOBに不応募で粘るも引き上げならず</td></tr>
+<tr><td>三井住建道路</td><td>1776</td><td>2026/04</td><td class="r">13</td><td class="r">~1,400→2,000円</td><td class="r pos">~+43%</td><td class="r">+39%</td><td>親会社の完全子会社化TOBへ応募</td></tr>
+<tr><td>新光商事</td><td>8141</td><td>2026/05</td><td class="r">20</td><td class="r">~950→~1,600円</td><td class="r pos">~+68%</td><td class="r">+37%</td><td>加賀電子の再編局面で全株売却</td></tr>
+<tr><td>YCPホールディングス</td><td>9257</td><td>2026/06</td><td class="r">18</td><td class="r">~575→~750円</td><td class="r pos">~+30%</td><td class="r">+19%</td><td>直後の急落を回避して売却</td></tr>
+</tbody>
+</table></div>
+<p class="note">集計外の特殊案件: 日本アジアグループ(対抗TOBで丸ごと買収→解体)、養命酒製造(レノがディスカウントTOBで非公開化・買い手側)、エクセル(株式交換)。「超短期」=保有2ヶ月未満で年率換算が無意味な案件(年次集計の年率からも除外)。</p>
+</details>
+
+<details><summary>エフィッシモ 全6案件の明細</summary>
+<div class="tbl"><table>
+<thead><tr><th>銘柄</th><th>コード</th><th>エグジット</th><th class="r">保有月</th><th class="r">取得→売却(推定)</th><th class="r">リターン</th><th class="r">年率</th><th>備考</th></tr></thead>
+<tbody>
+<tr><td>ニチイ学館</td><td>9792</td><td>2020/08</td><td class="r">71</td><td class="r">~950→1,670円</td><td class="r pos">+76%</td><td class="r">+10%</td><td>ベインMBOのTOB価格を引き上げさせ応募</td></tr>
+<tr><td>ヤマダHD</td><td>9831</td><td>2020/09</td><td class="r">10</td><td class="r">~560→~540円</td><td class="r neg">-4%</td><td class="r neg">-4%</td><td>唯一の負け(現在は村上系が6.26%保有)</td></tr>
+<tr><td>セゾン情報システムズ</td><td>9640</td><td>2021/11</td><td class="r">83</td><td class="r">~1,300→~1,940円</td><td class="r pos">+49%</td><td class="r">+6%</td><td>短期大量譲渡33%→5.29%。高配当込みで実質は上</td></tr>
+<tr><td>東芝</td><td>6502</td><td>2023/09</td><td class="r">77</td><td class="r">~2,200→4,620円</td><td class="r pos">+110%</td><td class="r">+12%</td><td>JIPのTOBに全株応募(4,286万株)</td></tr>
+<tr><td>大平洋金属</td><td>5541</td><td>2025/12</td><td class="r">20</td><td class="r">~1,310→~2,280円</td><td class="r pos">+74%</td><td class="r">+39%</td><td>部分エグジット(残2.12%)。村上系が-45%で投げた後に取得し勝利</td></tr>
+<tr><td>太平洋工業</td><td>7250</td><td>2026進行中</td><td class="r">9</td><td class="r">~2,750→3,036円</td><td class="r pos">+10%</td><td class="r">+14%</td><td>MBO価格を2,050→3,036円に引き上げさせ応募</td></tr>
+</tbody>
+</table></div>
+</details>
+
+<details><summary>ストラテジックキャピタル 全12案件の明細</summary>
+<div class="tbl"><table>
+<thead><tr><th>銘柄</th><th>コード</th><th>エグジット</th><th class="r">保有月</th><th class="r">取得→売却(推定)</th><th class="r">リターン</th><th class="r">年率</th><th>備考</th></tr></thead>
+<tbody>
+<tr><td>淺沼組</td><td>1852</td><td>2022/05</td><td class="r">54</td><td class="r">4,371→5,190円</td><td class="r pos">+19%</td><td class="r">+4%</td><td></td></tr>
+<tr><td>極東貿易</td><td>8093</td><td>2023/01</td><td class="r">63</td><td class="r">1,043→~1,370円</td><td class="r pos">+31%</td><td class="r">+5%</td><td>併合・分割調整済</td></tr>
+<tr><td>タチエス</td><td>7239</td><td>2023/07</td><td class="r">28</td><td class="r">1,061→1,574円</td><td class="r pos">+48%</td><td class="r">+19%</td><td></td></tr>
+<tr><td>世紀東急工業</td><td>1898</td><td>2023/08</td><td class="r">66</td><td class="r">839→~1,390円</td><td class="r pos">+66%</td><td class="r">+10%</td><td></td></tr>
+<tr><td>日本証券金融</td><td>8511</td><td>2024/01</td><td class="r">32</td><td class="r">841→~1,575円</td><td class="r pos">+87%</td><td class="r">+26%</td><td>ToSTNeT売却単価は報告書記載</td></tr>
+<tr><td>文化シヤッター</td><td>5930</td><td>2024/06</td><td class="r">39</td><td class="r">969→1,815円</td><td class="r pos">+87%</td><td class="r">+21%</td><td>現在はNAVFが18.97%保有</td></tr>
+<tr><td>ダイドーリミテッド</td><td>3205</td><td>2024/07</td><td class="r">20</td><td class="r">349→~1,092円</td><td class="r pos">+213%</td><td class="r">+98%</td><td>SC最大の成功。大型還元発表翌日に29%を全株売却</td></tr>
+<tr><td>有沢製作所</td><td>5208</td><td>2024/08</td><td class="r">61</td><td class="r">~1,000→~1,560円</td><td class="r pos">+56%</td><td class="r">+9%</td><td></td></tr>
+<tr><td>極東開発工業</td><td>7226</td><td>2024/12</td><td class="r">43</td><td class="r">~1,800→~2,500円</td><td class="r pos">+39%</td><td class="r">+10%</td><td></td></tr>
+<tr><td>ワキタ</td><td>8125</td><td>2025/08</td><td class="r">58</td><td class="r">1,423→1,805円</td><td class="r pos">+27%</td><td class="r">+5%</td><td></td></tr>
+<tr><td>東亜道路工業</td><td>1882</td><td>2025/11</td><td class="r">30</td><td class="r">~1,050→~1,620円</td><td class="r pos">+54%</td><td class="r">+19%</td><td>分割調整済</td></tr>
+<tr><td>ノリタケ</td><td>5331</td><td>2026/06</td><td class="r">11</td><td class="r">~3,900→~4,200円</td><td class="r pos">+8%</td><td class="r">+8%</td><td>残4.36%(⑤参照)</td></tr>
+</tbody>
+</table></div>
+</details>
+
+<details><summary>3Dインベストメント 全4案件・オアシス 全8案件の明細</summary>
+<h3>3Dインベストメント</h3>
+<div class="tbl"><table>
+<thead><tr><th>銘柄</th><th>コード</th><th>エグジット</th><th class="r">保有月</th><th class="r">取得→売却(推定)</th><th class="r">リターン</th><th class="r">年率</th><th>備考</th></tr></thead>
+<tbody>
+<tr><td>東芝</td><td>6502</td><td>2023/09</td><td class="r">30</td><td class="r">~3,400→~4,500円</td><td class="r pos">+32%</td><td class="r">+13%</td><td>一部市場売却+JIP TOB応募の加重</td></tr>
+<tr><td>エイベックス</td><td>7860</td><td>2024/03</td><td class="r">40</td><td class="r">~950→~1,290円</td><td class="r pos">+36%</td><td class="r">+10%</td><td>配当込み約+56%</td></tr>
+<tr><td>焼津水産化学</td><td>2812</td><td>2024/03</td><td class="r">6.5</td><td class="r">~1,180→1,438円</td><td class="r pos">+22%</td><td class="r">+45%</td><td>引き上げ後TOBに応募(村上系は±0で撤退した同一案件)</td></tr>
+<tr><td>富士ソフト</td><td>9749</td><td>2024/11</td><td class="r">35</td><td class="r">~2,900→8,800円</td><td class="r pos">+203%</td><td class="r">+46%</td><td>KKR第1回TOBで全量譲渡(最終TOB価格は9,850円)</td></tr>
+</tbody>
+</table></div>
+<h3>オアシス</h3>
+<div class="tbl"><table>
+<thead><tr><th>銘柄</th><th>コード</th><th>エグジット</th><th class="r">保有月</th><th class="r">取得→売却(推定)</th><th class="r">リターン</th><th class="r">年率</th><th>備考</th></tr></thead>
+<tbody>
+<tr><td>島忠</td><td>8184</td><td>2020/10</td><td class="r">11</td><td class="r">~3,050→~4,250円</td><td class="r pos">+39%</td><td class="r">+43%</td><td>DCMのTOB発表直後に売却</td></tr>
+<tr><td>東京ドーム</td><td>9681</td><td>2021/01</td><td class="r">13</td><td class="r">~920→1,300円</td><td class="r pos">+41%</td><td class="r">+38%</td><td>三井不動産TOB応募</td></tr>
+<tr><td>片倉工業</td><td>3001</td><td>2021/12</td><td class="r">48</td><td class="r">~1,400→~2,300円</td><td class="r pos">+65%</td><td class="r">+13%</td><td></td></tr>
+<tr><td>ツルハHD</td><td>3391</td><td>2024/03</td><td class="r">15</td><td class="r">~9,200→~10,700円</td><td class="r pos">+16%</td><td class="r">+13%</td><td>イオンへ株式譲渡</td></tr>
+<tr><td>マクロミル</td><td>3978</td><td>2025/03</td><td class="r">3</td><td class="r">~1,160→1,275円</td><td class="r pos">+10%</td><td class="r">+45%</td><td>TOB発表後に取得するアーブ</td></tr>
+<tr><td>トプコン</td><td>7732</td><td>2025/09</td><td class="r">8</td><td class="r">~2,150→3,300円</td><td class="r pos">+50〜65%</td><td class="r">+90%</td><td>KKR/JIC系TOB応募</td></tr>
+<tr><td>フジテック</td><td>6406</td><td>2025/12</td><td class="r">45</td><td class="r">~3,600→5,700円</td><td class="r pos">+57%</td><td class="r">+13%</td><td>EQTのTOBに応募。取締役送り込み後の集大成</td></tr>
+<tr><td>北越コーポレーション</td><td>3865</td><td>2026/03</td><td class="r">60</td><td class="r">~650→~1,100円</td><td class="r pos">~+70%</td><td class="r">+11%</td><td>部分エグジット(残4.8%)</td></tr>
+</tbody>
+</table></div>
+</details>
+
+<h3>NAVF(公表NAVトータルリターン・£建て)の年次推移</h3>
+<div class="tbl"><table>
+<thead><tr><th>年</th><th class="r">2020(2月設定〜)</th><th class="r">2021</th><th class="r">2022</th><th class="r">2023</th><th class="r">2024</th><th class="r">2025</th><th class="r">2026 YTD</th><th class="r">設定来</th></tr></thead>
+<tbody>
+<tr><td>NAVトータルリターン</td><td class="r pos">+5.5%</td><td class="r pos">+22.3%</td><td class="r pos">+3.5%</td><td class="r pos">+23.1%</td><td class="r pos">+15.2%</td><td class="r pos">+17.4%</td><td class="r pos">約+9%</td><td class="r pos">+157.2%</td></tr>
+</tbody>
+</table></div>
+<p class="note">2022〜24年は円安の寄与が大きく、円建て実力値は各年5〜10ポイント低い。出典: NAVF公式ファクトシート2026年7月末・QuotedData。</p>
+</section>
+
+<section>
+<h2>⑩ データの読み方・注意</h2>
 <ul>
 <li><b>推定平均取得単価</b>は大量保有報告書の「取得資金÷保有株数」の機械計算（借入・デリバティブ含む概算）。株式分割は主要銘柄のみ調整済。<b>村上系だけは取得資金の転載が乏しく、取得期間の株価平均による代替推定</b>で誤差±10〜20%。</li>
 <li>保有割合は最新報告書時点の値。報告日以降の±1%未満の増減や5%割れ売却は捕捉できない。村上系はDeNAのように数週間で5%を跨ぐ回転売買をするため鮮度に特に注意。</li>
