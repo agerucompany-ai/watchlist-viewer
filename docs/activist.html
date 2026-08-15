@@ -55,31 +55,25 @@ footer{padding:14px;font-size:11px;color:var(--muted);border-top:1px solid var(-
 <div class="wrap">
 
 <section>
-<h2 class="warn">① 取得単価割れ銘柄（アクティビストの平均取得価格より安く買える銘柄）</h2>
-<p class="note">推定平均取得単価＝大量保有報告書の「取得資金÷保有株数」（村上系のみ取得期間の株価平均による代替推定）。誤差±10〜20%を見込むこと。</p>
+<h2 class="warn">① 取得単価割れ〜取得単価+5%圏内（アクティビストのコスト以下・同水準で買える銘柄）</h2>
+<p class="note">推定平均取得単価＝大量保有報告書の「取得資金÷保有株数」（村上系のみ取得期間の株価平均による代替推定）。誤差±10〜20%を見込むこと。<span class="badge b-red">割れ</span>=取得単価未満、<span class="badge b-org">圏内</span>=取得単価+5%前後まで。乖離の小さい順。</p>
 <div class="tbl"><table>
-<thead><tr><th>銘柄</th><th>コード</th><th>ファンド</th><th class="r">保有割合</th><th class="r">推定取得単価</th><th class="r">現在株価</th><th class="r">乖離</th><th>メモ</th></tr></thead>
+<thead><tr><th></th><th>銘柄</th><th>コード</th><th>ファンド</th><th class="r">保有割合</th><th class="r">推定取得単価</th><th class="r">現在株価</th><th class="r">乖離</th><th>メモ</th></tr></thead>
 <tbody>
-<tr><td>ガンホー・オンライン</td><td><a class="code" href="https://kabutan.jp/stock/?code=3765">3765</a></td><td class="fund">ストラテジックキャピタル</td><td class="r">13.67%</td><td class="r">約2,868円</td><td class="r">2,448円</td><td class="r neg">-14.6%</td><td>保有目的に「第三者による買収(非公開化)」提案を明記</td></tr>
-<tr><td>ソフト99コーポレーション</td><td><a class="code" href="https://kabutan.jp/stock/?code=4464">4464</a></td><td class="fund">エフィッシモ</td><td class="r">53.15%</td><td class="r">約3,924円</td><td class="r">3,580円</td><td class="r neg">-8.8%</td><td>過半数保有。エフィッシモ唯一の単価割れ</td></tr>
-<tr><td>プラスアルファ・コンサルティング</td><td><a class="code" href="https://kabutan.jp/stock/?code=4071">4071</a></td><td class="fund">オアシス</td><td class="r">16.29%</td><td class="r">約2,369円</td><td class="r">2,224円</td><td class="r neg">-6.1%</td><td>2026/7に買い増し報告</td></tr>
-<tr><td>オリエントコーポレーション</td><td><a class="code" href="https://kabutan.jp/stock/?code=8585">8585</a></td><td class="fund">ストラテジックキャピタル</td><td class="r">12.80%</td><td class="r">約931円</td><td class="r">874円</td><td class="r neg">-6.1%</td><td>買い増し中(2026/6報告)。株主提案対象</td></tr>
-<tr><td>東邦HD</td><td><a class="code" href="https://kabutan.jp/stock/?code=8129">8129</a></td><td class="fund">3Dインベストメント</td><td class="r">21.19%</td><td class="r">約4,013円</td><td class="r">3,821円</td><td class="r neg">-4.8%</td><td>医薬品卸。5%超16銘柄中唯一の単価割れ</td></tr>
+<tr><td><span class="badge b-red">割れ</span></td><td>ガンホー・オンライン</td><td><a class="code" href="https://kabutan.jp/stock/?code=3765">3765</a></td><td class="fund">ストラテジックキャピタル</td><td class="r">13.67%</td><td class="r">約2,868円</td><td class="r">2,448円</td><td class="r neg">-14.6%</td><td>保有目的に「第三者による買収(非公開化)」提案を明記</td></tr>
+<tr><td><span class="badge b-red">割れ</span></td><td>ソフト99コーポレーション</td><td><a class="code" href="https://kabutan.jp/stock/?code=4464">4464</a></td><td class="fund">エフィッシモ</td><td class="r">53.15%</td><td class="r">約3,924円</td><td class="r">3,580円</td><td class="r neg">-8.8%</td><td>過半数保有。エフィッシモ唯一の単価割れ</td></tr>
+<tr><td><span class="badge b-red">割れ</span></td><td>プラスアルファ・コンサルティング</td><td><a class="code" href="https://kabutan.jp/stock/?code=4071">4071</a></td><td class="fund">オアシス</td><td class="r">16.29%</td><td class="r">約2,369円</td><td class="r">2,224円</td><td class="r neg">-6.1%</td><td>2026/7に買い増し報告</td></tr>
+<tr><td><span class="badge b-red">割れ</span></td><td>オリエントコーポレーション</td><td><a class="code" href="https://kabutan.jp/stock/?code=8585">8585</a></td><td class="fund">ストラテジックキャピタル</td><td class="r">12.80%</td><td class="r">約931円</td><td class="r">874円</td><td class="r neg">-6.1%</td><td>買い増し中(2026/6報告)。株主提案対象</td></tr>
+<tr><td><span class="badge b-red">割れ</span></td><td>東邦HD</td><td><a class="code" href="https://kabutan.jp/stock/?code=8129">8129</a></td><td class="fund">3Dインベストメント</td><td class="r">21.19%</td><td class="r">約4,013円</td><td class="r">3,821円</td><td class="r neg">-4.8%</td><td>医薬品卸。5%超16銘柄中唯一の単価割れ</td></tr>
+<tr><td><span class="badge b-org">圏内</span></td><td>プリモグローバルHD</td><td><a class="code" href="https://kabutan.jp/stock/?code=367A">367A</a></td><td class="fund">村上貴輝(長男)</td><td class="r">9.66%</td><td class="r">約2,784円</td><td class="r">2,840円</td><td class="r flat">+2.0%</td><td>2026/7末報告</td></tr>
+<tr><td><span class="badge b-org">圏内</span></td><td>小林製薬</td><td><a class="code" href="https://kabutan.jp/stock/?code=4967">4967</a></td><td class="fund">オアシス</td><td class="r">13.37%</td><td class="r">約5,459円</td><td class="r">5,566円</td><td class="r flat">+2.0%</td><td>総会でCEO選任に一般株主過半が反対＝改革圧力継続</td></tr>
+<tr><td><span class="badge b-org">圏内</span></td><td>京浜急行電鉄</td><td><a class="code" href="https://kabutan.jp/stock/?code=9006">9006</a></td><td class="fund">村上系(ATRA+野村絢)</td><td class="r">9.14%</td><td class="r">約1,486円*</td><td class="r">1,518.5円</td><td class="r flat">+2.2%</td><td>*期間平均。直近買い増し分(1,550〜1,630円)は割れの可能性</td></tr>
+<tr><td><span class="badge b-org">圏内</span></td><td>ADワークスグループ</td><td><a class="code" href="https://kabutan.jp/stock/?code=2982">2982</a></td><td class="fund">村上貴輝(長男)</td><td class="r">9.18%</td><td class="r">約406円</td><td class="r">425円</td><td class="r flat">+4.6%</td><td></td></tr>
+<tr><td><span class="badge b-org">圏内</span></td><td>ニップン</td><td><a class="code" href="https://kabutan.jp/stock/?code=2001">2001</a></td><td class="fund">ストラテジックキャピタル</td><td class="r">7.09%</td><td class="r">約2,723円</td><td class="r">2,869円</td><td class="r flat">+5.4%</td><td>報告書に「8月末までに増配等の重要提案予定」と明記</td></tr>
+<tr><td><span class="badge b-org">圏内</span></td><td>あすか製薬HD</td><td><a class="code" href="https://kabutan.jp/stock/?code=4886">4886</a></td><td class="fund">NAVF/ダルトン</td><td class="r">21.32%</td><td class="r">約1,995円</td><td class="r">2,111円</td><td class="r flat">+5.8%</td><td>共同保有21%超</td></tr>
 </tbody>
 </table></div>
-
-<h3>取得単価近辺（±6%圏）＝アクティビストのコストとほぼ同値で買える銘柄</h3>
-<div class="tbl"><table>
-<thead><tr><th>銘柄</th><th>コード</th><th>ファンド</th><th class="r">保有割合</th><th class="r">推定取得単価</th><th class="r">現在株価</th><th class="r">乖離</th><th>メモ</th></tr></thead>
-<tbody>
-<tr><td>プリモグローバルHD</td><td><a class="code" href="https://kabutan.jp/stock/?code=367A">367A</a></td><td class="fund">村上貴輝(長男)</td><td class="r">9.66%</td><td class="r">約2,784円</td><td class="r">2,840円</td><td class="r flat">+2.0%</td><td>2026/7末報告</td></tr>
-<tr><td>小林製薬</td><td><a class="code" href="https://kabutan.jp/stock/?code=4967">4967</a></td><td class="fund">オアシス</td><td class="r">13.37%</td><td class="r">約5,459円</td><td class="r">5,566円</td><td class="r flat">+2.0%</td><td>総会でCEO選任に一般株主過半が反対＝改革圧力継続</td></tr>
-<tr><td>京浜急行電鉄</td><td><a class="code" href="https://kabutan.jp/stock/?code=9006">9006</a></td><td class="fund">村上系(ATRA+野村絢)</td><td class="r">9.14%</td><td class="r">約1,486円*</td><td class="r">1,518.5円</td><td class="r flat">+2.2%</td><td>*期間平均。直近買い増し分(1,550〜1,630円)は割れの可能性</td></tr>
-<tr><td>ADワークスグループ</td><td><a class="code" href="https://kabutan.jp/stock/?code=2982">2982</a></td><td class="fund">村上貴輝(長男)</td><td class="r">9.18%</td><td class="r">約406円</td><td class="r">425円</td><td class="r flat">+4.6%</td><td></td></tr>
-<tr><td>ニップン</td><td><a class="code" href="https://kabutan.jp/stock/?code=2001">2001</a></td><td class="fund">ストラテジックキャピタル</td><td class="r">7.09%</td><td class="r">約2,723円</td><td class="r">2,869円</td><td class="r flat">+5.4%</td><td>報告書に「8月末までに増配等の重要提案予定」と明記</td></tr>
-<tr><td>あすか製薬HD</td><td><a class="code" href="https://kabutan.jp/stock/?code=4886">4886</a></td><td class="fund">NAVF/ダルトン</td><td class="r">21.32%</td><td class="r">約1,995円</td><td class="r">2,111円</td><td class="r flat">+5.8%</td><td>共同保有21%超</td></tr>
-</tbody>
-</table></div>
+<p class="note">次点(+6〜8%): スクウェア・エニックスHD +6.3%(3D)、日本製紙 +7.6%(村上系・買い増し中)、三菱製紙 +7.8%(村上系・買い増し中)。</p>
 </section>
 
 <section>
