@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>銀行株スクリーナー</title>
+<style>
+:root{--bg:#0d1117;--bg2:#161b22;--bg3:#21262d;--border:#30363d;--text:#c9d1d9;
+  --muted:#8b949e;--blue:#58a6ff;--green:#3fb950;--red:#f85149;--gold:#d29922;--orange:#FFA500;--purple:#a371f7}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Hiragino Sans",sans-serif;
+  background:var(--bg);color:var(--text);font-size:13px;line-height:1.6;-webkit-text-size-adjust:100%}
+header{background:var(--bg2);padding:10px 14px;border-bottom:1px solid var(--border);
+  position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+header h1{font-size:15px;color:var(--gold)}
+header .meta{font-size:11px;color:var(--muted)}
+header a.back{background:var(--bg3);color:var(--blue);padding:4px 10px;border-radius:5px;
+  font-size:11px;text-decoration:none;font-weight:600;border:1px solid var(--border);white-space:nowrap}
+.wrap{max-width:1400px;margin:0 auto;padding:14px}
+section{margin-bottom:24px}
+h2{font-size:14px;color:var(--blue);border-left:3px solid var(--blue);padding-left:8px;margin-bottom:8px}
+h3{font-size:13px;color:var(--gold);margin:14px 0 6px}
+p.note{font-size:11px;color:var(--muted);margin:4px 0 8px}
+.tbl{overflow-x:auto;border:1px solid var(--border);border-radius:6px}
+table{width:100%;border-collapse:collapse;min-width:1100px}
+th{background:var(--bg3);color:var(--muted);font-size:11px;padding:7px 8px;text-align:left;white-space:nowrap;
+  position:sticky;top:0;cursor:pointer;user-select:none;border-bottom:1px solid var(--border)}
+th:hover{color:var(--blue)}
+th.sorted::after{content:" ▼";color:var(--blue)}
+th.sorted.asc::after{content:" ▲"}
+td{padding:5px 8px;border-top:1px solid var(--border);font-size:12px;white-space:nowrap}
+tbody tr:nth-child(even){background:var(--bg2)}
+tbody tr:hover{background:var(--bg3)}
+td.r,th.r{text-align:right}
+.neg{color:var(--red)}
+.pos{color:var(--green)}
+.flat{color:var(--orange)}
+.best{color:var(--green);font-weight:700}
+.worst{color:var(--red);font-weight:700}
+a.code{color:var(--blue);text-decoration:none}
+.tag{display:inline-block;padding:0 6px;border-radius:4px;font-size:10px;font-weight:700}
+.t-mega{background:var(--purple);color:#000}
+.t-chiginn{background:var(--bg3);color:var(--muted);border:1px solid var(--border)}
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:10px 12px;margin-bottom:8px}
+.card.good{border-left:3px solid var(--green)}
+.card.bad{border-left:3px solid var(--red)}
+.card.warn{border-left:3px solid var(--orange)}
+ul{padding-left:18px}
+li{margin-bottom:4px;font-size:12px}
+footer{padding:14px;font-size:11px;color:var(--muted);border-top:1px solid var(--border);margin-top:20px}
+.hint{font-size:11px;color:var(--gold);margin-bottom:6px}
+</style>
+</head>
+<body>
+<header>
+  <a class="back" href="index.html">← ウォッチリスト</a>
+  <a class="back" href="earnings-review.html">決算深堀り</a>
+  <h1>銀行株スクリーナー — 国債比率 × 予想PER</h1>
+  <span class="meta">株価: 2026/8/19 ・ BS: 2026年6月末中心 ・ 作成 2026/8/19</span>
+</header>
+<div class="wrap">
+
+<section>
+<h2>結論</h2>
+<div class="card good"><b>金利上昇に最も強いのは いよぎんHD(5830)</b><br>
+国債比率2.21%(28行中2位)、<b>円債含み損が時価総額のわずか0.4%</b>で全行ダントツ。不動産融資10.0%と低く、FY2026に外国国債と政策保有株を売却して債券含み損を▲45億まで一掃済み＝<b>実際に手を打った実績がある</b>。PER14.2倍・PBR1.19・株式含み益は時価総額の26.5%。</div>
+<div class="card warn"><b>「国債比率」だけで選ぶと外します</b><br>
+①<b>地方債・社債も同じ金利リスク</b>を負う。円債合計で見ると順位が激変(京都FG 3.19%→10.64%、十六FG 3.63%→10.08%、群馬は国債の5.7倍の地方債を保有) ②<b>実額インパクトは「含み損÷時価総額」</b>で見るべき。九州FGは国債3.25%と低いのに含み損が時価総額の20%(デュレーションが長い) ③国債が少ない行は<b>不動産融資に振り替えている</b>(千葉30.8%・横浜30.3%・きらぼし28.6%・スルガ25.1%)</div>
+<div class="card bad"><b>SBI新生(8303)のPER 10.5倍は誤り。しかも国債を倍増させている</b><br>
+会社は純利益予想を非開示で、出しているのは税前1,320億のみ(株探は予想PER「−」表示)。コンセンサス純利益1,019億なら<b>実質13.7倍</b>。さらに1Qの3ヶ月で日本国債を6,093億→1兆1,295億へ<b>ほぼ倍増</b>させ、<b>円債の72%が10年超</b>(1年前は20%)・デュレーション10〜15年。国債比率のスナップショットが投資判断を誤らせる典型例。</div>
+</section>
+
+<section>
+<h2>全28行 一覧（列見出しをクリックでソート）</h2>
+<p class="hint">▼ 見出しをクリックすると並び替わります。もう一度クリックで昇順/降順が切り替わります。</p>
+<div class="tbl"><table id="bt">
+<thead><tr>
+<th data-t="s">銘柄</th>
+<th data-t="s">コード</th>
+<th data-t="s">区分</th>
+<th class="r" data-t="n">総資産<br><span style="font-weight:400">兆円</span></th>
+<th class="r" data-t="n">国債/<br>総資産%</th>
+<th class="r" data-t="n">円債計/<br>総資産%</th>
+<th class="r" data-t="n">円債<br>含み損 億</th>
+<th class="r" data-t="n">含み損/<br>時価総額%</th>
+<th class="r" data-t="n">株式<br>含み益 億</th>
+<th class="r" data-t="n">含み益/<br>時価総額%</th>
+<th class="r" data-t="n">予想<br>PER</th>
+<th class="r" data-t="n">PBR</th>
+<th class="r" data-t="n">配当<br>利回り%</th>
+<th class="r" data-t="n">不動産<br>融資%</th>
+<th data-t="s">代わりに取っているリスク</th>
+</tr></thead>
+<tbody>
+<tr><td>いよぎんHD</td><td><a class="code" href="https://s.kabutan.jp/stocks/5830/">5830</a></td><td><span class="tag t-chiginn">地銀</span></td><td class="r" data-v="9.43">9.43</td><td class="r best" data-v="2.21">2.21</td><td class="r" data-v="4.14">4.14</td><td class="r" data-v="45">▲45</td><td class="r best" data-v="0.4">0.4</td><td class="r" data-v="3179">3,179</td><td class="r" data-v="26.5">26.5</td><td class="r" data-v="14.2">14.2</td><td class="r" data-v="1.19">1.19</td><td class="r" data-v="2.09">2.09</td><td class="r" data-v="10.0">10.0</td><td>その他の証券9,428億(投信/オルタナ・内訳非開示)</td></tr>
+<tr><td>スルガ銀行</td><td><a class="code" href="https://s.kabutan.jp/stocks/8358/">8358</a></td><td><span class="tag t-chiginn">地銀</span></td><td class="r" data-v="3.56">3.56</td><td class="r" data-v="3.74">3.74</td><td class="r" data-v="9.42">9.42</td><td class="r" data-v="52">▲52</td><td class="r best" data-v="1.1">1.1</td><td class="r" data-v="0">ほぼ無</td><td class="r" data-v="0">—</td><td class="r" data-v="14.9">14.9</td><td class="r" data-v="1.45">1.45</td><td class="r" data-v="2.12">2.12</td><td class="r worst" data-v="25.1">25.1</td><td><b>不動産融資が前年比+51.6%と急拡大</b>。益出し余力ゼロ</td></tr>
+<tr><td>横浜FG(旧コンコルディア)</td><td><a class="code" href="https://s.kabutan.jp/stocks/7186/">7186</a></td><td><span class="tag t-chiginn">地銀</span></td><td class="r" data-v="25.08">25.08</td><td class="r" data-v="2.64">2.64</td><td class="r" data-v="7.60">7.60</td><td class="r" data-v="412">▲412</td><td class="r best" data-v="1.9">1.9</td><td class="r" data-v="0">未取得</td><td class="r" data-v="0">—</td><td class="r" data-v="16.0">16.0</td><td class="r" data-v="1.42">1.42</td><td class="r" data-v="2.52">2.52</td><td class="r worst" data-v="30.3">30.3</td><td>首都圏の不動産与信集中(貸出17.7兆の30%)</td></tr>
+<tr><td>ほくほくFG</td><td><a class="code" href="https://s.kabutan.jp/stocks/8377/">8377</a></td><td><span class="tag t-chiginn">地銀</span></td><td class="r" data-v="17.22">17.22</td><td class="r" data-v="6.69">6.69*</td><td class="r" data-v="6.69">6.69</td><td class="r" data-v="211">▲211</td><td class="r" data-v="2.2">2.2</td><td class="r" data-v="0">未取得</td><td class="r" data-v="0">—</td><td class="r" data-v="15.4">15.4</td><td class="r" data-v="1.27">1.27</td><td class="r" data-v="1.87">1.87</td><td class="r" data-v="0">未取得</td><td>*国債単独は非開示(国内債券計)。含み損はヘッジ後</td></tr>
+<tr><td>京都FG</td><td><a class="code" href="https://s.kabutan.jp/stocks/5844/">5844</a></td><td><span class="tag t-chiginn">地銀</span></td><td class="r" data-v="11.82">11.82</td><td class="r" data-v="3.19">3.19</td><td class="r" data-v="10.64">10.64</td><td class="r" data-v="479">▲479</td><td class="r" data-v="3.3">3.3</td><td class="r best" data-v="12414">12,414</td><td class="r best" data-v="85.3">85.3</td><td class="r worst" data-v="26.1">26.1</td><td class="r" data-v="0.98">0.98</td><td class="r" data-v="2.18">2.18</td><td class="r" data-v="17.3">17.3</td><td><b>任天堂3,405億等の株式9,723億(含み益率896%)</b>。実質「京都ハイテク株ファンド＋銀行」</td></tr>
+<tr><td>群馬銀行</td><td><a class="code" href="https://s.kabutan.jp/stocks/8334/">8334</a></td><td><span class="tag t-chiginn">地銀</span></td><td class="r" data-v="10.88">10.88</td><td class="r best" data-v="1.91">1.91</td><td class="r" data-v="0">未取得</td><td class="r" data-v="727">▲727</td><td class="r" data-v="6.9">6.9</td><td class="r" data-v="861">861</td><td class="r" data-v="8.2">8.2</td><td class="r" data-v="15.4">15.4</td><td class="r" data-v="1.59">1.59</td><td class="r" data-v="2.63">2.63</td><td class="r" data-v="16.1">16.1</td><td><b>地方債6,966億(国債の5.7倍)</b>。2027/4に第四北越と統合し消滅</td></tr>
+<tr><td>千葉銀行</td><td><a class="code" href="https://s.kabutan.jp/stocks/8331/">8331</a></td><td><span class="tag t-chiginn">地銀</span></td><td class="r" data-v="21.47">21.47</td><td class="r" data-v="4.32">4.32</td><td class="r" data-v="6.85">6.85</td><td class="r" data-v="1455">▲1,455</td><td class="r" data-v="6.9">6.9</td><td class="r" data-v="2977">2,977</td><td class="r" data-v="14.2">14.2</td><td class="r" data-v="17.4">17.4</td><td class="r" data-v="1.45">1.45</td><td class="r" data-v="2.36">2.36</td><td class="r worst" data-v="30.75">30.75</td><td><b>不動産融資30.75%は全行最高</b>。その他の証券1.63兆・外債9,375億</td></tr>
+<tr><td>東京きらぼしFG</td><td><a class="code" href="https://s.kabutan.jp/stocks/7173/">7173</a></td><td><span class="tag t-chiginn">地銀</span></td><td class="r" data-v="7.54">7.54</td><td class="r" data-v="3.37">3.37</td><td class="r" data-v="6.81">6.81</td><td class="r" data-v="413">▲413</td><td class="r" data-v="8.4">8.4</td><td class="r" data-v="259">259</td><td class="r" data-v="5.2">5.2</td><td class="r best" data-v="12.4">12.4</td><td class="r" data-v="1.33">1.33</td><td class="r" data-v="1.76">1.76</td><td class="r worst" data-v="28.6">28.6</td><td><b>東京の不動産に極めて敏感</b>。その他の証券3,556億=有価証券の43%(仕組債等)</td></tr>
+<tr><td>十六FG</td><td><a class="code" href="https://s.kabutan.jp/stocks/7380/">7380</a></td><td><span class="tag t-chiginn">地銀</span></td><td class="r" data-v="7.75">7.75</td><td class="r" data-v="3.63">3.63</td><td class="r" data-v="10.08">10.08</td><td class="r" data-v="445">▲445</td><td class="r" data-v="9.3">9.3</td><td class="r" data-v="1924">1,924</td><td class="r" data-v="40.4">40.4</td><td class="r" data-v="14.8">14.8</td><td class="r" data-v="0.86">0.86</td><td class="r" data-v="2.11">2.11</td><td class="r" data-v="10.4">10.4</td><td>純投資株921億(含み益798億・トヨタ1,300万株)</td></tr>
+<tr><td>七十七銀行</td><td><a class="code" href="https://s.kabutan.jp/stocks/8341/">8341</a></td><td><span class="tag t-chiginn">地銀</span></td><td class="r" data-v="10.51">10.51</td><td class="r" data-v="4.79">4.79</td><td class="r" data-v="16.11">16.11</td><td class="r" data-v="811">▲811</td><td class="r" data-v="9.5">9.5</td><td class="r" data-v="2358">2,358</td><td class="r" data-v="27.7">27.7</td><td class="r" data-v="13.4">13.4</td><td class="r" data-v="1.09">1.09</td><td class="r" data-v="2.81">2.81</td><td class="r" data-v="0">未取得</td><td>円債計16.11%と高い。純投資2,136億(含み益1,643億)</td></tr>
+<tr><td>静岡FG</td><td><a class="code" href="https://s.kabutan.jp/stocks/5831/">5831</a></td><td><span class="tag t-chiginn">地銀</span></td><td class="r" data-v="15.92">15.92</td><td class="r" data-v="4.91">4.91</td><td class="r" data-v="7.92">7.92</td><td class="r" data-v="1931">▲1,931</td><td class="r" data-v="9.8">9.8</td><td class="r" data-v="5117">5,117</td><td class="r" data-v="26.0">26.0</td><td class="r" data-v="15.4">15.4</td><td class="r" data-v="1.39">1.39</td><td class="r" data-v="3.18">3.18</td><td class="r" data-v="0">未取得</td><td><b>FY2027に株式売却益580億を計画に織り込み済み</b>(唯一の明示)</td></tr>
+<tr><td>山口FG</td><td><a class="code" href="https://s.kabutan.jp/stocks/8418/">8418</a></td><td><span class="tag t-chiginn">地銀</span></td><td class="r" data-v="13.06">13.06</td><td class="r" data-v="4.90">4.90</td><td class="r" data-v="10.14">10.14</td><td class="r" data-v="934">▲934</td><td class="r" data-v="12.9">12.9</td><td class="r" data-v="0">未取得</td><td class="r" data-v="0">—</td><td class="r" data-v="13.8">13.8</td><td class="r" data-v="0.91">0.91</td><td class="r" data-v="3.11">3.11</td><td class="r" data-v="0">未取得</td><td>PBR0.91と割安だが円債計10.14%</td></tr>
+<tr><td>CCIグループ(旧北國FHD)</td><td><a class="code" href="https://s.kabutan.jp/stocks/7381/">7381</a></td><td><span class="tag t-chiginn">地銀</span></td><td class="r" data-v="6.49">6.49</td><td class="r worst" data-v="13.65">13.65</td><td class="r worst" data-v="19.89">19.89</td><td class="r" data-v="342">▲342</td><td class="r" data-v="12.4">12.4</td><td class="r" data-v="0">未取得</td><td class="r" data-v="0">—</td><td class="r" data-v="15.6">15.6</td><td class="r" data-v="1.01">1.01</td><td class="r" data-v="2.48">2.48</td><td class="r" data-v="0">未取得</td><td><b>粗利益28億を株式売却益616億で埋めている</b>(純利益比488%)</td></tr>
+<tr><td>めぶきFG</td><td><a class="code" href="https://s.kabutan.jp/stocks/7167/">7167</a></td><td><span class="tag t-chiginn">地銀</span></td><td class="r" data-v="21.89">21.89</td><td class="r" data-v="6.30">6.30</td><td class="r" data-v="10.02">10.02</td><td class="r" data-v="2116">▲2,116</td><td class="r" data-v="13.8">13.8</td><td class="r" data-v="0">未取得</td><td class="r" data-v="0">—</td><td class="r" data-v="14.5">14.5</td><td class="r" data-v="1.37">1.37</td><td class="r" data-v="2.71">2.71</td><td class="r" data-v="0">未取得</td><td>外債7,993億</td></tr>
+<tr><td>ふくおかFG</td><td><a class="code" href="https://s.kabutan.jp/stocks/8354/">8354</a></td><td><span class="tag t-chiginn">地銀</span></td><td class="r" data-v="33.10">33.10</td><td class="r" data-v="5.61">5.61</td><td class="r" data-v="8.29">8.29</td><td class="r" data-v="2172">▲2,172</td><td class="r" data-v="15.3">15.3</td><td class="r" data-v="0">未取得</td><td class="r" data-v="0">—</td><td class="r" data-v="14.0">14.0</td><td class="r" data-v="1.25">1.25</td><td class="r" data-v="2.82">2.82</td><td class="r" data-v="0">未取得</td><td><b>外債1兆6,230億</b>と地銀最大。株式益809億で債券損866億を相殺処理</td></tr>
+<tr><td>八十二長野銀行</td><td><a class="code" href="https://s.kabutan.jp/stocks/8359/">8359</a></td><td><span class="tag t-chiginn">地銀</span></td><td class="r" data-v="13.72">13.72</td><td class="r" data-v="5.97">5.97</td><td class="r" data-v="12.38">12.38</td><td class="r" data-v="2137">▲2,137</td><td class="r" data-v="16.9">16.9</td><td class="r" data-v="7352">7,352</td><td class="r best" data-v="58.2">58.2</td><td class="r" data-v="15.9">15.9</td><td class="r" data-v="0.97">0.97</td><td class="r" data-v="2.54">2.54</td><td class="r" data-v="0">未取得</td><td>純投資5,528億(含み益5,062億)。<b>政策保有"削減"の一部は純投資への区分替え</b></td></tr>
+<tr><td>ひろぎんHD(旧広島銀行)</td><td><a class="code" href="https://s.kabutan.jp/stocks/7337/">7337</a></td><td><span class="tag t-chiginn">地銀</span></td><td class="r" data-v="12.12">12.12</td><td class="r" data-v="4.83">4.83</td><td class="r" data-v="9.72">9.72</td><td class="r" data-v="1349">▲1,349</td><td class="r worst" data-v="19.5">19.5</td><td class="r" data-v="0">未取得</td><td class="r" data-v="0">—</td><td class="r" data-v="13.1">13.1</td><td class="r" data-v="1.11">1.11</td><td class="r" data-v="3.08">3.08</td><td class="r" data-v="0">未取得</td><td>PER13.1と安いが含み損が時価総額の19.5%</td></tr>
+<tr><td>九州FG</td><td><a class="code" href="https://s.kabutan.jp/stocks/7180/">7180</a></td><td><span class="tag t-chiginn">地銀</span></td><td class="r" data-v="13.75">13.75</td><td class="r" data-v="3.25">3.25</td><td class="r" data-v="5.37">5.37</td><td class="r" data-v="1386">▲1,386</td><td class="r worst" data-v="20.0">20.0</td><td class="r" data-v="1302">1,302</td><td class="r" data-v="18.8">18.8</td><td class="r" data-v="13.9">13.9</td><td class="r best" data-v="0.80">0.80</td><td class="r" data-v="2.55">2.55</td><td class="r" data-v="14.8">14.8</td><td><b>国債は低いが含み損が時価総額の20%=デュレーションが長い</b></td></tr>
+<tr><td>ちゅうぎんFG(旧中国銀行)</td><td><a class="code" href="https://s.kabutan.jp/stocks/5832/">5832</a></td><td><span class="tag t-chiginn">地銀</span></td><td class="r" data-v="11.40">11.40</td><td class="r worst" data-v="9.42">9.42</td><td class="r worst" data-v="17.70">17.70</td><td class="r" data-v="1804">▲1,804</td><td class="r worst" data-v="29.0">29.0</td><td class="r" data-v="1408">1,408</td><td class="r" data-v="22.7">22.7</td><td class="r" data-v="13.2">13.2</td><td class="r" data-v="0.89">0.89</td><td class="r" data-v="3.03">3.03</td><td class="r" data-v="0">未取得</td><td><b>含み損が時価総額の29%で最悪</b>。1Qだけで株式益183億=1Q純利益の92%</td></tr>
+<tr><td>第四北越FG</td><td><a class="code" href="https://s.kabutan.jp/stocks/7327/">7327</a></td><td><span class="tag t-chiginn">地銀</span></td><td class="r" data-v="10.66">10.66</td><td class="r" data-v="6.75">6.75</td><td class="r" data-v="10.16">10.16</td><td class="r" data-v="0">未取得</td><td class="r" data-v="0">—</td><td class="r" data-v="0">未取得</td><td class="r" data-v="0">—</td><td class="r best" data-v="12.0">12.0</td><td class="r" data-v="1.07">1.07</td><td class="r best" data-v="3.29">3.29</td><td class="r" data-v="0">未取得</td><td>2027/4に群馬銀行と統合し群馬新潟FGへ</td></tr>
+<tr><td>あおぞら銀行</td><td><a class="code" href="https://s.kabutan.jp/stocks/8304/">8304</a></td><td><span class="tag t-mega">大手</span></td><td class="r" data-v="8.65">8.65</td><td class="r best" data-v="1.70">1.70</td><td class="r" data-v="0">未取得</td><td class="r" data-v="104">▲104</td><td class="r" data-v="2.2">2.2</td><td class="r" data-v="0">未取得</td><td class="r" data-v="0">—</td><td class="r" data-v="17.2">17.2</td><td class="r best" data-v="0.93">0.93</td><td class="r" data-v="2.99">2.99</td><td class="r" data-v="0">—</td><td><b>米国CRE(LTV100%超の破綻懸念先196百万USD・引当37.5%)＋外債6,311億</b>。ROE5.4%は最低</td></tr>
+<tr><td>セブン銀行</td><td><a class="code" href="https://s.kabutan.jp/stocks/8410/">8410</a></td><td><span class="tag t-mega">大手</span></td><td class="r" data-v="1.57">1.57</td><td class="r best" data-v="1.93">1.93</td><td class="r" data-v="1.93">1.93</td><td class="r pos" data-v="-6">+6(益)</td><td class="r best" data-v="-0.2">▲0.2</td><td class="r" data-v="0">—</td><td class="r" data-v="0">—</td><td class="r worst" data-v="19.4">19.4</td><td class="r" data-v="1.38">1.38</td><td class="r" data-v="3.32">3.32</td><td class="r" data-v="0">—</td><td><b>実質ATM決済インフラ企業</b>。国債は全額5年以内・外債ゼロだが金利上昇の恩恵もゼロ。今期+48%増益は減価償却の耐用年数変更(5→7年)</td></tr>
+<tr><td>三井住友FG</td><td><a class="code" href="https://s.kabutan.jp/stocks/8316/">8316</a></td><td><span class="tag t-mega">大手</span></td><td class="r" data-v="327.47">327.47</td><td class="r" data-v="3.01">3.01</td><td class="r" data-v="0">未取得</td><td class="r" data-v="5876">▲5,876</td><td class="r best" data-v="2.3">2.3</td><td class="r" data-v="0">未取得</td><td class="r" data-v="0">—</td><td class="r" data-v="13.9">13.9*</td><td class="r" data-v="1.55">1.55</td><td class="r" data-v="2.73">2.73</td><td class="r" data-v="0">—</td><td>*コンセンサス。<b>メガ3行で国債比率が突出して低い</b>。HTMが1Qで+1.37兆と増加</td></tr>
+<tr><td>SBI新生銀行</td><td><a class="code" href="https://s.kabutan.jp/stocks/8303/">8303</a></td><td><span class="tag t-mega">大手</span></td><td class="r" data-v="25.70">25.70</td><td class="r" data-v="4.40">4.40</td><td class="r" data-v="0">未取得</td><td class="r" data-v="484">▲484</td><td class="r" data-v="3.5">3.5</td><td class="r" data-v="0">—</td><td class="r" data-v="0">—</td><td class="r" data-v="13.7">13.7*</td><td class="r" data-v="1.13">1.13</td><td class="r" data-v="0">未定</td><td class="r" data-v="0">—</td><td>*Yahooの10.5倍は税前利益ベースで誤り。<b>1Qで国債を倍増・円債の72%が10年超</b>。CLO/RMBS 2.7兆</td></tr>
+<tr><td>みずほFG</td><td><a class="code" href="https://s.kabutan.jp/stocks/8411/">8411</a></td><td><span class="tag t-mega">大手</span></td><td class="r" data-v="304.28">304.28</td><td class="r" data-v="6.90">6.90</td><td class="r" data-v="0">未取得</td><td class="r" data-v="1425">▲1,425</td><td class="r best" data-v="0.7">0.7</td><td class="r" data-v="0">未取得</td><td class="r" data-v="0">—</td><td class="r" data-v="14.1">14.1</td><td class="r" data-v="1.72">1.72</td><td class="r" data-v="1.85">1.85</td><td class="r" data-v="0">—</td><td><b>1QでAFS国債を+5.7兆積み増し</b>=金利上昇を取りに行っている</td></tr>
+<tr><td>三菱UFJ FG</td><td><a class="code" href="https://s.kabutan.jp/stocks/8306/">8306</a></td><td><span class="tag t-mega">大手</span></td><td class="r" data-v="433.91">433.91</td><td class="r" data-v="7.06">7.06</td><td class="r" data-v="0">未取得</td><td class="r" data-v="2800">▲2,800</td><td class="r best" data-v="0.7">0.7</td><td class="r" data-v="31900">31,900</td><td class="r" data-v="7.7">7.7</td><td class="r" data-v="14.6">14.6</td><td class="r" data-v="1.74">1.74</td><td class="r" data-v="2.74">2.74</td><td class="r" data-v="0">—</td><td><b>HTM26.85兆の評価損益を非開示</b>。国内株含み益+3.19兆が債券損を上回る</td></tr>
+<tr><td>りそなHD</td><td><a class="code" href="https://s.kabutan.jp/stocks/8308/">8308</a></td><td><span class="tag t-mega">大手</span></td><td class="r" data-v="77.01">77.01</td><td class="r worst" data-v="7.55">7.55</td><td class="r" data-v="0">未取得</td><td class="r" data-v="7769">▲7,769</td><td class="r worst" data-v="14.3">14.3</td><td class="r" data-v="0">未取得</td><td class="r" data-v="0">—</td><td class="r" data-v="16.1">16.1</td><td class="r" data-v="1.76">1.76</td><td class="r" data-v="1.57">1.57</td><td class="r" data-v="0">—</td><td>外債1.0兆と小さく<b>リスクは素直に円金利に集中</b>。満期保有債券に▲6,362億</td></tr>
+<tr><td>ゆうちょ銀行</td><td><a class="code" href="https://s.kabutan.jp/stocks/7182/">7182</a></td><td><span class="tag t-mega">大手</span></td><td class="r" data-v="221.52">221.52</td><td class="r worst" data-v="19.14">19.14</td><td class="r" data-v="0">未取得</td><td class="r" data-v="49414">▲49,414</td><td class="r worst" data-v="43.7">43.7</td><td class="r" data-v="0">—</td><td class="r" data-v="0">—</td><td class="r" data-v="17.1">17.1</td><td class="r" data-v="1.22">1.22</td><td class="r" data-v="2.94">2.94</td><td class="r" data-v="0">—</td><td><b>満期保有国債に▲4.94兆(株主資本9.94兆の約半分)</b>。会計上は表面化しないが経済価値の毀損は最大。外債は+3.66兆の含み益</td></tr>
+</tbody>
+</table></div>
+<p class="note"><b>指標の定義</b>: 「円債含み損」は国内債(国債＋地方債＋社債)の評価損。銀行により満期保有分を含む/含まないが異なる(りそな・ゆうちょ・三井住友は満期保有を含む)。「含み損/時価総額」= 円債含み損 ÷ 時価総額 で、<b>金利上昇の実額インパクトを比較するための指標</b>。「株式含み益」は2026/6末(日経70,062円)基準で、8/19終値65,343円では1〜2割目減りしている点に注意。</p>
+</section>
+
+<section>
+<h2>読み方 — 3つの罠</h2>
+<div class="card bad"><b>罠① 国債比率は地方債・社債を見落とす</b><br>
+京都FG 3.19%→円債計<b>10.64%</b>、十六FG 3.63%→<b>10.08%</b>、群馬銀行は国債1,231億に対し<b>地方債6,966億</b>(5.7倍)。地方債も社債も同じ金利リスクを負うので、円債合計で見ないと意味がない。</div>
+<div class="card bad"><b>罠② 比率が低くてもデュレーションが長ければ同じこと</b><br>
+九州FGは国債3.25%・円債計5.37%と全行でも低位なのに、<b>含み損は時価総額の20.0%</b>。ひろぎんHD 19.5%も同様。逆にいよぎんHDは0.4%、スルガ1.1%、横浜FG1.9%。<b>比率ではなく実額で見ると順位が入れ替わる</b>。</div>
+<div class="card bad"><b>罠③ 予想PERの安さが政策保有株の売却益で作られている</b><br>
+FY2026の株式等関係損益÷純利益: <b>CCIグループ488%</b>(粗利益28億を株式益616億で補填)、<b>京都FG183%</b>(任天堂益751億)、十六FG115%、ふくおかFG95%、静岡FG68%。<b>ちゅうぎんFGは1Qだけで株式益183億=1Q純利益の92%</b>。多くの地銀が「株を売った益で円債の含み損を実現処理する」損益入替を進行中で、<b>国債比率が低い行の一部は、その結果としてそうなっているだけ</b>。<br>
+最もクリーンなのは<b>スルガ(株式益が純利益の4%)</b>・群馬(28%)・千葉(29%)。</div>
+</section>
+
+<section>
+<h2>株式含み益ランキング（京都銀行型の価値）</h2>
+<div class="tbl"><table>
+<thead><tr><th>銘柄</th><th class="r">株式含み益</th><th class="r">÷時価総額</th><th class="r">÷純資産(税引後)</th><th>中身</th></tr></thead>
+<tbody>
+<tr><td><b>京都FG(5844)</b></td><td class="r">1兆2,414億</td><td class="r best">85.3%</td><td class="r">62.8%</td><td>上場98銘柄9,723億・取得原価1,433億(<b>含み益率896%</b>)。任天堂3,405億/京セラ1,373億/村田1,102億/ニデック975億で70%。中計で3,000億以上の縮減方針</td></tr>
+<tr><td><b>八十二長野銀行(8359)</b></td><td class="r">7,352億</td><td class="r best">58.2%</td><td class="r">42.6%</td><td>政策保有1,979億＋<b>純投資5,528億(含み益5,062億)</b>。区分替えによる"削減"に注意</td></tr>
+<tr><td>十六FG(7380)</td><td class="r">1,924億</td><td class="r">40.4%</td><td class="r">25.8%</td><td>純投資921億(含み益798億・トヨタ1,300万株)</td></tr>
+<tr><td>七十七銀行(8341)</td><td class="r">2,358億</td><td class="r">27.7%</td><td class="r">21.8%</td><td>純投資2,136億(含み益1,643億)</td></tr>
+<tr><td>いよぎんHD(5830)</td><td class="r">3,179億</td><td class="r">26.5%</td><td class="r">24.1%</td><td>—</td></tr>
+<tr><td>静岡FG(5831)</td><td class="r">5,117億</td><td class="r">26.0%</td><td class="r">28.0%</td><td>FY2027に売却益580億を計画に織り込み済み</td></tr>
+<tr><td>ちゅうぎんFG(5832)</td><td class="r">1,408億</td><td class="r">22.7%</td><td class="r">14.6%</td><td>—</td></tr>
+<tr><td>九州FG(7180)</td><td class="r">1,302億</td><td class="r">18.8%</td><td class="r">11.6%</td><td>—</td></tr>
+<tr><td>千葉銀行(8331)</td><td class="r">2,977億</td><td class="r">14.2%</td><td class="r">16.2%</td><td>純投資1,374億</td></tr>
+<tr><td>群馬銀行(8334)</td><td class="r">861億</td><td class="r">8.2%</td><td class="r">9.5%</td><td>—</td></tr>
+<tr><td>東京きらぼしFG(7173)</td><td class="r">259億</td><td class="r">5.2%</td><td class="r">4.6%</td><td>PER1位だが含み益の裏付けは薄い</td></tr>
+</tbody>
+</table></div>
+</section>
+
+<section>
+<h2>注意・出典</h2>
+<ul>
+<li><b>社名変更が多数</b>: コンコルディアFG→<b>横浜FG(7186)</b>、広島銀行8379→<b>ひろぎんHD(7337)</b>、中国銀行8382→<b>ちゅうぎんFG(5832)</b>、北國FHD→<b>CCIグループ(7381)</b>、八十二銀行→<b>八十二長野銀行</b>(長野銀行と合併)</li>
+<li><b>群馬銀行(8334)は2027/4/1に第四北越FG(7327)と株式交換</b>(1株→1.125株)で消滅。単独の投資対象にならない</li>
+<li><b>時点が不統一</b>: 国債残高は2026/6末を取れた行(群馬・きらぼし・七十七・静岡・ふくおか)と2026/3末しか取れない行が混在。<b>きらぼしは3月末1,371億→6月末2,543億と1四半期で85%増</b>しており、3月末データの行も6月末には増えている可能性がある</li>
+<li><b>連単の不一致</b>: 分子(国債)が単体・分母(総資産)が連結の行がある。銀行本体が連結資産の95%前後を占めるため影響は限定的だが、若干の過小評価になる</li>
+<li><b>来期(2028年3月期)のコンセンサスは全行で取得できず</b>。表のPERはすべて今期(2027年3月期)ベース</li>
+<li>出典: TDnet原本PDF(各行の2027年3月期1Q決算短信・決算説明資料)、EDINET有価証券報告書(京都FG=S100YEHZ 等)、株探(2026/8/19)、irbank</li>
+</ul>
+</section>
+
+</div>
+<script>
+(function(){
+  var tbl=document.getElementById('bt'), ths=tbl.tHead.rows[0].cells, tb=tbl.tBodies[0];
+  var cur=-1, asc=false;
+  function val(row,i){
+    var c=row.cells[i], v=c.getAttribute('data-v');
+    if(v!==null) return parseFloat(v);
+    return c.textContent.trim();
+  }
+  for(var i=0;i<ths.length;i++){
+    (function(idx){
+      ths[idx].addEventListener('click',function(){
+        var num = ths[idx].getAttribute('data-t')==='n';
+        asc = (cur===idx) ? !asc : (num ? true : true);
+        cur=idx;
+        for(var k=0;k<ths.length;k++){ths[k].className=ths[k].className.replace(/ ?sorted( asc)?/g,'');}
+        ths[idx].className += ' sorted' + (asc?' asc':'');
+        var rows=Array.prototype.slice.call(tb.rows);
+        rows.sort(function(a,b){
+          var x=val(a,idx), y=val(b,idx);
+          if(num){ if(isNaN(x))x=Infinity; if(isNaN(y))y=Infinity; return asc?x-y:y-x; }
+          return asc ? String(x).localeCompare(String(y),'ja') : String(y).localeCompare(String(x),'ja');
+        });
+        rows.forEach(function(r){tb.appendChild(r);});
+      });
+    })(i);
+  }
+})();
+</script>
+<footer>作成 2026/8/19 ・ 株価は8/19時点、BSは2026年6月末中心(一部3月末) ・ 数値は一次資料(TDnet/EDINET)ベース</footer>
+</body>
+</html>
