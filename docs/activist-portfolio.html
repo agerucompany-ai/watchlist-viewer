@@ -47,6 +47,7 @@ footer{padding:14px;font-size:11px;color:var(--muted);border-top:1px solid var(-
 .s-ear{background:var(--green);color:#000}
 .s-arb{background:var(--purple);color:#000}
 .s-cash{background:var(--bg3);color:var(--muted);border:1px solid var(--border)}
+.s-bank{background:#1f6feb;color:#fff}
 .flag{color:var(--red);font-weight:700}
 </style>
 </head>
@@ -55,40 +56,43 @@ footer{padding:14px;font-size:11px;color:var(--muted);border-top:1px solid var(-
   <a class="back" href="activist.html">← 保有マップ</a>
   <a class="back" href="activist-cnper.html">CNPER分析</a>
   <h1>アクティビスト×好決算ポートフォリオ（2026/8/15 → 12/30）v3.2</h1>
-  <span class="meta">v3.3 (8/17終値で更新): 基準株価を8/14終値の確定値に補正(ＡＲＥ・大崎)、現在値/騰落/RSIを追加</span>
+  <span class="meta">v4 (8/19終値): 銀行スリーブ新設(いよぎんHD・三井住友FG)、あすか製薬を利確売却、現金12%→4%</span>
 </header>
 <div class="wrap">
 
 <section>
-<h2>結論サマリー（v3.3・2026/8/17終値時点）</h2>
+<h2>結論サマリー（v4・2026/8/19終値時点）</h2>
 <div class="kpi">
-  <div class="box"><div class="lbl">組成来の実績（8/14→8/17）</div><div class="val pos">+0.28%</div></div>
-  <div class="box"><div class="lbl">期待値（〜12/30）</div><div class="val pos">+8.6%</div></div>
-  <div class="box"><div class="lbl">年率換算</div><div class="val pos">約+25%</div></div>
-  <div class="box"><div class="lbl">構成</div><div class="val">8銘柄+現金12%</div></div>
+  <div class="box"><div class="lbl">組成来の実績（8/14→8/19）</div><div class="val neg">-1.51%</div></div>
+  <div class="box"><div class="lbl">期待値（〜12/30）</div><div class="val pos">+9.6%</div></div>
+  <div class="box"><div class="lbl">年率換算</div><div class="val pos">約+28%</div></div>
+  <div class="box"><div class="lbl">構成</div><div class="val">9銘柄+現金4%</div></div>
 </div>
-<p class="note"><b>8/17の値動き</b>: メタルアート<b>+3.65%</b>(再TOB思惑)が牽引、他は±1%以内。ニップンは-0.66%で<b>8月末の提案はまだ出ていない</b>(Phase1の期限まで残りわずか)。<br>
-<b>⚠️ 基準株価の補正</b>: ＡＲＥ(3,090→<b>3,630円</b>)と大崎電気(1,609→<b>1,572円</b>)の基準株価は、ウォッチリストの株価更新が止まっていた時期の古い値を使っていた。8/14終値の確定値に差し替え、利確・撤退ラインも再計算した(CNPERは元から正しい値)。</p>
+<p class="note"><b>v4の変更点(2026/8/19)</b>: ①<b>銀行スリーブを新設</b> — 8/19に銀行株が全面安(東京きらぼし-5.81%、いよぎんHD-5.42%、三井住友FG-4.81%、九州FG-4.67%)。<a class="code" href="banks.html">銀行スクリーナー</a>で28行を精査した結果から<b>いよぎんHD 7%・三井住友FG 5%</b>を新規採用 ②<b>あすか製薬(4%)を利確売却</b> — +3.74%で、ダルトンが総会敗北で手詰まりのためカタリスト不在 ③現金12%→4%<br>
+<b>8/19の下落状況</b>: 大崎電気-5.13%、メタルアート-4.05%だが、<b>撤退ラインに触れた銘柄はゼロ</b>(大崎は撤退1,383円に対し1,478円)。<b>ニップンの提案は8/19時点でまだ出ていない</b>(残り8営業日)。</p>
 <p><b>v3.1からの変更(大株主構成の精査による)</b>: ①<b>メタルアート 8→12%</b> — TOB結果内訳でダイハツ36%が応募済み(売却意思確定)・村上26.74%が再TOBの価格決定権を握ると判明、イベント確度最高 ②<b>三菱製紙 12→7%</b> — 王子HD32.84%は会社開示上の「支配株主等」で特別決議拒否権あり。共同保有とみていたWILL FIELD 7.25%は村上系ではないと判明 ③<b>あすか製薬 8→4%</b> — 2025/10ダルトンMBO断念→2026/6総会で防衛策可決・提案否決の「手詰まり2割」と判明 ④現金7→12%。</p>
 </section>
 
 <section>
-<h2>① 配分と現況（2026/8/17終値）</h2>
+<h2>① 配分と現況（2026/8/19終値）</h2>
 <div class="tbl"><table>
-<thead><tr><th></th><th class="r">配分</th><th>銘柄</th><th>コード</th><th class="r">基準<br>(8/14)</th><th class="r">現在<br>(8/17)</th><th class="r">騰落</th><th class="r">RSI</th><th class="r">CNPER</th><th>支配構造(精査済)</th><th>キードライバー</th></tr></thead>
+<thead><tr><th></th><th class="r">配分</th><th>銘柄</th><th>コード</th><th class="r">基準</th><th class="r">現在<br>(8/19)</th><th class="r">騰落</th><th class="r">8/19<br>単日</th><th class="r">CNPER</th><th>支配構造(精査済)</th><th>キードライバー</th></tr></thead>
 <tbody>
-<tr><td><span class="sleeve s-act">A</span></td><td class="r w">15%</td><td>ニップン</td><td><a class="code" href="https://kabutan.jp/stock/?code=2001">2001</a></td><td class="r">2,869円</td><td class="r">2,850円</td><td class="r flat">-0.66%</td><td class="r">56.2</td><td class="r">9.8</td><td class="pos">完全分散(赤旗なし)</td><td>SCの重要提案(8月末予定と報告書明記)<b class="flag">。8/17時点で未発表</b></td></tr>
-<tr><td><span class="sleeve s-arb">R</span></td><td class="r w">12%</td><td>メタルアート</td><td><a class="code" href="https://kabutan.jp/stock/?code=5644">5644</a></td><td class="r">7,390円</td><td class="r">7,660円</td><td class="r pos"><b>+3.65%</b></td><td class="r">50.8</td><td class="r">7.9</td><td class="pos">ダイハツ36%=売り手確定</td><td>再TOB待ち。村上26.74%が価格決定権</td></tr>
-<tr><td><span class="sleeve s-act">A</span></td><td class="r w">7%</td><td>三菱製紙</td><td><a class="code" href="https://kabutan.jp/stock/?code=3864">3864</a></td><td class="r">1,152円</td><td class="r">1,151円</td><td class="r flat">-0.09%</td><td class="r">55.9</td><td class="r">8.6</td><td class="flag">王子32.84%(拒否権)</td><td>王子TOB誘発待ち(時間軸不明で縮小)</td></tr>
-<tr><td><span class="sleeve s-act">A</span></td><td class="r w">4%</td><td>あすか製薬HD</td><td><a class="code" href="https://kabutan.jp/stock/?code=4886">4886</a></td><td class="r">2,111円</td><td class="r">2,118円</td><td class="r pos">+0.33%</td><td class="r pos">41.8</td><td class="r">10.3</td><td class="flag">会社側連合21%と拮抗</td><td>ダルトン手詰まり。会社側還元待ちで縮小</td></tr>
-<tr><td><span class="sleeve s-ear">E</span></td><td class="r w">13%</td><td>ベクトル</td><td><a class="code" href="https://kabutan.jp/stock/?code=6058">6058</a></td><td class="r">1,849円</td><td class="r">1,837円</td><td class="r flat">-0.65%</td><td class="r">58.0</td><td class="r">9.0</td><td class="flat">西江氏系~40%(業績プレー限定)</td><td>☆1Q営利+87%・通期増益予想</td></tr>
-<tr><td><span class="sleeve s-ear">E</span></td><td class="r w">13%</td><td>ＡＲＥホールディングス</td><td><a class="code" href="https://kabutan.jp/stock/?code=5857">5857</a></td><td class="r"><b>3,630円</b><br><span style="font-size:10px;color:var(--muted)">旧3,090は誤り</span></td><td class="r">3,630円</td><td class="r flat">±0%</td><td class="r flag"><b>68.3</b></td><td class="r">3.6</td><td class="pos">分散(最もクリーン)</td><td>☆1Q+107%・通期上方修正済・金高。<b>RSI68でPF内最も過熱</b></td></tr>
-<tr><td><span class="sleeve s-ear">E</span></td><td class="r w">14%</td><td>大崎電気工業</td><td><a class="code" href="https://kabutan.jp/stock/?code=6644">6644</a></td><td class="r"><b>1,572円</b><br><span style="font-size:10px;color:var(--muted)">旧1,609は誤り</span></td><td class="r">1,574円</td><td class="r pos">+0.13%</td><td class="r">56.7</td><td class="r">8.8</td><td class="pos">分散(HSBC SG口座8.85%のみ不明)</td><td>☆第2世代スマメ収益性が想定超</td></tr>
-<tr><td><span class="sleeve s-ear">E</span></td><td class="r w">10%</td><td>電業社機械製作所</td><td><a class="code" href="https://kabutan.jp/stock/?code=6365">6365</a></td><td class="r">5,510円</td><td class="r">5,510円</td><td class="r flat">±0%</td><td class="r">55.3</td><td class="r">1.2</td><td class="pos">分散(GM Inv.12%が静かに滞留)</td><td>CNPER1.2の資産床(業績は期ズレ性)</td></tr>
-<tr><td><span class="sleeve s-cash">C</span></td><td class="r w">12%</td><td>待機資金(現金)</td><td>—</td><td class="r">—</td><td class="r">—</td><td class="r">—</td><td class="r">—</td><td class="r">—</td><td>—</td><td>投入条件: メタルアート再TOB/京成条件成立/新規割れ銘柄</td></tr>
+<tr><td><span class="sleeve s-act">A</span></td><td class="r w">15%</td><td>ニップン</td><td><a class="code" href="https://kabutan.jp/stock/?code=2001">2001</a></td><td class="r">2,869円</td><td class="r">2,854円</td><td class="r flat">-0.52%</td><td class="r pos">+0.21%</td><td class="r">9.8</td><td class="pos">完全分散(赤旗なし)</td><td>SCの重要提案(8月末予定と報告書明記)<b class="flag">。8/19時点で未発表・残り8営業日</b></td></tr>
+<tr><td><span class="sleeve s-arb">R</span></td><td class="r w">12%</td><td>メタルアート</td><td><a class="code" href="https://kabutan.jp/stock/?code=5644">5644</a></td><td class="r">7,390円</td><td class="r">7,340円</td><td class="r flat">-0.68%</td><td class="r neg">-4.05%</td><td class="r">7.9</td><td class="pos">ダイハツ36%=売り手確定</td><td>再TOB待ち。村上26.74%が価格決定権</td></tr>
+<tr><td><span class="sleeve s-act">A</span></td><td class="r w">7%</td><td>三菱製紙</td><td><a class="code" href="https://kabutan.jp/stock/?code=3864">3864</a></td><td class="r">1,152円</td><td class="r">1,156円</td><td class="r pos">+0.35%</td><td class="r pos">+0.43%</td><td class="r">8.6</td><td class="flag">王子32.84%(拒否権)</td><td>王子TOB誘発待ち(時間軸不明で縮小)</td></tr>
+<tr><td><span class="sleeve s-ear">E</span></td><td class="r w">13%</td><td>ベクトル</td><td><a class="code" href="https://kabutan.jp/stock/?code=6058">6058</a></td><td class="r">1,849円</td><td class="r">1,805円</td><td class="r neg">-2.38%</td><td class="r flat">-0.39%</td><td class="r">9.0</td><td class="flat">西江氏系~40%(業績プレー限定)</td><td>☆1Q営利+87%・通期増益予想</td></tr>
+<tr><td><span class="sleeve s-ear">E</span></td><td class="r w">13%</td><td>ＡＲＥホールディングス</td><td><a class="code" href="https://kabutan.jp/stock/?code=5857">5857</a></td><td class="r">3,630円</td><td class="r">3,505円</td><td class="r neg">-3.44%</td><td class="r neg">-1.68%</td><td class="r">3.6</td><td class="pos">分散(最もクリーン)</td><td>☆1Q+107%・通期上方修正済・金高。RSI68の過熱は解消方向</td></tr>
+<tr><td><span class="sleeve s-ear">E</span></td><td class="r w">14%</td><td>大崎電気工業</td><td><a class="code" href="https://kabutan.jp/stock/?code=6644">6644</a></td><td class="r">1,572円</td><td class="r">1,478円</td><td class="r neg"><b>-5.98%</b></td><td class="r neg">-5.13%</td><td class="r">8.8</td><td class="pos">分散(HSBC SG口座8.85%のみ不明)</td><td>☆第2世代スマメ収益性が想定超。<b>PF内で最大の下げだが撤退1,383円には未達</b></td></tr>
+<tr><td><span class="sleeve s-ear">E</span></td><td class="r w">10%</td><td>電業社機械製作所</td><td><a class="code" href="https://kabutan.jp/stock/?code=6365">6365</a></td><td class="r">5,510円</td><td class="r">5,550円</td><td class="r pos">+0.73%</td><td class="r flat">±0%</td><td class="r">1.2</td><td class="pos">分散(GM Inv.12%が静かに滞留)</td><td>CNPER1.2の資産床(業績は期ズレ性)</td></tr>
+<tr><td><span class="sleeve s-bank">B</span></td><td class="r w">7%</td><td><b>いよぎんHD</b>(新規)</td><td><a class="code" href="https://s.kabutan.jp/stocks/5830/">5830</a></td><td class="r">3,820円<br><span style="font-size:10px;color:var(--muted)">8/19終値で取得</span></td><td class="r">3,820円</td><td class="r flat">—</td><td class="r neg"><b>-5.42%</b></td><td class="r">—</td><td class="pos">分散</td><td><b>28行中で金利耐性トップ</b>(円債含み損が時価総額の0.4%)・不動産融資10.0%・PER13.4</td></tr>
+<tr><td><span class="sleeve s-bank">B</span></td><td class="r w">5%</td><td><b>三井住友FG</b>(新規)</td><td><a class="code" href="https://s.kabutan.jp/stocks/8316/">8316</a></td><td class="r">6,568円<br><span style="font-size:10px;color:var(--muted)">8/19終値で取得</span></td><td class="r">6,568円</td><td class="r flat">—</td><td class="r neg"><b>-4.81%</b></td><td class="r">—</td><td class="pos">分散</td><td><b>メガ3行で国債比率が突出して低い3.01%</b>・PER13.9・PBR1.55(メガ最低)</td></tr>
+<tr><td><span class="sleeve s-cash">C</span></td><td class="r w">4%</td><td>待機資金(現金)</td><td>—</td><td class="r">—</td><td class="r">—</td><td class="r">—</td><td class="r">—</td><td class="r">—</td><td>—</td><td>投入条件: メタルアート再TOB/ニップン提案/新規割れ銘柄</td></tr>
 </tbody>
 </table></div>
-<p class="note">CNPERの定義 = (時価総額 − ネットキャッシュ) ÷ (直近四半期純利益 × 4)。RSI(14)は8/14終値までのWilder値。<b>PF全体の加重騰落は +0.28%</b>(現金12%を含む)。</p>
+<p class="note">CNPERの定義 = (時価総額 − ネットキャッシュ) ÷ (直近四半期純利益 × 4)。<b>銀行はCNPER・ネットキャッシュの概念が成立しない</b>(負債の大半が預金)ため「—」。銀行の評価軸は<a class="code" href="banks.html">銀行スクリーナー</a>の国債比率・円債含み損÷時価総額を参照。<b>PF全体の加重騰落は -1.51%</b>(8/14→8/19、現金込み)。</p>
+<div class="card"><b>売却: あすか製薬HD(4886) — 2,111円→2,190円で +3.74%の利確</b><br>
+NAVF/ダルトン連合21.32%は保有しているが、<b>2025/10にダルトンがMBOを断念、2026/6総会で買収防衛策の発動が可決されダルトンの株主提案は否決</b>(機関投資家も不支持)。経営権取得の筋が封じられ、武田7.76%+ゼリア6.61%+三菱UFJ+創業家≒21%の会社側連合と拮抗したまま動けない。カタリストの主導権が完全に会社側にあるため、上昇したところで撤退。</div>
 
 <h3>損益管理表（利確目安・撤退金額）</h3>
 <div class="tbl"><table>
@@ -97,7 +101,8 @@ footer{padding:14px;font-size:11px;color:var(--muted);border-top:1px solid var(-
 <tr><td>ニップン</td><td class="r">2,869円</td><td class="r pos">3,160円(提案初動+10%で半分)</td><td class="r pos">3,300円(大型提案なら全量)</td><td class="r neg">2,525円(-12%)</td><td>9月第1週まで提案なし/SCの保有減</td></tr>
 <tr><td>メタルアート</td><td class="r">7,390円</td><td class="r pos">8,600円(再TOB観測+16%で半分)</td><td class="r pos">再TOB価格(7,713円が下限目線・〜9,000円想定)</td><td class="r neg">6,500円(-12%)</td><td>スパークス完全撤退表明(即日)。増配160円が下支え</td></tr>
 <tr><td>三菱製紙</td><td class="r">1,152円</td><td class="r pos">1,325円(還元発表+15%で半分)</td><td class="r pos">1,500円(王子TOB+30%)</td><td class="r neg">1,015円(-12%)</td><td>村上系(C&I)の売却報告/王子の明確な拒否表明</td></tr>
-<tr><td>あすか製薬HD</td><td class="r">2,111円</td><td class="r pos">2,430円(+15%で半分)</td><td class="r pos">2,530円(大型自社株買い+20%)</td><td class="r neg">1,860円(-12%)</td><td>ダルトン/NAVFの保有減(手詰まり投げ)</td></tr>
+<tr><td><b>いよぎんHD</b>(新規)</td><td class="r">3,820円</td><td class="r pos">4,393円(+15%で半分)</td><td class="r pos">4,775円(+25%)</td><td class="r neg">3,362円(-12%)</td><td>円債含み損の急拡大/不動産融資の急増/政策保有株売却益への依存に転落</td></tr>
+<tr><td><b>三井住友FG</b>(新規)</td><td class="r">6,568円</td><td class="r pos">7,553円(+15%で半分)</td><td class="r pos">8,210円(+25%)</td><td class="r neg">5,780円(-12%)</td><td>国債比率の上昇(みずほ・SBI新生型の積み増しに転換)/HTMへの振替拡大</td></tr>
 <tr><td>ベクトル</td><td class="r">1,849円</td><td class="r pos">2,130円(+15%で半分)</td><td class="r pos">2,310円(+25%)</td><td class="r neg">1,630円(-12%)</td><td>2Q(10月)で増益途切れ</td></tr>
 <tr><td>ＡＲＥ HD<b class="flag">(補正)</b></td><td class="r">3,630円</td><td class="r pos">4,175円(+15%で半分)</td><td class="r pos">4,720円(+30%)</td><td class="r neg">3,195円(-12%)</td><td>金価格がドル建て-10%超の急落。RSI68で過熱気味→新規は押し目待ち</td></tr>
 <tr><td>大崎電気<b class="flag">(補正)</b></td><td class="r">1,572円</td><td class="r pos">1,808円(+15%で半分)</td><td class="r pos">1,965円(+25%/上方修正)</td><td class="r neg">1,383円(-12%)</td><td>海外NEOSの遅延拡大/受注残減少</td></tr>
@@ -124,10 +129,7 @@ footer{padding:14px;font-size:11px;color:var(--muted);border-top:1px solid var(-
 <b>大株主構成</b>: <span class="flag">王子HD 32.84%</span>(会社が「支配株主等」と開示・特別決議の拒否権) / IB証券5.27% / WILL FIELD CAPITAL 7.25%。<b>精査で判明: WILL FIELDは村上系ではない</b>(シンガポールの独立系ファミリーオフィス・志野文哉氏。アクティビスト行動歴なし)=「村上+WILL FIELD 13%共闘」説は崩壊、村上系の実弾はC&I 5.79%のみ。<br>
 <b>狙いの読み</b>: 総会で王子に勝つ筋はゼロ。よって出口は<b>王子への売り付け(完全子会社化TOBの催促)一択</b>。村上系が7月も買い増しているのは「王子が動く」ことへの確信の表れと読めるが、時間軸は100%王子次第。<b>縮小の理由</b>: イベントの主導権が相手(王子)にあり、王子のTOB観測報道が出るまでは軽く持つのが合理的</div>
 
-<div class="card"><b>あすか製薬HD (4886) — 4%(v3.1の8%から縮小)</b> <span class="fund">ダルトン+NAVF連合 21.32%</span><br>
-<b>大株主構成</b>: 信託口9.4% / NAVF 8.44% / <span class="flag">武田薬品7.76% / ゼリア新薬6.61% / 三菱UFJ3.87% / 創業家山口家2.49%(会社側連合≒21%)</span> — ダルトン連合21.32%と真っ向拮抗の塹壕戦。<br>
-<b>経緯が出した答え</b>: 2025/5ダルトン実質MBO意向→会社が大規模買付ルールで対抗→<b>2025/10ダルトンMBO断念→2026/6総会で防衛策発動可決・ダルトン提案否決</b>(機関投資家も不支持)。経営権取得の筋は封じられ、21%は「出口困難な2割」化。<br>
-<b>残る出口</b>: (a)会社の大型自社株買いに応募 (b)武田・ゼリア絡みの再編 (c)長期戦——いずれも会社側のペース。<b>縮小の理由</b>: カタリストの主導権を失っており、防衛策撤回・武田持分売却の兆候が出るまで4%の観測ポジションに</div>
+<div class="card out"><b>【v4で売却】あすか製薬HD (4886)</b> — 2,111円→2,190円(+3.74%)で利確。ダルトン+NAVF連合21.32%は健在だが、<b>2025/10にMBO断念、2026/6総会で防衛策発動が可決されダルトン提案は否決</b>。武田7.76%+ゼリア6.61%+三菱UFJ+創業家≒21%の会社側連合と拮抗したまま経営権取得の筋が封じられ、カタリストの主導権は完全に会社側。防衛策撤回か武田の持分売却の兆候が出れば再検討</div>
 
 <div class="card out"><b>【除外済み】</b> ガンホー(孫泰蔵2割・2026/3総会10議案全否決・営利-71%) / プラスアルファC(オアシスがラクスへ全株譲渡済み・+41%でイグジット) / スクエニ(通期減益予想・PER34倍・福嶋家2割超) / 日本車輌(通期-24%減益予想)。<b>共通教訓: 「出口の相手」を特定できない銘柄は相乗り不適</b></div>
 
@@ -135,7 +137,27 @@ footer{padding:14px;font-size:11px;color:var(--muted);border-top:1px solid var(-
 </section>
 
 <section>
-<h2>③ 好決算スリーブ — 保有理由と売却基準（大株主精査済み）</h2>
+<h2>③ 銀行スリーブ（v4で新設・2026/8/19の全面安で採用）</h2>
+<p class="note">8/19に銀行株が一斉に売られた(東京きらぼし-5.81%、いよぎんHD-5.42%、三井住友FG-4.81%、九州FG-4.67%、京都FG-3.94%)。<a class="code" href="banks.html">銀行スクリーナー</a>で28行を国債比率・円債含み損・不動産融資・政策保有株益依存の4軸で精査した結果から2行を採用。<b>アクティビスト枠・好決算枠とは無相関の「金利正常化」というドライバー</b>を持ち込むのが狙い。</p>
+
+<div class="card"><b>いよぎんHD (5830) — 7%</b> 基準3,820円(8/19終値・当日-5.42%)<br>
+<b>採用理由</b>: 28行で<b>金利耐性が実質トップ</b>。国債/総資産2.21%(2位)に加え、決定的なのが<b>円債含み損が▲45億=時価総額のわずか0.4%</b>(全行最小。九州FG20.0%、ちゅうぎんFG29.0%と比べると桁が違う)。しかもFY2026に<b>外国国債と政策保有株を売却して含み損を実際に一掃済み</b>で、口先でなく手を打った実績がある。不動産融資10.0%と低く、株式含み益3,179億(時価総額の26.5%)、PER13.4・PBR1.13。<br>
+<b>リスク</b>: 「その他の証券」9,428億(有価証券の55%、投信/オルタナで内訳非開示)がブラックボックス。ここに何が入っているかが唯一の不明点</div>
+
+<div class="card"><b>三井住友FG (8316) — 5%</b> 基準6,568円(8/19終値・当日-4.81%)<br>
+<b>採用理由</b>: <b>メガ3行で国債比率が突出して低い3.01%</b>(MUFG7.06%・みずほ6.90%の半分以下)。みずほが1QでAFS国債を+5.7兆積み増し、SBI新生が国債を倍増させる中で、SMFGだけが低位を維持している。コンセンサスPER13.9倍、PBR1.55はメガ最低、予想ROE10.6%。流動性が桁違いに高く、地銀のいよぎんとリスク特性が異なるので2行でバランスを取る。<br>
+<b>リスク</b>: HTM(満期保有)が1Qだけで+1兆3,696億増えて6.02兆。<b>含み損リスクの本体はHTMに何を入れているかで、評価損益は開示されないことがある</b>(三菱UFJはHTM26.85兆の評価損益を非開示)。ここは決算ごとに追う必要がある</div>
+
+<div class="card warn"><b>採用しなかった上位候補と理由</b><br>
+<b>東京きらぼしFG(7173)</b>: PER12.4倍で28行中最安だが、<b>不動産融資28.6%(うち不動産取引業5,738億)で東京の不動産市況に極めて敏感</b>、かつ「その他の証券」3,556億=有価証券の43%が仕組債等。<br>
+<b>九州FG(7180)</b>: 国債3.25%・PBR0.80と魅力的だが、<b>円債含み損が時価総額の20.0%</b>。国債比率が低いのに含み損が大きい=デュレーションが長い。<br>
+<b>京都FG(5844)</b>: 株式含み益1兆2,414億(時価総額の85.3%・任天堂3,405億等、含み益率896%)は驚異的だが、<b>PER26.1倍で28行中最高</b>。任天堂株売却益751億で利益が膨らんでおり、含み益の実現ペースを追う銘柄としてウォッチ対象に留める。<br>
+<b>SBI新生(8303)</b>: Yahooの PER10.5倍は税前利益ベースの誤表示(実質13.7倍)。加えて<b>1Qで国債をほぼ倍増・円債の72%が10年超</b>で、金利上昇に脆弱化する方向。<br>
+<b>あおぞら(8304)</b>: 国債1.70%で最低だが、代わりに<b>米国CRE(LTV100%超の破綻懸念先196百万USD・引当37.5%)</b>を抱えROE5.4%。PBR0.93の安さには理由がある。</div>
+</section>
+
+<section>
+<h2>④ 好決算スリーブ — 保有理由と売却基準（大株主精査済み）</h2>
 
 <div class="card"><b>ベクトル (6058) — 13%</b> CNPER9.0・1Q営利+87%・通期増益予想<br>
 利益率の構造改善(11.4%→18.7%)による増益で通期と方向一致。<b>大株主注記</b>: 創業者・西江氏が直接+資産管理会社で約40%の支配ブロック→ガバナンスイベント(アクティビスト・MBO是正)は期待できない純業績プレー。<b>売却基準</b>: 2Q(10月)で増益途切れ</div>
@@ -151,38 +173,39 @@ footer{padding:14px;font-size:11px;color:var(--muted);border-top:1px solid var(-
 </section>
 
 <section>
-<h2>④ タイムラインと運用ルール（われわれ側の売買）</h2>
+<h2>⑤ タイムラインと運用ルール（われわれ側の売買）</h2>
 <div class="card"><b>Phase 1（〜8月末）</b>: ニップンの提案発表待ち(初動+10%超→半分利確、不発→9月第1週撤退)。メタルアートはスパークス側開示を毎日チェック</div>
 <div class="card"><b>Phase 2（9月〜12/30）</b>: ニップン回収資金と現金12%は、メタルアート再TOB確認時の追撃・京成条件成立・新規割れ銘柄に投入。<b>大量保有の変更報告を週次監視</b>(買い増し=継続、保有減=撤退)。好決算スリーブは10-11月決算で入れ替え</div>
 <div class="card"><b>共通損切り</b>: 全銘柄-12%で機械的撤退(メタルアートのスパークス撤退のみ価格を待たず即日)</div>
 </section>
 
 <section>
-<h2>⑤ 期待値の計算根拠（シナリオ×確率・v3.2）</h2>
+<h2>⑥ 期待値の計算根拠（シナリオ×確率・v4）</h2>
 <div class="tbl"><table>
 <thead><tr><th>銘柄(配分)</th><th>強気</th><th>中立</th><th>弱気</th><th class="r">銘柄EV</th><th class="r">寄与度</th></tr></thead>
 <tbody>
 <tr><td>ニップン(15%)</td><td>大型還元提案+15%(40%)</td><td>小粒提案+5%(40%)</td><td>不発/出尽くし-3%(20%)</td><td class="r pos">+7.4%→再投入込み+16%</td><td class="r pos">+2.4pt</td></tr>
 <tr><td>メタルアート(12%)</td><td>再TOB/ブロック譲渡+16%(50%)</td><td>膠着±0%(35%)</td><td>スパークス撤退-20%(15%)</td><td class="r pos">+5.0%</td><td class="r pos">+0.6pt</td></tr>
 <tr><td>三菱製紙(7%)</td><td>王子TOB+30%(20%)</td><td>買い増し継続+10%(45%)</td><td>膠着-10%(35%)</td><td class="r pos">+7.0%</td><td class="r pos">+0.5pt</td></tr>
-<tr><td>あすか製薬(4%)</td><td>大型自社株買い+15%(20%)</td><td>+5%(45%)</td><td>-8%(35%)</td><td class="r pos">+2.5%</td><td class="r flat">+0.1pt</td></tr>
+<tr><td><b>いよぎんHD(7%)</b></td><td>利上げ継続でNIM拡大+22%(30%)</td><td>+7%(45%)</td><td>金利低下・景気減速-12%(25%)</td><td class="r pos">+6.8%</td><td class="r pos">+0.5pt</td></tr>
+<tr><td><b>三井住友FG(5%)</b></td><td>+22%(30%)</td><td>+7%(45%)</td><td>-12%(25%)</td><td class="r pos">+6.8%</td><td class="r pos">+0.3pt</td></tr>
 <tr><td>ベクトル(13%)</td><td>決算上振れ+30%(30%)</td><td>+12%(45%)</td><td>-10%(25%)</td><td class="r pos">+11.9%</td><td class="r pos">+1.5pt</td></tr>
 <tr><td>ＡＲＥ HD(13%)</td><td>金高継続+30%(30%)</td><td>+10%(45%)</td><td>金反落-12%(25%)</td><td class="r pos">+10.5%</td><td class="r pos">+1.4pt</td></tr>
 <tr><td>大崎電気(14%)</td><td>上方修正+28%(35%)</td><td>+10%(45%)</td><td>-10%(20%)</td><td class="r pos">+12.3%</td><td class="r pos">+1.7pt</td></tr>
 <tr><td>電業社機械(10%)</td><td>大型案件続伸+20%(20%)</td><td>+5%(50%)</td><td>期ズレ剥落-8%(30%)</td><td class="r pos">+4.1%</td><td class="r pos">+0.4pt</td></tr>
-<tr><td>待機資金(12%)</td><td colspan="3">条件成立まで現金(EV 0%)</td><td class="r">0%</td><td class="r">0.0pt</td></tr>
+<tr><td>待機資金(4%)</td><td colspan="3">条件成立まで現金(EV 0%)</td><td class="r">0%</td><td class="r">0.0pt</td></tr>
 </tbody>
 </table></div>
 <div class="kpi">
-  <div class="box"><div class="lbl">ポートフォリオ期待値(〜12/30)</div><div class="val pos">+8.6%</div></div>
-  <div class="box"><div class="lbl">全銘柄強気</div><div class="val pos">+23%</div></div>
-  <div class="box"><div class="lbl">全銘柄弱気</div><div class="val neg">-7%</div></div>
+  <div class="box"><div class="lbl">ポートフォリオ期待値(〜12/30)</div><div class="val pos">+9.6%</div></div>
+  <div class="box"><div class="lbl">全銘柄強気</div><div class="val pos">+24%</div></div>
+  <div class="box"><div class="lbl">全銘柄弱気</div><div class="val neg">-8%</div></div>
 </div>
-<p class="note">v1(+12.3%)→v2(+11.2%)→v3(+9.8%)→v3.2(+8.6%)と、調査を深めるたびに期待値は低下している。これは「幻想の剥落」であり、残った数字は大株主構成・TOB開示・通期予想まで裏取りした確度の高いもの。確率は2026/8/16時点の主観。</p>
+<p class="note">v1(+12.3%)→v2(+11.2%)→v3(+9.8%)→v3.2(+8.6%)→<b>v4(+9.6%)</b>。v3.2までの低下は調査による「幻想の剥落」だったが、v4の上昇は<b>EV0%の現金12%を、8/19の急落で期待値7%前後の銀行に振り替えた</b>ことによる。確率は2026/8/19時点の主観。</p>
 </section>
 
 <section>
-<h2>⑥ 前提とリスク</h2>
+<h2>⑦ 前提とリスク</h2>
 <ul>
 <li><b>市場前提</b>: 日経66,000円台の高値圏。現金12%は弱気シナリオのバッファ兼、イベント発生時の即応原資</li>
 <li><b>メタルアートはバイナリー</b>: ただしダイハツの売却意思確定+増配160円で、v3.1時点より下方リスクは軽減(弱気確率15%に引き下げ)。スパークス撤退報道のみ即日撤退</li>
