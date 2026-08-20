@@ -83,7 +83,9 @@ async function load(){
 
   document.getElementById("positions").innerHTML = (d.positions||[]).map(p=>{
     const act = p.urgency>=3 ? `🚨<b>${esc(p.action)}</b>` : (p.urgency==2?"⚠️接近":"継続");
-    const dl = p.delay_min==null?"":`<span class="tag">${esc(p.src)} ${p.delay_min}分前</span>`;
+    // 「N分前」はデータ遅延ではなく最終約定からの経過。出来高の薄い銘柄では
+    // 遅延20分より大きく出る。そこを混ぜて書くと値の鮮度を誤解する
+    const dl = p.delay_min==null?"":`<span class="tag">${esc(p.src)}／最終約定 ${p.delay_min}分前</span>`;
     return `<div class="pos u${p.urgency>=3?3:(p.urgency==2?2:0)}">
       <div class="ph">${act} ${esc(p.code)} ${esc(p.name)}
         <span class="tag">${esc(p.strategy||p.frame)}</span>${dl}</div>
