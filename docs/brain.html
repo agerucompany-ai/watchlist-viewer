@@ -121,6 +121,7 @@ async function load(){
   document.getElementById("mat").innerHTML =
     box("🎯 オプション（インプライド変動幅・建玉の増減・GEX）", m.options)
   + box("📊 需給（大株主の売却ペース・信用残）", m.supply)
+  + box("🧱 信用玉・コスト分布（平均建値・支持線・抵抗線・含み益割合）", m.margin_position)
   + box("🌏 マクロ（金利・原油・為替・VI）", m.macro)
   + box("🤖 AI需要（トークン量と単価）", m.ai_demand)
   + box("💼 保有と出口までの距離", m.positions)
