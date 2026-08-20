@@ -1,0 +1,121 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ライブ戦略ボード</title><style>
+:root{--bg:#0d1117;--bg2:#161b22;--bg3:#21262d;--border:#30363d;--text:#e6edf3;--muted:#8b949e;--blue:#58a6ff}
+body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,"Hiragino Sans","Yu Gothic UI",sans-serif;font-size:13px;padding:14px}
+h1{font-size:18px;margin:6px 0} h2{font-size:14px;margin:18px 0 8px;border-left:4px solid var(--blue);padding-left:8px}
+table{border-collapse:collapse;width:100%;background:var(--bg2);font-size:12px}
+th,td{border:1px solid var(--border);padding:5px 8px;text-align:left} th{background:var(--bg3);white-space:nowrap}
+td.r{text-align:right} .up{color:#3fb950} .down{color:#f85149}
+a{color:var(--blue);text-decoration:none}
+.wrap{overflow-x:auto} .muted{color:var(--muted)}
+.bar{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:10px 14px;margin:10px 0;display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px}
+.on{background:#3fb950} .off{background:#8b949e}
+.cmt{background:var(--bg2);border:1px solid var(--border);border-left:4px solid #d4a017;border-radius:6px;padding:10px 14px;margin:8px 0;line-height:1.8;white-space:pre-wrap}
+.u3{border-left:4px solid #f85149} .u2{border-left:4px solid #d29922} .u0{border-left:4px solid #30363d}
+.pos{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:9px 12px;margin:7px 0}
+.ph{font-size:13.5px;font-weight:700} .pw{font-size:11.5px;color:var(--muted);margin-top:3px}
+.xi{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:7px 11px;margin:5px 0;font-size:12px}
+.xh{color:var(--blue);font-weight:700} .hit{border-left:3px solid #d4a017}
+.hi{border-left:3px solid #f85149}
+.tag{display:inline-block;background:var(--bg3);border-radius:8px;padding:1px 7px;font-size:10.5px;margin-left:5px;color:var(--muted)}
+.note{font-size:11.5px;color:var(--muted);margin:6px 0}
+#stale{display:none;background:#5c2b29;border:1px solid #f85149;border-radius:6px;padding:8px 12px;margin:8px 0}
+</style></head><body>
+<div id="sitenav" style="font-size:12px;margin:0 0 12px 0;display:flex;gap:6px;flex-wrap:wrap"><a href="/watchlist-viewer/live.html" style="background:#f85149;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700">⚡ライブ</a><a href="/watchlist-viewer/portfolio.html" style="background:#d4a017;color:#000;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700">💼今日のPF</a><a href="/watchlist-viewer/" style="background:#2f6bd8;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none">📋ファンダ</a><a href="/watchlist-viewer/volume/" style="background:#8f6bbf;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none">📈アキュミ検知</a><a href="/watchlist-viewer/activist.html" style="background:#d29922;color:#000;padding:3px 10px;border-radius:10px;text-decoration:none">🏴アクティビスト</a><a href="/watchlist-viewer/pcr-vi.html" style="background:#a371f7;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none">📉マクロ</a><a href="/watchlist-viewer/options.html" style="background:#2ea0a0;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none">🎯オプション</a><a href="/watchlist-viewer/token-share.html" style="background:#e0603a;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none">🌐トークンシェア</a><a href="/watchlist-viewer/volume/plan.html" style="background:#0f9d58;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none">💹決算計画</a><a href="/watchlist-viewer/volume/shodo.html" style="background:#c2452f;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none">⚡初動</a><a href="/watchlist-viewer/volume/record.html" style="background:#5b6472;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none">📊検証実績</a><a href="/watchlist-viewer/volume/gallery/" style="background:#b4870a;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none">🖼ギャラリー</a></div>
+<h1>⚡ ライブ戦略ボード</h1>
+<div class="bar">
+  <span id="clock" class="muted">読み込み中…</span>
+  <span><span id="jpdot" class="dot off"></span>東証</span>
+  <span><span id="usdot" class="dot off"></span>米国</span>
+  <span id="pnl"></span>
+  <span class="muted" id="tick"></span>
+</div>
+<div id="stale">⚠️ データが15分以上更新されていません。5分ループが止まっている可能性があります。</div>
+<div class="note" id="qnote"></div>
+
+<div id="comment"></div>
+
+<h2>💼 保有と出口までの距離</h2>
+<div id="positions"></div>
+
+<h2>📰 X新着（フォロー欄のみ）</h2>
+<div id="xfeed"></div>
+
+<h2>👀 買い候補（判定あり×RSI45以下）</h2>
+<div class="wrap"><table id="watch"><thead><tr><th>コード</th><th>銘柄</th><th class="r">株価</th><th class="r">RSI</th><th>判定</th><th>トリガーまで</th></tr></thead><tbody></tbody></table></div>
+
+<h2>🇺🇸 米国（リアルタイム）</h2>
+<div class="wrap"><table id="us"><thead><tr><th>ティッカー</th><th>銘柄</th><th class="r">株価</th><th class="r">前日比</th><th>取得</th></tr></thead><tbody></tbody></table></div>
+
+<p class="note">このページは5分ごとに自動更新されます。判断はすべて機械ルール（+20%利確 / −15%損切 / RSI70過熱 / 保有期限）に基づく参考情報で、発注は行いません。</p>
+
+<script>
+const SRC = "https://raw.githubusercontent.com/agerucompany-ai/watchlist-viewer/master/docs/live.json";
+const yen = n => (n==null?"-":n.toLocaleString("ja-JP",{maximumFractionDigits:0}));
+const pct = n => (n==null?"-":(n>=0?"+":"")+n.toFixed(1)+"%");
+const cls = n => n>=0?"up":"down";
+const esc = s => String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+async function load(){
+  let d;
+  try { d = await (await fetch(SRC + "?t=" + Date.now(), {cache:"no-store"})).json(); }
+  catch(e){ document.getElementById("clock").textContent = "取得失敗 " + e; return; }
+
+  document.getElementById("clock").textContent = d.at + " 時点";
+  document.getElementById("tick").textContent = "tick " + d.tick;
+  document.getElementById("qnote").textContent = d.quote_note || "";
+  document.getElementById("jpdot").className = "dot " + (d.market.jp?"on":"off");
+  document.getElementById("usdot").className = "dot " + (d.market.us?"on":"off");
+
+  const tot = (d.unrealized||0) + (d.realized||0);
+  document.getElementById("pnl").innerHTML =
+    `評価損益 <b class="${cls(d.unrealized||0)}">${yen(d.unrealized)}円</b>` +
+    ` ／ 実現 <b class="${cls(d.realized||0)}">${yen(d.realized)}円</b>` +
+    ` ／ 通算 <b class="${cls(tot)}">${yen(tot)}円</b>`;
+
+  const age = (Date.now() - new Date(d.at.replace(" ","T")+"+09:00").getTime())/60000;
+  document.getElementById("stale").style.display = age > 15 ? "block" : "none";
+
+  document.getElementById("comment").innerHTML =
+    d.comment ? `<div class="cmt">💭 ${esc(d.comment)}</div>` : "";
+
+  document.getElementById("positions").innerHTML = (d.positions||[]).map(p=>{
+    const act = p.urgency>=3 ? `🚨<b>${esc(p.action)}</b>` : (p.urgency==2?"⚠️接近":"継続");
+    const dl = p.delay_min==null?"":`<span class="tag">${esc(p.src)} ${p.delay_min}分前</span>`;
+    return `<div class="pos u${p.urgency>=3?3:(p.urgency==2?2:0)}">
+      <div class="ph">${act} ${esc(p.code)} ${esc(p.name)}
+        <span class="tag">${esc(p.strategy||p.frame)}</span>${dl}</div>
+      <div>${yen(p.price)}円 ×${yen(p.shares)}株
+        <b class="${cls(p.pnl_pct)}">${pct(p.pnl_pct)}</b>
+        <span class="${cls(p.pnl_yen)}">(${yen(p.pnl_yen)}円)</span>
+        ${p.rsi!=null?`<span class="tag">RSI ${p.rsi.toFixed(0)}</span>`:""}</div>
+      <div class="pw">${esc(p.why)}</div></div>`;
+  }).join("") || '<div class="muted">保有なし</div>';
+
+  document.getElementById("xfeed").innerHTML = (d.x||[]).map(x=>{
+    const k = x.hit ? "xi hit" : (x.impact==="high" ? "xi hi" : "xi");
+    const tags = [].concat(x.codes||[], x.tickers||[]).map(t=>`<span class="tag">${esc(t)}</span>`).join("");
+    return `<div class="${k}"><span class="muted">${esc(x.when||"")}</span>
+      <span class="xh">${esc(x.handle)}</span>
+      <span class="tag">${esc(x.kind||"")}</span> ${esc(x.text||"")}${tags}</div>`;
+  }).join("") || '<div class="muted">新着なし</div>';
+
+  document.querySelector("#watch tbody").innerHTML = (d.watch||[]).map(w=>
+    `<tr><td><a href="https://shikiho.toyokeizai.net/stocks/${esc(w.code)}" target="_blank">${esc(w.code)}</a></td>
+     <td>${esc(w.name)}</td><td class="r">${yen(w.price)}</td>
+     <td class="r"><b>${w.rsi==null?"-":w.rsi.toFixed(0)}</b></td><td>${esc(w.judge)}</td>
+     <td>${w.ready?'<span class="up">✅ 条件成立</span>':`RSIあと${w.gap.toFixed(0)}pt`}</td></tr>`
+  ).join("") || '<tr><td colspan="6" class="muted">候補なし</td></tr>';
+
+  document.querySelector("#us tbody").innerHTML = Object.entries(d.us||{}).map(([k,v])=>
+    `<tr><td>${esc(k)}</td><td>${esc(v.name||"")}</td><td class="r">$${v.price.toFixed(2)}</td>
+     <td class="r ${cls(v.chg_pct)}">${pct(v.chg_pct)}</td>
+     <td class="muted">${esc(v.src)} ${esc(v.ts)}</td></tr>`
+  ).join("") || '<tr><td colspan="5" class="muted">-</td></tr>';
+}
+load();
+setInterval(load, 60000);
+</script>
+</body></html>
