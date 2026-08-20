@@ -46,8 +46,9 @@ a{color:var(--blue);text-decoration:none}
 <h2>👀 買い候補（判定あり×RSI45以下）</h2>
 <div class="wrap"><table id="watch"><thead><tr><th>コード</th><th>銘柄</th><th class="r">株価</th><th class="r">RSI</th><th>判定</th><th>トリガーまで</th></tr></thead><tbody></tbody></table></div>
 
-<h2>🇺🇸 米国（リアルタイム）</h2>
-<div class="wrap"><table id="us"><thead><tr><th>ティッカー</th><th>銘柄</th><th class="r">株価</th><th class="r">前日比</th><th>取得</th></tr></thead><tbody></tbody></table></div>
+<h2>🇺🇸 米国（リアルタイム・時間外込み）</h2>
+<div class="note">日本時間の日中はオーバーナイト取引（米東部20:00-4:00）の値。変化率は当日の通常取引終値比。</div>
+<div class="wrap"><table id="us"><thead><tr><th>ティッカー</th><th>銘柄</th><th>セッション</th><th class="r">株価</th><th class="r">変化</th><th class="r">通常終値</th><th class="r">プレ</th><th class="r">アフター</th><th class="r">夜間</th></tr></thead><tbody></tbody></table></div>
 
 <p class="note">このページは5分ごとに自動更新されます。判断はすべて機械ルール（+20%利確 / −15%損切 / RSI70過熱 / 保有期限）に基づく参考情報で、発注は行いません。</p>
 
@@ -111,11 +112,18 @@ async function load(){
      <td>${w.ready?'<span class="up">✅ 条件成立</span>':`RSIあと${w.gap.toFixed(0)}pt`}</td></tr>`
   ).join("") || '<tr><td colspan="6" class="muted">候補なし</td></tr>';
 
-  document.querySelector("#us tbody").innerHTML = Object.entries(d.us||{}).map(([k,v])=>
-    `<tr><td>${esc(k)}</td><td>${esc(v.name||"")}</td><td class="r">$${v.price.toFixed(2)}</td>
-     <td class="r ${cls(v.chg_pct)}">${pct(v.chg_pct)}</td>
-     <td class="muted">${esc(v.src)} ${esc(v.ts)}</td></tr>`
-  ).join("") || '<tr><td colspan="5" class="muted">-</td></tr>';
+  const SNAME = {pre:"プレ", regular:"通常", after:"アフター", overnight:"🌙夜間"};
+  const scell = s => (s&&s.price!=null) ?
+    `$${s.price.toFixed(2)}<br><span class="${cls(s.chg||0)}" style="font-size:10.5px">${pct(s.chg)}</span>` : "-";
+  document.querySelector("#us tbody").innerHTML = Object.entries(d.us||{}).map(([k,v])=>{
+    const ss = v.sessions||{};
+    return `<tr><td><b>${esc(k)}</b></td><td>${esc(v.name||"")}</td>
+     <td>${SNAME[v.session]||esc(v.session||"-")}</td>
+     <td class="r"><b>$${v.price.toFixed(2)}</b></td>
+     <td class="r ${cls(v.chg_pct)}">${pct(v.chg_pct)}<br><span class="muted" style="font-size:10px">${esc(v.chg_base||"前日終値比")}</span></td>
+     <td class="r">${v.regular_close!=null?"$"+v.regular_close.toFixed(2):"-"}</td>
+     <td class="r">${scell(ss.pre)}</td><td class="r">${scell(ss.after)}</td><td class="r">${scell(ss.overnight)}</td></tr>`;
+  }).join("") || '<tr><td colspan="9" class="muted">-</td></tr>';
 }
 load();
 setInterval(load, 60000);
