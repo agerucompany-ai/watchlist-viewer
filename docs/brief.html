@@ -1,0 +1,47 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>株ツール日次点検</title><style>
+:root{--bg:#0d1117;--bg2:#161b22;--bg3:#21262d;--border:#30363d;--text:#e6edf3;--muted:#8b949e;--blue:#58a6ff}
+body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,"Hiragino Sans","Yu Gothic UI",sans-serif;font-size:13px;padding:14px}
+h1{font-size:18px;margin:6px 0} h2{font-size:14px;margin:18px 0 8px;border-left:4px solid var(--blue);padding-left:8px}
+table{border-collapse:collapse;width:100%;background:var(--bg2);font-size:12px}
+th,td{border:1px solid var(--border);padding:5px 8px;text-align:left} th{background:var(--bg3)}
+td.r{text-align:right} .up{color:#3fb950} .down{color:#f85149} .mut{color:var(--muted);font-size:11.5px}
+a{color:var(--blue);text-decoration:none} .wrap{overflow-x:auto}
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:9px 12px;margin:6px 0}
+.det{font-size:11.5px;color:#c9d1d9;margin-top:3px}
+.hero{background:var(--bg2);border:1px solid var(--border);border-left:4px solid #3fb950;border-radius:6px;padding:10px 14px;margin:8px 0;font-size:14px}
+.sum{background:var(--bg2);border:1px solid var(--border);border-left:4px solid #d4a017;border-radius:6px;padding:11px 15px;margin:9px 0;white-space:pre-wrap;line-height:1.85}
+.xi{background:var(--bg2);border:1px solid var(--border);border-radius:5px;padding:6px 10px;margin:4px 0;font-size:12px}
+</style></head><body>
+<div id="sitenav" style="font-size:12px;margin:0 0 12px 0;display:flex;gap:6px;flex-wrap:wrap"><a href="/watchlist-viewer/live.html" style="background:#f85149;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700">⚡ライブ</a><a href="/watchlist-viewer/portfolio.html" style="background:#d4a017;color:#000;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700">💼今日のPF</a><a href="/watchlist-viewer/" style="background:#2f6bd8;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none">📋ファンダ</a><a href="/watchlist-viewer/volume/" style="background:#8f6bbf;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none">📈アキュミ検知</a><a href="/watchlist-viewer/activist.html" style="background:#d29922;color:#000;padding:3px 10px;border-radius:10px;text-decoration:none">🏴アクティビスト</a><a href="/watchlist-viewer/pcr-vi.html" style="background:#a371f7;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none">📉マクロ</a><a href="/watchlist-viewer/options.html" style="background:#2ea0a0;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none">🎯オプション</a><a href="/watchlist-viewer/token-share.html" style="background:#e0603a;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none">🌐トークンシェア</a><a href="/watchlist-viewer/volume/plan.html" style="background:#0f9d58;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none">💹決算計画</a><a href="/watchlist-viewer/volume/shodo.html" style="background:#c2452f;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none">⚡初動</a><a href="/watchlist-viewer/volume/record.html" style="background:#5b6472;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none">📊検証実績</a><a href="/watchlist-viewer/volume/gallery/" style="background:#b4870a;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none">🖼ギャラリー</a></div>
+<h1>🩺 株ツール日次点検 <span class="mut">2026-08-20 15:41</span></h1>
+<div class="hero" style="border-left-color:#f85149"><b>7/8 正常</b> ／ 要対処 <b class="down">1件</b></div>
+<div class="sum">【今日の要点】
+・実現損益+232,000円(8/18 JSH +20%利確)。保有5銘柄中3054ハイパーが+12.1%(321→360)で過熱圏
+・スキャン結果はC_セリクラ1件/B_仕込み監視1件と薄商い
+・SNDK -3.5%、MU spot$940.76(maxpain$55乖離大)で半導体地合い濁り
+
+【止まっているもの】
+・日次決算分析(DailyEarningsAnalysis):exit=2、参照先daily_earnings.py不在で決算ドリブンの判定材料が欠落
+・portfolio_daily.py:exit=1でPF自動組み替え失敗、手動執行に依存
+
+【明日の注目】
+3054ハイパー:RSI86過熱かつS高追撃4営業日ルールの手仕舞い期日接近、寄り滑り前に+20%タッチ利確を最優先。</div>
+
+<h2>🔌 ツールの生存確認</h2>
+<div class="card"><div><b>日次決算分析</b> <span style="background:#f85149;color:#000;padding:1px 8px;border-radius:9px;font-size:11px;font-weight:700">停止</span></div><div class="mut">Desktop版daily_earnings.pyを指すが実体が無い</div><div class="det">最終 08/19/2026 18:00 / 次 08/20/2026 18:00 ／ 終了コード 2(異常) ／ 参照先 C:\Users\USER\Desktop\work_kurosaki\daily_earnings.py が存在しない</div></div><div class="card"><div><b>出来高アラート日次</b> <span style="background:#3fb950;color:#000;padding:1px 8px;border-radius:9px;font-size:11px;font-weight:700">正常</span></div><div class="mut">セリクラ/アキュミ/S高のスキャン。PF・初動・オプションもここから芋づるで走る</div><div class="det">最終 08/19/2026 19:30 / 次 08/20/2026 19:30 ／ scan_20260819.csv 08/19 19:30 (20時間前)</div></div><div class="card"><div><b>今日のポートフォリオ</b> <span style="background:#3fb950;color:#000;padding:1px 8px;border-radius:9px;font-size:11px;font-weight:700">正常</span></div><div class="mut">4本柱の自動組み替え。売買はここが決める</div><div class="det">portfolio_state.json 08/19 19:36 (20時間前)</div></div><div class="card"><div><b>ウォッチリスト更新</b> <span style="background:#3fb950;color:#000;padding:1px 8px;border-radius:9px;font-size:11px;font-weight:700">正常</span></div><div class="mut">株価・CNPER・判定をSheetsへ。RSI買い窓の母集団</div><div class="det">watchlist_updater_last.log 08/19 19:35 (20時間前)</div></div><div class="card"><div><b>オプション大口ウォッチ</b> <span style="background:#3fb950;color:#000;padding:1px 8px;border-radius:9px;font-size:11px;font-weight:700">正常</span></div><div class="mut">MU/SNDKのGEX・建玉・織り込み確率</div><div class="det">最終 11/30/1999 00:00 / 次 08/20/2026 23:40 ／ まだ一度も実行されていない(登録直後なら正常) ／ options.html 08/19 23:52 (16時間前)</div></div><div class="card"><div><b>メモリ半導体レポート</b> <span style="background:#3fb950;color:#000;padding:1px 8px;border-radius:9px;font-size:11px;font-weight:700">正常</span></div><div class="mut">メモリ4社+SNSをGrok収集→Claude判定→Sheets</div><div class="det">最終 08/20/2026 12:00 / 次 08/20/2026 21:00 ／ _memory_intel_state.json 08/20 12:00 (4時間前)</div></div><div class="card"><div><b>トークンシェア</b> <span style="background:#3fb950;color:#000;padding:1px 8px;border-radius:9px;font-size:11px;font-weight:700">正常</span></div><div class="mut">OpenRouterの単価推移。AI収益化の壁の計器</div><div class="det">token_share.html 08/19 19:37 (20時間前)</div></div><div class="card"><div><b>ライブ戦略ボード</b> <span style="background:#3fb950;color:#000;padding:1px 8px;border-radius:9px;font-size:11px;font-weight:700">正常</span></div><div class="mut">5分ごとの出口距離とX新着</div><div class="det">最終 08/20/2026 15:40 / 次 08/21/2026 08:55 ／ live_state.json 08/20 15:40 (0時間前)</div></div>
+
+<h2>🧩 日次パイプライン(daily_run)の各ステップ</h2>
+<div class="wrap"><table><tr><th>ステップ</th><th class="r">結果</th></tr><tr><td>scan_today.py</td><td class="r" style="color:#3fb950">OK</td></tr><tr><td>fetch_margin_hist.py</td><td class="r" style="color:#3fb950">OK</td></tr><tr><td>fetch_jsf.py</td><td class="r" style="color:#3fb950">OK</td></tr><tr><td>chart_report.py</td><td class="r" style="color:#3fb950">OK</td></tr><tr><td>shodo_report.py</td><td class="r" style="color:#3fb950">OK</td></tr><tr><td>trade_plan.py</td><td class="r" style="color:#3fb950">OK</td></tr><tr><td>publish_page.py</td><td class="r" style="color:#3fb950">OK</td></tr><tr><td>watchlist_updater.py</td><td class="r" style="color:#3fb950">OK</td></tr><tr><td>update_watchlist_rsi.py</td><td class="r" style="color:#3fb950">OK</td></tr><tr><td>portfolio_daily.py</td><td class="r" style="color:#f85149">失敗</td></tr><tr><td>ポートフォリオ組み替え失敗(続行): portfolio_daily.py failed</td><td class="r" style="color:#f85149">失敗</td></tr><tr><td>options_daily.py</td><td class="r" style="color:#3fb950">OK</td></tr><tr><td>token_share.py</td><td class="r" style="color:#3fb950">OK</td></tr></table></div>
+
+<h2>💼 保有</h2>
+<div class="wrap"><table><tr><th>コード</th><th>銘柄</th><th>枠</th><th class="r">取得</th><th class="r">現在</th><th class="r">損益</th><th>買付日</th></tr><tr><td>8144</td><td>デンキョーグループホールディングス</td><td>RSI買い窓</td><td class="r">1,234</td><td class="r">1,247</td><td class="r up">+1.1%</td><td class="mut">2026-08-14</td></tr><tr><td>2345</td><td>ＨＯＤＬ１</td><td>セリクラ◎</td><td class="r">99</td><td class="r">100</td><td class="r up">+1.0%</td><td class="mut">2026-08-14</td></tr><tr><td>2585</td><td>ライフドリンク　カンパニー</td><td>S高追撃</td><td class="r">1,787</td><td class="r">1,601</td><td class="r down">-10.4%</td><td class="mut">2026-08-14</td></tr><tr><td>7273</td><td>イクヨ</td><td>RSI買い窓</td><td class="r">583</td><td class="r">585</td><td class="r up">+0.3%</td><td class="mut">2026-08-18</td></tr><tr><td>3054</td><td>ハイパー</td><td>S高追撃</td><td class="r">321</td><td class="r">360</td><td class="r up">+12.1%</td><td class="mut">2026-08-18</td></tr></table></div>
+<div class="mut">実現損益 +232,000円</div>
+
+<h2>📰 X直近</h2>
+<div class="xi"><span class="mut">08-20 13:09</span> <b style="color:#58a6ff">@kiokunir</b> キオクシアなどNAND関連がAIデータ爆発で大勝利確定。半導体は国家存亡の核兵器級 <span class="mut">285A</span></div><div class="xi"><span class="mut">08-20 15:08</span> <b style="color:#58a6ff">@seiichiro_matsu</b> サムスン電子、100兆ウォン超の株主還元策発表へ。SKハイニックスに続く韓国勢の動き <span class="mut"></span></div><div class="xi"><span class="mut">08-20 11:36</span> <b style="color:#58a6ff">@seiichiro_matsu</b> 今日の日経半導体株指数0.90%高もキオクシアだけ上昇。煮え切らない相場 <span class="mut">285A</span></div>
+
+<p class="mut">このページは毎日自動生成されます。売買判断はルール(+20%利確／−15%損切／RSI70過熱／保有期限)に基づく参考情報です。
+<a href="/watchlist-viewer/live.html">⚡ライブ戦略ボード</a></p>
+</body></html>
