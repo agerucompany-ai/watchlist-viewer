@@ -165,6 +165,47 @@ tr.hidden-row{opacity:.4}
     <span class="tr-tag">還元</span> CNPER判定あり＋(アクティビスト or 筆頭株主≤20%)＋期待倍率1.5x以上＋中収益以上
   </div>
 </header>
+<!--PF_PANEL_START-->
+<div id="pfPanel" style="background:var(--bg2);border:1px solid var(--border);border-radius:8px;margin:10px 0;overflow:hidden">
+  <div id="pfHead" style="display:flex;align-items:center;gap:12px;padding:8px 12px;cursor:pointer;background:var(--bg3);flex-wrap:wrap">
+    <b style="font-size:13px">💰 現在のPF</b>
+    <span style="font-size:11px;color:var(--muted)">信用建玉 13玉 / 8銘柄</span>
+    <span style="font-size:11px;color:var(--muted)">評価額 4,296,350円</span>
+    <span class="pf-up" style="font-size:13px;font-weight:700">+40,599円</span>
+    <span style="font-size:10px;color:var(--muted);margin-left:auto">2026-08-21T01:37 楽天証券RSS</span>
+    <span id="pfToggle" style="font-size:11px;color:var(--muted)">▼</span>
+  </div>
+  <div id="pfBody" style="overflow-x:auto">
+    <table style="width:100%;border-collapse:collapse;font-size:11px">
+      <thead><tr style="background:var(--bg3);color:var(--muted)">
+        <th style="padding:4px 8px;text-align:left">コード</th><th style="text-align:left">銘柄</th>
+        <th>売買</th><th>建日</th><th style="text-align:right">建値</th><th style="text-align:right">数量</th>
+        <th style="text-align:right">時価</th><th style="text-align:right">評価損益</th><th style="text-align:right">損益率</th>
+      </tr></thead>
+      <tbody><tr><td>2001</td><td class="pf-name">-</td><td>買建</td><td>08/18</td><td class="num">2,839.0</td><td class="num">100</td><td class="num">2,900.0</td><td class="num pf-up">+5,984</td><td class="num pf-up">+2.11%</td></tr><tr><td>5801</td><td class="pf-name">-</td><td>買建</td><td>08/07</td><td class="num">3,818.0</td><td class="num">300</td><td class="num">3,864.0</td><td class="num pf-up">+12,570</td><td class="num pf-up">+1.10%</td></tr><tr><td>5801</td><td class="pf-name">-</td><td>買建</td><td>08/19</td><td class="num">3,805.0</td><td class="num">100</td><td class="num">3,864.0</td><td class="num pf-up">+5,754</td><td class="num pf-up">+1.51%</td></tr><tr><td>5803</td><td class="pf-name">フジクラ</td><td>買建</td><td>08/07</td><td class="num">5,214.6</td><td class="num">100</td><td class="num">5,341.0</td><td class="num pf-up">+12,079</td><td class="num pf-up">+2.32%</td></tr><tr><td>5830</td><td class="pf-name">-</td><td>買建</td><td>08/20</td><td class="num">3,826.0</td><td class="num">100</td><td class="num">3,830.0</td><td class="num pf-up">+341</td><td class="num pf-up">+0.09%</td></tr><tr><td>5857</td><td class="pf-name">ＡＲＥホールディングス<span class="badge badge-single">連増益+50%成長</span></td><td>買建</td><td>08/20</td><td class="num">3,694.5</td><td class="num">100</td><td class="num">3,755.0</td><td class="num pf-up">+5,993</td><td class="num pf-up">+1.62%</td></tr><tr><td>6138</td><td class="pf-name">ダイジェット工業<span class="badge badge-single">連増益+20%増益</span></td><td>買建</td><td>08/13</td><td class="num">1,901.0</td><td class="num">100</td><td class="num">2,013.0</td><td class="num pf-up">+11,069</td><td class="num pf-up">+5.82%</td></tr><tr><td>8303</td><td class="pf-name">-</td><td>買建</td><td>08/13</td><td class="num">1,602.9</td><td class="num">200</td><td class="num">1,551.5</td><td class="num pf-down">-10,501</td><td class="num pf-down">-3.28%</td></tr><tr><td>8303</td><td class="pf-name">-</td><td>買建</td><td>08/19</td><td class="num">1,555.5</td><td class="num">100</td><td class="num">1,551.5</td><td class="num pf-down">-459</td><td class="num pf-down">-0.30%</td></tr><tr><td>8303</td><td class="pf-name">-</td><td>買建</td><td>08/19</td><td class="num">1,586.0</td><td class="num">200</td><td class="num">1,551.5</td><td class="num pf-down">-7,022</td><td class="num pf-down">-2.21%</td></tr><tr><td>8737</td><td class="pf-name">あかつき本社<span class="badge badge-single">連増益</span></td><td>買建</td><td>08/13</td><td class="num">620.9</td><td class="num">100</td><td class="num">637.0</td><td class="num pf-up">+1,567</td><td class="num pf-up">+2.52%</td></tr><tr><td>8737</td><td class="pf-name">あかつき本社<span class="badge badge-single">連増益</span></td><td>買建</td><td>08/13</td><td class="num">620.0</td><td class="num">100</td><td class="num">637.0</td><td class="num pf-up">+1,657</td><td class="num pf-up">+2.67%</td></tr><tr><td>8737</td><td class="pf-name">あかつき本社<span class="badge badge-single">連増益</span></td><td>買建</td><td>08/13</td><td class="num">620.9</td><td class="num">100</td><td class="num">637.0</td><td class="num pf-up">+1,567</td><td class="num pf-up">+2.52%</td></tr></tbody>
+    </table>
+  </div>
+</div>
+<style>
+#pfPanel td{padding:3px 8px;border-top:1px solid var(--border)}
+#pfPanel th{padding:4px 8px;font-weight:600}
+#pfPanel .num{text-align:right;font-variant-numeric:tabular-nums}
+#pfPanel .pf-up{color:#3fb950} #pfPanel .pf-down{color:#f85149}
+#pfPanel .pf-name{white-space:nowrap}
+</style>
+<script>
+(function(){
+  var h=document.getElementById('pfHead'),b=document.getElementById('pfBody'),t=document.getElementById('pfToggle');
+  if(!h)return;
+  if(localStorage.getItem('pfCollapsed')==='1'){b.style.display='none';t.textContent='▶';}
+  h.addEventListener('click',function(){
+    var hid=b.style.display==='none';
+    b.style.display=hid?'':'none'; t.textContent=hid?'▼':'▶';
+    localStorage.setItem('pfCollapsed',hid?'0':'1');
+  });
+})();
+</script>
+<!--PF_PANEL_END-->
 <div class="tabs" id="tabs">
   <div class="tab active" data-tab="price">株価</div>
   <div class="tab" data-tab="forecast">株価予測</div>
