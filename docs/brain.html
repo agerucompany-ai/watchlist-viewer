@@ -1,0 +1,133 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>判断エンジン</title><style>
+:root{--bg:#0d1117;--bg2:#161b22;--bg3:#21262d;--border:#30363d;--text:#e6edf3;--muted:#8b949e;--blue:#58a6ff}
+body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,"Hiragino Sans","Yu Gothic UI",sans-serif;font-size:13px;padding:14px;max-width:1150px}
+h1{font-size:18px;margin:6px 0} h2{font-size:14px;margin:20px 0 8px;border-left:4px solid var(--blue);padding-left:8px}
+table{border-collapse:collapse;width:100%;background:var(--bg2);font-size:12px}
+th,td{border:1px solid var(--border);padding:5px 8px;text-align:left;vertical-align:top} th{background:var(--bg3);white-space:nowrap}
+td.r{text-align:right} .up{color:#3fb950} .down{color:#f85149} .muted{color:var(--muted)}
+a{color:var(--blue);text-decoration:none} .wrap{overflow-x:auto}
+.hero{background:var(--bg2);border:1px solid var(--border);border-left:5px solid #d4a017;border-radius:8px;padding:14px 18px;margin:10px 0}
+.hl{font-size:17px;font-weight:700;line-height:1.5}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;align-items:center}
+.chip{background:var(--bg3);border-radius:12px;padding:3px 12px;font-size:12px}
+.big{font-size:15px;font-weight:700;padding:4px 14px;border-radius:12px;color:#000}
+.gauge{height:9px;background:var(--bg3);border-radius:5px;overflow:hidden;flex:1;min-width:140px}
+.gauge>div{height:100%;background:linear-gradient(90deg,#3fb950,#d4a017,#f85149)}
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:9px 12px;margin:6px 0}
+.fact{border-left:3px solid #3fb950} .interp{border-left:3px solid #8b949e}
+.act{border-left:3px solid #d4a017} .fals{border-left:3px solid #f85149}
+.lbl{font-size:10.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.k{display:inline-block;background:var(--bg3);border-radius:4px;padding:1px 7px;font-size:11px;margin-right:6px}
+.note{font-size:11.5px;color:var(--muted);margin:8px 0;line-height:1.7}
+#stale{display:none;background:#5c2b29;border:1px solid #f85149;border-radius:6px;padding:8px 12px;margin:8px 0}
+details{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:8px 12px;margin:8px 0}
+summary{cursor:pointer;font-weight:700;font-size:13px}
+pre{overflow-x:auto;font-size:11px;color:#c9d1d9;background:var(--bg);padding:10px;border-radius:5px}
+</style></head><body>
+<div id="sitenav" style="font-size:12px;margin:0 0 12px 0;display:flex;gap:6px;flex-wrap:wrap"><a href="/watchlist-viewer/brain.html" style="background:#d4a017;color:#000;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700">🧠判断</a><a href="/watchlist-viewer/live.html" style="background:#f85149;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700">⚡ライブ</a><a href="/watchlist-viewer/portfolio.html" style="background:#d4a017;color:#000;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700">💼今日のPF</a><a href="/watchlist-viewer/" style="background:#2f6bd8;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none">📋ファンダ</a><a href="/watchlist-viewer/volume/" style="background:#8f6bbf;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none">📈アキュミ検知</a><a href="/watchlist-viewer/activist.html" style="background:#d29922;color:#000;padding:3px 10px;border-radius:10px;text-decoration:none">🏴アクティビスト</a><a href="/watchlist-viewer/pcr-vi.html" style="background:#a371f7;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none">📉マクロ</a><a href="/watchlist-viewer/options.html" style="background:#2ea0a0;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none">🎯オプション</a><a href="/watchlist-viewer/token-share.html" style="background:#e0603a;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none">🌐トークンシェア</a><a href="/watchlist-viewer/margin.html" style="background:#7c5cbf;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none">📊信用玉</a><a href="/watchlist-viewer/volume/plan.html" style="background:#0f9d58;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none">💹決算計画</a><a href="/watchlist-viewer/volume/shodo.html" style="background:#c2452f;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none">⚡初動</a><a href="/watchlist-viewer/volume/record.html" style="background:#5b6472;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none">📊検証実績</a><a href="/watchlist-viewer/volume/gallery/" style="background:#b4870a;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none">🖼ギャラリー</a></div>
+<h1>🧠 判断エンジン</h1>
+<div class="note" id="clock">読み込み中…</div>
+<div id="stale">⚠️ 判断が2時間以上更新されていません。brain.py が止まっている可能性があります。</div>
+
+<div id="hero"></div>
+
+<h2>📌 フローの事実（誰が・いくら・いつまでに）</h2>
+<div class="note">ここに入るのは主体・金額・期日が特定できる材料だけ。制度やルールで執行が決まっているので逆算が効く。</div>
+<div id="facts"></div>
+
+<h2>🤔 解釈（ここから先は推論）</h2>
+<div class="note">工場・官庁・製品の中身など、多対一の写像で逆算できない領域。当たっても機序が違うことがあるので事実と分けている。</div>
+<div id="interp"></div>
+
+<h2>🎯 いま取る行動</h2>
+<div id="actions"></div>
+
+<h2>❌ この判断が間違いだと分かる条件</h2>
+<div class="note">先に宣言しておかないと、後からどうとでも言い訳できてしまう。ここが当たったら判断を撤回する。</div>
+<div id="fals"></div>
+
+<h2>🕘 過去の判断とその後の値動き</h2>
+<div class="wrap"><table id="past"><thead><tr><th>判断時刻</th><th>スタンス</th><th class="r">枠%</th><th>結論</th><th>その後の値動き</th></tr></thead><tbody></tbody></table></div>
+
+<h2>🔬 材料</h2>
+<div id="mat"></div>
+
+<p class="note">この判断は機械的なルール（+20%利確／S高は+10%・−15%損切・RSI70過熱・保有期限）と実測バックテストを前提に、
+オプションのフロー・大株主の売却ペース・信用残・マクロ・Xの新着・木野内栄治氏の見解を突き合わせて自動生成されます。発注は行いません。
+<a href="/watchlist-viewer/live.html">⚡ライブ</a> ／ <a href="/watchlist-viewer/portfolio.html">💼今日のPF</a></p>
+
+<script>
+const SRC = "https://raw.githubusercontent.com/agerucompany-ai/watchlist-viewer/master/docs/brain.json";
+const esc = s => String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const pct = n => (n==null?"-":(n>=0?"+":"")+Number(n).toFixed(1)+"%");
+const cls = n => n>=0?"up":"down";
+const STANCE = {"ロング":"#3fb950","ポジ少なめ":"#d4a017","ノーポジ":"#8b949e","現金化":"#f85149"};
+const DO = {"買い増し":"#3fb950","打診買い":"#57ab5a","待ち":"#8b949e","一部利確":"#d4a017",
+            "全部利確":"#d4a017","損切":"#f85149","継続保有":"#8b949e"};
+
+async function load(){
+  let d;
+  try { d = await (await fetch(SRC+"?t="+Date.now(),{cache:"no-store"})).json(); }
+  catch(e){ document.getElementById("clock").textContent="取得失敗 "+e; return; }
+  const j = d.judgement||{};
+  document.getElementById("clock").textContent = d.at + " 時点の判断";
+  const age=(Date.now()-new Date(d.at.replace(" ","T")+"+09:00").getTime())/60000;
+  document.getElementById("stale").style.display = age>120?"block":"none";
+
+  document.getElementById("hero").innerHTML = `<div class="hero">
+    <div class="hl">${esc(j.headline)}</div>
+    <div class="chips">
+      <span class="big" style="background:${STANCE[j.stance]||"#8b949e"}">${esc(j.stance)}</span>
+      <span class="chip">確信度 <b>${esc(j.confidence)}</b></span>
+      <span class="chip">枠の <b>${j.sizing_pct}%</b></span>
+      <div class="gauge"><div style="width:${Math.max(0,Math.min(100,j.sizing_pct))}%"></div></div>
+    </div>
+    ${j.changed_from_last && j.changed_from_last!=="変更なし"
+      ? `<div class="note" style="margin-top:10px">↻ <b>前回からの変更</b>: ${esc(j.changed_from_last)}</div>`:""}
+    </div>`;
+
+  document.getElementById("facts").innerHTML = (j.flow_facts||[]).map(f=>
+    `<div class="card fact"><span class="k">${esc(f.who)}</span>${esc(f.what)}
+     <div class="note" style="margin:4px 0 0">規模: <b>${esc(f.size)}</b> ／ 期日: <b>${esc(f.when)}</b></div></div>`
+  ).join("") || '<div class="muted">なし</div>';
+
+  document.getElementById("interp").innerHTML = (j.interpretation||[]).map(t=>
+    `<div class="card interp">${esc(t)}</div>`).join("") || '<div class="muted">なし</div>';
+
+  document.getElementById("actions").innerHTML = (j.actions||[]).map(a=>
+    `<div class="card act"><div><span class="big" style="background:${DO[a.do]||"#8b949e"};font-size:12px">${esc(a.do)}</span>
+     <b style="margin-left:8px">${esc(a.symbol)}</b></div>
+     <div style="margin-top:5px"><span class="lbl">発動水準</span> <b>${esc(a.level)}</b></div>
+     <div class="note" style="margin:3px 0 0">${esc(a.why)}</div></div>`
+  ).join("") || '<div class="muted">なし</div>';
+
+  document.getElementById("fals").innerHTML = (j.falsifiers||[]).map(f=>
+    `<div class="card fals"><b>${esc(f.condition)}</b>
+     <div class="note" style="margin:4px 0 0">期限: ${esc(f.by_when)} → <b>${esc(f.then)}</b></div></div>`
+  ).join("") || '<div class="muted">なし</div>';
+
+  document.querySelector("#past tbody").innerHTML = (d.past||[]).slice().reverse().map(p=>{
+    const mv = Object.entries(p.since_move_pct||{}).map(([k,v])=>
+      `<span class="k">${esc(k)} <b class="${cls(v)}">${pct(v)}</b></span>`).join("");
+    return `<tr><td class="muted">${esc(p.at)}</td>
+      <td><span class="chip" style="background:${STANCE[p.stance]||"#21262d"};color:#000">${esc(p.stance)}</span></td>
+      <td class="r">${p.sizing_pct}</td><td>${esc(p.headline)}</td><td>${mv||"-"}</td></tr>`;
+  }).join("") || '<tr><td colspan="5" class="muted">まだ履歴がありません</td></tr>';
+
+  const m = d.materials||{};
+  const box = (t,o)=>`<details><summary>${t}</summary><pre>${esc(JSON.stringify(o,null,1))}</pre></details>`;
+  document.getElementById("mat").innerHTML =
+    box("🎯 オプション（インプライド変動幅・建玉の増減・GEX）", m.options)
+  + box("📊 需給（大株主の売却ペース・信用残）", m.supply)
+  + box("🌏 マクロ（金利・原油・為替・VI）", m.macro)
+  + box("🤖 AI需要（トークン量と単価）", m.ai_demand)
+  + box("💼 保有と出口までの距離", m.positions)
+  + box("📰 Xの新着", m.x)
+  + box("📐 実測期待値（バックテスト）", m.edge)
+  + `<details><summary>🧭 マクロ前提（木野内栄治氏の見解）</summary><pre>${esc(m.view_kinouchi||"未入力")}</pre></details>`;
+}
+load(); setInterval(load, 120000);
+</script>
+</body></html>
