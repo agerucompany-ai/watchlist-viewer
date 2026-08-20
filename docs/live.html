@@ -47,7 +47,7 @@ a{color:var(--blue);text-decoration:none}
 <div class="wrap"><table id="watch"><thead><tr><th>コード</th><th>銘柄</th><th class="r">株価</th><th class="r">RSI</th><th>判定</th><th>トリガーまで</th></tr></thead><tbody></tbody></table></div>
 
 <h2>🇺🇸 米国（リアルタイム・時間外込み）</h2>
-<div class="note">日本時間の日中はオーバーナイト取引（米東部20:00-4:00）の値。変化率は当日の通常取引終値比。</div>
+<div class="note">日本時間の日中はオーバーナイト取引（米東部20:00-4:00）の値。変化率は当日の通常取引終値比。日本株はYahoo!ファイナンス＝東証リアルタイム。</div>
 <div class="wrap"><table id="us"><thead><tr><th>ティッカー</th><th>銘柄</th><th>セッション</th><th class="r">株価</th><th class="r">変化</th><th class="r">通常終値</th><th class="r">プレ</th><th class="r">アフター</th><th class="r">夜間</th></tr></thead><tbody></tbody></table></div>
 
 <p class="note">このページは5分ごとに自動更新されます。判断はすべて機械ルール（+20%利確 / −15%損切 / RSI70過熱 / 保有期限）に基づく参考情報で、発注は行いません。</p>
@@ -84,12 +84,12 @@ async function load(){
 
   document.getElementById("positions").innerHTML = (d.positions||[]).map(p=>{
     const act = p.urgency>=3 ? `🚨<b>${esc(p.action)}</b>` : (p.urgency==2?"⚠️接近":"継続");
-    // 「N分前」はデータ遅延ではなく最終約定からの経過。出来高の薄い銘柄では
-    // 遅延20分より大きく出る。そこを混ぜて書くと値の鮮度を誤解する
-    const dl = p.delay_min==null?"":`<span class="tag">${esc(p.src)}／最終約定 ${p.delay_min}分前</span>`;
+    const dl = p.src==="yahoo_jp" ? `<span class="tag">リアルタイム</span>`
+      : (p.delay_min==null?"":`<span class="tag">${esc(p.src)}／最終約定 ${p.delay_min}分前</span>`);
+    const pts = p.pts!=null ? `<span class="tag">夜間PTS ${p.pts.toLocaleString("ja-JP")}</span>` : "";
     return `<div class="pos u${p.urgency>=3?3:(p.urgency==2?2:0)}">
       <div class="ph">${act} ${esc(p.code)} ${esc(p.name)}
-        <span class="tag">${esc(p.strategy||p.frame)}</span>${dl}</div>
+        <span class="tag">${esc(p.strategy||p.frame)}</span>${dl}${pts}</div>
       <div>${yen(p.price)}円 ×${yen(p.shares)}株
         <b class="${cls(p.pnl_pct)}">${pct(p.pnl_pct)}</b>
         <span class="${cls(p.pnl_yen)}">(${yen(p.pnl_yen)}円)</span>
