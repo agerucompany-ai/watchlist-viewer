@@ -1,0 +1,251 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>🧠 思考の可視化</title><style>
+:root{--bg:#0d1117;--bg2:#161b22;--bg3:#21262d;--border:#30363d;--text:#e6edf3;--muted:#8b949e;--blue:#58a6ff}
+body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,"Hiragino Sans","Yu Gothic UI",sans-serif;font-size:13px;padding:14px;max-width:1150px}
+h1{font-size:18px;margin:6px 0} h2{font-size:14px;margin:22px 0 8px;border-left:4px solid var(--blue);padding-left:8px}
+table{border-collapse:collapse;width:100%;background:var(--bg2);font-size:12px}
+th,td{border:1px solid var(--border);padding:5px 8px;text-align:left;vertical-align:top} th{background:var(--bg3);white-space:nowrap}
+.muted{color:var(--muted)} a{color:var(--blue);text-decoration:none} .wrap{overflow-x:auto}
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:9px 12px;margin:6px 0}
+.note{font-size:11.5px;color:var(--muted);margin:6px 0;line-height:1.7}
+.k{display:inline-block;background:var(--bg3);border-radius:4px;padding:1px 7px;font-size:11px;margin-right:6px}
+.big{display:inline-block;font-size:12px;font-weight:700;padding:3px 12px;border-radius:12px;color:#000}
+/* ヒーロー */
+.hero{border-radius:10px;padding:22px 20px;margin:10px 0;text-align:center;border:1px solid var(--border);background:var(--bg2)}
+.hero .lbl{font-size:13px;color:var(--muted);letter-spacing:.05em}
+.hero .age{font-size:52px;font-weight:800;line-height:1.25;letter-spacing:.04em;color:#3fb950}
+.hero .headline{font-size:15px;font-weight:700;margin-top:10px;line-height:1.6}
+.hero.stale{border-color:#f85149;background:#2d1416}
+.hero.stale .age{color:#f85149}
+.hero .warn{display:none;color:#f85149;font-weight:700;font-size:13px;margin-top:8px}
+.hero.stale .warn{display:block}
+#deadband{display:none;background:#5c2b29;border:1px solid #f85149;border-radius:6px;padding:8px 12px;margin:8px 0;font-weight:700}
+/* ループ心拍 */
+.loops{display:flex;flex-wrap:wrap;gap:8px}
+.loop{flex:1 1 160px;min-width:150px;background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:9px 12px}
+.loop.ok{border-top:3px solid #3fb950} .loop.ng{border-top:3px solid #f85149;background:#2d1416}
+.loop .nm{font-weight:700;font-size:12.5px}
+.loop .ag{font-size:20px;font-weight:800;margin:4px 0 2px}
+.loop.ok .ag{color:#3fb950} .loop.ng .ag{color:#f85149}
+.loop .iv{font-size:10.5px;color:var(--muted)}
+.st{display:inline-block;border-radius:10px;padding:1px 8px;font-size:10.5px;font-weight:700;margin-left:6px}
+.st.ok{background:#12261a;color:#3fb950;border:1px solid #3fb950}
+.st.ng{background:#2d1416;color:#f85149;border:1px solid #f85149}
+/* ストリーム */
+.stream{border-left:2px solid var(--border);margin-left:6px;padding-left:0}
+.ev{display:flex;gap:8px;align-items:flex-start;padding:5px 8px 5px 12px;margin:2px 0;border-radius:0 6px 6px 0;position:relative}
+.ev::before{content:"";position:absolute;left:-5px;top:11px;width:8px;height:8px;border-radius:50%;background:var(--bg3);border:1px solid var(--border)}
+.ev.err{background:#2d1416;border-right:3px solid #f85149}
+.ev.err::before{background:#f85149;border-color:#f85149}
+.ev .t{color:var(--muted);font-size:11px;white-space:nowrap;padding-top:2px;font-variant-numeric:tabular-nums}
+.ev .txt{line-height:1.55;word-break:break-word}
+.badge{display:inline-block;border-radius:10px;padding:1px 8px;font-size:10.5px;font-weight:700;white-space:nowrap;margin-top:1px;color:#000}
+#more{display:inline-block;background:var(--bg3);border:1px solid var(--border);border-radius:6px;color:var(--text);padding:5px 16px;margin:8px 0 0 12px;cursor:pointer;font-size:12px}
+/* いま考えていること */
+.q{border-left:3px solid #58a6ff} .fz{border-left:3px solid #d4a017} .done{border-left:3px solid #3fb950}
+.qb{display:inline-block;background:#0d2440;color:#58a6ff;border:1px solid #58a6ff;border-radius:10px;padding:1px 8px;font-size:10.5px;font-weight:700;margin-right:6px}
+ul.interp{margin:4px 0;padding-left:20px} ul.interp li{margin:5px 0;line-height:1.65}
+/* 学んだこと */
+.vb{display:inline-block;border-radius:10px;padding:2px 10px;font-size:11px;font-weight:700;margin-right:8px}
+.vb.sup{background:#12261a;color:#3fb950;border:1px solid #3fb950}
+.vb.rej{background:#2d1416;color:#f85149;border:1px solid #f85149}
+.vb.na{background:var(--bg3);color:var(--muted);border:1px solid var(--border)}
+.res{font-size:11px;color:var(--muted);margin-top:4px;line-height:1.6}
+h3{font-size:12.5px;margin:14px 0 6px;color:var(--muted)}
+</style></head><body>
+<div id="sitenav" style="font-size:12px;margin:0 0 12px 0;display:flex;gap:6px;flex-wrap:wrap"><a href="/watchlist-viewer/dash.html" style="background:#3fb950;color:#000;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700">⚔️ダッシュ</a><a href="/watchlist-viewer/mind.html" style="background:#a371f7;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700">🧠思考</a><a href="/watchlist-viewer/brain.html" style="background:#d4a017;color:#000;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700">🧠判断</a><a href="/watchlist-viewer/live.html" style="background:#f85149;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700">⚡ライブ</a><a href="/watchlist-viewer/portfolio.html" style="background:#d4a017;color:#000;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700">💼今日のPF</a><a href="/watchlist-viewer/" style="background:#2f6bd8;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none">📋ファンダ</a><a href="/watchlist-viewer/volume/" style="background:#8f6bbf;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none">📈アキュミ検知</a><a href="/watchlist-viewer/activist.html" style="background:#d29922;color:#000;padding:3px 10px;border-radius:10px;text-decoration:none">🏴アクティビスト</a><a href="/watchlist-viewer/pcr-vi.html" style="background:#a371f7;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none">📉マクロ</a><a href="/watchlist-viewer/options.html" style="background:#2ea0a0;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none">🎯オプション</a><a href="/watchlist-viewer/token-share.html" style="background:#e0603a;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none">🌐トークンシェア</a><a href="/watchlist-viewer/margin.html" style="background:#7c5cbf;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none">📊信用玉</a><a href="/watchlist-viewer/volume/plan.html" style="background:#0f9d58;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none">💹決算計画</a><a href="/watchlist-viewer/volume/shodo.html" style="background:#c2452f;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none">⚡初動</a><a href="/watchlist-viewer/volume/record.html" style="background:#5b6472;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none">📊検証実績</a><a href="/watchlist-viewer/volume/gallery/" style="background:#b4870a;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none">🖼ギャラリー</a></div>
+<h1>🧠 思考の可視化</h1>
+<div class="note" id="clock">読み込み中…</div>
+<div id="deadband">⚠️ 一部の思考ループが停止している可能性があります</div>
+
+<div class="hero" id="hero">
+  <div class="lbl">🧠 最終思考</div>
+  <div class="age" id="heroAge">--</div>
+  <div class="headline" id="heroHead"></div>
+  <div class="warn">⚠️ 思考が止まっている可能性（90分以上判断なし）</div>
+</div>
+
+<h2>💓 思考ループの心拍</h2>
+<div class="loops" id="loops"></div>
+
+<h2>🌊 思考ストリーム</h2>
+<div class="stream" id="stream"></div>
+<button id="more" onclick="expandStream()">もっと見る</button>
+
+<h2>🤔 いま考えていること</h2>
+<div id="thinking"></div>
+
+<h2>📚 最近学んだこと</h2>
+<div id="learned"></div>
+
+<h2>🕘 判断の変遷</h2>
+<div class="wrap"><table id="hist"><thead><tr><th>時刻</th><th>スタンス</th><th class="r">枠%</th><th>見出し</th><th>変更点</th></tr></thead><tbody></tbody></table></div>
+
+<p class="note" id="foot"></p>
+
+<script>
+const MIND = (location.hostname==="localhost"||location.hostname==="127.0.0.1")
+  ? "mind.json"
+  : "https://raw.githubusercontent.com/agerucompany-ai/watchlist-viewer/master/docs/mind.json";
+const esc = s => String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const STANCE = {"ロング":"#3fb950","ポジ少なめ":"#d4a017","ノーポジ":"#8b949e","現金化":"#f85149"};
+const ACTORS = [
+  ["判断",  "#d4a017"], ["深堀", "#58a6ff"], ["仮説", "#a371f7"],
+  ["3分",   "#3fb950"], ["監視", "#8b949e"], ["ライブ","#2ea0a0"]
+];
+let DATA = null, streamExpanded = false;
+
+// "2026-08-21 14:19:43" (JST) → epoch ms
+function jst(t){
+  if(!t) return null;
+  const d = new Date(String(t).replace(" ","T")+"+09:00");
+  return isNaN(d) ? null : d.getTime();
+}
+function fmtAge(ms){
+  if(ms==null) return "--";
+  const min = Math.max(0, Math.floor(ms/60000));
+  if(min < 60) return min + "分前";
+  return Math.floor(min/60) + "時間" + (min%60) + "分前";
+}
+function actorColor(a){
+  for(const [k,c] of ACTORS) if(String(a).includes(k)) return c;
+  return "#8b949e";
+}
+
+/* ---- 毎秒: クライアント側で経過時間を再計算 ---- */
+function tick(){
+  const now = Date.now();
+  if(!DATA) return;
+  // ヒーロー: 🧠 30分判断 の last から
+  const brain = (DATA.loops||[]).find(l=>String(l.name).includes("30分判断"));
+  const bt = brain ? jst(brain.last) : jst((DATA.thinking_now||{}).brain_at);
+  const el = document.getElementById("heroAge");
+  if(bt!=null){
+    const ms = now - bt;
+    el.textContent = fmtAge(ms);
+    document.getElementById("hero").classList.toggle("stale", ms >= 90*60000);
+  }
+  // 各ループカード
+  (DATA.loops||[]).forEach((l,i)=>{
+    const t = jst(l.last);
+    const cell = document.getElementById("lage"+i);
+    if(cell) cell.textContent = t!=null ? fmtAge(now-t) : (l.age_min!=null ? fmtAge(l.age_min*60000) : "--");
+  });
+}
+
+/* ---- 描画 ---- */
+function renderLoops(d){
+  const loops = d.loops||[];
+  const anyDead = loops.some(l=>l.status!=="稼働");
+  document.getElementById("deadband").style.display = anyDead ? "block" : "none";
+  document.getElementById("loops").innerHTML = loops.map((l,i)=>{
+    const ok = l.status==="稼働";
+    return `<div class="loop ${ok?"ok":"ng"}">
+      <div class="nm">${esc(l.name)}<span class="st ${ok?"ok":"ng"}">${esc(l.status||"?")}</span></div>
+      <div class="ag" id="lage${i}">--</div>
+      <div class="iv">最終実行からの経過 ／ 期待間隔 ${l.interval_min!=null?esc(l.interval_min)+"分":"-"}</div>
+    </div>`;
+  }).join("") || '<div class="muted">ループ情報なし</div>';
+}
+
+function renderStream(d){
+  const all = (d.stream||[]).slice(0, streamExpanded ? 80 : 30);
+  document.getElementById("stream").innerHTML = all.map(e=>{
+    const c = actorColor(e.actor);
+    return `<div class="ev${e.err?" err":""}">
+      <span class="t">${esc(String(e.t||"").slice(5,16))}</span>
+      <span class="badge" style="background:${c}">${esc(e.actor)}</span>
+      <span class="txt">${esc(e.text)}</span>
+    </div>`;
+  }).join("") || '<div class="muted" style="padding:6px 12px">ストリームなし</div>';
+  const total = (d.stream||[]).length;
+  document.getElementById("more").style.display = (!streamExpanded && total > 30) ? "inline-block" : "none";
+}
+function expandStream(){ streamExpanded = true; if(DATA) renderStream(DATA); }
+
+function renderThinking(d){
+  const tn = d.thinking_now||{};
+  let h = "";
+  if((tn.interpretation||[]).length){
+    h += `<h3>💭 解釈（いまの読み）</h3><div class="card"><ul class="interp">`
+       + tn.interpretation.map(x=>`<li>${esc(x)}</li>`).join("") + `</ul></div>`;
+  }
+  if((tn.open_questions||[]).length){
+    h += `<h3>❓ 調査中の問い</h3>` + tn.open_questions.map(q=>
+      `<div class="card q"><span class="qb">🔍 調査中</span><span class="k">${esc(q.id||"")}</span>
+       <div style="margin-top:5px;line-height:1.6">${esc(q.question)}</div></div>`).join("");
+  }
+  if((tn.recent_research||[]).length){
+    h += `<h3>✅ 完了した調査</h3>` + tn.recent_research.map(r=>
+      `<div class="card done"><span class="k">${esc(r.at||"")}</span><span class="k">${esc(r.id||"")}</span>
+       <div style="margin-top:5px;line-height:1.6" class="muted">${esc(r.question)}</div></div>`).join("");
+  }
+  if((tn.falsifiers||[]).length){
+    h += `<h3>⚖️ 監視中の反証条件（こうなったら考えを変える）</h3>` + tn.falsifiers.map(f=>
+      `<div class="card fz"><b>${esc(f.condition)}</b>
+       ${f.by_when?`<span class="k" style="margin-left:6px">期限 ${esc(f.by_when)}</span>`:""}
+       <div class="note" style="margin:4px 0 0">→ ${esc(f.then||"")}</div></div>`).join("");
+  }
+  document.getElementById("thinking").innerHTML = h || '<div class="muted">データなし</div>';
+}
+
+function verdictClass(v){
+  const s = String(v||"");
+  if(s.includes("棄却")) return "rej";
+  if(s.includes("支持")) return "sup";
+  return "na";
+}
+function renderLearned(d){
+  document.getElementById("learned").innerHTML = (d.learned||[]).map(l=>{
+    const r = l.result||{};
+    let res;
+    if(typeof r.mean === "number"){
+      res = `mean ${r.mean>=0?"+":""}${r.mean}%　勝率 ${r.win!=null?r.win+"%":"-"}　n=${r.n!=null?r.n:"-"}`;
+    }else{
+      res = Object.entries(r).map(([k,v])=>`${esc(k)}: ${esc(v)}`).join("<br>");
+    }
+    return `<div class="card"><span class="vb ${verdictClass(l.verdict)}">${esc(l.verdict)}</span>
+      <span class="k">${esc(l.at||"")}</span>
+      <div style="margin-top:5px;line-height:1.6">${esc(l.hypothesis)}</div>
+      ${res?`<div class="res">${res}</div>`:""}</div>`;
+  }).join("") || '<div class="muted">まだ学習結果なし</div>';
+}
+
+function renderHistory(d){
+  document.querySelector("#hist tbody").innerHTML = (d.thesis_history||[]).map(h=>
+    `<tr><td style="white-space:nowrap">${esc(String(h.at||"").slice(5,16))}</td>
+     <td style="white-space:nowrap"><span class="big" style="background:${STANCE[h.stance]||"#8b949e"}">${esc(h.stance||"-")}</span></td>
+     <td style="text-align:right">${h.sizing_pct!=null?esc(h.sizing_pct)+"%":"-"}</td>
+     <td>${h.headline?`<b>${esc(h.headline)}</b>`:'<span class="muted">-</span>'}</td>
+     <td class="muted" style="line-height:1.55">${esc(h.changed||"")}</td></tr>`
+  ).join("") || '<tr><td colspan="5" class="muted">履歴なし</td></tr>';
+}
+
+function render(d){
+  DATA = d;
+  document.getElementById("clock").textContent = `最終データ更新 ${d.at||"-"}（3分ごと生成・このページは30秒ごと再取得・経過時間は毎秒更新）`;
+  document.getElementById("heroHead").textContent = (d.thinking_now||{}).headline || "";
+  renderLoops(d);
+  renderStream(d);
+  renderThinking(d);
+  renderLearned(d);
+  renderHistory(d);
+  document.getElementById("foot").textContent = d.note || "";
+  tick();
+}
+
+async function load(){
+  try{
+    const r = await fetch(MIND + "?t=" + Date.now(), {cache:"no-store"});
+    if(!r.ok) throw new Error("HTTP " + r.status);
+    render(await r.json());
+  }catch(e){
+    document.getElementById("clock").textContent = "⚠️ mind.json の取得に失敗: " + e.message + "（30秒後に再試行）";
+  }
+}
+load();
+setInterval(load, 30000);
+setInterval(tick, 1000);
+</script>
+</body></html>
