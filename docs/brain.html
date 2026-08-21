@@ -99,7 +99,7 @@ async function load(){
 
   document.getElementById("actions").innerHTML = (j.actions||[]).map(a=>
     `<div class="card act"><div><span class="big" style="background:${DO[a.do]||"#8b949e"};font-size:12px">${esc(a.do)}</span>
-     <b style="margin-left:8px">${esc(a.symbol)}</b></div>
+     <b style="margin-left:8px">${esc(a.symbol)}${a.name?" "+esc(a.name):""}</b></div>
      <div style="margin-top:5px"><span class="lbl">発動水準</span> <b>${esc(a.level)}</b></div>
      <div class="note" style="margin:3px 0 0">${esc(a.why)}</div></div>`
   ).join("") || '<div class="muted">なし</div>';
