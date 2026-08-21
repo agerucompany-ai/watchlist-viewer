@@ -94,7 +94,7 @@ function renderDayPlan(d){
   const s = d.day_snapshot||{};
   document.getElementById("snapAt").textContent = s.at||"-";
   document.querySelector("#dayplan tbody").innerHTML = (s.day_plan||[]).map(p=>
-    `<tr><td><b>${esc(p.symbol)}</b></td><td>${esc(p.thesis)}</td><td>${esc(p.target)}</td>
+    `<tr><td><b>${esc(p.symbol)}</b>${p.name?" "+esc(p.name):""}</td><td>${esc(p.thesis)}</td><td>${esc(p.target)}</td>
      <td>${esc(p.stop)}</td><td style="white-space:nowrap">${esc(p.horizon)}</td></tr>`
   ).join("") || '<tr><td colspan="5" class="muted">当日プラン未設定（次のbrain更新でスナップされます）</td></tr>';
 }
@@ -174,7 +174,7 @@ function renderWatch(d){
 function renderMaterials(d){
   const b = d.latest_brain||{};
   const acts = (b.actions||[]).map(a=>
-    `<div class="card" style="border-left:3px solid #d4a017"><b>${esc(a.do)}</b> ${esc(a.symbol)}
+    `<div class="card" style="border-left:3px solid #d4a017"><b>${esc(a.do)}</b> ${esc(a.symbol)}${a.name?" "+esc(a.name):""}
      <div style="margin-top:3px"><span class="lbl">発動水準</span> ${esc(a.level)}</div>
      <div class="note" style="margin:3px 0 0">${esc(a.why)}</div></div>`).join("") || '<div class="muted">なし</div>';
   const fals = (b.falsifiers||[]).map(f=>
