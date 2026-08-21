@@ -1,0 +1,212 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>統合ダッシュボード</title><style>
+:root{--bg:#0d1117;--bg2:#161b22;--bg3:#21262d;--border:#30363d;--text:#e6edf3;--muted:#8b949e;--blue:#58a6ff}
+body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,"Hiragino Sans","Yu Gothic UI",sans-serif;font-size:13px;padding:14px;max-width:1150px}
+h1{font-size:18px;margin:6px 0} h2{font-size:14px;margin:20px 0 8px;border-left:4px solid var(--blue);padding-left:8px}
+table{border-collapse:collapse;width:100%;background:var(--bg2);font-size:12px}
+th,td{border:1px solid var(--border);padding:5px 8px;text-align:left;vertical-align:top} th{background:var(--bg3);white-space:nowrap}
+td.r{text-align:right;white-space:nowrap} .up{color:#3fb950} .down{color:#f85149} .muted{color:var(--muted)}
+a{color:var(--blue);text-decoration:none} .wrap{overflow-x:auto}
+.verdict{border-radius:10px;padding:18px 20px;margin:10px 0;text-align:center;border:1px solid var(--border)}
+.v-none{background:var(--bg2)} .v-buy{background:#12261a;border-color:#3fb950} .v-sell{background:#2d1416;border-color:#f85149}
+.v-act{font-size:44px;font-weight:800;line-height:1.2;letter-spacing:.06em}
+.v-none .v-act{color:var(--muted)} .v-buy .v-act{color:#3fb950} .v-sell .v-act{color:#f85149}
+.v-sub{font-size:11.5px;color:var(--muted);margin-top:8px;line-height:1.7}
+.vitem{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:9px 12px;margin:7px 0;text-align:left}
+.vitem.buy{border-left:4px solid #3fb950} .vitem.sell{border-left:4px solid #f85149}
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:9px 12px;margin:6px 0}
+.swing{border-left:3px solid #58a6ff} .mem{border-left:3px solid #a371f7}
+.lbl{font-size:10.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.k{display:inline-block;background:var(--bg3);border-radius:4px;padding:1px 7px;font-size:11px;margin-right:6px}
+.chip{display:inline-block;background:var(--bg3);border-radius:12px;padding:3px 12px;font-size:12px;margin-right:6px}
+.big{display:inline-block;font-size:13px;font-weight:700;padding:3px 12px;border-radius:12px;color:#000}
+.note{font-size:11.5px;color:var(--muted);margin:6px 0;line-height:1.7}
+#stale{display:none;background:#5c2b29;border:1px solid #f85149;border-radius:6px;padding:8px 12px;margin:8px 0}
+details{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:8px 12px;margin:8px 0}
+summary{cursor:pointer;font-weight:700;font-size:13px}
+details.small summary{font-weight:400;font-size:12px;color:var(--muted)}
+</style></head><body>
+<div id="sitenav" style="font-size:12px;margin:0 0 12px 0;display:flex;gap:6px;flex-wrap:wrap"><a href="/watchlist-viewer/dash.html" style="background:#3fb950;color:#000;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700">⚔️ダッシュ</a><a href="/watchlist-viewer/brain.html" style="background:#d4a017;color:#000;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700">🧠判断</a><a href="/watchlist-viewer/live.html" style="background:#f85149;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700">⚡ライブ</a><a href="/watchlist-viewer/portfolio.html" style="background:#d4a017;color:#000;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700">💼今日のPF</a><a href="/watchlist-viewer/" style="background:#2f6bd8;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none">📋ファンダ</a><a href="/watchlist-viewer/volume/" style="background:#8f6bbf;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none">📈アキュミ検知</a><a href="/watchlist-viewer/activist.html" style="background:#d29922;color:#000;padding:3px 10px;border-radius:10px;text-decoration:none">🏴アクティビスト</a><a href="/watchlist-viewer/pcr-vi.html" style="background:#a371f7;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none">📉マクロ</a><a href="/watchlist-viewer/options.html" style="background:#2ea0a0;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none">🎯オプション</a><a href="/watchlist-viewer/token-share.html" style="background:#e0603a;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none">🌐トークンシェア</a><a href="/watchlist-viewer/margin.html" style="background:#7c5cbf;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none">📊信用玉</a><a href="/watchlist-viewer/volume/plan.html" style="background:#0f9d58;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none">💹決算計画</a><a href="/watchlist-viewer/volume/shodo.html" style="background:#c2452f;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none">⚡初動</a><a href="/watchlist-viewer/volume/record.html" style="background:#5b6472;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none">📊検証実績</a><a href="/watchlist-viewer/volume/gallery/" style="background:#b4870a;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none">🖼ギャラリー</a></div>
+<h1>⚔️ 統合ダッシュボード</h1>
+<div class="note" id="clock">読み込み中…</div>
+<div id="stale">⚠️ 判定が15分以上更新されていません。3分ループ(verdict3)が止まっている可能性があります。</div>
+
+<h2>🚦 結論の売買</h2>
+<div id="verdict"></div>
+
+<h2>📋 当日の売買戦略（当初）</h2>
+<div class="note">この日の最初の判断（<span id="snapAt">-</span>）で固定。日中は変えない。</div>
+<div class="wrap"><table id="dayplan"><thead><tr><th>銘柄</th><th>根拠</th><th>目標</th><th>撤退</th><th>保有想定</th></tr></thead><tbody></tbody></table></div>
+
+<h2>🌊 スイング戦略（数週間〜数ヶ月）</h2>
+<div id="swing"></div>
+
+<h2>💾 メモリ戦略（キオクシア/MU/SNDK）</h2>
+<div id="memory"></div>
+<div class="note" id="qnote"></div>
+<div class="wrap"><table id="us"><thead><tr><th>ティッカー</th><th>銘柄</th><th>セッション</th><th class="r">株価</th><th class="r">変化</th><th class="r">通常終値</th><th class="r">プレ</th><th class="r">アフター</th><th class="r">夜間</th></tr></thead><tbody></tbody></table></div>
+
+<h2>💼 現在のPF</h2>
+<div id="pnl" class="note"></div>
+<div class="wrap"><table id="pf"><thead><tr><th>コード</th><th>銘柄</th><th class="r">株数</th><th class="r">取得</th><th class="r">現値</th><th class="r">損益%</th><th class="r">損益円</th><th>テーマ</th></tr></thead><tbody></tbody></table></div>
+<div id="closed"></div>
+
+<h2>🔔 指値アラート</h2>
+<div class="wrap"><table id="watch"><thead><tr><th>コード</th><th>銘柄</th><th class="r">現値</th><th class="r">指値</th><th class="r">あと</th><th>発火</th><th>メモ</th></tr></thead><tbody></tbody></table></div>
+
+<div id="materials" style="margin-top:22px"></div>
+
+<p class="note">3分ごとの機械判定（dash.json）＋30分ごとの判断エンジン（brain）を1枚に統合。発注は行いません。
+データ確認用: <a href="/watchlist-viewer/live.html">⚡ライブ</a> ／ <a href="/watchlist-viewer/brain.html">🧠判断</a></p>
+
+<script>
+const DASH = "https://raw.githubusercontent.com/agerucompany-ai/watchlist-viewer/master/docs/dash.json";
+const LIVE = "https://raw.githubusercontent.com/agerucompany-ai/watchlist-viewer/master/docs/live.json";
+const esc = s => String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const yen = n => (n==null?"-":Number(n).toLocaleString("ja-JP",{maximumFractionDigits:0}));
+const pct = n => (n==null?"-":(n>=0?"+":"")+Number(n).toFixed(1)+"%");
+const cls = n => (n==null?"":(n>=0?"up":"down"));
+const STANCE = {"ロング":"#3fb950","ポジ少なめ":"#d4a017","ノーポジ":"#8b949e","現金化":"#f85149"};
+
+function renderVerdict(d){
+  const v = d.verdict||{};
+  const act = v.action||"-";
+  const kind = act==="買い" ? "v-buy" : (act==="売り" ? "v-sell" : "v-none");
+  const b = d.latest_brain||{};
+  const items = (v.items||[]).map(i=>
+    `<div class="vitem ${i.side==="買い"?"buy":"sell"}">
+      <b>${i.side==="買い"?"🟢買い":"🔴売り"} ${esc(i.code)} ${esc(i.name)}</b>
+      ${i.level?` <span class="k">${esc(i.level)}</span>`:""}
+      ${i.already_notified?'<span class="k">通知済</span>':""}
+      <div class="note" style="margin:3px 0 0">${esc(i.reason||"")}</div></div>`).join("");
+  document.getElementById("verdict").innerHTML = `<div class="verdict ${kind}">
+    <div class="v-act">${esc(act)}</div>
+    ${items}
+    <div class="v-sub">判定 ${esc(d.at||"-")}（3分ごと）
+    ${b.headline?`<br>🧠 ${esc(b.headline)} `:""}
+    ${b.stance?`<span class="big" style="background:${STANCE[b.stance]||"#8b949e"};font-size:11px">${esc(b.stance)}</span>`:""}
+    ${b.sizing_pct!=null?` 枠の${b.sizing_pct}%`:""}
+    ${v.note?`<br>${esc(v.note)}`:""}</div></div>`;
+}
+
+function renderDayPlan(d){
+  const s = d.day_snapshot||{};
+  document.getElementById("snapAt").textContent = s.at||"-";
+  document.querySelector("#dayplan tbody").innerHTML = (s.day_plan||[]).map(p=>
+    `<tr><td><b>${esc(p.symbol)}</b></td><td>${esc(p.thesis)}</td><td>${esc(p.target)}</td>
+     <td>${esc(p.stop)}</td><td style="white-space:nowrap">${esc(p.horizon)}</td></tr>`
+  ).join("") || '<tr><td colspan="5" class="muted">当日プラン未設定（次のbrain更新でスナップされます）</td></tr>';
+}
+
+function renderSwing(d){
+  const b = d.latest_brain||{};
+  const sp = b.swing_plan || (d.day_snapshot||{}).swing_plan;
+  document.getElementById("swing").innerHTML = (Array.isArray(sp)&&sp.length) ? sp.map(t=>
+    `<div class="card swing"><span class="big" style="background:${STANCE[t.stance]||"#58a6ff"};font-size:12px">${esc(t.stance)}</span>
+     <b style="margin-left:8px">${esc(t.theme)}</b>
+     <div class="note" style="margin:5px 0 0">${esc(t.plan)}</div></div>`).join("")
+    : '<div class="muted">未設定（次の判断エンジン更新で入ります）</div>';
+}
+
+function renderMemory(d){
+  const b = d.latest_brain||{};
+  const m = b.memory_plan || (d.day_snapshot||{}).memory_plan;
+  document.getElementById("memory").innerHTML = m ?
+    `<div class="card mem"><span class="big" style="background:#a371f7;color:#fff;font-size:12px">${esc(m.stance)}</span>
+     <div style="margin-top:6px"><span class="lbl">入る条件</span> ${esc(m.entry)}</div>
+     <div style="margin-top:3px"><span class="lbl">出る条件</span> ${esc(m.exit)}</div>
+     <div class="note" style="margin:4px 0 0">👀 ${esc(m.watch)}</div></div>`
+    : '<div class="muted">未設定（次の判断エンジン更新で入ります）</div>';
+}
+
+function renderUS(l){
+  document.getElementById("qnote").textContent = l.quote_note || "";
+  const SNAME = {pre:"プレ", regular:"通常", after:"アフター", overnight:"🌙夜間"};
+  const scell = s => (s&&s.price!=null) ?
+    `$${s.price.toFixed(2)}<br><span class="${cls(s.chg||0)}" style="font-size:10.5px">${pct(s.chg)}</span>` : "-";
+  document.querySelector("#us tbody").innerHTML = Object.entries(l.us||{}).map(([k,v])=>{
+    const ss = v.sessions||{};
+    return `<tr><td><b>${esc(k)}</b></td><td>${esc(v.name||"")}</td>
+     <td>${SNAME[v.session]||esc(v.session||"-")}</td>
+     <td class="r"><b>${v.price!=null?"$"+v.price.toFixed(2):"-"}</b></td>
+     <td class="r ${cls(v.chg_pct)}">${pct(v.chg_pct)}<br><span class="muted" style="font-size:10px">${esc(v.chg_base||"前日終値比")}</span></td>
+     <td class="r">${v.regular_close!=null?"$"+v.regular_close.toFixed(2):"-"}</td>
+     <td class="r">${scell(ss.pre)}</td><td class="r">${scell(ss.after)}</td><td class="r">${scell(ss.overnight)}</td></tr>`;
+  }).join("") || '<tr><td colspan="9" class="muted">-</td></tr>';
+}
+
+function renderPF(d){
+  const pf = d.pf||{};
+  const pos = pf.positions||[];
+  const tot = pos.reduce((a,p)=>a+(p.pnl_yen||0),0);
+  document.getElementById("pnl").innerHTML =
+    `評価損益合計 <b class="${cls(tot)}">${yen(tot)}円</b>（${pos.length}銘柄・${esc(pf.as_of||"")}時点）`;
+  document.querySelector("#pf tbody").innerHTML = pos.map(p=>
+    `<tr><td><a href="https://shikiho.toyokeizai.net/stocks/${esc(p.code)}" target="_blank">${esc(p.code)}</a></td>
+     <td><b>${esc(p.name)}</b></td><td class="r">${yen(p.shares)}</td><td class="r">${yen(p.entry)}</td>
+     <td class="r">${yen(p.price)}</td>
+     <td class="r"><b class="${cls(p.pnl_pct)}">${pct(p.pnl_pct)}</b></td>
+     <td class="r ${cls(p.pnl_yen)}">${yen(p.pnl_yen)}</td><td>${esc(p.theme||"")}</td></tr>`
+  ).join("") || '<tr><td colspan="8" class="muted">保有なし</td></tr>';
+
+  const closed = pf.closed||[];
+  document.getElementById("closed").innerHTML = closed.length ?
+    `<details class="small"><summary>📦 最近手仕舞い（${closed.length}件）</summary>
+     ${closed.map(c=>`<div class="note">${esc(c.closed||"")} ${esc(c.code)} ${esc(c.name)}
+       ×${yen(c.shares)}株 @${yen(c.entry)} — ${esc(c.note_close||c.note||"")}</div>`).join("")}</details>` : "";
+}
+
+function renderWatch(d){
+  document.querySelector("#watch tbody").innerHTML = (d.watch||[]).map(w=>{
+    const lim = w.below!=null ? w.below : w.above;
+    const dir = w.below!=null ? "↓" : "↑";
+    return `<tr${w.fired?' style="background:#12261a"':""}>
+     <td><a href="https://shikiho.toyokeizai.net/stocks/${esc(w.code)}" target="_blank">${esc(w.code)}</a></td>
+     <td>${esc(w.name)}</td><td class="r">${yen(w.price)}</td>
+     <td class="r">${dir}${yen(lim)}</td>
+     <td class="r">${w.dist_pct==null?"-":pct(w.dist_pct)}</td>
+     <td>${w.fired?"✅":""}</td>
+     <td style="font-size:11px" class="muted">${esc(w.note||"")}</td></tr>`;
+  }).join("") || '<tr><td colspan="7" class="muted">アラートなし</td></tr>';
+}
+
+function renderMaterials(d){
+  const b = d.latest_brain||{};
+  const acts = (b.actions||[]).map(a=>
+    `<div class="card" style="border-left:3px solid #d4a017"><b>${esc(a.do)}</b> ${esc(a.symbol)}
+     <div style="margin-top:3px"><span class="lbl">発動水準</span> ${esc(a.level)}</div>
+     <div class="note" style="margin:3px 0 0">${esc(a.why)}</div></div>`).join("") || '<div class="muted">なし</div>';
+  const fals = (b.falsifiers||[]).map(f=>
+    `<div class="card" style="border-left:3px solid #f85149"><b>${esc(f.condition)}</b>
+     <div class="note" style="margin:3px 0 0">期限: ${esc(f.by_when)} → ${esc(f.then)}</div></div>`).join("") || '<div class="muted">なし</div>';
+  document.getElementById("materials").innerHTML =
+    `<details><summary>🔬 材料（いま取る行動と反証条件）</summary>
+     <div class="note" style="margin-top:8px">🎯 いま取る行動（判断エンジン ${esc(b.at||"-")}）</div>${acts}
+     <div class="note" style="margin-top:10px">❌ この判断が間違いだと分かる条件</div>${fals}</details>`;
+}
+
+async function load(){
+  let d;
+  try { d = await (await fetch(DASH+"?t="+Date.now(),{cache:"no-store"})).json(); }
+  catch(e){ document.getElementById("clock").textContent="取得失敗 "+e; return; }
+
+  document.getElementById("clock").textContent = d.at + " 時点"
+    + (d.regime ? `　レジーム: ${d.regime.label||"-"}（${d.regime.date||""}）` : "");
+  const age = (Date.now() - new Date(String(d.at).replace(" ","T")+"+09:00").getTime())/60000;
+  document.getElementById("stale").style.display = age > 15 ? "block" : "none";
+
+  renderVerdict(d); renderDayPlan(d); renderSwing(d); renderMemory(d);
+  renderPF(d); renderWatch(d); renderMaterials(d);
+
+  try {
+    const l = await (await fetch(LIVE+"?t="+Date.now(),{cache:"no-store"})).json();
+    renderUS(l);
+  } catch(e){
+    document.querySelector("#us tbody").innerHTML =
+      `<tr><td colspan="9" class="muted">米国株データ取得失敗 ${esc(e)}</td></tr>`;
+  }
+}
+load(); setInterval(load, 60000);
+</script>
+</body></html>
