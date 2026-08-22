@@ -1,0 +1,1463 @@
+<!doctype html><html lang=ja><head><meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>研究レポート | 株ウォッチ</title><style>
+:root{--bg:#0d1117;--fg:#e6edf3;--dim:#8b949e;--line:#21262d;--card:#161b22}
+*{box-sizing:border-box}
+body{margin:0;padding:14px;background:var(--bg);color:var(--fg);
+ font-family:-apple-system,"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;line-height:1.65}
+h1{font-size:19px;margin:4px 0 2px}
+.sub{color:var(--dim);font-size:12px;margin-bottom:14px}
+.rep{background:var(--card);border:1px solid var(--line);border-radius:10px;
+ padding:13px 14px;margin:0 0 14px;scroll-margin-top:12px}
+.hd{display:flex;align-items:flex-start;gap:8px}
+.hd h2{font-size:15px;margin:0;flex:1;line-height:1.45}
+.call{font-size:11px;font-weight:700;color:#000;padding:2px 9px;border-radius:9px;white-space:nowrap}
+.stocks{color:#58a6ff;font-size:12px;margin:7px 0 0;word-break:break-all}
+.concl{margin:9px 0;font-size:14px}
+.ev{display:flex;gap:8px;flex-wrap:wrap;margin:9px 0}
+.ev span{background:#0d1117;border:1px solid var(--line);border-radius:7px;
+ padding:5px 9px;font-size:11px;display:flex;flex-direction:column;min-width:96px}
+.ev i{color:var(--dim);font-style:normal}
+.ev b{font-size:14px;margin:1px 0}
+.ev em{color:var(--dim);font-style:normal;font-size:10px}
+.lv{font-size:12px;color:#c9d1d9;margin:7px 0;border-left:2px solid #d4a017;padding-left:8px}
+.lv b{color:#d4a017;font-size:11px;margin-right:5px}
+details{margin-top:9px}
+summary{cursor:pointer;color:var(--dim);font-size:12px;padding:4px 0}
+.detail{border-top:1px solid var(--line);padding-top:9px;margin-top:5px;font-size:12.5px}
+.detail h3{font-size:13px;color:#d4a017;margin:13px 0 5px}
+.detail h4{font-size:12px;color:#8b949e;margin:10px 0 4px}
+.detail p{margin:5px 0}
+.detail ul{margin:5px 0;padding-left:19px}
+.detail a{color:#58a6ff}
+.detail table{border-collapse:collapse;width:100%;margin:7px 0;font-size:11.5px;display:block;
+ overflow-x:auto;white-space:nowrap}
+.detail th,.detail td{border:1px solid var(--line);padding:4px 7px;text-align:left}
+.detail th{background:#0d1117;color:var(--dim)}
+.anchor{text-align:right;margin-top:6px}
+.anchor a{color:#30363d;font-size:10px;text-decoration:none}
+.note{color:var(--dim);font-size:11px;border-top:1px solid var(--line);
+ margin-top:18px;padding-top:10px}
+</style></head><body>
+<div id="sitenav" style="font-size:12px;margin:0 0 12px 0;display:flex;gap:6px;flex-wrap:wrap"><a href="/watchlist-viewer/dash.html" style="background:#3fb950;color:#000;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700">⚔️ダッシュ</a><a href="/watchlist-viewer/mind.html" style="background:#a371f7;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700">🧠思考</a><a href="/watchlist-viewer/brain.html" style="background:#d4a017;color:#000;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700">🧠判断</a><a href="/watchlist-viewer/live.html" style="background:#f85149;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700">⚡ライブ</a><a href="/watchlist-viewer/portfolio.html" style="background:#d4a017;color:#000;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700">💼今日のPF</a><a href="/watchlist-viewer/" style="background:#2f6bd8;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none">📋ファンダ</a><a href="/watchlist-viewer/volume/" style="background:#8f6bbf;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none">📈アキュミ検知</a><a href="/watchlist-viewer/activist.html" style="background:#d29922;color:#000;padding:3px 10px;border-radius:10px;text-decoration:none">🏴アクティビスト</a><a href="/watchlist-viewer/pcr-vi.html" style="background:#a371f7;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none">📉マクロ</a><a href="/watchlist-viewer/options.html" style="background:#2ea0a0;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none">🎯オプション</a><a href="/watchlist-viewer/token-share.html" style="background:#e0603a;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none">🌐トークンシェア</a><a href="/watchlist-viewer/margin.html" style="background:#7c5cbf;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none">📊信用玉</a><a href="/watchlist-viewer/cycle.html" style="background:#1f7a8c;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none">🔄半導体サイクル</a><a href="/watchlist-viewer/volume/plan.html" style="background:#0f9d58;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none">💹決算計画</a><a href="/watchlist-viewer/volume/shodo.html" style="background:#c2452f;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none">⚡初動</a><a href="/watchlist-viewer/volume/record.html" style="background:#5b6472;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none">📊検証実績</a><a href="/watchlist-viewer/volume/gallery/" style="background:#b4870a;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none">🖼ギャラリー</a></div>
+<h1>🔬 研究レポート</h1>
+<div class=sub>15件 / 更新 2026-08-22 19:17 JST — 結論・期待値・根拠。判断エンジンの深堀り結果</div>
+<article class=rep id="V_uacj_stock">
+<div class=hd><span class=call style="background:#8b949e">見送り</span>
+<h2>UACJ5741の2027年3月期1Q営業利益538.11億円のうち</h2></div>
+<div class=stocks>UACJ5741</div>
+<p class=concl>1Q営業利益538億のうち在庫影響+364億、実力は事業利益257億。通期850億の質は在庫剥落で下振れ懸念。</p>
+<div class=ev><span><i>1日</i><b>+0.0%</b><em>-3〜+3%</em></span><span><i>1〜2週</i><b>-1.0%</b><em>-8〜+6%</em></span><span><i>1年</i><b>+8.0%</b><em>-15〜+30%</em></span></div>
+<p class=lv><b>水準</b> 2000円割れなら実力PER8倍台で買い検討、2500円超は在庫益剥落リスクで見送り</p>
+<details><summary>根拠・事実を見る</summary><div class=detail><h3>✅ 結論: 1Q営業利益538億のうち在庫影響+364億、実力は事業利益257億。通期850億の質は在庫剥落で下振れ懸念。</h3>
+<p><b>行動: 見送り</b> ／ 水準: 2000円割れで実力PER8倍台の買い検討、2500円超は在庫益剥落リスクで見送り ／ 確信度: 中</p>
+<table>
+<tr><th>期間</th><th>期待値(中央)</th><th>レンジ</th><th>根拠</th></tr>
+<tr><td>1日</td><td><b>+0.0%</b></td><td>-3.0%〜+3.0%</td><td>8/6決算発表済で織り込み進行、短期は方向感薄い</td></tr>
+<tr><td>1〜2週</td><td><b>-1.0%</b></td><td>-8.0%〜+6.0%</td><td>在庫益依存の538億が意識されると失望売り。事業利益257億(前年79億の3倍超)の実力が下支え</td></tr>
+<tr><td>1年</td><td><b>+8.0%</b></td><td>-15.0%〜+30.0%</td><td>PER=2241/231.96≒9.7倍で割安。事業利益改善継続なら見直し余地だがアルミ価格・関税で下振れリスク</td></tr>
+</table>
+<h3>論理</h3>
+<ul>
+<li>前提: 1Q営業利益538.11億、事業利益(在庫影響控除後)257億、棚卸資産影響+364億(会社開示)</li>
+<li>前提: 通期営業利益予想850億、事業利益予想860億→差-10億で通期の在庫影響想定はほぼゼロ(むしろ▲10億)</li>
+<li>前提: 1Qで既に+364億の在庫益が計上済み→残り3Qで▲374億の在庫影響剥落が織り込まれている</li>
+<li>前提: 前年1Q事業利益79億→今1Q事業利益257億は実力ベースで大幅改善(+178億)</li>
+<li>∴ 会計上の営業利益は在庫要因で膨らんでいるが、実力(事業利益)は堅調。ただしメタル価格反落で通期営業利益は予想未達リスク残存</li>
+</ul>
+<h3>最強の反対材料と耐性</h3>
+<p>通期予想850億は既に在庫影響ほぼゼロ前提で策定されており(事業利益860億とほぼ同水準)、1Qの+364億は下期に評価損として反転する前提。よって『通期未達懸念』は二重カウントで、本質は事業利益ベース前年482億→予想860億(+78%)の実力改善。この反論は強いが、通期事業利益860億は1Q257億×4=1028億ペースを下回る保守予想でありメタル反落・数量減の織り込みと解釈でき、慎重姿勢は維持可能。</p>
+<h3>この結論を捨てる条件</h3>
+<p>①2Q以降に事業利益ベース上方修正(通期900億超)なら実力改善で買い転換。②アルミLME急落で四半期在庫評価損200億超→通期営業利益下方修正なら売り。③会社が通期在庫影響想定額を明示開示し本推計(▲10億)と大きく乖離</p>
+<h3>事実(Grok収集・出典つき)</h3>
+<p><b>UACJ（5741）2027年3月期（2026年度）1Q（2026年4-6月）実績</b></p>
+<ul>
+<li>営業利益：538.11億円（決算短信・説明資料、2026年8月6日公表）。 <a href="https://finance.biggo.jp/news/jpx_tdnet_140120260805510395" target="_blank" rel="noopener">[1]</a></li>
+<li>事業利益（営業利益から棚卸資産影響等を控除した指標）：257億円（同上、2026年8月6日）。 <a href="https://www.nikkei.com/markets/ir/irftp/data/tdnr/tdnetg3/20260806/g2akae/140120260805510902.pdf" target="_blank" rel="noopener">[2]</a></li>
+<li>棚卸資産影響（在庫影響）：+364億円（ポジティブ影響、Adjusted EBITDA関連内訳、決算説明会資料、2026年8月6日）。 <a href="https://www.nikkei.com/markets/ir/irftp/data/tdnr/tdnetg3/20260806/g2akae/140120260805510902.pdf" target="_blank" rel="noopener">[2]</a></li>
+<li>通期営業利益予想：850億円（5月時点・最新、決算説明会資料、2026年8月6日）。 <a href="https://www.nikkei.com/markets/ir/irftp/data/tdnr/tdnetg3/20260806/g2akae/140120260805510902.pdf" target="_blank" rel="noopener">[2]</a></li>
+<li>通期事業利益予想：860億円（同上）。 <a href="https://www.nikkei.com/markets/ir/irftp/data/tdnr/tdnetg3/20260806/g2akae/140120260805510902.pdf" target="_blank" rel="noopener">[2]</a></li>
+</ul>
+<p><b>『在庫影響を除く経常利益』『調整後営業利益』の実額（2027年3月期1Q）</b></p>
+<ul>
+<li>資料に「在庫影響を除く経常利益」の明示額は確認されず。</li>
+<li>調整後営業利益（または事業利益相当、在庫影響控除後）：257億円（決算説明会資料、2026年8月6日）。 <a href="https://www.nikkei.com/markets/ir/irftp/data/tdnr/tdnetg3/20260806/g2akae/140120260805510902.pdf" target="_blank" rel="noopener">[2]</a></li>
+</ul>
+<p><b>通期会社予想850億円における在庫影響の想定額</b></p>
+<ul>
+<li>資料に明示的な在庫影響想定額は確認されず（事業利益860億円と営業利益850億円の差10億円が関連する可能性はあるが、明記なし）。</li>
+</ul>
+<p><b>過去3年の同数字（主に事業利益・営業利益・棚卸資産影響等、決算説明会資料より）</b></p>
+<ul>
+<li><b>2026年3月期（2025年度）1Q</b>：</li>
+<li>事業利益：79億円</li>
+<li>営業利益：85億円</li>
+<li>棚卸資産影響等：+6億円（資料内訳、2025年8月頃公表分反映）。 <a href="https://www.nikkei.com/markets/ir/irftp/data/tdnr/tdnetg3/20260806/g2akae/140120260805510902.pdf" target="_blank" rel="noopener">[2]</a></li>
+</ul>
+<ul>
+<li><b>2026年3月期（2025年度）通期</b>：</li>
+<li>事業利益：482億円（または481.8億円）</li>
+<li>営業利益：768.6億円（または640億円表記にばらつきあり）</li>
+<li>最終利益：388.8億円（または280億円）。 <a href="https://www.uacj.co.jp/ir/index.html" target="_blank" rel="noopener">[3]</a></li>
+</ul>
+<ul>
+<li><b>2025年3月期（2024年度）通期</b>：純利益138.58億円（2024年5月13日公表）。在庫影響詳細は上記資料に未記載。 <a href="https://www.nikkei.com/article/DGXZRST0587648Z00C24A5000000/" target="_blank" rel="noopener">[4]</a></li>
+</ul>
+<p><b>出典主なURL（2026年8月6日公表分中心）</b></p>
+<ul>
+<li>決算説明会資料（Nikkei IR FTP）：<a href="https://www.nikkei.com/markets/ir/irftp/data/tdnr/tdnetg3/20260806/g2akae/140120260805510902.pdf" target="_blank" rel="noopener">https://www.nikkei.com/markets/ir/irftp/data/tdnr/tdnetg3/20260806/g2akae/140120260805510902.pdf</a> （2026年8月6日）</li>
+<li>決算短信：<a href="https://finance-frontend-pc-dist.west.edge.storage-yahoo.jp/disclosure/20260806/20260805510395.pdf" target="_blank" rel="noopener">https://finance-frontend-pc-dist.west.edge.storage-yahoo.jp/disclosure/20260806/20260805510395.pdf</a> （2026年8月6日）</li>
+<li>会社IRページ：<a href="https://www.uacj.co.jp/ir/" target="_blank" rel="noopener">https://www.uacj.co.jp/ir/</a> （2026年8月更新分、決算ハイライト含む）</li>
+<li>TDnet/BigGo等速報：<a href="https://finance.biggo.jp/news/jpx_tdnet_140120260805510395" target="_blank" rel="noopener">https://finance.biggo.jp/news/jpx_tdnet_140120260805510395</a> （2026年8月5-6日）</li>
+</ul>
+<p>上記は公開資料・報道から抽出された数字のみを記載。資料内で「棚卸資産影響」は事業利益の定義として「営業利益から控除する項目」とされ、在庫評価益（メタル価格ラグによるもの）と関連するが、依頼の「在庫影響を除く経常利益」および通期850億円に対する具体的な在庫影響想定額は資料に明示されていなかった。過去分も同様に公開資料に基づく。</p></div></details>
+<div class=anchor><a href="#V_uacj_stock">#V_uacj_stock</a></div>
+</article>
+<article class=rep id="V_sre_seg">
+<div class=hd><span class=call style="background:#3fb950">買い</span>
+<h2>SREホールディングス2980の2027年3月期1Q決算短信</h2></div>
+<div class=stocks>SREホールディングス2980</div>
+<p class=concl>1Q全社営業利益18.12億は連結ベース。L&amp;P 11.74億、AI&amp;LS 6.42億で通期52.3億に対し進捗34.6%。</p>
+<div class=ev><span><i>1日</i><b>+0.0%</b><em>-3〜+5%</em></span><span><i>1〜2週</i><b>+4.0%</b><em>-4〜+12%</em></span><span><i>1年</i><b>+15.0%</b><em>-20〜+45%</em></span></div>
+<p class=lv><b>水準</b> 2403円近辺で打診買い、2200円割れで追加、2700円超えで一旦利確検討</p>
+<details><summary>根拠・事実を見る</summary><div class=detail><h3>✅ 結論: 1Q全社営業利益18.12億は連結ベース。L&amp;P 11.74億、AI&amp;LS 6.42億で通期52.3億に対し進捗34.6%。</h3>
+<p><b>行動: 買い</b> ／ 水準: 2403円近辺で打診、2200円割れで追加、2700円超で一部利確 ／ 確信度: 中</p>
+<table>
+<tr><th>期間</th><th>期待値(中央)</th><th>レンジ</th><th>根拠</th></tr>
+<tr><td>1日</td><td><b>+0.0%</b></td><td>-3.0%〜+5.0%</td><td>8/5開示済で織り込み進行中。進捗率34.6%の好進捗にサプライズ余地はあるが発表後経過で反応限定。</td></tr>
+<tr><td>1〜2週</td><td><b>+4.0%</b></td><td>-4.0%〜+12.0%</td><td>1Q進捗34.6%で通期上方修正観測が浮上しやすい。L&amp;P売上倍増の持続性検証で買い直しの可能性。</td></tr>
+<tr><td>1年</td><td><b>+15.0%</b></td><td>-20.0%〜+45.0%</td><td>会社予想EPS167.58円×PER15倍で2514円、20倍で3352円。営業利益60億想定の上方修正でPER18倍なら約3450円(+43%)。L&amp;P鈍化な</td></tr>
+</table>
+<h3>論理</h3>
+<ul>
+<li>前提: 1Q連結営業利益18.12億円(前年同期0.92億の約19.6倍)。</li>
+<li>前提: セグメント内訳はL&amp;P 11.74億+AI&amp;LS 6.42億=18.16億、調整△0.04億で連結18.12億と整合。</li>
+<li>前提: 通期会社予想営業利益52.3億に対し1Q進捗率34.6%。</li>
+<li>前提: L&amp;P売上84.88億(+100.2%)が利益ドライバーで寄与約65%。</li>
+<li>∴ 18.12億は全社(連結)営業利益。通期計画超過ペースで上方修正期待が合理的な買い材料。</li>
+</ul>
+<h3>最強の反対材料と耐性</h3>
+<p>L&amp;P売上+100.2%は大型案件の一過性寄与の可能性があり、Q2以降剥落すれば通期進捗率は見かけ倒しに終わる。反論: 1Q単独で通期予想の1/3超を既に確保しており、Q2-4が前年並みでも通期達成可能で下振れリスクは限定的。結論維持。</p>
+<h3>この結論を捨てる条件</h3>
+<p>(1)Q2以降L&amp;P売上が前年同期比マイナス転落、(2)通期予想の下方修正発表、(3)四半期営業利益が5億円未満に急減、のいずれかが観測されれば強気結論を撤回。</p>
+<h3>事実(Grok収集・出典つき)</h3>
+<p><b>2027年3月期第1四半期（2026年8月5日開示）決算短信（日本基準・連結）より。</b></p>
+<ul>
+<li><b>(a) 全社営業利益</b>: 18.12億円（正確には18億1,242万3千円または1,812,423千円）。前年同期は0.92億円（92,445千円）。 <a href="https://finance-frontend-pc-dist.west.edge.storage-yahoo.jp/disclosure/20260805/20260805509576.pdf" target="_blank" rel="noopener">[1]</a></li>
+</ul>
+<ul>
+<li><b>(b) L&amp;P（ライフ＆プロパティソリューション）セグメントの営業利益</b>: 11.74億円（1,174,381千円）。 <a href="https://finance-frontend-pc-dist.west.edge.storage-yahoo.jp/disclosure/20260805/20260805509576.pdf" target="_blank" rel="noopener">[1]</a></li>
+</ul>
+<ul>
+<li><b>(c) AICC/AI&amp;LS（AI＆ライフソリューション）セグメントの営業利益</b>: 6.42億円（641,896千円）。 <a href="https://finance-frontend-pc-dist.west.edge.storage-yahoo.jp/disclosure/20260805/20260805509576.pdf" target="_blank" rel="noopener">[1]</a></li>
+</ul>
+<ul>
+<li><b>1Q全社営業利益18.12億という数字は全社</b>（連結営業利益）を指す。セグメント利益の合計（11.74億 + 6.42億 ≈ 18.16億）は調整後（△約0.04億）に全社18.12億と一致する。 <a href="https://finance-frontend-pc-dist.west.edge.storage-yahoo.jp/disclosure/20260805/20260805509576.pdf" target="_blank" rel="noopener">[1]</a></li>
+</ul>
+<p><b>出典（PDF）</b>:</p>
+<p><a href="https://finance-frontend-pc-dist.west.edge.storage-yahoo.jp/disclosure/20260805/20260805509576.pdf" target="_blank" rel="noopener">https://finance-frontend-pc-dist.west.edge.storage-yahoo.jp/disclosure/20260805/20260805509576.pdf</a> （2026年8月5日） <a href="https://finance-frontend-pc-dist.west.edge.storage-yahoo.jp/disclosure/20260805/20260805509576.pdf" target="_blank" rel="noopener">[1]</a></p>
+<p><b>その他の確認ソース（同日付）</b>:</p>
+<ul>
+<li>日経TDnet開示: <a href="https://www.nikkei.com/nkd/disclosure/tdnr/20260805509576/" target="_blank" rel="noopener">https://www.nikkei.com/nkd/disclosure/tdnr/20260805509576/</a> （2026年8月5日） <a href="https://www.nikkei.com/nkd/disclosure/tdnr/20260805509576/" target="_blank" rel="noopener">[2]</a></li>
+<li>各種ニュース要約（全社営業利益18.12億円または18億1200万円と記載、全社を指す）: 2026年8月5日付（Biggo、minkabu、Yahoo!ファイナンス、Kabutanなど）。 <a href="https://finance.biggo.jp/news/jpx_tdnet_140120260805509576" target="_blank" rel="noopener">[3]</a></li>
+</ul>
+<p><b>注</b>: 背景のL&amp;P売上84.88億（+100.2%）は一致。セグメント名は決算短信通り「ライフ＆プロパティソリューション事業」「AI＆ライフソリューション事業」。全数字は決算短信PDFの経営成績概要（p.2-4）およびセグメント情報表から直接抽出。</p></div></details>
+<div class=anchor><a href="#V_sre_seg">#V_sre_seg</a></div>
+</article>
+<article class=rep id="R8614e3f0">
+<div class=hd><span class=call style="background:#d4a017">保有継続</span>
+<h2>実PF5857 AREを金価格が4,600ドル維持前提で残玉ホールドするか</h2></div>
+<div class=stocks>実PF5857</div>
+<p class=concl>3,799を終値・PTSで上抜け前提崩壊、金4,400ドル or 終値3,799円割れをストップに残玉ホールド</p>
+<div class=ev><span><i>1日</i><b>+0.0%</b><em>-4〜+3%</em></span><span><i>1〜2週</i><b>+2.0%</b><em>-10〜+10%</em></span><span><i>1年</i><b>+8.0%</b><em>-20〜+25%</em></span></div>
+<p class=lv><b>水準</b> 残玉ホールド。全撤退トリガー=終値3,799円割れ or 金スポット4,400ドル割れの先着。上は4,170〜4,320円で分割利確、金5,000ドル超継続なら最終玉のみ4,470円まで</p>
+<details><summary>根拠・事実を見る</summary><div class=detail><h3>✅ 結論: 3,799を終値・PTSで上抜け前提崩壊、金4,400ドル or 終値3,799円割れをストップに残玉ホールド</h3>
+<p><b>行動: 保有継続</b> ／ 水準: dummy ／ 確信度: 中</p>
+<table>
+<tr><th>期間</th><th>期待値(中央)</th><th>レンジ</th><th>根拠</th></tr>
+<tr><td>1日</td><td><b>+0.0%</b></td><td>-4.0%〜+3.0%</td><td>dummy</td></tr>
+<tr><td>1〜2週</td><td><b>+2.0%</b></td><td>-10.0%〜+10.0%</td><td>dummy</td></tr>
+<tr><td>1年</td><td><b>+8.0%</b></td><td>-20.0%〜+25.0%</td><td>dummy</td></tr>
+</table>
+<h3>論理</h3>
+<ul>
+<li>dummy</li>
+</ul>
+<h3>最強の反対材料と耐性</h3>
+<p>dummy</p>
+<h3>この結論を捨てる条件</h3>
+<p>dummy</p>
+<h3>事実(Grok収集・出典つき)</h3>
+<p>(旧経路レポートから再構成)</p>
+<p>---</p>
+<h3>結論(3行以内)</h3>
+<p><b>resist 3,799円は8/21終値3,910円(+4.13%)で既に上抜けており、「resist到達で撤退」という問いの前提が崩れている。3,799円は抵抗線→支持線に転換した。</b></p>
+<p>金5,000ドルなら株価期待レンジ<b>4,170〜4,470円</b>(+7〜14%)、金4,400ドルなら<b>3,500〜3,770円</b>(-4〜-11%)でresist割れ水準に沈む。</p>
+<p>残玉全利確トリガーは「<b>終値3,799円割れ or 金4,400ドル割れ</b>のどちらか早い方」、上は<b>4,170〜4,320円ゾーンで利確検討</b>が数字で置ける。</p>
+<h3>事実(出典つき)</h3>
+<ul>
+<li><b>5857株価: 3,910円(2026/8/21終値、前日比+155円/+4.13%)。夜間PTSは3,980円(+1.79%)</b> — resist 3,799を終値・PTSとも上回っている。年初来高値4,720円(3/2)、安値2,838円(6/26)。時価総額3,396億円、予想PER 11.59倍、配当利回り3.45% (<a href="https://finance.yahoo.co.jp/quote/5857.T" target="_blank" rel="noopener">Yahoo!ファイナンス</a>、8/21)</li>
+<li><b>金スポット: 4,607.35ドル/oz(8/21、日次+2.03%、月間+11.5%、年間+36.6%)</b>。史上高値は2026年1月の5,608ドルで、現在は調整からの戻り局面 (<a href="https://tradingeconomics.com/commodity/gold" target="_blank" rel="noopener">TradingEconomics</a>、8/21)</li>
+<li><b>TradingEconomicsのモデル予想: Q3末4,426.71ドル、12ヶ月後4,790.30ドル</b>(同上、8/21) — 4,400ドルシナリオは彼らのベースラインに近く、テールリスクではない</li>
+<li>歴史的アンカー2点:</li>
+<li>3/2: 金5,377〜5,408ドル(イラン情勢で急騰) (<a href="https://sundayguardianlive.com/business/gold-price-today-2-march-2026-gold-surges-to-173-lakh10g-amid-iran-conflict-international-spot-jumps-to-5377-check-city-wise-rates-173417/" target="_blank" rel="noopener">Sunday Guardian</a> / <a href="https://www.cbsnews.com/news/price-of-gold-today-march-2-2026/" target="_blank" rel="noopener">CBS News</a>) → 株価年初来高値4,720円</li>
+<li>6/26: 金約4,072ドル (<a href="https://pricegold.net/2026/june/" target="_blank" rel="noopener">pricegold.net 6月履歴</a>) → 株価年初来安値2,838円</li>
+<li><b>Q1決算(8/4発表、4-6月): 売上1,971億円(+43.8%)、営業利益122.6億円(+106.8%)、純利益86.1億円(+136.6%)。通期予想(営業利益410億円)は据え置き、Q1進捗29.9%</b> (<a href="https://finance.biggo.jp/news/jpx_tdnet_140120260804508422" target="_blank" rel="noopener">決算短信・BiggoNews転載</a>)。短信に金価格の前提数値の記載は<b>なし</b></li>
+<li>ドル円158.96円(8/21) (<a href="https://jp.investing.com/currencies/usd-jpy-historical-data" target="_blank" rel="noopener">検索結果より</a>)</li>
+<li>8/21の+4.13%について会社固有の材料(IR・ニュース)は<b>見つからなかった</b>(同日の金+2.03%連動と推測)</li>
+</ul>
+<h3>解釈・推測</h3>
+<p>基準点を「株3,910円・金4,607ドル」(いずれも8/21)に置き、3つの換算法で推計:</p>
+<table>
+<tr><th>換算法</th><th>根拠</th><th>金4,400</th><th>金4,600</th><th>金5,000</th></tr>
+<tr><td>同日感応度β0.79(親指定)</td><td>日次連動</td><td>3,771円</td><td>3,905円</td><td>4,174円</td></tr>
+<tr><td>実績スロープ1.03円/$</td><td>8/21→3/2高値の線形</td><td>3,700円</td><td>3,900円</td><td>4,315円</td></tr>
+<tr><td>実績スロープ1.43〜2.0円/$</td><td>6/26安値→3/2高値・直近レジーム</td><td>3,500〜3,610円</td><td>3,900円</td><td>4,470円</td></tr>
+</table>
+<ul>
+<li><b>(推測)</b> 日次β0.79はトレンドの中期連動(実績1.0〜2.0円/$)を過小評価する。株は金に決算リレートとドル円が乗るため、中期では金1%に対し株1.2〜1.6%動いてきた。つまり<b>下落時のダウンサイドはβ法の-3.6%より深い-8〜-11%を主シナリオに置くべき</b></li>
+<li><b>(推測)</b> 金5,000ドル時の4,170〜4,470円は保守的。3/2実績(金5,390ドルで4,720円)から見て、Q1好決算後のリレート込みなら金5,000ドルで4,300円台は十分届く。ただし年初来高値4,720円は金5,400ドル時の値であり、金5,000ドルでの高値更新は期待しない</li>
+<li><b>(推測)</b> 円建て金価格が本質(売上は円建て)。ドル円159円が150円へ円高に振れると金+8%の効果が約半分相殺されるため、金上昇シナリオの株価上限は円高で削られ得る</li>
+</ul>
+<h3>判断への含意(ロング/ショート/様子見のどれを支持する材料か)</h3>
+<p><b>残玉ホールド(条件付きロング継続)を支持。</b> 根拠は3点:</p>
+<p>1. resist 3,799は既に終値で上抜け、PTSでも維持。「resist試行回数」の複合条件は不要になり、<b>3,799が損切りラインとして機能する明快な構図</b>に変わった</p>
+<p>2. Q1営業利益進捗29.9%・前年比2倍で、金が4,600ドル維持なら業績面の下支えは強い(PER 11.6倍は割高でない)</p>
+<p>3. ただしTradingEconomicsのQ3末予想4,427ドルは危険ライン4,400ドルのすぐ上。<b>金の押しは「あり得る標準シナリオ」なので、無条件ホールドではなくストップ前提のホールド</b></p>
+<p><b>数字化したルール(提案):</b></p>
+<ul>
+<li>全利確(撤退): <b>終値3,799円割れ</b> または <b>金スポット4,400ドル割れ</b> のどちらか先に触れた方(両者はモデル上ほぼ同一事象)</li>
+<li>残玉利確(上): <b>4,170〜4,320円ゾーン</b>(β法とスロープ法の推計が重なる帯)で分割利確、金5,000ドル超が続くなら最後の玉のみ4,470円まで引っ張る</li>
+<li>金4,600ドル±100のレンジ滞留中は何もしない(現値3,900円前後が適正圏)</li>
+</ul>
+<h3>積み残し(次に調べるべきこと)</h3>
+<ul>
+<li>ARE会社側の金価格前提(通期計画410億円が金何ドル・ドル円何円前提か) — 短信・検索では<b>分からなかった</b>。決算説明資料PDF(IRサイト)かSharedResearchレポートの直読が必要</li>
+<li>8/21急騰に会社固有材料(自社株買い・格上げ等)があったかの裏取り(適時開示一覧の確認)</li>
+<li>円建て金価格ベースでの感応度再計算(ドル円が159→150円になった場合の株価下押し幅の定量化)</li>
+<li>銀・PGM価格の寄与度(AREは金以外の貴金属も回収しており、金単独感応度では説明しきれない可能性)</li>
+</ul>
+<h3>🔴 反対尋問(自動)</h3>
+<p><b>①最弱の前提</b>:8/21終値1日だけで「3,799は支持線に転換」と断定している点。急騰(+4.13%)の会社固有材料が未確認のまま、この価格を基準点・損切り根拠の両方に使っており、フェイクブレイクなら構図全体が崩れる。</p>
+<p><b>②見落とされた反対材料</b>:金は1月高値から約30%調整済みで、<a href="https://www.litefinance.org/blog/analysts-opinions/gold-price-prediction-forecast/daily-and-weekly/" target="_blank" rel="noopener">ベア筋は年末$3,816、$4,300終値割れで$3,800試し</a>と予想——レポートの下限$4,400より深い。また<a href="https://kabuyoho.jp/reportTop?bcode=5857" target="_blank" rel="noopener">AREの宝飾・デンタル回収量は前期比減少</a>で、増益は価格頼み。数量減は金感応度モデル外の下押し要因。</p>
+<p><b>③最初の兆候</b>:数日内の3,799円割れ戻し(ブレイク失敗)、金$4,423〜4,466支持帯の終値割れ、8/21急騰の出来高が続かない陰線。</p>
+<p>結論の方向は妥当だが「3,799=支持線」の確度は過大——1日の上抜けを根拠とするには弱い。</p></div></details>
+<div class=anchor><a href="#R8614e3f0">#R8614e3f0</a></div>
+</article>
+<article class=rep id="D_defense">
+<div class=hd><span class=call style="background:#3fb950">買い</span>
+<h2>防衛・特殊機器3銘柄</h2></div>
+<div class=stocks>日本アビオニクス6946・ミナトHD6862・東京衡機7719</div>
+<p class=concl>防衛本命はアビオのみ、ミナトはメモリ枠、東京衡機は見送り。</p>
+<div class=ev><span><i>1日</i><b>+0.0%</b><em>-5〜+5%</em></span><span><i>1〜2週</i><b>-2.0%</b><em>-12〜+10%</em></span><span><i>1年</i><b>+15.0%</b><em>-25〜+70%</em></span></div>
+<p class=lv><b>水準</b> アビオ6946を4,400-5,000円の押し目で打診買い。ミナト6862は3,000円近辺の押し目のみ(メモリ枠)。東京衡機7719は見送り。</p>
+<details><summary>根拠・事実を見る</summary><div class=detail><h3>✅ 結論: 防衛本命はアビオのみ、ミナトはメモリ枠、東京衡機は見送り。</h3>
+<p><b>行動: 買い</b> ／ 水準: アビオ6946を4,400-5,000円の押し目で打診買い、ミナト6862は3,000円近辺のみ(メモリ枠として)、東京衡機7719は見送り ／ 確信度: 中</p>
+<table>
+<tr><th>期間</th><th>期待値(中央)</th><th>レンジ</th><th>根拠</th></tr>
+<tr><td>1日</td><td><b>+0.0%</b></td><td>-5.0%〜+5.0%</td><td>アビオ・ミナトとも高値から調整中で方向感なし、東京衡機は仕手性で±7%レンジ、3銘柄平均で中立</td></tr>
+<tr><td>1〜2週</td><td><b>-2.0%</b></td><td>-12.0%〜+10.0%</td><td>アビオはNAJ売り圧力継続、ミナトは1Q一過性認識で-20%調整途上、レジーム急騰追い禁止で押し目形成期</td></tr>
+<tr><td>1年</td><td><b>+15.0%</b></td><td>-25.0%〜+70.0%</td><td>アビオは受注残+概算要求で+20〜40%(3月高値9000円=+68%が上限)、ミナトはメモリ持続なら+50〜100%だが崩れれば-40%、東京衡機はファンダ根</td></tr>
+</table>
+<h3>論理</h3>
+<ul>
+<li>前提: 概算要求8.9兆円の恩恵はアビオの受注残403億円(通期売上1.26年分)で裏付け済み</li>
+<li>前提: ミナトの1Q売上+343%はメモリ価格10倍化と安値在庫吐き出しが主因で、防衛関連は売上8.2億円と僅少</li>
+<li>前提: 東京衡機は短信に防衛記載ゼロ、増益の相当部分がASTOM連結開始の見かけ効果で調査委員会未決着</li>
+<li>前提: アビオは高値-41%でPER18.8倍、NAJ46%売却オーバーハングが上値を抑制するが構造需要は2027年度まで継続</li>
+<li>∴ 防衛予算恩恵で買えるのはアビオのみ、ミナトはメモリサイクル別枠、東京衡機は投機で見送り</li>
+</ul>
+<h3>最強の反対材料と耐性</h3>
+<p>アビオの1Q受注高は前年比-3.5%で受注加速は既に一服、かつNAJ46%売却オーバーハングは1年単位で上値を抑え続け、PER18.8倍は防衛平均並みで割安ではない。反論: 受注残403億円で来期売上まで概ね確保済みであり-3.5%は大型案件期ズレで水準は高位維持。NAJ売却は浮動株化で機関投資家参入余地を生み中期プラス転化し得るため押し目買いは成立。</p>
+<h3>この結論を捨てる条件</h3>
+<p>①アビオの2Q以降で受注残が前四半期比-10%超に減少 ②概算要求で情報システム関連項目が縮小改訂 ③NAJが市場でなく大口ブロックで一気に投げ需給悪化 ④ミナトが2Q以降で在庫評価損計上・通期下方修正 ⑤東京衡機の調査委員会で重大不祥事認定、のいずれか観測で結論撤回</p>
+<h3>事実(Grok収集・出典つき)</h3>
+<p>(旧経路レポートから再構成)</p>
+<p>---</p>
+<p>3銘柄すべての一次資料(決算短信PDF・決算説明資料・大株主データ)を取得できました。調査結果をまとめます。</p>
+<h3>結論(3行以内)</h3>
+<p><b>「防衛銘柄」として本物なのはアビオニクスだけ</b>。ミナトHDの4.4倍増収の正体はメモリ価格急騰(防衛と無関係)、東京衡機は短信に防衛の記載が一切なくM&amp;A連結効果が増益の主因。8.9兆円概算要求の恩恵の実在性はアビオ=受注残403億円(通期売上の1.26年分)で裏付けあり、他2社は裏付けなし。倍の確率順は <b>ミナト&gt;アビオ&gt;東京衡機</b> だが、ミナトは防衛でなくメモリサイクルへの賭けになる。</p>
+<h3>事実(出典つき)</h3>
+<h4>前提: 防衛予算</h4>
+<ul>
+<li>防衛省は2027年度(令和9年度)概算要求に<b>過去最大の約8.9兆円</b>を計上へ(2026/8/20報道)。柱は無人機・AIによる「新しい戦い方」、継戦能力、防衛生産基盤。金額を明示しない「事項要求」が多く、年末の予算編成でさらに上積みされる見込み(<a href="https://www.jiji.com/jc/article?k=2026082000214&amp;g=pol" target="_blank" rel="noopener">時事 2026/8/20</a>、<a href="https://news.yahoo.co.jp/articles/54f8f85aaa15c142d38bc0e1e5468ae2565bd411" target="_blank" rel="noopener">テレ朝</a>、<a href="https://news.web.nhk/newsweb/na/nd-20260819de45165" target="_blank" rel="noopener">NHK 8/19</a>)</li>
+</ul>
+<h4>日本アビオニクス 6946 (株価5,350円・時価総額897億円・予想PER18.8倍・PBR4.6倍、8/21時点。年初来高値9,000円3/11→現在-41%。<a href="https://finance.yahoo.co.jp/quote/6946.T" target="_blank" rel="noopener">Yahoo!ファイナンス</a>)</h4>
+<p>1Q決算短信(2026/7/30、<a href="https://www.avio.co.jp/company/ir/upload_file/m005-m005_01/6946_20260728500716_P01_.pdf" target="_blank" rel="noopener">一次資料PDF</a>)より:</p>
+<ul>
+<li>1Q(4-6月): 売上83.0億円+64.9%、<b>営業利益17.3億円+196.7%</b>、経常16.8億円+198.7%。通期営業計画61億円に対し進捗28.3%</li>
+<li>増益の源泉: <b>情報システム事業(防衛用システム製品・宇宙用電子部品)が売上72.4億円+80.1%、セグ利益17.4億円</b>。短信に「政府が防衛関係の投資を強化しており、好調に推移」と明記</li>
+<li><b>期末受注残高403.8億円(情報システム381億円+17.3%)</b> = 通期売上計画320億円の約1.26年分。前期(26/3期)は受注高332億円+44.5%だった(<a href="https://www.zaikei.co.jp/article/20260625/858465.html" target="_blank" rel="noopener">財経新聞 2026/6/25</a>)</li>
+<li>防衛の中身: 表示・音響装置、指揮統制関連機器、搭載装置(同上)。電子機器事業ではデータセンター向け接合機器が売上比率約10%→2028年度30%目標(同上)</li>
+<li>通期予想: 売上320億円+9.6%、営業61億円+10.6%、EPS284円(据え置き)。中計STEP4は2030年度売上500億円・営業100億円目標</li>
+<li><b>需給</b>: 筆頭株主はNAJホールディングス(日本産業パートナーズ=JIPのファンド受け皿)が<b>46.40%</b>、自己株11.79%で浮動株が薄い。NAJは2025年9月に保有割合減少を報告済み=売却進行中(<a href="https://s.kabutan.jp/stocks/6946/stockholders/" target="_blank" rel="noopener">株探・大株主</a>、<a href="https://maonline.jp/news/20190731e" target="_blank" rel="noopener">TOB経緯</a>)</li>
+<li>BS: 短期借入金が1Qで+51.7億円(売掛・契約資産+41億円に対応する運転資金)。自己資本比率42.2%(短信)</li>
+</ul>
+<h4>ミナトHD 6862 (株価3,370円・時価総額267億円・予想PER4.2倍・PBR2.1倍、8/21。年初来高値4,230円は8/18=直近3日で-20%。<a href="https://finance.yahoo.co.jp/quote/6862.T" target="_blank" rel="noopener">Yahoo!ファイナンス</a>)</h4>
+<p>1Q決算説明資料(2026/8/10、<a href="https://www.minato.co.jp/cms/wp-content/uploads/2026/08/20260810-2.pdf" target="_blank" rel="noopener">一次資料PDF</a>)より:</p>
+<ul>
+<li>1Q: <b>売上230.3億円(前年同期比4.4倍=+343%)</b>、営業47.7億円(34.9倍)、経常47.9億円(57.1倍)</li>
+<li><b>増益の源泉は防衛ではない</b>: デジタルデバイス事業(メモリモジュール)が売上151.3億円・営業47.0億円(利益率31.1%)。会社説明は「生成AI需要による汎用メモリ(DRAM/NAND)の需給逼迫・価格上昇」「<b>前期末までに仕入れた在庫の販売と在庫評価に係る一時的な利益押し上げ</b>」。同社調べのDDR5価格指数は2025年1-3月=100→2026年7月=1,000(10倍)</li>
+<li>M&amp;A(ブレイン・インテグ・富士電工)の営業利益寄与は+0.97億円のみ。営業増益+46.3億円のほぼ全てがメモリ</li>
+<li>通期を大幅上方修正: 売上810億円・<b>営業100億円</b>・経常93億円・純利益60億円(経常進捗51.6%)。ただし会社自身が「<b>1Qに利益を押し上げた在庫販売等は2Q以降の寄与を限定的と見込む</b>」と明記</li>
+<li>株主還元: 70周年記念配で年間42円に増配、自社株買い上限3.5億円実施中。筆頭株主はSBI証券6.7%(2025/9末)で支配株主なし(<a href="https://www.nikkei.com/nkd/company/stockholder/?scode=6862" target="_blank" rel="noopener">日経</a>)</li>
+<li>BS: 借入金218億円(1Qで+50億円、メモリ仕入資金)、自己資本比率26.1%</li>
+<li>防衛との接点: 子会社エクスプローラが「宇宙・防衛」含むODM/EMSを提供するが、当該セグメント(DE)全体で売上8.2億円・営業0.11億円と僅少</li>
+</ul>
+<h4>東京衡機 7719 (株価467円・時価総額33.5億円・予想PER14.2倍、8/21。年初来高値983円3/10→現在-52%。無配。<a href="https://finance.yahoo.co.jp/quote/7719.T" target="_blank" rel="noopener">Yahoo!ファイナンス</a>)</h4>
+<p>1Q決算短信(2026/7/15、<a href="http://tk100.jp/wp-content/uploads/2026/07/2027年２月期-第１四半期決算短信〔日本基準〕連結.pdf" target="_blank" rel="noopener">一次資料PDF</a>、3-5月期)より:</p>
+<ul>
+<li>1Q: 売上12.3億円+47.2%、営業1.41億円(+431%)、経常1.32億円+678.2%。通期営業3.36億円に対し進捗42%</li>
+<li><b>短信全文に「防衛」の文言はゼロ</b>。試験機事業の顧客は自動車・鉄鋼・鉄道・産業機器・官公庁・研究機関</li>
+<li>増益の分解: 試験機 営業1.74億円+40%(実力増)、<b>デジタル(ASTOM R&amp;D、2025/3/31株式取得) 営業1.18億円 — 前年同期はBSのみ連結でPL寄与ゼロだったため、前年比増益の相当部分が連結開始の&quot;見かけ&quot;効果</b>。エンジニアリングは売上-45.8%で営業赤字転落</li>
+<li><b>筆頭株主Dream Bridge(29.9%)は小塚英一郎社長の会社</b>(<a href="https://irbank.net/E01587/share?e=E32791" target="_blank" rel="noopener">irbank</a>) = 実質オーナー企業で浮動株薄い</li>
+<li>ガバナンス: <b>内部通報事案(人事対応・再発防止策の適切性)で外部有識者含む調査委員会を設置</b>(2026/4/22決議、6/15委員選定、短信・重要な後発事象) — 結論未公表</li>
+<li>直近の急反発(8/21+7.4%)の材料は防衛でなく「フィジカルAI関連新規事業(デジタルツインのPoC開始)」の発表(<a href="https://www.zaikei.co.jp/article/20260821/866881.html" target="_blank" rel="noopener">財経新聞 2026/8/21</a>)</li>
+</ul>
+<h3>解釈・推測</h3>
+<ul>
+<li><b>親セッションの「防衛・特殊機器」グルーピングは2/3が誤分類</b>。木野内氏の「DC電源・防衛」ロジックに素直に乗れるのはアビオのみ。皮肉なことにアビオはデータセンター(接合機器のDC向け比率30%目標)も持ち、「防衛×DC」の二枚看板で木野内シナリオに最も整合する。</li>
+<li>アビオの持続性は<b>構造的</b>(受注残1.26年分は来期売上まで概ね確保済み。防衛中計+概算要求8.9兆で受注環境は少なくとも2027年度まで続く)。ただし1Q受注高は前年比-3.5%で、受注の「加速」は一服(推測: 大型案件の期ズレ)。</li>
+<li>アビオが決算好調でも高値から-41%の位置にいるのは、(推測) ①3月までに防衛テーマで買われ過ぎた反動、②NAJ46%の売却オーバーハング。オーバーハングは上値を抑え続けるが、逆に売り切り・売出しイベントが出れば浮動株化で機関投資家が買える玉になる(中期ではプラス転化もあり得る)。</li>
+<li>ミナトの利益は<b>一過性成分が大きい</b>(安値在庫の吐き出し+在庫評価益)。ただしメモリ価格自体が高止まりすれば2Q以降も「高値仕入れ・高値販売」の薄いマージンは残る。純利益60億円予想に対し時価総額267億円(PER4.4倍)は、市場が「ピーク利益」と見ている証拠。倍(PER9倍)へはメモリサイクルが2027年前半まで崩れないことが条件で、これは防衛ではなくAIメモリサイクルへのベット。</li>
+<li>東京衡機は時価総額33億円の低流動性株で、1月284円→3月983円(+246%)→467円という値動き自体が仕手性を示す。ファンダで2倍を正当化する材料は現状なく、調査委員会という尾を引くリスクもある。</li>
+</ul>
+<h3>判断への含意</h3>
+<table>
+<tr><th>銘柄</th><th>支持</th><th>根拠</th></tr>
+<tr><td>アビオ6946</td><td><b>押し目ロング</b></td><td>①防衛恩恵は受注残で実証済み・構造的 ②現値はPER18.8倍と割高ではないが、NAJ売り圧力で急騰しにくい。現値5,350円可、理想は7/17安値寄り(4,400-5,000)への押し。2倍(10,700円=PER38倍)には通期上方修正+防衛セクター再リレーティングが必要で、1年2倍確率は中(3月高値9,000円回復+19%が現実的な第一目標)</td></tr>
+<tr><td>ミナト6862</td><td><b>条件付きロング(防衛枠ではなくメモリ枠として)</b></td><td>PER4.4倍・経常進捗51.6%で再上方修正余地。ただし8/18高値から-20%の調整中で、レジーム(急騰追い禁止)に従い3,000円近辺の押し目のみ。倍(6,740円=PER9倍)はメモリ価格持続が条件。在庫評価損リスクが逆側にある高ボラ銘柄</td></tr>
+<tr><td>東京衡機7719</td><td><b>見送り</b></td><td>防衛実態なし、増益の相当部分が連結見かけ効果、調査委員会未決着、オーナー29.9%+低流動性。テーマ株リレーで2倍に「なり得る」が、それは分析でなく宝くじ</td></tr>
+</table>
+<p><b>グループ内ランキング(1年2倍の確率順): ①ミナトHD(ただし防衛テーマではない) ②アビオ ③東京衡機</b>。「防衛予算8.9兆円の恩恵」という当初仮説で買えるのはアビオ1銘柄のみ。</p>
+<h3>積み残し(次に調べるべきこと)</h3>
+<p>1. <b>NAJホールディングスの大量保有報告書の変動履歴</b>(直近の保有%と売却ペース) — アビオの上値・売出しイベントの時期を測る最重要材料</p>
+<p>2. アビオの受注の中身: 概算要求のどの項目(指揮統制・無人機対処・搭載装置)に紐づくか。防衛省中央調達実績での確認</p>
+<p>3. DRAM/NANDのコントラクト価格見通しとサムスン・SKの汎用メモリ増産計画 — ミナトの利益持続性の外部検証(今回未着手)</p>
+<p>4. 東京衡機の調査委員会の結論公表(時期未定) — 見送り解除の条件</p>
+<p>5. 木野内氏推奨のもう一つの柱「DC電源」銘柄群との比較でアビオの相対妙味を検証(接合機器のDC向け受注+36.5%は今回確認済み)</p>
+<p>*注: 分からなかったこと — 東京衡機の官公庁向け売上に防衛省が含まれるかは開示がなく確認できなかった。アビオのNAJの現在の正確な保有%(46.40%は最新四季報ベースで、2025/9以降の売却分は未反映の可能性)。*</p></div></details>
+<div class=anchor><a href="#D_defense">#D_defense</a></div>
+</article>
+<article class=rep id="Rc96bdc3f">
+<div class=hd><span class=call style="background:#d4a017">保有継続</span>
+<h2>6138ダイジェット工業を明日寄りで50株利確した場合</h2></div>
+
+<p class=concl>残50株は期待値ほぼゼロの右テール宝くじ、逃げ線必須で握るのが合理。</p>
+<div class=ev><span><i>1日</i><b>-0.3%</b><em>-8〜+7%</em></span><span><i>1〜2週</i><b>-1.9%</b><em>-17〜+13%</em></span><span><i>1年</i><b>+5.0%</b><em>-40〜+80%</em></span></div>
+<p class=lv><b>水準</b> 残50株は保有、ただし逃げ線=RSI14が70割れ or 終値ベース-3%トレールで機械的手仕舞い。押し目でのナンピンは非推奨、再エントリーはRSI70割れ後のフレッシュクロス待ち。</p>
+<details><summary>根拠・事実を見る</summary><div class=detail><h3>✅ 結論: 残50株は期待値ほぼゼロの右テール宝くじ、逃げ線必須で握るのが合理。</h3>
+<p><b>行動: 保有継続</b> ／ 水準: 残50株は保有、ただし逃げ線=RSI14が70割れ or 終値ベース-3%トレールで機械的手仕舞い。押し目でのナンピンは非推奨、再エントリーはRSI70割れ後のフレッシュクロス待ち。 ／ 確信度: 中</p>
+<table>
+<tr><th>期間</th><th>期待値(中央)</th><th>レンジ</th><th>根拠</th></tr>
+<tr><td>1日</td><td><b>-0.3%</b></td><td>-8.0%〜+7.0%</td><td>60日ボラ71%年率→日次約4.5%。RSI84超局面の翌日は中央値わずかマイナス、寄り天リスクを織り込みmid=-0.3%。</td></tr>
+<tr><td>1〜2週</td><td><b>-1.9%</b></td><td>-16.6%〜+12.7%</td><td>A84サブセット5日後実測(n=244)の中央値-1.94%・p10 -16.6%・p90 +12.7%をそのまま採用。</td></tr>
+<tr><td>1年</td><td><b>+5.0%</b></td><td>-40.0%〜+80.0%</td><td>1年ホライズンではQ1進捗46%からの上方修正・機械セクタ循環が効く一方、RSI84過熱の平均回帰で-40%も現実的レンジ。右テールは同条件の極端例+97〜11</td></tr>
+</table>
+<h3>論理</h3>
+<ul>
+<li>前提: RSI84超×高ボラ×トレンド×PEAD窓内のn=244実測で10日中央値-3.1%・勝率34.7%、平均+0.35%。</li>
+<li>前提: PEAD条件(C・Am)も分布を改善せず、フレッシュクロス以外は中央値マイナス。6138は既にクラスタ9日目。</li>
+<li>前提: 平均が中央値を上回るのは右テール(p90+17.6%、極端例+97〜113%)の存在による右スキュー分布。</li>
+<li>前提: Q1進捗46.2%は上方修正の実弾候補で、実現すれば分布が右に書き換わる可能性。</li>
+<li>∴ 半分利確で下方リスク相殺、残半分は逃げ線(RSI70割れ/-3%トレール)付きで右テール狙いが期待値上ベスト。</li>
+</ul>
+<h3>最強の反対材料と耐性</h3>
+<p>「10日中央値-3.1%・勝率34.7%なら残も全部売って現金化、押し目再エントリーが最善では」— 正論だが平均は+0.35%とゼロ近辺で、右テール(+17.6%以上)を取り逃す機会損失が半分利確済みの下方リスクと釣り合う。かつQ1進捗46%は修正発表で分布ごと書き換わる非対称性を持つため、逃げ線付き保有継続が優位。ただしこの反対論が勝つ条件は「上方修正の芽が消えた」「RSI70割れ確認」時点で、その場合は結論を全売却に切替える。</p>
+<h3>この結論を捨てる条件</h3>
+<p>①終値がRSI14=70を割れる ②終値ベースで直近高値から-3%を割り込む ③上方修正観測が否定される決算関連ネガティブIR ④出来高が急減しながらの陰線続き(需給崩壊)。いずれか発生で残50株も即時手仕舞い。</p>
+<h3>事実(Grok収集・出典つき)</h3>
+<p>(旧経路レポートから再構成)</p>
+<p>---</p>
+<h3>結論(3行以内)</h3>
+<p>6138相当条件(RSI80超×高ボラ×トレンド×決算後60日以内)の実測分布はn=600で、<b>5日中央値-1.2%/10日中央値-1.6%・勝率40〜42%・平均ほぼゼロ</b>。6138の現状に最も近いRSI84以上サブセット(n=244)はさらに悪く<b>10日中央値-3.1%・勝率34.7%</b>。決算後60日以内というPEAD条件も「決算後+10%モメンタム」条件も分布を改善しない。残50株は「期待値プラスの保有」ではなく「右テール(p90+17.6%)狙いの宝くじ+逃げ線必須」構造。</p>
+<h3>事実(出典つき)</h3>
+<p>すべてJ-Quants API実測(取得日2026-08-22)。バックテストは機械セクター209銘柄×5年(2021-08〜2026-08)、終値→終値、スクリプト`_tmp_pead_rsi_backtest.py`。</p>
+<p><b>条件付き分布(RSI14≥80 × 60日ボラ年率≥40% × 終値&gt;SMA50 × 直近決算開示から60暦日以内)</b> — 完了条件のn&gt;100を充足:</p>
+<table>
+<tr><th>バケット</th><th>n</th><th>勝率</th><th>中央値</th><th>平均</th><th>p10</th><th>p90</th></tr>
+<tr><td>A 全該当日 5日後</td><td>600</td><td>42.2%</td><td>-1.24%</td><td>-0.21%</td><td>-12.9%</td><td>+12.2%</td></tr>
+<tr><td>A 全該当日 10日後</td><td>596</td><td>40.1%</td><td>-1.60%</td><td>+0.62%</td><td>-15.0%</td><td>+15.7%</td></tr>
+<tr><td>A84 RSI≥84のみ 5日後</td><td>244</td><td>37.7%</td><td>-1.94%</td><td>-0.80%</td><td>-16.6%</td><td>+12.7%</td></tr>
+<tr><td>A84 RSI≥84のみ 10日後</td><td>242</td><td>34.7%</td><td><b>-3.10%</b></td><td>+0.35%</td><td>-16.8%</td><td>+17.6%</td></tr>
+<tr><td>A&#x27; フレッシュクロスのみ 5日後</td><td>235</td><td>48.9%</td><td>-0.05%</td><td>+1.03%</td><td>-12.8%</td><td>+13.0%</td></tr>
+<tr><td>Am 決算後+10%上昇済み 5日後</td><td>558</td><td>42.3%</td><td>-1.09%</td><td>-0.11%</td><td>-12.9%</td><td>+12.4%</td></tr>
+<tr><td>C 同条件だが決算後60日超 5日後</td><td>119</td><td>49.6%</td><td>±0.00%</td><td>-0.29%</td><td>-16.1%</td><td>+13.7%</td></tr>
+<tr><td>D RSI不問ベースライン 5日後</td><td>23,771</td><td>46.9%</td><td>-0.33%</td><td>+0.23%</td><td>-7.8%</td><td>+8.3%</td></tr>
+</table>
+<p><b>6138の現状(J-Quants株価・財務データ)</b>:</p>
+<ul>
+<li>8/21終値2,083円(+3.5%、出来高52,500株と再増加)。RSI14=<b>84.0</b>、60日ボラ年率71%、SMA50乖離+62.6%</li>
+<li>Q1決算(FY2027/3)開示は<b>2026-08-07 15:30</b>(DiscDate実データ)。売上27.99億円(前年22.36億、+25.2%)、営業利益5.08億円(前年1.38億の約3.7倍)、通期営業予想11億円(前期実績6.48億)に対しQ1進捗<b>46.2%</b></li>
+<li>決算開示(8/7終値1,272円)から8/21まで<b>+63.8%</b>、暦日14日 → PEAD窓(60日)内</li>
+<li>6138自身の過去の同条件イベントは2022-03-25(RSI87.9)の1回のみ → <b>5日後-19.5%/10日後-24.4%</b></li>
+<li>今回の走り: 8/10イベント(RSI83)→5日後+28.6%、8/12(RSI89.9)→5日後+0.2%、8/13(RSI86.2)→5日後+4.1%(クラスタ内で減速中)</li>
+</ul>
+<p>決算発表日8/7は<a href="https://s.kabutan.jp/stocks/6138/news/" target="_blank" rel="noopener">株探</a>・<a href="https://minkabu.jp/stock/6138/news" target="_blank" rel="noopener">みんかぶ</a>の検索結果とも整合(両サイト本文は403でJ-Quants一次データで確定)。</p>
+<h3>解釈・推測</h3>
+<ul>
+<li><b>中央値と平均の乖離が本質</b>。10日平均は+0.35〜+0.62%とゼロ近辺だが中央値は-1.6〜-3.1%。つまり6割の確率で数%削られ、1〜2割の確率で+15%超が出る右スキュー。残50株を持つ行為は「期待値ほぼゼロの宝くじを保有する」ことと同義(解釈)</li>
+<li><b>PEADは過熱を救済しない</b>(事実: C≒A、Am≒A)。「決算後だから上がり続けやすい」仮説は5〜10日ホライズンでは棄却。PEADのドリフトはRSI80超の平均回帰に食われる(解釈)</li>
+<li>分布が良いのはフレッシュクロス(初日)だけで、6138は既にクラスタ9営業日目・RSI84。<b>分布上いちばん分が悪い局面に入っている</b>(解釈)</li>
+<li>ただし6138のQ1進捗46%は上方修正の実弾候補。分布の右テール(best +97〜113%)はこういう銘柄が作る(推測)。修正開示が出れば分布ごと書き換わる</li>
+<li>60日ボラ71%は標本の下限(40%)より遥かに高く、6138の実現テールは表のp10/p90より広いと見るべき(推測)</li>
+</ul>
+<h3>判断への含意</h3>
+<ul>
+<li><b>明日寄り50株利確は分布が支持する</b>(中央値マイナス・勝率4割の局面で半分現金化は期待値改善)</li>
+<li>残50株は「全降り」と「保有」の期待値差がほぼゼロ(平均±0%近辺)なので、<b>握るなら右テール専用と割り切り、逃げ線(RSI70割れ or 終値-3%トレール等)を必ず置く</b>。漫然保有の中央値は-3%/10日</li>
+<li>「押し目を待って買い直す」は分布上合理的(フレッシュクロスや過熱解消後の再エントリーの方が分が良い)。<b>ショートは非推奨</b> — 勝率6割でも右テール(+17〜+113%)が踏み上げリスクとして重すぎる</li>
+</ul>
+<h3>積み残し</h3>
+<ul>
+<li>ボラ60%超に絞った高ボラ・サブセットの分布(今回のイベントログは銘柄別保存しておらず未集計。6138の実態にさらに近づけられる)</li>
+<li>上方修正が「出た場合」の条件付き分布(Q1進捗45%超銘柄の修正発表確率と発表後リターン) — 右テールの定量化はこれが本丸</li>
+<li>8/22当日の値動き(本レポートは8/21終値まで。寄り前に当日分を要更新)</li>
+<li>信用残・貸借規制の状況(過熱クラスタの崩れ方は需給規制で加速する。J-Quantsの週次信用残は未取得)</li>
+</ul>
+<p>Sources: <a href="https://s.kabutan.jp/stocks/6138/news/" target="_blank" rel="noopener">株探 6138ニュース</a> / <a href="https://minkabu.jp/stock/6138/news" target="_blank" rel="noopener">みんかぶ 6138</a> / <a href="https://kabuyoho.jp/sp/reportAnalyst?bcode=6138" target="_blank" rel="noopener">株予報Pro 6138</a>(いずれも決算日クロスチェック用。数値は全てJ-Quants API一次データ)</p></div></details>
+<div class=anchor><a href="#Rc96bdc3f">#Rc96bdc3f</a></div>
+</article>
+<article class=rep id="R2634ba4a">
+<div class=hd><span class=call style="background:#8b949e">見送り</span>
+<h2>NVDA決算(8/26)前後のMU/SNDKの過去4四半期分の-1日/+1日</h2></div>
+
+<p class=concl>NVDA決算後-10%下落は4回中1回(25%)。指値水準は合理的だが刺さり確率は低く、様子見+指値継続が妥当。</p>
+<div class=ev><span><i>1日</i><b>-0.5%</b><em>-12〜+6%</em></span><span><i>1〜2週</i><b>-1.0%</b><em>-18〜+8%</em></span><span><i>1年</i><b>+8.0%</b><em>-25〜+40%</em></span></div>
+<p class=lv><b>水準</b> ノーポジ継続。MU877/SNDK1455の下値指値は維持(到達確率25%だが到達時は投げ売り局面で押し目妥当)</p>
+<details><summary>根拠・事実を見る</summary><div class=detail><h3>✅ 結論: NVDA決算後-10%下落は4回中1回(25%)。指値水準は合理的だが刺さり確率は低く、様子見+指値継続が妥当。</h3>
+<p><b>行動: 見送り</b> ／ 水準: ノーポジ継続。MU877/SNDK1455の下値指値は維持(到達確率25%だが到達時は投げ売り局面で押し目妥当) ／ 確信度: 中</p>
+<table>
+<tr><th>期間</th><th>期待値(中央)</th><th>レンジ</th><th>根拠</th></tr>
+<tr><td>1日</td><td><b>-0.5%</b></td><td>-12.0%〜+6.0%</td><td>NVDA翌日リターン実績(MU+3.6/-10.9/-3.1/+4.1、SNDK+5.0/-20.3/+3.1/+10.8)の平均は概ねゼロ近辺、標準偏差大。-</td></tr>
+<tr><td>1〜2週</td><td><b>-1.0%</b></td><td>-18.0%〜+8.0%</td><td>NVDA後3営業日以内のザラ場最大押しはMU最大-14.8%/SNDK最大-25.6%。2025-11型巻き戻しが再発すれば-15%圏、平時は±5%圏</td></tr>
+<tr><td>1年</td><td><b>+8.0%</b></td><td>-25.0%〜+40.0%</td><td>メモリ市況強気継続なら+30〜40%、AI投資過熱巻き戻し本格化なら-25%。株価3〜5倍圏で上下ボラ極大</td></tr>
+</table>
+<h3>論理</h3>
+<ul>
+<li>前提: NVDA決算翌日のMU/SNDK-10%超下落は過去4回中1回(2025-11-19のみ、ベースレート25%)</li>
+<li>前提: MU877(-9.5%)/SNDK1455(-8.7%)水準へのNVDA決算後3営業日以内到達も両銘柄1/4=25%</li>
+<li>前提: NVDA自身は4回連続で決算翌日マイナス(-0.8〜-5.5%)、メモリ株βで増幅されやすい</li>
+<li>前提: 上振れも4回中2回(MU+3.6/+4.1%、SNDK+5.0/+10.8%)あり、機会損失リスク存在</li>
+<li>∴ 期待値は上下拮抗しつつ左裾が厚い分布。新規ロード追加は非推奨、下値指値継続が合理的</li>
+</ul>
+<h3>最強の反対材料と耐性</h3>
+<p>「サンプルn=4は統計的に無意味、25%はノイズ」という反論が最強。ただし本結論は確率推定ではなく「新規ロングを追加する積極材料が過去実績にない」ことに立脚しており、n=4でも『NVDA後にMU/SNDKが確実に上がるパターンは検出されない』という否定的知見は成立。よって様子見+指値の消極方針は維持できる。</p>
+<h3>この結論を捨てる条件</h3>
+<p>①NVDA決算前にMU/SNDKが+5%以上先行ラリー(織り込み進行で指値到達確率低下)、②NVDA決算がAI capex下方修正等でネガティブサプライズ→2025-11型再来なら指値執行、③8/26のNVDAストラドル織込みが±3%以下と低い(ボラ低下で-9%到達確率が実績25%を大きく下回る想定に修正)</p>
+<h3>事実(Grok収集・出典つき)</h3>
+<p>(旧経路レポートから再構成)</p>
+<p>---</p>
+<h3>結論(3行以内)</h3>
+<p>過去4回のNVDA決算翌日、MU/SNDKが-10%超下落したのは4回中1回(2025-11-19の回のみ、MU -10.9%/SNDK -20.3%)で、単純ベースレートは<b>25%</b>。指値(MU877=現値比-9.5%、SNDK1455=同-8.7%)がNVDA決算後3営業日以内に刺さった実績も両銘柄とも4回中1回(25%)。ただし刺さった唯一の回(2025年11月)は「AIバブル懸念+メモリ株過熱の巻き戻し」という地合い要因が大きく、NVDA決算自体は好決算だった点に注意。</p>
+<h3>事実(出典つき)</h3>
+<p><b>決算日(すべて引け後発表、一次情報で確認)</b></p>
+<ul>
+<li>NVDA: 2025-08-27 (Q2 FY26)、2025-11-19 (Q3 FY26)、2026-02-25 (Q4 FY26、<a href="https://www.sec.gov/Archives/edgar/data/1045810/000104581026000019/q4fy26pr.htm" target="_blank" rel="noopener">SEC 8-K</a> / <a href="https://www.cnbc.com/2026/02/25/nvidia-nvda-earnings-report-q4-2026.html" target="_blank" rel="noopener">CNBC 2026-02-25</a>)、2026-05-20 (Q1 FY27、<a href="https://www.cnbc.com/2026/05/20/nvidia-nvda-earnings-report-q1-2027.html" target="_blank" rel="noopener">CNBC 2026-05-20</a>)</li>
+<li>MU: 2025-09-23 (<a href="https://www.globenewswire.com/news-release/2025/09/23/3155077/14450/en/Micron-Technology-Inc-Reports-Results-for-the-Fourth-Quarter-and-Full-Year-of-Fiscal-2025.html" target="_blank" rel="noopener">GlobeNewswire</a>)、2025-12-17 (<a href="https://www.globenewswire.com/news-release/2025/12/17/3207307/14450/en/Micron-Technology-Inc-Reports-Results-for-the-First-Quarter-of-Fiscal-2026.html" target="_blank" rel="noopener">GlobeNewswire</a>)、2026-03-18 (<a href="https://investors.micron.com/news-releases/news-release-details/micron-technology-inc-reports-results-second-quarter-fiscal-2026" target="_blank" rel="noopener">Micron IR</a>)、2026-06-24 (<a href="https://www.ig.com/en/news-and-trade-ideas/micron-q3-fy2026-earnings-preview-260623" target="_blank" rel="noopener">IG プレビュー 2026-06-23</a>)</li>
+<li>SNDK: 2025-11-06 (<a href="https://investor.sandisk.com/news-releases/news-release-details/sandisk-reports-fiscal-first-quarter-2026-financial-results" target="_blank" rel="noopener">Sandisk IR、16:05発表</a>)、2026-01-29 (<a href="https://www.businesswire.com/news/home/20260129642658/en/Sandisk-Reports-Fiscal-Second-Quarter-2026-Financial-Results" target="_blank" rel="noopener">BusinessWire</a>)、2026-04-30、2026-08-05 (<a href="https://investor.sandisk.com/news-events/news-releases" target="_blank" rel="noopener">Sandisk IR</a>)</li>
+</ul>
+<p><b>① NVDA決算D日をまたぐMU/SNDKの値動き</b>(株価: Yahoo Finance chart API日足、2026-08-21取得。「into」=D-1→D終値、「翌日」=D→D+1終値。翌日出来高スパイクで決算日を照合済み)</p>
+<table>
+<tr><th>NVDA決算日</th><th>MU into</th><th>MU翌日終値</th><th>MU翌日安値</th><th>SNDK into</th><th>SNDK翌日終値</th><th>SNDK翌日安値</th></tr>
+<tr><td>2025-08-27</td><td>+1.07%</td><td><b>+3.61%</b></td><td>+0.83%</td><td>+2.30%</td><td><b>+5.02%</b></td><td>+0.25%</td></tr>
+<tr><td>2025-11-19</td><td>-1.13%</td><td><b>-10.87%</b></td><td>-11.65%</td><td>+0.42%</td><td><b>-20.33%</b></td><td>-21.69%</td></tr>
+<tr><td>2026-02-25</td><td>+2.63%</td><td><b>-3.13%</b></td><td>-6.30%</td><td>-0.96%</td><td><b>+3.09%</b></td><td>-4.01%</td></tr>
+<tr><td>2026-05-20</td><td>+4.76%</td><td><b>+4.11%</b></td><td>+0.03%</td><td>+0.67%</td><td><b>+10.75%</b></td><td>-1.08%</td></tr>
+</table>
+<ul>
+<li>NVDA決算後3営業日以内の最大押し(D終値比・ザラ場安値): MU: -3.0% / <b>-14.8%</b> / -7.5% / +0.0%。SNDK: +0.3% / <b>-25.6%</b> / -5.5% / -1.1%</li>
+<li>NVDA自身の翌日終値リターンは4回連続マイナス(-0.8% / -3.2% / -5.5% / -1.8%)。良決算でも翌日は売られる傾向</li>
+</ul>
+<p><b>② MU/SNDK自身の決算翌日リターン</b>(参考: 完了条件の「決算翌日リターン実績」)</p>
+<table>
+<tr><th>銘柄</th><th>決算日</th><th>翌日終値</th><th>翌日安値</th></tr>
+<tr><td>MU</td><td>2025-09-23</td><td>-2.82%</td><td>-4.87%</td></tr>
+<tr><td>MU</td><td>2025-12-17</td><td>+10.21%</td><td>+8.64%</td></tr>
+<tr><td>MU</td><td>2026-03-18</td><td>-3.78%</td><td>-8.80%</td></tr>
+<tr><td>MU</td><td>2026-06-24</td><td>+15.74%</td><td>+8.37%</td></tr>
+<tr><td>SNDK</td><td>2025-11-06</td><td>+15.31%</td><td>-2.07%</td></tr>
+<tr><td>SNDK</td><td>2026-01-29</td><td>+6.85%</td><td>-1.17%</td></tr>
+<tr><td>SNDK</td><td>2026-04-30</td><td>+8.25%</td><td>-4.42%</td></tr>
+<tr><td>SNDK</td><td>2026-08-05</td><td>-6.81%</td><td><b>-13.88%</b></td></tr>
+</table>
+<p><b>③ -10%到達頻度(実績ベースレート)</b></p>
+<ul>
+<li>NVDA決算翌日に終値-10%超: MU 1/4 = 25%、SNDK 1/4 = 25%(いずれも2025-11-19の回のみ)</li>
+<li>自社決算翌日に終値-10%超: MU 0/4 = 0%、SNDK 0/4 = 0%(ただしSNDKは2026-08-06にザラ場-13.9%まで到達 → ザラ場ベース1/4 = 25%)</li>
+<li>指値位置(8/21終値 MU $968.72 / SNDK $1,593.85 比): MU877 = <b>-9.47%</b>、SNDK1455 = <b>-8.71%</b>。NVDA決算後3営業日以内にこの水準へ到達した実績: 両銘柄とも1/4 = <b>25%</b></li>
+</ul>
+<h3>解釈・推測</h3>
+<ul>
+<li>-10%級の下落4回中1回はすべて2025年11月の1イベントに由来する。あの回はNVDA決算そのものは市場予想超えで、下落の主因はAI投資過熱・メモリ株の急騰後の利益確定という「ポジショニング要因」だった(推測)。つまり「NVDA決算が悪い→連れ安」ではなく「決算イベントをきっかけに過熱の巻き戻しが起きるか」が本質。</li>
+<li>現在のMU/SNDKは2025年比で株価3〜5倍圏にあり、SNDKは直近の自社決算(8/5)で既に-14%のザラ場急落を経験済み。高値圏+直近急落経験ありという意味で、2025年11月型(巻き戻し型)のセットアップに近い(推測)。</li>
+<li>NVDA自身は4回連続で「決算翌日は下落」。指数寄与の大きいNVDAが翌日売られるとメモリ株のβ↑でボラが増幅されやすい(推測)。</li>
+<li>サンプル4は統計として弱い。「25%」は「4回中1回」以上の意味を持たない点は割り引くべき。</li>
+</ul>
+<h3>判断への含意(ロング/ショート/様子見のどれを支持する材料か)</h3>
+<p><b>「ノーポジ継続+下に指値」の現方針を支持する材料。</b> 指値水準(-9〜9.5%)への到達は実績25%で、「めったに刺さらないが、刺さる時は2025年11月型の投げ売り局面」= 押し目としては合理的な位置。一方、NVDA決算翌日にMU/SNDKが上に飛んだ回も4回中2回(MU +3.6%/+4.1%、SNDK +5.0%/+10.8%)あり、機会損失リスクは相応にある。イベント前の新規ロング追加を支持する材料はない。SNDKは直近自社決算で既に-14%を付けており、MUよりボラが大きい(NVDA決算翌日の実績レンジ-20%〜+11%)ため、SNDK1455の方が刺さりやすい(推測)。</p>
+<h3>積み残し(次に調べるべきこと)</h3>
+<ul>
+<li>8/26 NVDA決算のオプション市場が織り込む予想変動率(ストラドル)と、MU/SNDKのIV水準 — 「25%」より鮮度の高い確率情報になる</li>
+<li>2025-11-20急落の詳細な因果(何がトリガーだったか)の検証 — 同型リスクの再現条件を特定するため</li>
+<li>MU877/SNDK1455がテクニカル的にどの節目(移動平均・直近安値)に当たるかの確認</li>
+<li>SNDK 8/5決算で-14%売られた理由(ガイダンス内容)— NVDA決算とは独立の下落リスク要因として</li>
+</ul></div></details>
+<div class=anchor><a href="#R2634ba4a">#R2634ba4a</a></div>
+</article>
+<article class=rep id="D_sec">
+<div class=hd><span class=call style="background:#3fb950">買い</span>
+<h2>証券株の決算爆発を横断比較</h2></div>
+<div class=stocks>極東証券8706・岡三8609・水戸8622・東洋証券8614・東海東京8616・いちよし8624・丸三8613・今村7175</div>
+<p class=concl>証券株は同一ファクター一点張り、岡三+水戸に絞り押し目のみで拾うのが最良解</p>
+<div class=ev><span><i>1日</i><b>+0.0%</b><em>-4〜+4%</em></span><span><i>1〜2週</i><b>+3.0%</b><em>-8〜+12%</em></span><span><i>1年</i><b>+20.0%</b><em>-15〜+60%</em></span></div>
+<p class=lv><b>水準</b> 岡三8609を1,050-1,150円(PBR0.9-1.0倍)、水戸8622を820-860円(下限配当33円で利回り4%)の押し目で分割。新値追い禁止、東海東京・東洋・いちよし・丸三は見送り</p>
+<details><summary>根拠・事実を見る</summary><div class=detail><h3>✅ 結論: 証券株は同一ファクター一点張り、岡三+水戸に絞り押し目のみで拾うのが最良解</h3>
+<p><b>行動: 買い</b> ／ 水準: 岡三8609を1,050-1,150円(PBR0.9-1.0倍)、水戸8622を820-860円(下限配当33円で利回り4%)の押し目で分割。新値追い禁止、東海東京・東洋・いちよし・丸三は見送り ／ 確信度: 中</p>
+<table>
+<tr><th>期間</th><th>期待値(中央)</th><th>レンジ</th><th>根拠</th></tr>
+<tr><td>1日</td><td><b>+0.0%</b></td><td>-4.0%〜+4.0%</td><td>日々の売買代金(7.9-13.2兆円のレンジ)に連動、方向感なし。信用倍率の重い東海東京・岡三はやや下振れリスク</td></tr>
+<tr><td>1〜2週</td><td><b>+3.0%</b></td><td>-8.0%〜+12.0%</td><td>2Q速報(10月中旬)接近で高配当・業績実力を織り込む動きが期待できるが、売買代金が8兆円割れ定着なら前提崩れで下振れ</td></tr>
+<tr><td>1年</td><td><b>+20.0%</b></td><td>-15.0%〜+60.0%</td><td>岡三+水戸絞り込みで、通期実力(岡三+50%・水戸2倍)確認+PER10-13へのre-rate+高配当ドリフトで中央値+20%。相場凪で売買代金が半減すれば残</td></tr>
+</table>
+<h3>論理</h3>
+<ul>
+<li>前提: 8社の1Q増益は全て東証売買代金2倍(1Q平均11.3-11.8兆円・前年比+107.7%)という単一ファクターの関数</li>
+<li>前提: 通期予想は全社非開示で、1Q×4の年率換算では岡三PER≈7・PBR≈1.0、水戸は年率2倍・信用倍率1.56倍と質・値幅・需給の三拍子が揃う</li>
+<li>前提: 東海東京21倍・東洋+979%は前年底や一過性(事業譲渡益28億、ソリューション手数料)による見かけで、2Q以降は前年ハードル上昇でYoYが必ず縮む</li>
+<li>前提: 8銘柄バスケットは分散にならず「証券ベータ×n」の1ベットにしかならない</li>
+<li>∴ 岡三8609と水戸8622の2銘柄に絞り、PBR1倍近辺と下限配当利回り4%を押し目メドに拾うのが期待値最大</li>
+</ul>
+<h3>最強の反対材料と耐性</h3>
+<p>最強の反論は「今村7175がPBR0.70・年率PER4.5と指標上は最安で、PER9へのre-rateだけで2倍が届く」点。しかし浮動株が極端に薄く(社長親族26.55%・上位10名69.9%・信用売残ゼロ)、機関が入れず着火確率が読めない宝くじ型で期待値の計算ができない。よって「少額の宝くじ枠」として許容するが主力は流動性のある岡三+水戸という結論は維持。</p>
+<h3>この結論を捨てる条件</h3>
+<p>①東証プライム1日平均売買代金が8兆円割れで1ヶ月以上定着(「×4」前提が崩れ全銘柄の年率換算EPSを下方修正)、②岡三の2Q速報で純利益進捗が対前期通期40%未満(1Q37%から失速)、③水戸の2Q速報でラップ報酬・投信代行のストック収益が前期比マイナスに転じる、④信用買い残が更に膨張し岡三8倍・東海東京10倍超に達する場合は投げリスクで押し目メド変更</p>
+<h3>事実(Grok収集・出典つき)</h3>
+<p>(旧経路レポートから再構成)</p>
+<p>---</p>
+<h3>結論(3行以内)</h3>
+<p>8社全社が通期予想非開示のため「1Q×4の年率換算」で見るのが正しく、その物差しでは岡三(年率PER≈7・PBR≈1.0)と水戸(年率換算で前期比2倍・需給軽い)が質・値幅・流動性のバランス最良。増益率の見出し(東海東京21倍・東洋+979%)は前年の底や一過性利益による見かけで、実力とは乖離。テーマ厚取りではなく<b>岡三+水戸の1~2銘柄に絞る</b>のを支持(8銘柄持っても売買代金という同一ファクターの1ベットにしかならない)。</p>
+<h3>事実(出典つき)</h3>
+<h4>市況の前提(通期試算の土台)</h4>
+<ul>
+<li>東証プライムの1日平均売買代金: <b>2026年5月12.19兆円・6月12.97兆円</b>、2026年上半期平均10.14兆円(<a href="https://www.jpx.co.jp/corporate/news/news-releases/0063/t13vrt000001iq2u-att/topics.pdf" target="_blank" rel="noopener">JPX月次売買状況 2026/7/1</a>)。各社短信記載の1Q(4-6月)平均は11.3〜11.8兆円で<b>前年同期比+107.7%(約2.1倍)</b></li>
+<li>直近も高水準を維持: 7月末10.1〜13.2兆円/日、8月18日10.16兆円、8月21日7.91兆円(<a href="https://stock-marketdata.com/trading-value.html" target="_blank" rel="noopener">売買代金推移</a>、2026/8/21時点)。5月7日には過去最大10.8兆円(<a href="https://www.nikkei.com/article/DGXZQOUB077ZR0X00C26A5000000/" target="_blank" rel="noopener">日経 2026/5/7</a>)</li>
+<li>前年側のハードル: 2025年10月末に初めて1日10兆円台(<a href="https://www.nikkei.com/article/DGXZQOUB307YW0Q5A031C2000000/" target="_blank" rel="noopener">日経 2025/10/30</a>)。つまり<b>前年の下期は既に高水準で、通期のYoY増益率は1QのYoYより必ず縮む</b></li>
+</ul>
+<h4>横断比較表(27/3期1Q、発表は全社2026/7/24〜31。通期会社予想は8社全社「非開示」)</h4>
+<table>
+<tr><th>銘柄</th><th>1Q営業利益(YoY)</th><th>増益の主源泉</th><th>年率換算(1Q×4)vs前期通期</th><th>株価8/21</th><th>PBR</th><th>実績配当利回り</th><th>直近1年の自社株買い</th><th>信用倍率</th></tr>
+<tr><td>岡三8609</td><td>108.2億(約11.4倍)</td><td>委託+100%・投信募集+65%・トレーディング+64%</td><td>純利益ベース約+50%</td><td>1,157円</td><td>≈0.99</td><td>≈4.3%(50円)</td><td>なし</td><td>6.07倍</td></tr>
+<tr><td>水戸8622</td><td>19.8億(+730%)</td><td>委託+80%(米国株8億円)・ラップ報酬+57%</td><td>純利益ベース約2倍</td><td>920円</td><td>1.27</td><td>≈4.7%(43円)</td><td>25/4枠12億円を100%消化、新枠なし</td><td>1.56倍</td></tr>
+<tr><td>極東8706</td><td>15.2億(+218%)</td><td>債券トレーディング9.3億(+72%)・委託+95%</td><td>不明(前期通期は未取得)</td><td>1,900円</td><td>1.14</td><td>5.79%(110円)</td><td>26/2にToSTNeT7.2億円(特定株主引取)</td><td>4.70倍</td></tr>
+<tr><td>東洋8614</td><td>15.5億(+979%)</td><td>委託+228%(一過性含む・後述)</td><td>純利益ベース約+52%</td><td>716円</td><td>1.70</td><td>≈7.0%(50円方針)</td><td>なし(24/12に80億円実施済み)</td><td>2.79倍</td></tr>
+<tr><td>東海東京8616</td><td>80.9億(約21倍)</td><td>委託+113%・トレーディング+60%・特益28億</td><td>実力ベース約+26%</td><td>853円</td><td>1.10</td><td>5.86%(記念配込み50円)</td><td>なし</td><td>7.46倍</td></tr>
+<tr><td>いちよし8624</td><td>24.8億(+553%)</td><td>ラップフィー+120%・信託報酬+58%(ストック型)</td><td>営業利益ベース約+61%</td><td>1,705円</td><td>1.78</td><td>5.22%(89円・記念配込み)</td><td>なし(24/10枠17億円は消化済み)</td><td>3.01倍</td></tr>
+<tr><td>丸三8613</td><td>17.5億(+343%)</td><td>委託+59%・投信募集+42%・信託報酬+32%</td><td>営業利益ベース約+30%</td><td>1,265円</td><td>1.58</td><td>5.53%(70円=普通40+特別30)</td><td>なし(特別配当に一本化)</td><td>1.29倍</td></tr>
+<tr><td>今村7175</td><td>7.4億(+308%)</td><td>委託+96%(営業収益の78%が委託依存)</td><td>EPSベース約2倍</td><td>1,859円</td><td>0.70</td><td>3.93%(73円)</td><td>なし</td><td>売残ゼロ</td></tr>
+</table>
+<p>主な出典: 各社決算短信PDF(岡三<a href="https://www.release.tdnet.info/inbs/140120260728500524.pdf" target="_blank" rel="noopener">TDnet 7/30</a>、水戸<a href="https://www.release.tdnet.info/inbs/140120260729502217.pdf" target="_blank" rel="noopener">TDnet 7/30</a>、極東<a href="https://ssl4.eir-parts.net/doc/8706/tdnet/2856936/00.pdf" target="_blank" rel="noopener">7/29</a>、東洋<a href="https://f.irbank.net/pdf/20260730/140120260730503489.pdf" target="_blank" rel="noopener">7/30</a>、東海東京<a href="https://f.irbank.net/pdf/20260731/140120260730504018.pdf" target="_blank" rel="noopener">7/31</a>、いちよし<a href="https://www.release.tdnet.info/inbs/140120260729501389.pdf" target="_blank" rel="noopener">7/30</a>、丸三<a href="https://www.release.tdnet.info/inbs/140120260729501368.pdf" target="_blank" rel="noopener">7/30</a>、今村<a href="https://www.imamura.co.jp/ir/pdf/20260724tanshin.pdf" target="_blank" rel="noopener">7/24</a>)。株価・信用残はYahoo!ファイナンス/IR BANK/株探の2026/8/14〜21時点。</p>
+<h4>銘柄別の要点(①源泉 ②需給・大株主)</h4>
+<p><b>岡三8609</b>: 委託手数料113億(+100.6%)・投信募集51億(+65%)・トレーディング68億(+64%、債券が損失→黒字転換)と全部門増収。預り資産11兆円(中計目標超過)、ファンドラップ残高1,409億円(25/3末826億→急拡大)。<b>総還元性向50%目標・27/3期と28/3期の期末特別配当20円を短信に明記</b>。1Q純利益80億は前期通期213.6億の37%。大株主は機関中心(マスタートラスト9.85%・日生4.86%)、信用買い残がやや重い(6.07倍)。SBIへ岡三オンライン事業一部譲渡し対面へ集中(2026/3契約)。</p>
+<p><b>水戸8622</b>: 委託18.7億(+80%)のうち<b>米国株が8.0億円</b>と日本株(10.6億)に匹敵。ファンドラップ報酬8.6億(+57%)+投信代行9.6億で受入手数料の43%がストック型。1Q純利益15.1億は前期通期31.0億の49%相当。<b>配当性向50%+中計期間中は年間下限30円+今期は105周年記念配3円</b>。自社株買い常習(25/4枠は200万株を平均551円で100%取得)。大株主に野村総研9.16%・常陽銀行4.57%。信用倍率1.56倍と8社で最も軽い部類。</p>
+<p><b>極東8706</b>: 増益の主役は<b>債券トレーディング9.3億円(+72%)</b>と委託6.5億(+95%)。富裕層対面×債券販売+自己資金運用(投資有価証券262億円=総資産の32%)という構造で、純利益+53%どまりは前年の売却益7.5億の反動。<b>配当性向70%とDOE2%の高い方</b>が方針で3期連続110円。創業家系(有限会社みつる8.38%+菊池家個人)が上位、上位10名で44.5%。信用倍率4.70倍と買い長。</p>
+<p><b>東洋8614</b>: 委託手数料28.7億(+228%)が突出するが、短信自ら「<b>ソリューション関連手数料の発生</b>」が押上げ要因と明記し、その見合いコストで<b>トレーディング損益が△3.2億に赤字転落</b>(金額非開示)。投信募集は△16%と減少。中国株(ハンセン指数は下落基調だが手数料は増加と記載)。<b>期末に普通+特別で計50円方針</b>(利益が出た場合の条件付き)=想定利回り約7%。アクティビスト(Be Brave・UGS)保有が残り、2024年6月総会では社長再任案を当日撤回、2024/12にToSTNeT-3で80億円(607円)引き取りの経緯(<a href="https://f.irbank.net/pdf/20241218/140120241218540177.pdf" target="_blank" rel="noopener">取得結果PDF</a>、<a href="https://www.nikkei.com/article/DGXZQOUB25D320V20C24A6000000/" target="_blank" rel="noopener">日経 2024/6</a>)。</p>
+<p><b>東海東京8616</b>: 営業利益21倍は<b>前年同期が3.9億円とほぼ底</b>だったため。1Q純利益71.9億のうち<b>約28億円は事業譲渡益(一過性)</b>。実力は経常89億/四半期で、前期通期純利益165.7億に対し1Q比43%。26/3期にCHEER証券減損・お金のデザイン引当と、デジタル新規事業の損切りフェーズ。配当予想未定、前期50円のうち<b>記念配16円は剥落リスク</b>(普通配当34円ベース利回り約4.0%)。信用倍率7.46倍と8社で最も重い。</p>
+<p><b>いちよし8624</b>: 増益源泉は<b>ファンドラップフィー23.6億(+119.5%)+信託報酬16.8億(+58%)</b>で、安定収益が受入手数料の66.5%・<b>コストカバー率97.1%</b>(前年66.4%)と、8社で唯一「相場が止まっても赤字になりにくい」構造に転換済み。委託は19.2億(+66%)だが看板の中小型株はその1割弱に過ぎない。<b>配当性向50%とDOE2%の高い方</b>。筆頭株主はUS BANKカストディ口座18.82%(実質保有者は特定できず)。</p>
+<p><b>丸三8613</b>: 受入手数料の65%が投信関連(募集15.2億+信託報酬24.2億)でトレーディングはほぼゼロ。純利益+2.1%は<b>前年の特別利益10.3億(合併差益・償還益)の反動</b>で、営業段階では4.4倍——スクリーニングで過小評価される点に注意。<b>特別配当30円を2029年3月期まで毎期実施と7/30に延長・増額発表</b>(<a href="https://www.marusan-sec.co.jp/ir/press/pdf/20260730haitou.pdf" target="_blank" rel="noopener">PR PDF</a>)+普通配当は性向50%以上。外国人保有3.67%で機関不在。</p>
+<p><b>今村7175</b>: 営業収益の78%が委託手数料(13.9億、+96%)で<b>8社中最も売買代金に直結</b>。1Q EPS103円は前期通期206円の50%。PBR0.70・年率換算PER約4.5と指標上は最安。ただし<b>社長今村直喜が二親等親族で過半数の支配株主</b>(本人26.55%、上位10名で69.9%)、株主数1,615名・機関ほぼ不在・信用売残ゼロ(<a href="https://www.imamura.co.jp/ir/pdf/20260618yuho.pdf" target="_blank" rel="noopener">有報</a>)。2026/6総会で剰余金配当・自己株取得を取締役会決議化する定款変更済み。</p>
+<h3>解釈・推測</h3>
+<p><b>増益の質の序列(構造 vs 相場ベータ)</b>: 構造的(相場が凪いでも残る)なのは、いちよし(ストック収益でコストの97%を賄う)&gt;丸三・水戸(投信/ラップの残高フィー厚い)&gt;岡三(ラップ急拡大中だがまだフロー主導)。純粋な相場ベータは今村(委託78%)・東洋・東海東京・極東(債券トレーディング)。ただし残高フィー型も相場急落時は残高減を通じて遅れて効く(推測)。</p>
+<p><b>「今の出来高が続いたら」の通期試算(1Q×4の年率換算、推測)</b>: 8月も売買代金は1Q平均比9割前後を維持しており、×4は無理のない前提。岡三=純利益約320億(前期比+50%、EPS約160円→PER約7.2)、水戸=約60億(約2倍、EPS約100円→PER9.2、性向50%なら配当50円=利回り5.4%)、いちよし=EPS約209円(PER8.2、性向50%なら配当100円超=利回り6%)、丸三=約56億(EPS約85円→PER14.9)、東洋=約60億(EPS約82円→PER8.8、ただし一過性手数料の分だけ過大)、東海東京=一過性除き約210億(+26%、EPS約80円→PER10.7)、今村=約21億(EPS約413円→<b>PER4.5</b>)、極東=EPS約194円(PER9.8、性向70%なら配当135円=利回り7.1%)。<b>注意: 前年下期は既に売買代金が跳ねているため、2Q以降のYoYは1Qの派手さを再現できない。「+979%」等の数字が続く前提で買うと確実に失望する</b>(事実+解釈)。</p>
+<p><b>1年2倍のパスと現実性(すべて推測)</b>:</p>
+<ul>
+<li>岡三: 通期300億超を確認→性向50%で総還元150億(時価総額の5.6%)→PER10-12へre-rate、で1.5〜1.7倍。2倍にはPER14か28/3期の続伸が必要。セクター内では最も現実的だが絶対確率は10%台か。</li>
+<li>水戸: 通期60億+新自社株買い枠+増配でPER13-15なら1,300-1,500円。2倍(1,840円)にはEPS150円級への続伸が必要。</li>
+<li>今村: PER4.5→9でちょうど2倍(PBRでも1.4倍と他社並みに収まる)。<b>指標上の距離は最短</b>。障害は浮動株の極端な少なさで、着火すれば一瞬、しなければ万年割安。ユーザーの実測(売買代金上位ほど2倍達成率が高い)には反する宝くじ型。</li>
+<li>東洋: 業績よりイベント(アクティビスト再燃・非公開化観測)で跳ぶタイプ。利回り7%が下値を支えるが、1Q数字の実力が割引かれる。</li>
+<li>極東・いちよし・東海東京・丸三: 2倍にはPER20前後やPBR3倍超が必要で、通常の相場継続では届かない。高配当の下支えでのドリフト上昇(+20-40%)が現実的な上限イメージ。</li>
+</ul>
+<p><b>需給の注意</b>: 信用買い残が重いのは東海東京7.46倍・岡三6.07倍・極東4.70倍(急落時の投げが出やすい)。軽いのは丸三1.29倍・水戸1.56倍。今村は信用市場がほぼ存在しない。</p>
+<h3>判断への含意(ロング/ショート/様子見)</h3>
+<p><b>「厚く取るか絞るか」への答え: 絞るべき。</b> 8社の増益は全て同じ一次ファクター(東証売買代金2倍)の関数で、複数持ってもリスク分散にならず「証券ベータ×n」になるだけ。既保有のあかつき本社も同じファクターに乗っている点は要認識。</p>
+<ul>
+<li><b>ロング候補(押し目で)</b>: ①岡三8609 — 流動性最上位(ユーザー実測で2倍達成率が最も高い区分)、PBR≈1.0・年率PER≈7、特別配20円が2期分確定、ラップ/プラットフォームという相場以外のストーリー。押し目メドはPBR1倍割れ〜0.9倍の1,050〜1,150円(現値はほぼ該当、年初来高値圏である点だけ注意)(推測)。②水戸8622 — 年率換算の伸びがグループ最大級、下限配当30円で下値が計算でき、需給が軽い。押し目メドは下限配当33円で利回り4%となる820〜860円(推測)。</li>
+<li><b>少額の宝くじ枠として許容</b>: 今村7175(現値可だが板が薄く、ポジションは「戻れないサイズ」にしないこと)。</li>
+<li><b>様子見</b>: 東洋(2Q短信でソリューション手数料の正体を確認してから)、いちよし・丸三(良い会社だが2倍の器ではない)、極東(信用買い長の整理待ち)。</li>
+<li><b>ロング回避(ショートまでは支持しない)</b>: 東海東京 — 見かけの増益率と実力の乖離が8社で最大、信用買い残最重量。高配当がショートのコストになるため売りも妙味薄。</li>
+</ul>
+<p>いずれも現在レジーム(高ボラ×トレンド・急騰追い禁止)に従い、新値追いではなく押し目でのみ。</p>
+<h3>積み残し(次に調べるべきこと)</h3>
+<ul>
+<li>東洋8614の「ソリューション関連手数料」の金額と正体(2Q開示で委託+228%の実力値を切り分ける)— 同社評価の最大の不確定要素</li>
+<li>各社の四半期「業績速報値」ウォッチ(極東・東洋・丸三・水戸・今村は10月中旬に2Q速報を先行開示する慣行。通期予想がない分、これが唯一の中間シグナル)</li>
+<li>いちよしの筆頭株主(US BANKカストディ18.82%)の実質保有者(過去の大量保有報告の遡り)</li>
+<li>岡三・水戸の押し目水準のチャート面での具体化(上昇起点・移動平均乖離)— 今回はバリュエーション基準の概算のみ</li>
+<li>売買代金の継続モニタ(プライム1日平均が8兆円割れが定着すると「×4」前提が崩れ、全銘柄の試算を下方修正する必要)</li>
+<li>極東の前期通期利益(今回未取得)を補完し年率換算の伸びを他社と揃える</li>
+</ul>
+<p>記録は `.agent/memory/2026-08-22/securities-8stocks-research.md` と `.agent/tasks/securities-8stocks-followup.pending` に保存済みです。</p></div></details>
+<div class=anchor><a href="#D_sec">#D_sec</a></div>
+</article>
+<article class=rep id="D_metal">
+<div class=hd><span class=call style="background:#3fb950">買い</span>
+<h2>非鉄・素材3銘柄</h2></div>
+<div class=stocks>UACJ5741・DOWA5714・第一工業製薬4461</div>
+<p class=concl>押し目狙いで4461&gt;5741の順にロング、DOWAはARE重複で見送り。</p>
+<div class=ev><span><i>1日</i><b>+0.0%</b><em>-3〜+3%</em></span><span><i>1〜2週</i><b>+2.0%</b><em>-6〜+8%</em></span><span><i>1年</i><b>+18.0%</b><em>-15〜+55%</em></span></div>
+<p class=lv><b>水準</b> 4461は12,000-12,500円で分割買い、5741は現値2,200円台〜2,100円で分割買い、5714は見送り</p>
+<details><summary>根拠・事実を見る</summary><div class=detail><h3>✅ 結論: 押し目狙いで4461&gt;5741の順にロング、DOWAはARE重複で見送り。</h3>
+<p><b>行動: 買い</b> ／ 水準: 4461は12,000-12,500円で分割買い、5741は現値2,200円台〜2,100円で分割買い、5714は見送り ／ 確信度: 中</p>
+<table>
+<tr><th>期間</th><th>期待値(中央)</th><th>レンジ</th><th>根拠</th></tr>
+<tr><td>1日</td><td><b>+0.0%</b></td><td>-3.0%〜+3.0%</td><td>3銘柄とも決算通過後で当面材料乏しく、日次はLME・貴金属市況に連動する±2-3%のノイズ圏。</td></tr>
+<tr><td>1〜2週</td><td><b>+2.0%</b></td><td>-6.0%〜+8.0%</td><td>4461は片山氏買い増しの需給と再修正期待で上下、5741はエフィッシモ動向とLMEアルミ次第、5714は金銀反落で下振れリスク。加重平均で+2%中心。</td></tr>
+<tr><td>1年</td><td><b>+18.0%</b></td><td>-15.0%〜+55.0%</td><td>4461は再修正+リレーティングで+30〜80%、5741は業績+触媒発火で+30〜50%(2倍は触媒次第)、5714は+20〜40%止まりで金銀急落なら-20</td></tr>
+</table>
+<h3>論理</h3>
+<ul>
+<li>前提: 4461は増益が低誘電樹脂・LiB材料など構造成長由来で、1Q進捗が中間予想の68%と再上方修正含み。</li>
+<li>前提: 5741は+534%の6割が在庫評価益だが事業利益も+225%で四半期最高、株価は高値-37%調整済みでPER9.7倍・エフィッシモ24%が下値を支える。</li>
+<li>前提: 5714は+281%の約8割が金銀相場・評価要因で、会社自身が2Q以降の金銀下落を明記、ピークアウト局面。</li>
+<li>前提: 現レジームは急騰追い禁止・押し目のみで、4461は現値-13%調整だが更に12,000円台待ちが合理的、5741は既に-37%で現値打診可。</li>
+<li>∴ 4461は12,000円台前半で押し目買い、5741は現値2,200円台から分割買い、DOWAはARE(5857)とテーマ重複のため見送りが最適配分。</li>
+</ul>
+<h3>最強の反対材料と耐性</h3>
+<p>最強の反論は「4461は年初来で既に約2倍しており期待の相当部分が織り込み済み、AI投資サイクル変調で高PERが真っ先に売られる」。しかし1Q営業51億円が年率化で200億円ペース(通期予想125億円を大幅超過)、中間再上方修正がほぼ確実で、12,000円台まで押せばPER17倍と2027/3期EPSベースで割安化する余地があり、押し目待ちの条件付きなら結論は維持される。5741についても「在庫評価益6割はいずれ剥落」との反論があるが、事業利益単体でも+225%かつPER9.7倍・PBR1.1倍と剥落を織り込み済みの水準で、下方硬直性が高い。</p>
+<h3>この結論を捨てる条件</h3>
+<p>①4461が押し目を作らず15,000円超で高値更新を続けた場合(急騰追い禁止方針に抵触し買い機会消滅)、②米232条アルミ関税の撤回・緩和報道でTAA増益前提が崩れUACJの通期修正根拠が消失、③エフィッシモが5741を売却方向に転じた変更報告、④AIサーバー投資の減速報道で4461低誘電樹脂需要見通しが下方修正、⑤LMEアルミがLME 2,800$/t割れまで反落しUACJ在庫評価益が損失転化。いずれかが観測されたら該当銘柄の買い判断を撤回。</p>
+<h3>事実(Grok収集・出典つき)</h3>
+<p>(旧経路レポートから再構成)</p>
+<p>---</p>
+<p>メモ保存完了。以下、最終レポートです。</p>
+<h3>結論(3行以内)</h3>
+<p>2倍確率ランキングは <b>①第一工業製薬(構造的AI材料成長×小型×再上方修正含み) ②UACJ(割安×エフィッシモ触媒、ただし利益の6割が在庫評価益) ③DOWA(増益の8割が相場要因で金銀ピークアウト局面)</b>。DOWAは実PFのARE(5857)とテーマ重複が大きく、「金の第二派生」として新規に足す妙味は薄い。現レジーム(押し目のみ)では、UACJが高値-37%の調整済みで最も「今買える位置」、4461は12,000円台前半待ち。</p>
+<h3>事実(出典つき)</h3>
+<h4>UACJ (5741) — 1Q発表 2026/8/6</h4>
+<ul>
+<li><b>1Q実績(IFRS)</b>: 売上収益3,774億円(+44.1%)、営業利益538億円(<b>+533.7% ← 指令の「+534%」</b>)、純利益359億円(約27倍)。うち<b>棚卸資産影響等+281億円</b>(前年+6億円)で、営業増益+453億円の約6割が在庫評価益。在庫影響を除く「事業利益」は79→257億円(+225%)で四半期過去最高(決算説明会資料 2026-08-06: <a href="https://www.nikkei.com/markets/ir/irftp/data/tdnr/tdnetg3/20260806/g2akae/140120260805510902.pdf" target="_blank" rel="noopener">https://www.nikkei.com/markets/ir/irftp/data/tdnr/tdnetg3/20260806/g2akae/140120260805510902.pdf</a>)</li>
+<li><b>「-37%」の正体</b>: 決算書類内に該当する損益項目は無し。年初来高値3,585円(5/27)→8/21終値2,241円=<b>高値から-37.5%の株価下落率</b>が最も整合(松井証券 2026-08-21。※調査担当の照合による解釈)</li>
+<li><b>事業利益+178億円の分解</b>(同資料p9): 製造コスト差+172億円が最大で、うち<b>TAA(米国子会社)+102億円=「米国アルミ市況高騰とリサイクル原料処理能力の増強」</b>。販売関係差+49億円(半導体製造装置向け厚板回復・缶材輸出・価格改定)。中東影響△24億円</li>
+<li><b>通期予想</b>: 8/6に上方修正済み。売上14,000億円、営業850億円(+210億円増額)、最終420億円(一転+8%増益・2期連続最高益)、配当70円(+12円増額)。前提LME 3,169$/t・157円/$。修正主因はTAA+118億円(同資料p10、株探速報: <a href="https://finance.yahoo.co.jp/news/detail/c57879b9c299031803c41ce55b6cb074f7aeb03d" target="_blank" rel="noopener">https://finance.yahoo.co.jp/news/detail/c57879b9c299031803c41ce55b6cb074f7aeb03d</a> 2026-08-06)</li>
+<li><b>進捗率</b>: 営業63.3%・最終85.5%と高いが、これは通期の棚卸資産影響を△10億円としか見込まない=<b>2-4Qで△291億円の評価損を織り込む保守前提</b>のため</li>
+<li><b>大株主</b>: 筆頭は<b>エフィッシモ・キャピタル24.28%</b>(2026/2/26変更報告、連続買い増し中。株式新聞: <a href="https://kabushiki.jp/news/739255" target="_blank" rel="noopener">https://kabushiki.jp/news/739255</a>)。旧親の古河電工は7.03%まで売却進行(2026/3/31名簿: <a href="https://irbank.net/E01330/holder" target="_blank" rel="noopener">https://irbank.net/E01330/holder</a>)。2026年度の自社株買い開示なし</li>
+<li><b>株価</b>: 2,241円(8/21)、時価総額4,153億円、予想PER9.7倍、PBR約1.1倍、利回り3.12%。<b>好決算の8/6当日は-7.9%と売られた</b>(Yahoo時系列)</li>
+<li><b>米232条アルミ関税50%</b>: TAAは米国内スクラップベース生産のため中西部プレミアム高騰がスプレッド拡大に直結=<b>追い風</b>(会社資料の記載ベース)</li>
+</ul>
+<h4>DOWA (5714) — 1Q発表 2026/8/7</h4>
+<ul>
+<li><b>1Q実績</b>: 売上2,534億円(+58.2%)、営業利益247億円(<b>+281.0% ← 指令の「+281%」</b>)、経常325億円(+277.5%)、純利益235億円(決算短信: <a href="https://hd.dowa.co.jp/ja/ir/news/auto_20260805510866/pdfFile.pdf" target="_blank" rel="noopener">https://hd.dowa.co.jp/ja/ir/news/auto_20260805510866/pdfFile.pdf</a> 2026-08-07)</li>
+<li><b>セグメント</b>: 製錬の営業利益19.6→156.3億円(+697%)が主役。電子材料は黒字転換(△9.7→+15.4億円)、環境・リサイクルは+9.1%の微増</li>
+<li><b>経常増益+239億円の会社開示内訳</b>(補足資料p7): 金属価格差+78億、為替+20億、在庫評価+57億(うちヘッジ評価益+45億は2Q初に戻し入れの往復性)、鉱山持分法+61億(1四半期遅れ計上=26年1-3月の銀高値$84/ozを反映)、施策効果+40億。<b>構造的プラスは+40億程度で約8割が相場・評価要因</b>。会社自身が「2Q以降は金・銀・プラチナ価格が下落基調」と資料に明記(<a href="https://data.swcms.net/file/hd-dowa/dam/jcr:50848c88-ddc6-4b1f-86b9-261d76f63a49/140120260805510894.pdf" target="_blank" rel="noopener">https://data.swcms.net/file/hd-dowa/dam/jcr:50848c88-ddc6-4b1f-86b9-261d76f63a49/140120260805510894.pdf</a>)</li>
+<li><b>通期予想</b>: 経常800億円(5期ぶり最高益予想)で据え置き。1Q進捗: 営業46.7%・経常40.7%。<b>1Q営業だけで上期予想を超過</b>。会社前提(為替155円、亜鉛$3,100等)は7月実勢より保守的で、開示感応度ベースだけで年+85億円規模の上振れ余地。<b>金銀の前提・感応度は非開示</b></li>
+<li><b>大株主・還元</b>: 信託2行+State Street上位、Silchester 3.66%(irbank: <a href="https://irbank.net/E00028" target="_blank" rel="noopener">https://irbank.net/E00028</a>)。2026年2月に藤田観光株売却(約390億円)→自社株買い約100億円実施。27/3期配当338円予想(利回り3.34%)</li>
+<li><b>株価</b>: 10,120円(8/21)、時価総額6,279億円、予想PER10.5倍、PBR約1.3倍。年初来7,456円(1/5)→12,380円(5/15)→現在は高値-18%</li>
+</ul>
+<h4>第一工業製薬 (4461) — 1Q発表 2026/7/29</h4>
+<ul>
+<li><b>1Q実績</b>: 売上275億円(+44.4%)、営業利益51.2億円(<b>+196.9% ← 指令の「+197%」</b>)、純利益31.2億円(+216.5%)(決算短信: <a href="https://www.nikkei.com/markets/ir/irftp/data/tdnr/tdnetg3/20260729/g1t7jg/140120260728501228.pdf" target="_blank" rel="noopener">https://www.nikkei.com/markets/ir/irftp/data/tdnr/tdnetg3/20260729/g1t7jg/140120260728501228.pdf</a>)</li>
+<li><b>セグメント</b>: 電子・情報(<b>ハイエンドサーバー向け低誘電樹脂</b>)売上+56.3%・営業利益26.7億円(+84%)、環境・エネルギー(<b>LiB負極用水系接着剤</b>)が前年赤字→17.3億円へ黒字転換。会社は中東情勢関連の一部需要を「一時的」と明記</li>
+<li><b>通期予想</b>: 7/29に上方修正済み(営業110→125億円、中間50→75億円=+50%)。1Q進捗41%で、<b>中間予想に対しては1Qだけで68%</b>(株探: <a href="https://kabutan.jp/news/marketnews/?b=n202607300717" target="_blank" rel="noopener">https://kabutan.jp/news/marketnews/?b=n202607300717</a>)。配当150円据え置き</li>
+<li><b>大株主・需給</b>: <b>片山晃氏が4.01%→6.71%(717,400株)へ買い増し、8/5に変更報告</b>(株探: <a href="https://kabutan.jp/news/marketnews/?b=n202608051228" target="_blank" rel="noopener">https://kabutan.jp/news/marketnews/?b=n202608051228</a>)。発行済1,068万株の小型株。前期に株式数+10.8%増(増資と推測される、手段未確認)。自社株買い新規発表なし</li>
+<li><b>株価</b>: 13,840円(8/21)、時価総額1,479億円、PER19.1倍、PBR1.51倍、利回り1.08%。7/30ストップ高→7/31+22%→8/5+17.6%(片山氏報告)→高値15,900円(8/6)→現在-13%調整。売買代金約28億円/日(8/21)で流動性は十分。AIサーバー向け絶縁材に100億円投資計画の報道あり</li>
+</ul>
+<h3>解釈・推測</h3>
+<p><b>利益の質の序列(構造的な増益の純度)</b>: 4461 &gt; 5741 &gt; 5714(推測)</p>
+<ul>
+<li><b>4461</b>: 増益の主因(AIサーバー向け低誘電樹脂・LiB材料・値上げ定着)はデータセンター投資サイクルに乗る構造的なもの。修正後計画でも2Q以降の四半期営業を1Qの半分以下でしか見込んでおらず、<b>中間(11月)での再上方修正の蓋然性が高い</b>。リスクは特定需要への依存とAI投資サイクルの変調</li>
+<li><b>5741</b>: 見出しの+534%は在庫評価益で割り引くべきだが、事業利益ベースでも+225%・四半期最高で、缶材値上げ・半導体厚板・リサイクル能力増強は構造的。<b>利益の質は構造5割・市況5割</b>。市場が決算当日に-7.9%で応えたのは「在庫評価益への警戒」で、逆に言えば期待値が低くPER9.7倍に割安放置されている</li>
+<li><b>5714</b>: +281%の約8割が金銀相場・在庫評価・1四半期遅れの鉱山持分法。<b>銀は26年1-3月($84)がピークで1Q(4-6月、$73)は既に下落局面</b>、2Qはヘッジ評価益△26億円の戻し入れも重なる。上方修正しても「ピークアウトした相場益」と読まれやすい</li>
+</ul>
+<p><b>2倍パスの現実性(推測)</b>:</p>
+<ul>
+<li><b>4461</b>: 2倍=27,680円。純利益100億円(再修正+来期成長で射程)×PER28-30倍への「化学版AI関連」リレーティング、または純利益154億円×PER19倍維持。1Q営業51億円が季節性なく続けば年率200億円ペースで数字上は届く。<b>3銘柄中で唯一「業績だけで」2倍を正当化できるパスがある</b>。ただし年初来で既に約2倍しており、期待の相当部分は織り込み済み</li>
+<li><b>5741</b>: 2倍=4,480円にはEPS上振れ(LME高止まりなら最終500-550億円は射程)×PER15倍前後へのリレーティングの同時実現が必要。触媒はエフィッシモの25%超え(TOB思惑・資本政策要求)、232条関税の恒久化によるTAA収益力の見直し。<b>触媒待ちの2倍候補</b>で、単独では+30%圏が中心</li>
+<li><b>5714</b>: 2倍=20,240円には「金銀が再度過去最高値を更新し続ける」強気前提が必要。ベースシナリオは上方修正+増配で12,000-14,000円(+20-40%)。<b>金第二派生としてはAREと同じ波に乗るだけで、分散にならない</b></li>
+</ul>
+<p><b>買い水準(推測)</b>:</p>
+<table>
+<tr><th>銘柄</th><th>現値(8/21)</th><th>押し目第1候補</th><th>深押し</th><th>現値買い可否</th></tr>
+<tr><td>4461</td><td>13,840円</td><td>12,000-12,500円(PER17倍)</td><td>10,500-11,000円</td><td>高値-13%調整済みだが再修正期待が強く、12,000円台待ちが基本</td></tr>
+<tr><td>5741</td><td>2,241円</td><td>2,100-2,150円(7/29安値・年初来安値帯)</td><td>2,000円割れ(PBR1倍)</td><td><b>現値打診可</b>(高値-37%・急騰追いに該当せず)。LME反落リスクに備え分割</td></tr>
+<tr><td>5714</td><td>10,120円</td><td>9,300-9,900円(半値〜61.8%押し)</td><td>8,450円(利回り4%)</td><td>様子見。銀$50割れなら評価損転化リスク</td></tr>
+</table>
+<h3>判断への含意(ロング/ショート/様子見のどれを支持する材料か)</h3>
+<ul>
+<li><b>第一工業製薬4461: 押し目ロング支持(グループ内1位)</b>。増益が構造的で再上方修正含み、片山氏の買い増しで需給も締まる。ただし現レジーム(急騰追い禁止)に忠実なら12,000円台前半への押しを待つ。1日±17-22%動くボラは覚悟</li>
+<li><b>UACJ5741: 現値圏からの分割ロング支持(2位)</b>。3銘柄で唯一すでに-37%調整済みで「押し目でのみ買う」方針に合致。PER9.7倍・利回り3.1%・エフィッシモ24%が下値を支える一方、2倍には触媒が必要で期待値は「1年で+30〜50%、触媒発火で2倍」の非対称ベット</li>
+<li><b>DOWA5714: 様子見支持(3位)</b>。上方修正はほぼ確実でショートは危険だが、増益の8割が相場要因かつ金銀ピークアウト局面で、ロングの期待値は+20-40%止まり。<b>AREを既に持つPFにとってはテーマ重複であり、新規資金を割く優先度は低い</b>。金が再度高値更新トレンドに入った時だけ再考</li>
+</ul>
+<h3>積み残し(次に調べるべきこと)</h3>
+<p>1. <b>5741: エフィッシモの2026/2/26以降の追加買い増し有無</b>(EDINETで最新変更報告書を直接確認。25%超えは重要イベント)</p>
+<p>2. <b>4461: 前期の株式数+10.8%増の正体</b>(公募か第三者割当か・希薄化の条件)と、AIサーバー向け低誘電樹脂の顧客集中度・競合(太陽HD等との比較)</p>
+<p>3. <b>5714: 金銀の会社前提価格が非開示</b>のため上方修正幅の定量化が不完全 → 上期決算(11月頃)の修正幅と、ARE(5857)とのバリュエーション・金価格感応度の定量比較</p>
+<p>4. <b>5741: 米232条関税の政策リスク</b>(撤回・緩和の観測が出た場合はTAA増益の前提が崩れる。通商ニュースの監視)</p>
+<p>5. 4461・5741とも決算前後の正確な日次出来高時系列が一部bot遮断で取れておらず、押し目水準の出来高裏付けは未検証</p></div></details>
+<div class=anchor><a href="#D_metal">#D_metal</a></div>
+</article>
+<article class=rep id="D_indiv">
+<div class=hd><span class=call style="background:#3fb950">買い</span>
+<h2>個別3銘柄</h2></div>
+<div class=stocks>科研製薬4521・乾汽船9308・SREホールディングス2980</div>
+<p class=concl>実体増益はSRE&gt;乾汽船&gt;科研の順。SRE押し目ロング、乾汽船小口、科研は指標ノイズで様子見。</p>
+<div class=ev><span><i>1日</i><b>+0.0%</b><em>-3〜+3%</em></span><span><i>1〜2週</i><b>+2.0%</b><em>-8〜+12%</em></span><span><i>1年</i><b>+15.0%</b><em>-25〜+60%</em></span></div>
+<p class=lv><b>水準</b> SRE 2,300円近辺分割・2,278円割れ撤退/乾汽船2,000円押し目小口/科研3,800円以下のみ</p>
+<details><summary>根拠・事実を見る</summary><div class=detail><h3>✅ 結論: 実体増益はSRE&gt;乾汽船&gt;科研の順。SRE押し目ロング、乾汽船小口、科研は指標ノイズで様子見。</h3>
+<p><b>行動: 買い</b> ／ 水準: SRE 2,300円近辺分割・2,278円割れ撤退/乾汽船2,000円押し目小口/科研3,800円以下のみ ／ 確信度: 中</p>
+<table>
+<tr><th>期間</th><th>期待値(中央)</th><th>レンジ</th><th>根拠</th></tr>
+<tr><td>1日</td><td><b>+0.0%</b></td><td>-3.0%〜+3.0%</td><td>3銘柄とも決算通過後で日次カタリスト不在。SREは6月安値近く下値堅い一方、科研は権利落ち・乾汽船は市況次第でレンジ±3%圏</td></tr>
+<tr><td>1〜2週</td><td><b>+2.0%</b></td><td>-8.0%〜+12.0%</td><td>SREの2Q進捗観測(上方修正期待)がプラス寄与、乾汽船は市況ボラ、科研は次のマイルストン材料待ちで方向感なし。加重平均で+2%、下は決算失望再燃-8%、上は上</td></tr>
+<tr><td>1年</td><td><b>+15.0%</b></td><td>-25.0%〜+60.0%</td><td>SRE単独なら+30〜80%(2倍シナリオ)、乾汽船+10〜30%、科研±10%(配当4.77%+STAT6オプション)。均等加重で+15%、下はSRE追加売出</td></tr>
+</table>
+<h3>論理</h3>
+<ul>
+<li>前提: 科研+77771%はJ&amp;Jマイルストン111億円一括計上で分母0.14億円のノイズ、本業クレナフィンは-47%</li>
+<li>前提: 乾汽船+932%は海運市況回復の実体増益で経常+32%上方修正・増配だが売買代金1.5億円/日と流動性薄</li>
+<li>前提: SRE+1870%は営業レバレッジによる実体増益、進捗率35%で保守的計画、株価は高値-42%調整済でPER13.7倍</li>
+<li>前提: 急騰追い禁止レジーム下では調整済銘柄が優位、SREは6月安値2,278円の直近サポートあり</li>
+<li>∴ SRE押し目ロング(2,300円近辺分割・2,278円割れ撤退)を主軸、乾汽船は2,000円押し目のみ、科研は3,800円以下限定</li>
+</ul>
+<h3>最強の反対材料と耐性</h3>
+<p>最強の反論は「SREも27年3月期経常45億がコンセンサス-18.8%下振れでガイダンス自体が保守的ではなく実力の上限を示している可能性」。ただし1Q営業進捗34.6%・純利益進捗39.3%は明らかに計画超過ペースで、LPS引渡し前倒しだけでは説明しきれない粗利率38→43.6%の構造改善も同時進行。ソニー追加売出しリスクは残るが2025年2月売出し後の23.3%保有は当面維持と推測でき、-42%調整済で織込みも進んでいるため結論は維持。</p>
+<h3>この結論を捨てる条件</h3>
+<p>①SRE 2Q(11月頃)で通期進捗が50%を大きく下回りLPS前倒し説が確定 ②ソニーGが追加売出し・大量保有変更報告を提出 ③SRE 2,278円を明確に割り込み日足終値で確定 ④乾汽船が海運市況悪化で下方修正 ⑤科研でJ&amp;J KP-723開発中止発表——いずれかが発生したら該当銘柄の結論を撤回。</p>
+<h3>事実(Grok収集・出典つき)</h3>
+<p>(旧経路レポートから再構成)</p>
+<p>---</p>
+<p>調査完了。3銘柄すべての増益の実体・特殊要因・需給が一次情報ベースで確認できたので、指定形式でレポートを出す。</p>
+<h3>結論(3行以内)</h3>
+<ul>
+<li><b>科研4521の+77771%は爪水虫薬ではなくJ&amp;Jマイルストン111億円の一括計上</b>(前年同期の営業益が0.14億円だった分母効果)。完全な一過性で、爪水虫薬クレナフィンは逆に-47%。</li>
+<li><b>乾汽船+932%は海運市況回復による実体増益</b>(前年1Qが底だった分母効果込み)。8/7に経常+32%上方修正・増配と勢いはあるが、売買代金1.5億円/日と流動性が薄い。</li>
+<li><b>SRE+1870%は営業レバレッジによる実体増益だが、牽引役は不動産販売(LPS +520%)で期ズレ性あり</b>。「-41%」は5月高値4,150円→現値2,403円のドローダウン。グループ内の2倍確率は <b>SRE &gt; 乾汽船 &gt; 科研</b>。</li>
+</ul>
+<h3>事実(出典つき)</h3>
+<h4>科研製薬 4521 (株価3,985円・時価総額1,758億円・PER23.2倍・PBR0.99倍・配当利回り4.77%、8/21時点)</h4>
+<ul>
+<li>27年3月期1Q(2026年4-6月): 売上301.5億円(+59.8%)、営業益109.0億円(前年同期0.14億円→779倍≒+77771%)、純利益84.4億円。8/7発表。出典: <a href="https://s.kabutan.jp/stocks/4521/finance/" target="_blank" rel="noopener">株探・科研製薬決算</a> (2026-08-21取得)</li>
+<li>増益源泉はJ&amp;Jとのライセンス契約(経口STAT6阻害剤 KP-723、2型炎症性疾患=アトピー・喘息向け)のマイルストン達成による<b>7,000万米ドル(約111億円、1ドル=158円)の売上一括計上</b>。マイルストンは2026年4月1日(米国東部時間)に達成。達成イベントの中身は非開示。出典: <a href="https://japanir.jp/wp-content/uploads/2026/04/4521-20260422-01.pdf" target="_blank" rel="noopener">科研製薬 適時開示PDF 2026-04-22</a>、<a href="https://www.media-ir.com/news/?p=179118" target="_blank" rel="noopener">日本インタビュ新聞 2026-08</a></li>
+<li>同開示で<b>前期(26年3月期)は営業△9億円へ下方修正</b>(マイルストン期ずれが主因)。前々期(25年3月期)営業益210億円もNM26契約一時金8,600万ドル+STAT6一時金3,000万ドルで嵩上げされていた。つまり直近3期のP&amp;Lはすべて一時金・マイルストンで大きく歪んでいる。出典: 同上PDF</li>
+<li>J&amp;J契約の全体像: 一時金3,000万ドル(2024年12月)、マイルストン最大12.175億ドル(約1,900億円)、上市後は世界売上の1桁後半〜2桁前半のロイヤリティ。科研はPh1完了まで開発しその後はJ&amp;Jが主導。J&amp;JのVC部門による科研への株式投資も予定。出典: <a href="https://bio.nikkeibp.co.jp/atcl/news/p1/24/12/26/12807/" target="_blank" rel="noopener">日経バイオテク 2024-12-26</a>、<a href="https://www.mixonline.jp/tabid55.html?artid=77679" target="_blank" rel="noopener">ミクスOnline</a>、<a href="https://zaikei.co.jp/article/20241226/795530.html" target="_blank" rel="noopener">財経新聞 2024-12-26</a></li>
+<li>既存薬1Q: <b>クレナフィン群(爪白癬=爪水虫薬)-47.2%の23.1億円</b>、アルツ-2.3%、セプラフィルム-0.5%。本業は縮小中。出典: <a href="https://www.media-ir.com/news/?p=179118" target="_blank" rel="noopener">media-ir 同上</a></li>
+<li>通期予想(5/13発表、1Q時点で据え置き): 売上899億・営業79億・純利益65億・配当190円。<b>1Qだけで営業益は通期予想の138%</b>。出典: <a href="https://s.kabutan.jp/stocks/4521/finance/" target="_blank" rel="noopener">株探</a></li>
+<li>需給: 信用倍率10.65倍(買い長)。出典: <a href="https://s.kabutan.jp/stocks/4521/" target="_blank" rel="noopener">株探 基本情報</a> (2026-08-21)</li>
+</ul>
+<h4>乾汽船 9308 (株価2,097円・時価総額546億円・PER13.8倍・PBR1.38倍・配当利回り2.17%、8/21時点)</h4>
+<ul>
+<li>27年3月期1Q: 売上107.9億円(+46.6%)、営業益12.5億円(前年同期1.2億円→約10倍≒+932%)、経常12.9億円(24倍)、純利益7.1億円。売上営業利益率1.6%→11.6%に急改善。8/7発表。出典: <a href="https://s.kabutan.jp/stocks/9308/finance/" target="_blank" rel="noopener">株探・乾汽船決算</a>、<a href="https://s.kabutan.jp/stocks/9308/news/k202608070225/" target="_blank" rel="noopener">株探ニュース 2026-08-07</a></li>
+<li>8/7に<b>通期経常を43.2億→57.2億円(+32%)へ上方修正、配当34.72円→45.53円へ増額</b>。出典: <a href="https://s.kabutan.jp/stocks/9308/news/k202608070225/" target="_blank" rel="noopener">株探ニュース 同上</a></li>
+<li>事業構造(前期26年3月期実績): 外航海運 売上257億/営業7.5億(利益率2.9%まで悪化)、倉庫39.6億/3.9億、不動産39.3億/19.9億。<b>利益の下支えは不動産、変動要因はハンディサイズばら積み船市況</b>。前期は不動産の減損損失で大幅減益だった。出典: <a href="https://irbank.net/9308/segment" target="_blank" rel="noopener">IR BANK セグメント</a>、<a href="https://minkabu.jp/stock/9308/settlement" target="_blank" rel="noopener">みんかぶ決算 経由の検索結果</a></li>
+<li>1Qのセグメント内訳(海運と不動産の利益寄与の分解)は取得できたソースには記載がなく<b>分からなかった</b>(短信PDF直読が必要)。</li>
+<li>大株主: 旧村上系とされるアルファレオHDは最大29.99%→2022年3月に10.37%まで売却(変更報告書)。それ以降の大量保有報告は今回の検索では見つからず、現在の残存比率は<b>分からなかった</b>。出典: <a href="https://ufocatch.com/a8/Holding/E34691/9308/S100NPCX" target="_blank" rel="noopener">有報キャッチャー(大量保有DB)</a>、<a href="https://online.logi-biz.com/56268/" target="_blank" rel="noopener">LOGI-BIZ 2022</a></li>
+<li>流動性: 8/21の売買代金1.51億円・出来高7.2万株。出典: <a href="https://s.kabutan.jp/stocks/9308/" target="_blank" rel="noopener">株探 基本情報</a></li>
+</ul>
+<h4>SREホールディングス 2980 (株価2,403円・時価総額391億円・PER13.7倍・PBR2.40倍・配当利回り0.83%、8/21時点)</h4>
+<ul>
+<li>27年3月期1Q: 売上84.9億円(2.0倍)、営業益18.1億円(前年同期0.9億円→20倍≒+1870%)、純利益11.1億円(前年△0.2億円から黒字転換)。8/5発表。出典: <a href="https://s.kabutan.jp/stocks/2980/finance/" target="_blank" rel="noopener">株探・SRE決算</a>、<a href="https://finance.biggo.jp/news/jpx_tdnet_140120260805509576" target="_blank" rel="noopener">TDnet短信(BigGo経由)</a></li>
+<li>セグメント: ライフ&amp;プロパティソリューション(不動産販売等) 売上49.8億(+168%)・営業11.7億(+520%)、AI&amp;ライフソリューション(AIクラウド&amp;コンサル) 売上35.1億(+42%)・営業6.4億(+58%)。粗利率38.0→43.6%、特別損益の計上なし。出典: <a href="https://www.ir-tracker.com/ja/articles/2980-2027-Q1" target="_blank" rel="noopener">IR Tracker 2980 2027-Q1</a></li>
+<li>進捗率: 営業34.6%・純利益39.3%(通期計画: 売上418億・純利益28.3億)。出典: 同上</li>
+<li>「-41%」の正体: <b>年初来高値4,150円(2026/5/11)→安値2,278円(6/26)、現値2,403円で高値から-42%</b>。出典: <a href="https://finance.yahoo.co.jp/quote/2980.T" target="_blank" rel="noopener">Yahoo!ファイナンス 2980</a></li>
+<li>急落の背景: 26年3月期経常38.4億がコンセンサス(41.1億)を6.6%下回り、27年3月期経常予想45億(+17%)もコンセンサスを18.8%下回った(5/13発表)。出典: <a href="https://finance.yahoo.co.jp/news/detail/a6ec75439824e13c998cfbc58235f6f1754f6d30" target="_blank" rel="noopener">IFIS株予報(Yahoo!ニュース)</a></li>
+<li>需給: ソニーGは2025年2月に211.67万株を売出し、保有36.6%→23.3%へ低下。<b>2026年3月末時点でも23.26%を保有</b>したまま。信用倍率9.66倍。出典: <a href="https://irbank.net/E35153/holder" target="_blank" rel="noopener">IR BANK 大株主</a>、<a href="https://kabutan.jp/news/marketnews/?b=n202502180203" target="_blank" rel="noopener">株探ニュース 2025-02-18</a>、<a href="https://s.kabutan.jp/stocks/2980/" target="_blank" rel="noopener">株探 基本情報</a></li>
+</ul>
+<h3>解釈・推測</h3>
+<ul>
+<li><b>科研</b>: +77771%は「一過性収入 ÷ ほぼゼロの分母」の産物で、スクリーニング指標としてはノイズ。本業(クレナフィン後発品侵食・アルツ縮小)はむしろ逆風で、通期予想79億から逆算すると残り9か月は営業△30億円ペース(推測: R&amp;D先行投資のため)。一方でPBR1倍割れ・利回り4.77%が下値を支え、KP-723の後続マイルストン(最大1,900億円)が無料のオプションとして乗る構図。ただし配当190円はEPS171円を超えており、マイルストンが途切れれば減配リスク(推測)。</li>
+<li><b>乾汽船</b>: 増益は会計上の特殊要因ではなく市況由来の実体。ただし海運は分母(前年1Q営業1.2億)が底だった分の見かけ倍率で、+932%の持続性はハンディサイズ市況次第の景気循環(推測: 上方修正の主因は市況上昇と為替)。不動産が年20億円弱の安定利益で下値を固める。PBR1.38倍まで買われており、アクティビスト退出後の「解散価値」テーマの再燃余地は限定的(推測)。</li>
+<li><b>SRE</b>: 営業レバレッジは本物だが、1Q利益の2/3は不動産販売(LPS)で引渡し時期に左右される。+1870%のうち構造的なのはALS(AI事業、+58%)の部分。会社計画は保守的に見え(1Q営業進捗35%)、2Q以降の上方修正が発生しやすい形(推測)。株価はガイダンス失望で-42%調整済みでPER13.7倍と、成長株としては期待値がリセットされた状態。ソニー23%は今後も売出しオーバーハング(推測)。</li>
+</ul>
+<h3>判断への含意(ロング/ショート/様子見のどれを支持する材料か)</h3>
+<p>1. <b>SRE 2980 — 押し目ロング支持(グループ内1位)</b>。実体増益×進捗率高×株価は既に-42%調整済みでコンセンサス失望も織り込み済み。2倍パス: 2Q・3Qでの通期上方修正→高値4,150円奪回(+73%)→ALS成長の再評価で4,800円(2倍)。必要なのは「上方修正+ソニー追加売出しが出ないこと」。現値2,403円は6月安値2,278円まで5%の位置で、<b>現値圏〜2,300円押し目で分割・2,278円割れで撤退</b>が引ける形。急騰追い禁止レジームとの整合性も良い(すでに調整済みのため)。</p>
+<p>2. <b>乾汽船 9308 — 小口の押し目ロングまで(2位)</b>。上方修正・増配の勢いは支持材料だが、①1年2倍には市況の連続上振れが必要(会社計画達成でもPER9倍台にしかならず、2倍=時価総額1,100億円はPER14倍×さらなる増額修正が前提)、②売買代金1.5億円/日は親セッションの「売買代金上位ほど2倍達成率が高い」という実測と逆行。買うなら<b>2,000円近辺(修正発表前水準)への押し目のみ、現値追いは非推奨</b>。</p>
+<p>3. <b>科研 4521 — 様子見支持(3位)</b>。増益率は指標ノイズであり「好決算銘柄」としての採用自体が誤り。ロングするなら決算モメンタムではなく「利回り4.77%+STAT6オプション」という別の投資仮説で、時間軸1年での2倍はJ&amp;J側の開発イベント(Ph2進展等)という自分で制御できない材料頼み(現実性: 低)。買うなら<b>利回り5%となる3,800円以下の押し目限定</b>。ショートも配当と下値の堅さから妙味薄。</p>
+<h3>積み残し(次に調べるべきこと)</h3>
+<ul>
+<li><b>乾汽船</b>: 8/7短信PDFの直読による1Qセグメント内訳(海運/不動産の利益分解)と、上方修正の前提(市況レート・為替レート)。現在の大株主構成(アルファレオ残存の有無、四季報ベース)。</li>
+<li><b>科研</b>: 4/1達成マイルストンのイベント中身(Ph1関連か)と次のマイルストン条件・時期。配当190円の持続方針(DOE等の明示があるか)。クレナフィン後発品侵食の底打ち時期。</li>
+<li><b>SRE</b>: LPS(不動産販売)の下期引渡しパイプライン(通期進捗35%が本当に保守的か、それとも1Qに引渡しが前倒しされただけか — ここが2倍シナリオの生命線)。ソニーGの追加売出し方針。6月安値2,278円で誰が買ったか(機関の買い戻しか)。</li>
+<li><b>共通</b>: 3社とも「増益率上位」の分母が異常に小さい銘柄だったことが確認された。親セッションのスクリーニングに「前年同期の利益額が一定以上(例: 営業益5億円以上)」のフィルタを入れると、科研型のノイズを機械的に除外できる。</li>
+</ul></div></details>
+<div class=anchor><a href="#D_indiv">#D_indiv</a></div>
+</article>
+<article class=rep id="D_ferro">
+<div class=hd><span class=call style="background:#8b949e">見送り</span>
+<h2>フェローテック6890</h2></div>
+<div class=stocks>フェローテック6890・日本トムソン6480・IDEC6652</div>
+<p class=concl>中国半導体売上55.8%が牽引だが変則決算のゲタで実力+29%、追随より押し目待ち</p>
+<div class=ev><span><i>1日</i><b>-1.0%</b><em>-6〜+4%</em></span><span><i>1〜2週</i><b>-3.0%</b><em>-12〜+8%</em></span><span><i>1年</i><b>+10.0%</b><em>-25〜+50%</em></span></div>
+<p class=lv><b>水準</b> 現値8,580円では追随せず、7,500〜8,000円(PER11倍圏)への押しで分割ロング検討</p>
+<details><summary>根拠・事実を見る</summary><div class=detail><h3>✅ 結論: 中国半導体売上55.8%が牽引だが変則決算のゲタで実力+29%、追随より押し目待ち</h3>
+<p><b>行動: 見送り</b> ／ 水準: 現値8,580円では追随せず、7,500〜8,000円(PER11倍圏)への押しで分割ロング検討 ／ 確信度: 中</p>
+<table>
+<tr><th>期間</th><th>期待値(中央)</th><th>レンジ</th><th>根拠</th></tr>
+<tr><td>1日</td><td><b>-1.0%</b></td><td>-6.0%〜+4.0%</td><td>信用倍率174倍・高値-27%で戻り売り優勢、材料出尽くし後の変動性は日次±5%圏</td></tr>
+<tr><td>1〜2週</td><td><b>-3.0%</b></td><td>-12.0%〜+8.0%</td><td>11月2Q・27/12期計画正式化までカタリスト空白、変則決算の見かけ剥落警戒で下方バイアス</td></tr>
+<tr><td>1年</td><td><b>+10.0%</b></td><td>-25.0%〜+50.0%</td><td>27/12期営利800億(会社目安)実現時EPS成長+30%×PER15倍で+40〜50%、対中規制強化・中国装置投資減速なら-25%</td></tr>
+</table>
+<h3>論理</h3>
+<ul>
+<li>前提: フェローテック前期の中国売上比率は55.8%で、1Qサーモモジュール+78%・真空シール+53%は米中装置投資が源泉</li>
+<li>前提: 今1Qの営業利益+321%は決算期変更(3月→12月)による3か月vs最大6か月の非対称比較で、会社実力ベースは売上+29%</li>
+<li>前提: 信用倍率174倍の買い長・非支配持分24%・説明会非開催という開示姿勢が中国ディスカウントを残す</li>
+<li>前提: 現値8,580円はPER12.6倍で、株価2倍には27/12期営利800億の正式計画化とPER19倍への再評価の両立が必要</li>
+<li>∴ 中国半導体露出は伸びの本丸だがテーマとリスクが拮抗、額面+321%を追う局面ではなく7,500〜8,000円圏の押し目待ちが妥当</li>
+</ul>
+<h3>最強の反対材料と耐性</h3>
+<p>最強の反論は「中国半導体国産化は多年テーマで、江蘇富楽華の科創板IPOや27/12期営利800億の正式化で信用倍率も一気に解消し得る」。ただし現時点で信用買残174倍と変則決算による見かけ増益の剥落リスクが未消化で、11月2Qまでのカタリスト空白を待つ方が期待値が高い。よって結論は維持。</p>
+<h3>この結論を捨てる条件</h3>
+<p>①米国が対中半導体装置規制を新規強化しフェローテックの中国顧客向け供給が制限される開示 ②11月2Qで27/12期営利800億の正式計画化が見送られる、または中国売上比率が明確に鈍化する ③信用買残が解消せず174倍→200倍超に膨張し需給破綻の兆候が出る、のいずれかで見送り→売り転換</p>
+<h3>事実(Grok収集・出典つき)</h3>
+<p>(旧経路レポートから再構成)</p>
+<p>---</p>
+<p>3エージェントの調査が完了しました。統合レポートを出します。</p>
+<p>(+IDEC6652を含む3銘柄の深堀り結果)</p>
+<h3>結論(3行以内)</h3>
+<p>グループ内の倍率期待順は <b>①日本トムソン ②フェローテック ③IDEC</b>。トムソンは受注+112%・BBレシオ1.63・通期40%上方修正済みでPER12.5倍と「実力増益×未評価」が最も揃い、高値から-34%押した現値はレジーム方針(押し目のみ買い)に合致。フェローテックの「+321%」は<b>決算期変更(3月→12月)による変則決算のゲタ込みで実力は売上+29%</b>——数字を額面で使うのは危険。中国露出はリスクとテーマの両面だが、信用倍率174倍の買い長が短期の重し。</p>
+<h3>事実(出典つき)</h3>
+<h4>日本トムソン6480(現値1,703円・時価総額1,252億円・売買代金約20億円/日)</h4>
+<ul>
+<li><b>1Q(2026年4-6月)実績</b>: 売上198.5億円(+32.9%)、営業利益27.9億円(<b>+281.9%</b>、営業利益率4.9%→14.1%)。<a href="https://www.ikont.co.jp/ir/finance/pdf/20271qkessan_r.pdf" target="_blank" rel="noopener">決算短信 2026/8/7</a></li>
+<li><b>受注高322.8億円(前年同期比+112.3%)、BBレシオ1.63</b>。直動シリーズ受注+135.5%、中国受注約3.1倍(26.4→80.7億円)。売上の牽引はエレクトロニクス向け(半導体製造装置・実装機)+43.5%で構成比53%。<a href="https://www.ikont.co.jp/ir/finance/pdf/2027031q_rb.pdf" target="_blank" rel="noopener">補足資料 2026/8/7</a></li>
+<li><b>通期を8/7に大幅上方修正</b>: 営業利益82→<b>115億円(+40.2%修正、前期比+180%)</b>、EPS 136.92円。経常117億円は4期ぶり過去最高。修正理由は「円安+エレクトロニクス関連の旺盛な設備投資需要の継続」。1Q進捗率は営業利益24.3%(修正後比)。<a href="https://www.ikont.co.jp/ir/finance/pdf/20260807-1.pdf" target="_blank" rel="noopener">修正開示 2026/8/7</a></li>
+<li>増益+20.6億円の内訳: 為替等は+3.4億円(16%)にとどまり、大半が増収・増産効果(補足資料の増減分析)</li>
+<li><b>2Q発表時(2026年11月目途)に増配・自社株買いを含む還元策を検討・公表予定</b>と開示に明記。総還元性向50%以上・DOE2.5%下限方針</li>
+<li>同業も同時多発: THKが中間営業利益+269%で通期310→480億円へ上方修正(<a href="https://www.thk.com/jp/wordpress/wp-content/uploads/2026/08/260805_presentation_ja.pdf" target="_blank" rel="noopener">2026/8/5</a>)、日本精工1Q営業利益+212% → 業界サイクルの本格回復</li>
+<li>需給: <b>信用倍率52.4倍の買い長</b>(2026/8/14、<a href="https://finance.yahoo.co.jp/quote/6480.T" target="_blank" rel="noopener">Yahoo!ファイナンス</a>)。年初来は822円(1/5)→高値2,580円(<b>6/22、決算前にピーク</b>)→現在1,703円(-34%)。PER12.5倍・PBR1.37倍</li>
+<li>大株主: マスタートラスト10.96%、取引先持株会8.35%、日生5.98%、不二越2.81%など持ち合い色が濃い(<a href="https://irbank.net/6480/holder" target="_blank" rel="noopener">IR BANK</a>)。自社株買い枠16億円(5/11決議、〜9/30)は5月時点で取得0株</li>
+</ul>
+<h4>フェローテック6890(現値8,580円・時価総額4,639億円・売買代金約150億円/日)</h4>
+<ul>
+<li><b>最重要</b>: 2026年6月の株主総会で決算期を3月→12月に変更。今期は変則9か月決算で、<b>1Qは親会社3か月+中国子会社群6か月(2026/1-6)の連結</b>。会社自身が「前年同期比は記載しない」と短信に明記。営業利益280.7億円vs前年66.7億円=+320.7%は算術上正しいが<b>3か月vs最大6か月の非対称比較</b>。<a href="https://www.ferrotec.co.jp/php/download.php?f=jp%2F20260814520237.pdf" target="_blank" rel="noopener">決算短信 2026/8/14</a></li>
+<li>会社提示の実力ベース(当1Q=実質上期を前年上期と比較)は<b>売上+29.4%</b>。<a href="https://www.ferrotec.co.jp/php/download.php?f=jp%2F20260813520051.pdf" target="_blank" rel="noopener">補足説明資料 2026/8/14</a></li>
+<li>伸びの中身: <b>サーモモジュール+78.3%</b>(AIデータセンター向け1.6T光トランシーバー)、真空シール・金属加工+53.4%(米中装置メーカーの発注が「非常に高水準」)、セラミックス+34.2%。一方パワー半導体用基板は価格下落継続で車載は+0.3%</li>
+<li>通期予想(9か月変則): 売上3,800億・営業利益600億(7/22に380→600億へ上方修正、翌日ストップ高)。8/14の純利益修正+30億は<b>持分変動利益27.9億円(一過性)</b>とほぼ同額</li>
+<li><b>中国露出</b>: 前期の中国売上比率<b>55.8%</b>(<a href="https://www.ferrotec.co.jp/ir/ir_area_sales.php" target="_blank" rel="noopener">会社IR</a>)。短信の会社説明は「中国国内顧客への密着度を上げ需要を取り込み」「欧米顧客にはマレーシア中心に対応」と米中二重供給網を明示。現時点で規制の悪影響は決算文言上確認できない。決算説明会は「開催無」で経営陣の質疑は存在しない</li>
+<li>27/12期(初の12か月フル)は「<b>売上5,000億・営業利益800億程度を目指して積上げ中</b>」と補足資料に記載(正式計画は未確定)</li>
+<li>需給: <b>信用倍率174倍</b>の買い長(<a href="https://irbank.net/6890" target="_blank" rel="noopener">IR BANK 2026/8/21</a>)。CB250億円の転換完了で発行済+14.8%の希薄化は消化済み。非支配株主持分が純資産の24%。大株主は外国系カストディ中心で村上系とされるシティインデックスイレブンス2.98%、賀社長の直接保有は0.385%のみ。年初来5,030円→高値11,700円(6/22)→現在8,580円(-27%)。PER約12.6倍・PBR1.43倍</li>
+</ul>
+<h4>IDEC6652(現値3,650円・時価総額1,145億円・売買代金約3.4億円/日)</h4>
+<ul>
+<li>1Q実績: 売上214億円(+36.0%)、営業利益24.6億円(<b>+656.4%</b>)。ただし<b>前年同期の営業利益は3.2億円(利益率2.1%)、前々年も2.7億円と2年連続の異常底</b>からの反動。<a href="http://ke.kabupro.jp/tsp/20260806/140120260805510577.pdf" target="_blank" rel="noopener">決算短信 2026/8/6</a></li>
+<li><b>純利益47.5億円(+922%)は米国旧社屋売却益41.8億円(一過性)込み</b>。通期予想純利益60億円に対し1Qで進捗79%は先食い</li>
+<li>実力面: 受注高+65.2%・受注残+41.3%(B/B比1.20)、粗利率42.2%→45.5%。米州はデータセンター・半導体装置向け+値上げで黒字転換。前期に構造改革費用26.3億円(人員適正化・在庫処分)を計上済みで費用剥落が効いている</li>
+<li>通期予想は据え置き(営業利益72億円、進捗34.1%)。上方修正は8/22現在未発表(説明会で「検討中」との二次報道のみ)</li>
+<li>同業同期: オムロン制御機器が売上+37%で通期上方修正済み、キーエンス+33% → 業界要因が主</li>
+<li>需給: 信用倍率1.01倍と軽いが、<b>売買代金3-4億円/日と流動性が薄い</b>。決算後8/12に10年来高値3,975円を付け、現値は高値から-8%と押し目未形成。PER18倍(売却益込み)・PBR1.47倍・配当利回り3.56%(年130円据え置き)</li>
+</ul>
+<h3>解釈・推測</h3>
+<ul>
+<li>(推測)<b>トムソンの増益は構造成分が主</b>。伸び率+282%は低ベースで誇張されているが、受注+112%・中国受注3倍・THK/NSKとの同期は在庫反動では説明不能で、AI起点の半導体装置向け直動サイクル本格入り。1Q受注の年率換算約1,290億円は通期売上計画800億円を6割上回り、<b>11月の2Qで再上方修正+還元強化が出る公算が高い</b></li>
+<li>(推測)フェローテックの中国露出は「リスクでもテーマでもある」が、現局面では<b>テーマ側が優勢</b>。中国装置投資と国産化(部品洗浄・現地供給)の受け皿であり、マレーシア展開で規制ヘッジも進む。ただし中国売上5割超+非支配持分24%+説明会なしという開示姿勢は「中国ディスカウント」の根拠として残り続け、PER再評価(2倍に必要な15〜19倍)の壁になる</li>
+<li>(推測)IDECの+656%は3銘柄中もっとも低ベース効果が大きい。売却益を除いた実力PERは約23倍で割安ではなく、株価は既に10年来高値圏。上方修正の蓋然性は高い(進捗34%・受注残+41%)が、それは相当織り込まれている</li>
+<li>(推測)株価2倍のパス:</li>
+<li><b>トムソン(1,703→3,400円)</b>: 来期EPS 220円前後(営業利益190〜200億円)×PER15倍で到達。四半期受注320億円ペースが2四半期持続すれば射程内。監視指標は四半期受注高・BBレシオ・中国受注の3つ</li>
+<li><b>フェローテック(8,580→17,160円)</b>: 27/12期に営業利益800億円が正式計画化され(11月の2Q発表前後が契機)、かつPERが19倍へ再評価される「両方」が必要。EPS単独なら純利益740億円が必要でハードル高</li>
+<li><b>IDEC(3,650→7,300円)</b>: 実力EPSがピーク並み340円(営業利益120〜140億円=現予想の1.7〜1.9倍)に戻る必要があり、1年では上方修正+PER拡大の両方が必須。2〜3年シナリオ</li>
+</ul>
+<h3>判断への含意(ロング/ショート/様子見のどれを支持する材料か)</h3>
+<ul>
+<li><b>日本トムソン: 押し目ロング支持(グループ内1位)</b>。高値から-34%調整済みで唯一「押し目」が既に形成されている。買うなら現値圏〜1,550円(修正後PER11倍前後)で分割。11月2Qの再修正+還元発表がカタリスト。リスクは信用買残52倍と、四半期受注の失速(250億円割れなら撤退)</li>
+<li><b>フェローテック: 押し目待ちの様子見寄りロング(2位)</b>。事業モメンタムは本物だが、信用倍率174倍・変則決算のゲタで「見かけの数字」が独り歩きしている今は追わない。7,500〜8,000円(PER11倍圏)への押しがあれば拾う。11月2Qで27/12期計画(営利800億)が正式化されるかが分岐点。米対中規制の新規強化はショート材料に転じ得る</li>
+<li><b>IDEC: 様子見(3位)</b>。高値圏・押し目なし・流動性薄で、レジーム方針(急騰追い禁止)に最も抵触する。上方修正が出て3,200〜3,400円へ押す場面があれば拾う価値はあるが、現値でのエントリーは支持しない</li>
+<li>親セッションの「売買代金上位ほど2倍達成率が高い」仮説に照らすと、代金150億のフェローテックが定量面で最上位だが、<b>変則決算による利益率の見かけ改善が剥落する27/12期1Q(2027年5月頃)に前年比が悪化して見えるリスク</b>を織り込むべき</li>
+</ul>
+<h3>積み残し(次に調べるべきこと)</h3>
+<ul>
+<li>フェローテック: 8/14業績修正の開示原文(修正理由の一次確認)、江蘇富楽華の科創板IPO審査状況(子会社上場益・需給インパクト)、変則決算の前年同期比較が正常化する時期の確認</li>
+<li>トムソン: 受注残高の絶対額(非開示のためフロー差推計のみ)、MM Investments(4.85%保有)の素性、7〜8月の自社株買い執行状況</li>
+<li>IDEC: 上方修正の有無(次の開示を監視)、2026/6/19開示「代表取締役の異動」の中身(創業家体制変更の可能性)、構造改革の恒常効果額(年間ベース)の一次開示</li>
+<li>3社共通: セルサイドの目標株価コンセンサス(今回未取得)、11月2Q決算のスケジュール確定と、それまでの信用買残の増減トレンド</li>
+</ul></div></details>
+<div class=anchor><a href="#D_ferro">#D_ferro</a></div>
+</article>
+<article class=rep id="Ree339135">
+<div class=hd><span class=call style="background:#8b949e">見送り</span>
+<h2>285Aキオクシアの東芝売却継続下</h2></div>
+
+<p class=concl>-7%投げ後3日リターンは-5%〜+9%と両側に振れ、統計優位なくエントリー見送りが妥当</p>
+<div class=ev><span><i>1日</i><b>+0.5%</b><em>-6〜+7%</em></span><span><i>1〜2週</i><b>+2.0%</b><em>-10〜+15%</em></span><span><i>1年</i><b>+5.0%</b><em>-40〜+40%</em></span></div>
+<p class=lv><b>水準</b> 49,000〜50,000円割れで打診買い、55,000円超は追撃せず</p>
+<details><summary>根拠・事実を見る</summary><div class=detail><h3>✅ 結論: -7%投げ後3日リターンは-5%〜+9%と両側に振れ、統計優位なくエントリー見送りが妥当</h3>
+<p><b>行動: 見送り</b> ／ 水準: 49,000〜50,000円割れで打診買い、55,000円超は追撃せず ／ 確信度: 低</p>
+<table>
+<tr><th>期間</th><th>期待値(中央)</th><th>レンジ</th><th>根拠</th></tr>
+<tr><td>1日</td><td><b>+0.5%</b></td><td>-6.0%〜+7.0%</td><td>-7%投げ翌日は+0.59%(8/10)/+6.01%(8/20)と反発寄りだが、7月連鎖局面では翌日も-12〜-15%あり。両側レンジ広い</td></tr>
+<tr><td>1〜2週</td><td><b>+2.0%</b></td><td>-10.0%〜+15.0%</td><td>8/18起点3日-4.9%、8/19起点3日+8.7%の中央値付近。東芝売却継続と信用買残高止まりが上値抑制、NVDA決算次第で上下</td></tr>
+<tr><td>1年</td><td><b>+5.0%</b></td><td>-40.0%〜+40.0%</td><td>高値112,700円から-64.7%調整済で下値余地は縮小したが、東芝残14%の売却完了まで需給重石。メモリ市況(NVDA/HBM需要)次第で大きく振れる</td></tr>
+</table>
+<h3>論理</h3>
+<ul>
+<li>前提: 自社株買い完了(8/10)後の-7%超投げは8/18(-7.58%)と8/19(-12.6%)の2サンプルのみで統計的分布は算出不能</li>
+<li>前提: 8/18からの3日後は-4.9%、8/19からの3日後は+8.7%とサンプル間で符号が反転、5日データも8/19分は欠落</li>
+<li>前提: 8/19終値49,950円は自社株買い平均49,586円と近接し、需給的下支え候補だが東芝売却は継続中(14.06%→さらに低下方向)で戻り売り圧力残存</li>
+<li>前提: 7月の類似投げ連鎖(7/13 -12.9%→7/16 -15%→7/17 -16.1%)は連続下落を示し、投げ後即反発は保証されない</li>
+<li>∴ 分布としては勝率5割・リターン非対称も限定的で、明確なエッジなし=見送り、ただし平均取得価格近辺は打診買い候補</li>
+</ul>
+<h3>最強の反対材料と耐性</h3>
+<p>「自社株買い平均49,586円は東芝売却の受け皿ラインで、そこ割れの投げは短期リバ狙いの好機」との反論。ただし東芝は14.06%→さらに売却継続予定で受け皿消失後の需給悪化リスクがあり、また信用買残1,313万株(発行済2.4%)の投げが未完了なら二段下げ可能性が残る。よって「打診買いはアリだが本格買いは見送り」を維持。</p>
+<h3>この結論を捨てる条件</h3>
+<p>①東芝が保有比率10%以下まで売却完了・売り一巡がTDnetで確認、②信用買残が1,000万株以下に減少、③50,000円割れで出来高伴う反発が2営業日連続で確認、のいずれかが起きれば「見送り→買い」に変更。逆に49,000円を終値で明確に割れ信用追証誘発が観測されれば下値目処-20%まで拡大。</p>
+<h3>事実(Grok収集・出典つき)</h3>
+<p><b>事実のみ（2026年8月10日自社株買い完了時点の類似需給局面を中心に抽出）。</b></p>
+<ul>
+<li><b>自社株買い完了事実</b>: 2026年8月10日完了（予定10月30日より2ヶ月以上前倒し）。取得株数1,610万株（発行済6月末時点の2.9%相当）、総額約7,980億円、平均取得価格49,586円。上限8,000億円・3,000万株・期間8月3日〜10月30日のプログラムを10日間で完了。 <a href="https://jp.investing.com/news/stock-market-news/article-93CH-1642763" target="_blank" rel="noopener">[1]</a> <a href="https://finance.yahoo.co.jp/quote/285A.T/history/" target="_blank" rel="noopener">[2]</a></li>
+</ul>
+<ul>
+<li><b>東芝売却継続中の主な売却</b>:</li>
+<li>2026年7月15日時点保有比率16.10%→15.10%（-1.0ポイント、約382万株市場売却含む累積）。6月22日〜7月15日の4回売却（217,800株、769,800株、193,000株、2,266,600株）。 <a href="https://stockexpress.jp/kioxia-toshiba20260723/" target="_blank" rel="noopener">[3]</a></li>
+<li>2026年8月3日時点保有比率15.1%→14.06%（追加売却）。7月22日〜8月3日の6回市場取引。 <a href="https://irbank.net/E35948/share" target="_blank" rel="noopener">[4]</a></li>
+</ul>
+<ul>
+<li><b>自社株買い終了前後の株価（2026年8月以降、日次終値・リターン）</b>（出典: Yahoo!ファイナンス株価履歴、IRBANKイベントチャート）:</li>
+<li>8/3: 49,160円</li>
+<li>8/4: 52,090円（前日比+5.96%）</li>
+<li>8/5: 54,300円（+4.24%）</li>
+<li><b>8/6: 48,740円（-10.24%）</b>（-7%以上下落）</li>
+<li>8/7: 47,730円（-2.07%）</li>
+<li>8/10（完了発表日）: 48,010円（+0.59%）</li>
+<li>8/12: 49,870円（+3.87%）</li>
+<li>8/13: 51,800円（+3.87%）</li>
+<li>8/14: 53,740円（+3.75%）</li>
+<li>8/17: 61,840円（+15.07%）</li>
+<li><b>8/18: 57,150円（-7.58%）</b>（-7%以上下落）</li>
+<li><b>8/19: 49,950円（-12.6%）</b>（-7%以上下落、平均取得価格49,586円近辺）</li>
+<li>8/20: 52,950円（+6.01%）</li>
+<li>8/21: 54,320円（+2.59%） <a href="https://kabu.bridge-salon.jp/kioxia-stockprice/" target="_blank" rel="noopener">[5]</a> <a href="https://finance.yahoo.co.jp/quote/285A.T/history/" target="_blank" rel="noopener">[2]</a></li>
+</ul>
+<ul>
+<li><b>自社株買い終了直後（8/10完了後）の3日/5日リターン例</b>（上記日次データに基づく終値ベース計算、調整前）:</li>
+<li>8/10（48,010円）から3日後（8/13頃）: 約+7.9%（48,010→51,800）</li>
+<li>8/10から5日後（8/17頃）: 約+28.8%（48,010→61,840）</li>
+<li>8/18（-7.58%日）から3日後（8/21）: 約-4.9%（57,150→54,320）</li>
+<li>8/19（-12.6%日、投げ連鎖指摘あり）から3日後: +8.7%（49,950→54,320）（5日データ不足） <a href="https://kabu.bridge-salon.jp/kioxia-stockprice/" target="_blank" rel="noopener">[5]</a></li>
+</ul>
+<ul>
+<li><b>類似需給局面の過去エピソード（東芝/大株主売却＋信用買残高止まり＋投げ連鎖）</b>:</li>
+<li>2026年7月17日: ストップ安（-16.1%、52,110円）。信用買残1,313万株高止まり（高値掴み30-50%含み損）、売残54万株（ショートカバー消失）、7/15に日証金融資返済42万株投げ。7/13 -12.9%、7/16 -15.0%と投げ連鎖。東芝売却重なり需給崩壊指摘。 <a href="https://x.com/irbank/status/2078049368356364402" target="_blank" rel="noopener">[6]</a> <a href="https://kabu.bridge-salon.jp/kioxia-stockprice/" target="_blank" rel="noopener">[5]</a></li>
+<li>7月全体: 高値112,700円（6/22）から7月下旬3万8,380円（-64.7%超）。ベイン完全売却・東芝売却・信用投げが主因。 <a href="https://toyokeizai.net/articles/-/953477" target="_blank" rel="noopener">[7]</a></li>
+</ul>
+<ul>
+<li><b>その他の数字</b>:</li>
+<li>8/19終値49,950円（自社株買い平均取得価格49,586円とほぼ同水準）。 <a href="https://x.com/8ZST8pbjosB5804/status/2090646322399363087" target="_blank" rel="noopener">[8]</a></li>
+<li>7月17日時点信用買残: 発行済の2.4%（1,313万株）。 <a href="https://x.com/irbank/status/2078049368356364402" target="_blank" rel="noopener">[6]</a></li>
+<li>東芝保有推移: 上場時40.6%→2026年8月14.06%（継続売却中）。 <a href="https://irbank.net/E35948/share" target="_blank" rel="noopener">[4]</a></li>
+</ul>
+<p><b>注</b>: 過去複数回の自社株買い終了後や東芝売却局面での統計的「3日/5日リターン分布」（平均・中央値・標準偏差・ヒストグラム等）は公開データに存在せず抽出不可。2026年8月10日完了直後の実績は上記の日次データが全て。出典はすべて2026年6〜8月の報道・開示・X投稿に基づく。</p></div></details>
+<div class=anchor><a href="#Ree339135">#Ree339135</a></div>
+</article>
+<article class=rep id="R88d186c8">
+<div class=hd><span class=call style="background:#d4a017">保有継続</span>
+<h2>実PFの銀行スリーブ22%(5830)を9/17日銀会合をまたぐ場合</h2></div>
+
+<p class=concl>9/17会合はOIS織込79%で+25bpが本線、据置がテールリスク、+50bpは低確率だが上値触媒</p>
+<div class=ev><span><i>1日</i><b>+0.2%</b><em>-2〜+1%</em></span><span><i>1〜2週</i><b>+0.3%</b><em>-2〜+2%</em></span><span><i>1年</i><b>+2.2%</b><em>-3〜+7%</em></span></div>
+<p class=lv><b>水準</b> 5830を3,882円基準で継続保有、+50bp時のみ+3〜5%利食い候補</p>
+<details><summary>根拠・事実を見る</summary><div class=detail><h3>✅ 結論: 9/17会合はOIS織込79%で+25bpが本線、据置がテールリスク、+50bpは低確率だが上値触媒</h3>
+<p><b>行動: 保有継続</b> ／ 水準: 5830を3,882円基準で継続保有、+50bp時のみ+3〜5%利食い候補 ／ 確信度: 中</p>
+<table>
+<tr><th>期間</th><th>期待値(中央)</th><th>レンジ</th><th>根拠</th></tr>
+<tr><td>1日</td><td><b>+0.2%</b></td><td>-1.5%〜+1.3%</td><td>スリーブ22%×[据置25%×-6%=-1.32/+25bp50%×+1%=+0.11/+50bp25%×+6%=+0.33]=PF寄与+0.2%。d1は会合翌</td></tr>
+<tr><td>1〜2週</td><td><b>+0.3%</b></td><td>-1.8%〜+1.6%</td><td>スリーブ22%×[据置25%×-7%/+25bp50%×+1.5%/+50bp25%×+7%]=PF+0.3%。会見・声明トーン消化と長期金利水準で2週間かけて</td></tr>
+<tr><td>1年</td><td><b>+2.2%</b></td><td>-3.3%〜+6.6%</td><td>スリーブ22%×銀行株1年期待+10%(利ザヤ拡大の業績寄与フル反映)=+2.2%。ただし年初来+51%済で追加余地は限定、下振れは景気後退で銀行株-15%シナ</td></tr>
+</table>
+<h3>論理</h3>
+<ul>
+<li>前提: 9/17-18会合、OIS+25bp織込79%、政策金利現状1.00%、5830終値3,882円(PBR1.21倍)、スリーブ22%</li>
+<li>前提: 織込79%が的中(+25bp)なら材料出尽くしで銀行株は小幅上下、+50bpはサプライズで急伸、据置はサプライズで急落</li>
+<li>前提: 銀行株の政策金利感応度は経験的に+25bpサプライズ≒+5〜8%、据置サプライズ≒-4〜7%、想定通り+25bpは±2%程度</li>
+<li>前提: 5830は年初来+51%(2,565→3,882)と既に大幅上昇、利上げ期待の相当部分は株価に織込済</li>
+<li>∴ 中央シナリオ(+25bp織込通り)ではPF全体寄与は限定的(±0.5%)、テール両側でスリーブ22%×±5%=PF±1.1%程度、保有継続が合理的</li>
+</ul>
+<h3>最強の反対材料と耐性</h3>
+<p>最強反論:「年初来+51%で+25bp織込79%なら、通過は事実売り(材料出尽くし)で下落が本線、期待値はマイナスに寄る」。反論への回答: 確かに短期は事実売り懸念があるが、(1)+50bpテールが完全には織込まれていない、(2)会見で追加利上げ示唆なら長期金利上昇→利ザヤ改善で買い直しあり、(3)スリーブ22%は集中度としては中程度で全損リスクなし。ただしこの反論は妥当性高く、d1の高値見通しを+2%→+1.3%に抑制済み。結論(保有継続)は据置サプライズを織り込んでも許容範囲内。</p>
+<h3>この結論を捨てる条件</h3>
+<p>(1)会合前に+25bp織込が90%超に上昇し「事実売り」圧力が強まる、(2)5830が会合前に4,117円年初来高値を明確に更新できず失速、(3)米金利急低下や地銀セクターに逆風ニュース発生、(4)日銀プレビュー報道で+50bp観測が急浮上→織込済化。上記いずれか発生時は会合前に半分利益確定してスリーブ11%に減額。</p>
+<h3>事実(Grok収集・出典つき)</h3>
+<p><b>事実収集結果（数字・日付・出典のみ、推測・意見なし）</b></p>
+<ul>
+<li><b>日銀金融政策決定会合 2026年9月開催日</b>: 9月17日（木）・18日（金）。結果公表・総裁定例記者会見: 9月18日（金）。（出典: 日本銀行公式 <a href="https://www.boj.or.jp/mopo/mpmsche_minu/index.htm" target="_blank" rel="noopener">https://www.boj.or.jp/mopo/mpmsche_minu/index.htm</a> 、2026年8月21日時点ページ） <a href="https://www.boj.or.jp/mopo/mpmsche_minu/index.htm" target="_blank" rel="noopener">[1]</a> <a href="https://www.boj.or.jp/about/calendar/index.htm" target="_blank" rel="noopener">[2]</a> <a href="https://www.boj.or.jp/mopo/mpmsche_minu/index.htm" target="_blank" rel="noopener">[1]</a></li>
+</ul>
+<ul>
+<li><b>5830（いよぎんホールディングス）最新株価指標（2026年8月21日時点）</b>: 終値 3,882円（前日比 +52円、+1.36%）、始値 3,814円、高値 3,909円、安値 3,811円、出来高 696,800株、時価総額 1,216,653百万円、PER（連）14.48倍、PBR（連）1.21倍、年初来高値 4,117円（2026/8/18）、年初来安値 2,565円（2026/1/5）。（出典: Yahoo!ファイナンス <a href="https://finance.yahoo.co.jp/quote/5830.T" target="_blank" rel="noopener">https://finance.yahoo.co.jp/quote/5830.T</a> 、2026年8月21日データ） <a href="https://finance.yahoo.co.jp/quote/5830.T" target="_blank" rel="noopener">[3]</a> <a href="https://finance.yahoo.co.jp/quote/5830.T" target="_blank" rel="noopener">[3]</a></li>
+</ul>
+<ul>
+<li><b>日銀政策金利（2026年8月時点）</b>: 1.00%。2026年6月15-16日会合で+0.25%利上げ（0.75%→1.00%）決定、7月31日会合で据え置き。1995年以来の高水準。（出典: 野村證券 <a href="https://www.nomura.co.jp/wealthstyle/article/0768/" target="_blank" rel="noopener">https://www.nomura.co.jp/wealthstyle/article/0768/</a> 2026年6月17日、第一生命経済研究所 2026年6月16日、Trading Economics 2026年8月5日更新） <a href="https://www.nomura.co.jp/wealthstyle/article/0768/" target="_blank" rel="noopener">[4]</a> <a href="https://www.dlri.co.jp/report/macro/623090.html" target="_blank" rel="noopener">[5]</a> <a href="https://jp.tradingeconomics.com/japan/interest-rate" target="_blank" rel="noopener">[6]</a></li>
+</ul>
+<ul>
+<li><b>OIS市場の2026年9月会合 +0.25%利上げ織り込み確率</b>: 2026年8月12日時点で79%（前日66%から上昇）。（出典: 日本経済新聞 <a href="https://www.nikkei.com/article/DGXZQOFL120ET0S6A810C2000000/" target="_blank" rel="noopener">https://www.nikkei.com/article/DGXZQOFL120ET0S6A810C2000000/</a> 2026年8月12日） <a href="https://www.nikkei.com/article/DGXZQOFL120ET0S6A810C2000000/" target="_blank" rel="noopener">[7]</a> <a href="https://www.nikkei.com/article/DGXZQOFL120ET0S6A810C2000000/" target="_blank" rel="noopener">[7]</a></li>
+</ul>
+<ul>
+<li><b>銀行株（利上げ環境）の一般的事実</b>: 政策金利上昇により利ザヤ拡大期待で収益改善が見込まれる（具体的なbp別期待損益・スリーブ22%・5830個別数値の公表データなし）。（出典: 松井証券 <a href="https://www.matsui.co.jp/money-satellite/column/beginner/stock/cl-bank-stocks.html" target="_blank" rel="noopener">https://www.matsui.co.jp/money-satellite/column/beginner/stock/cl-bank-stocks.html</a> 2026年8月10日更新、Monex <a href="https://media.monex.co.jp/articles/-/25062" target="_blank" rel="noopener">https://media.monex.co.jp/articles/-/25062</a> 2024年8月7日など複数） <a href="https://www.matsui.co.jp/money-satellite/column/beginner/stock/cl-bank-stocks.html" target="_blank" rel="noopener">[8]</a> <a href="https://media.monex.co.jp/articles/-/25062" target="_blank" rel="noopener">[9]</a></li>
+</ul>
+<p><b>注</b>: 「実PFの銀行スリーブ22%(5830)」および「据置/+25bp/+50bpの3シナリオ別期待損益」に関する具体的な数値・計算・期待リターンデータは、公開ソース（日銀公式、Yahoo Finance、証券会社レポート、日経など）およびX検索で確認できず。背景の「brain 2026-08-21 22:00:01 / stance=ノーポジ」などは依頼元内部情報とみられるため記載せず。追加公開データが出れば更新可能。</p></div></details>
+<div class=anchor><a href="#R88d186c8">#R88d186c8</a></div>
+</article>
+<article class=rep id="R5b6516ce">
+<div class=hd><span class=call style="background:#8b949e">見送り</span>
+<h2>三菱電機6503の防衛+DC電源セグメント別受注残</h2></div>
+<div class=stocks>三菱電機6503</div>
+<p class=concl>防衛残1.3兆円は下値の実弾だが信用買残3M株超で5,300円は&quot;支持&quot;でなく途中の空気層、押し目は5,050円以下で刻むべき</p>
+<div class=ev><span><i>1日</i><b>-0.5%</b><em>-3〜+2%</em></span><span><i>1〜2週</i><b>-3.0%</b><em>-10〜+4%</em></span><span><i>1年</i><b>+6.0%</b><em>-15〜+25%</em></span></div>
+<p class=lv><b>水準</b> 5,300円指値は浅い。5,050円割れ〜4,950円で分割拾いに変更推奨</p>
+<details><summary>根拠・事実を見る</summary><div class=detail><h3>✅ 結論: 防衛残1.3兆円は下値の実弾だが信用買残3M株超で5,300円は&quot;支持&quot;でなく途中の空気層、押し目は5,050円以下で刻むべき</h3>
+<p><b>行動: 見送り</b> ／ 水準: 5,300円指値は浅い。5,050円割れ〜4,950円で分割拾いに変更推奨 ／ 確信度: 中</p>
+<table>
+<tr><th>期間</th><th>期待値(中央)</th><th>レンジ</th><th>根拠</th></tr>
+<tr><td>1日</td><td><b>-0.5%</b></td><td>-3.0%〜+2.0%</td><td>8/21日中値幅114円(≒2%)、直近ボラは2〜3%レンジ。方向感は信用買残重石で下寄り</td></tr>
+<tr><td>1〜2週</td><td><b>-3.0%</b></td><td>-10.0%〜+4.0%</td><td>6-7月に月間値幅1,000円超(≒18%)、買残3M株の解消売りが継続すれば5,050円割れ試し、防衛材料再燃なら5,700円戻り</td></tr>
+<tr><td>1年</td><td><b>+6.0%</b></td><td>-15.0%〜+25.0%</td><td>防衛残1.3兆円+GCAP/豪フリゲート+DC800V AIデータセンター案件が中期EPS押上げ、ただし信用整理・受注前年比減見通しで下ブレも十分</td></tr>
+</table>
+<h3>論理</h3>
+<ul>
+<li>[</li>
+<li>&quot;</li>
+<li>前</li>
+<li>提</li>
+<li>:</li>
+</ul>
+<p>-</p>
+<ul>
+<li>防</li>
+<li>衛</li>
+<li>・</li>
+<li>宇</li>
+<li>宙</li>
+<li>受</li>
+<li>注</li>
+<li>残</li>
+<li>1</li>
+<li>.</li>
+<li>3</li>
+<li>兆</li>
+<li>円</li>
+<li>(</li>
+<li>上</li>
+<li>期</li>
+<li>+</li>
+<li>2</li>
+<li>1</li>
+<li>0</li>
+<li>%</li>
+<li>)</li>
+<li>は</li>
+<li>業</li>
+<li>績</li>
+<li>下</li>
+<li>値</li>
+<li>を</li>
+<li>実</li>
+<li>弾</li>
+<li>で</li>
+<li>支</li>
+<li>え</li>
+<li>る</li>
+<li>中</li>
+<li>期</li>
+<li>材</li>
+<li>料</li>
+<li>&quot;</li>
+<li>,</li>
+<li>&quot;</li>
+<li>前</li>
+<li>提</li>
+<li>:</li>
+</ul>
+<p>-</p>
+<ul>
+<li>過</li>
+<li>去</li>
+<li>3</li>
+<li>ヶ</li>
+<li>月</li>
+<li>レ</li>
+<li>ン</li>
+<li>ジ</li>
+<li>は</li>
+<li>概</li>
+<li>ね</li>
+<li>5</li>
+<li>,</li>
+<li>5</li>
+<li>0</li>
+<li>0</li>
+<li>〜</li>
+<li>6</li>
+<li>,</li>
+<li>6</li>
+<li>8</li>
+<li>6</li>
+<li>円</li>
+<li>で</li>
+<li>、</li>
+<li>5</li>
+<li>,</li>
+<li>1</li>
+<li>0</li>
+<li>0</li>
+<li>〜</li>
+<li>5</li>
+<li>,</li>
+<li>3</li>
+<li>0</li>
+<li>0</li>
+<li>円</li>
+<li>は</li>
+<li>7</li>
+<li>月</li>
+<li>安</li>
+<li>値</li>
+<li>5</li>
+<li>,</li>
+<li>0</li>
+<li>5</li>
+<li>0</li>
+<li>円</li>
+<li>に</li>
+<li>一</li>
+<li>度</li>
+<li>触</li>
+<li>れ</li>
+<li>た</li>
+<li>程</li>
+<li>度</li>
+<li>、</li>
+<li>頻</li>
+<li>出</li>
+<li>支</li>
+<li>持</li>
+<li>帯</li>
+<li>で</li>
+<li>は</li>
+<li>な</li>
+<li>い</li>
+<li>&quot;</li>
+<li>,</li>
+<li>&quot;</li>
+<li>前</li>
+<li>提</li>
+<li>:</li>
+</ul>
+<p>-</p>
+<ul>
+<li>信</li>
+<li>用</li>
+<li>倍</li>
+<li>率</li>
+<li>1</li>
+<li>7</li>
+<li>〜</li>
+<li>2</li>
+<li>7</li>
+<li>倍</li>
+<li>・</li>
+<li>買</li>
+<li>残</li>
+<li>2</li>
+<li>.</li>
+<li>5</li>
+<li>〜</li>
+<li>3</li>
+<li>.</li>
+<li>3</li>
+<li>M</li>
+<li>株</li>
+<li>の</li>
+<li>需</li>
+<li>給</li>
+<li>悪</li>
+<li>で</li>
+<li>、</li>
+<li>5</li>
+<li>,</li>
+<li>3</li>
+<li>0</li>
+<li>0</li>
+<li>円</li>
+<li>到</li>
+<li>達</li>
+<li>時</li>
+<li>に</li>
+<li>は</li>
+<li>投</li>
+<li>げ</li>
+<li>が</li>
+<li>連</li>
+<li>鎖</li>
+<li>し</li>
+<li>や</li>
+<li>す</li>
+<li>く</li>
+<li>一</li>
+<li>段</li>
+<li>安</li>
+<li>リ</li>
+<li>ス</li>
+<li>ク</li>
+<li>が</li>
+<li>高</li>
+<li>い</li>
+<li>&quot;</li>
+<li>,</li>
+<li>&quot;</li>
+<li>前</li>
+<li>提</li>
+<li>:</li>
+</ul>
+<p>-</p>
+<ul>
+<li>5</li>
+<li>,</li>
+<li>0</li>
+<li>5</li>
+<li>0</li>
+<li>円</li>
+<li>(</li>
+<li>7</li>
+<li>月</li>
+<li>安</li>
+<li>値</li>
+<li>)</li>
+<li>と</li>
+<li>3</li>
+<li>月</li>
+<li>安</li>
+<li>値</li>
+<li>4</li>
+<li>,</li>
+<li>9</li>
+<li>3</li>
+<li>1</li>
+<li>円</li>
+<li>が</li>
+<li>テ</li>
+<li>ク</li>
+<li>ニ</li>
+<li>カ</li>
+<li>ル</li>
+<li>な</li>
+<li>真</li>
+<li>の</li>
+<li>支</li>
+<li>持</li>
+<li>&quot;</li>
+<li>,</li>
+<li>&quot;</li>
+<li>∴</li>
+</ul>
+<p>-</p>
+<ul>
+<li>5</li>
+<li>,</li>
+<li>3</li>
+<li>0</li>
+<li>0</li>
+<li>円</li>
+<li>指</li>
+<li>値</li>
+<li>は</li>
+<li>&quot;</li>
+<li>支</li>
+<li>持</li>
+<li>&quot;</li>
+<li>と</li>
+<li>い</li>
+<li>う</li>
+<li>よ</li>
+<li>り</li>
+<li>下</li>
+<li>落</li>
+<li>ト</li>
+<li>レ</li>
+<li>ン</li>
+<li>ド</li>
+<li>の</li>
+<li>途</li>
+<li>中</li>
+<li>、</li>
+<li>拾</li>
+<li>う</li>
+<li>な</li>
+<li>ら</li>
+<li>5</li>
+<li>,</li>
+<li>0</li>
+<li>5</li>
+<li>0</li>
+<li>円</li>
+<li>割</li>
+<li>れ</li>
+<li>を</li>
+<li>含</li>
+<li>む</li>
+<li>分</li>
+<li>割</li>
+<li>、</li>
+<li>単</li>
+<li>発</li>
+<li>5</li>
+<li>,</li>
+<li>3</li>
+<li>0</li>
+<li>0</li>
+<li>円</li>
+<li>は</li>
+<li>見</li>
+<li>送</li>
+<li>り</li>
+<li>&quot;</li>
+<li>]</li>
+</ul>
+<h3>最強の反対材料と耐性</h3>
+<p>「5,300円は3-4月安値圏で機関の押し目買いが入る」との反論。しかし当時と現在では信用買残が積み上がっており需給環境が悪化、同じ価格でも意味が違う。防衛モメンタムで買われた玉の投げがまだ残るため、5,300円は&quot;通過点&quot;の蓋然性が高く、結論は維持。</p>
+<h3>この結論を捨てる条件</h3>
+<p>①5,300〜5,400円で出来高急増+下ヒゲ日足で反発し、翌週信用買残が2.3M株以下に整理された場合(需給改善)、②防衛関連の追加大型受注(GCAP本契約等)で5,500円台に急戻し。この2つのいずれかが観測されたら&quot;5,300円指値は浅い&quot;の判断を撤回。</p>
+<h3>事実(Grok収集・出典つき)</h3>
+<p><b>三菱電機（6503）防衛+DC電源セグメント別受注残（事実のみ）</b></p>
+<ul>
+<li><b>防衛・宇宙システム事業</b>：25年度末時点受注残高 <b>約1.3兆円</b>（防衛通信衛星の大口受注含む）。26年度受注高は前年度比減少見通しも、残高を着実に消化。海外案件（オーストラリア次期汎用フリゲート搭載システム計3隻分受注済み、次期戦闘機GCAP関連ミッションアビオニクス）で継続受注見込み。 <a href="https://www.mitsubishielectric.co.jp/ja/pr/2026/pdf/0428_co3.pdf" target="_blank" rel="noopener">[1]</a> <a href="https://www.mitsubishielectric.co.jp/ja/pr/2026/pdf/0428_co3.pdf" target="_blank" rel="noopener">[1]</a> <a href="https://www.mitsubishielectric.co.jp/ja/pr/2026/pdf/0428_co3.pdf" target="_blank" rel="noopener">[1]</a></li>
+<li>出典：三菱電機 2026年4月28日決算説明会資料（<a href="https://www.mitsubishielectric.co.jp/ja/pr/2026/pdf/0428_co3.pdf）、2026年5月12日公表。" target="_blank" rel="noopener">https://www.mitsubishielectric.co.jp/ja/pr/2026/pdf/0428_co3.pdf）、2026年5月12日公表。</a></li>
+<li><b>防衛システム事業単体</b>（参考）：上期末受注残 <b>1.1兆円</b>（上期受注高前年比約+210%）。（2025年10月31日時点資料） <a href="https://www.mitsubishielectric.co.jp/ja/pr/2025/pdf/1031-a3.pdf" target="_blank" rel="noopener">[2]</a></li>
+<li><b>DC電源/電源システム・エネルギーシステム</b>：受注残高の具体的な数値開示なし。26年度1Qでエネルギーシステム売上増加（北米データセンター・電力流通関連）、調整後営業利益増加。DC800V対応次世代電源システム（AIデータセンター向け、PWMコンバータ/SST/SiCデバイス）は開発・受注推進中だが残高未公表。 <a href="https://www.mitsubishielectric.co.jp/investors/data/management-report/pdf/financial-result/20260731.pdf" target="_blank" rel="noopener">[3]</a> <a href="https://www.mitsubishielectric.co.jp/ja/pr/2026/pdf/0529_co7.pdf" target="_blank" rel="noopener">[4]</a></li>
+</ul>
+<p><b>5,100〜5,300円の支持根拠（過去3ヶ月日中値幅・信用玉分布）</b></p>
+<ul>
+<li><b>過去3ヶ月（おおよそ2026年5月〜8月）日中値幅の参考</b>：</li>
+<li>2026/08/21：始値5,507円、高値5,611円、安値5,497円（日中値幅114円）。</li>
+<li>2026/08/18：高値6,224円、安値6,012円（日中値幅212円）。</li>
+<li>2026/08/14：高値6,265円、安値6,079円。</li>
+<li>2026/07月：高値6,171円、安値5,050円（月間値幅1,121円）。</li>
+<li>2026/06月：高値6,682円、安値5,225円（月間値幅1,457円）。</li>
+<li>2026/05月：高値6,686円、安値5,623円（月間値幅1,063円）。 <a href="https://finance.matsui.co.jp/stock/6503/daily_bar/index" target="_blank" rel="noopener">[5]</a> <a href="https://kabutan.jp/stock/kabuka?code=6503&amp;ashi=shin" target="_blank" rel="noopener">[6]</a></li>
+<li>5,100〜5,300円付近は2026年3〜4月頃の安値圏（4/3終値5,306円、3月安値4,931円付近）と重なるが、過去3ヶ月（5〜8月）では主に5,500円以上で推移し、5,100〜5,300円は明確な支持帯として頻出せず。</li>
+</ul>
+<ul>
+<li><b>信用玉分布（直近週次、単位：千株）</b>：</li>
+<li>2026/08/14：信用倍率16.05倍、買い残2,571.9千株、売り残160.2千株。</li>
+<li>2026/08/07：信用倍率24.19倍、買い残2,878.8千株、売り残119.0千株。</li>
+<li>2026/07/31：信用倍率19.23倍、買い残3,100.1千株、売り残161.2千株。</li>
+<li>2026/07/24：信用倍率23.22倍、買い残3,056.4千株、売り残131.6千株。</li>
+<li>2026/07/17：信用倍率27.23倍、買い残3,352.1千株、売り残123.1千株。</li>
+<li>2026/07/10：信用倍率18.82倍、買い残3,026.3千株、売り残160.8千株。</li>
+<li>2026/06/19：信用倍率17.48倍、買い残2,942.3千株、売り残168.3千株。</li>
+<li>買い残が2,500〜3,300千株台で高水準、信用倍率17〜27倍台と買い優勢が継続（売り残は100〜300千株台で低位）。5,100〜5,300円付近での信用玉集中を示す具体的な分布データは開示なし。 <a href="https://nikkeiyosoku.com/stock/margin/6503/" target="_blank" rel="noopener">[7]</a> <a href="https://kabutan.jp/stock/kabuka?code=6503&amp;ashi=shin" target="_blank" rel="noopener">[6]</a></li>
+</ul>
+<p>（全情報は2026年8月22日現在の公開資料・株価データに基づく。受注残高の詳細なセグメント内訳（防衛+DC電源合計）は最新IRで完全開示されておらず、1.3兆円が防衛・宇宙システム全体の主な公表値。日中値幅・信用分布はkabutan.jpなどから抽出。）</p></div></details>
+<div class=anchor><a href="#R5b6516ce">#R5b6516ce</a></div>
+</article>
+<article class=rep id="D_semi_mat">
+<div class=hd><span class=call style="background:#3fb950">買い</span>
+<h2>半導体材料の深押し2銘柄</h2></div>
+<div class=stocks>東洋合成工業4970・関東電化工業4047</div>
+<p class=concl>好業績は本物だが高値の織り込み過剰の反動。両社とも押し目買い候補、関東電化を優先。</p>
+<div class=ev><span><i>1日</i><b>-0.3%</b><em>-4〜+4%</em></span><span><i>1〜2週</i><b>+2.0%</b><em>-12〜+15%</em></span><span><i>1年</i><b>+25.0%</b><em>-25〜+90%</em></span></div>
+<p class=lv><b>水準</b> 東洋合成 10,500-11,000円(200MA接近)、関東電化 2,100-2,300円(押し目分割)</p>
+<details><summary>根拠・事実を見る</summary><div class=detail><h3>✅ 結論: 好業績は本物だが高値の織り込み過剰の反動。両社とも押し目買い候補、関東電化を優先。</h3>
+<p><b>行動: 買い</b> ／ 水準: 東洋合成 10,500-11,000円(200MA接近)、関東電化 2,100-2,300円(押し目分割) ／ 確信度: 中</p>
+<table>
+<tr><th>期間</th><th>期待値(中央)</th><th>レンジ</th><th>根拠</th></tr>
+<tr><td>1日</td><td><b>-0.3%</b></td><td>-4.0%〜+3.5%</td><td>決算後2週間の調整継続中で日中ボラ大(関東電化は-7%/-3%の日あり)。方向感なく中央値は僅かにマイナス</td></tr>
+<tr><td>1〜2週</td><td><b>+2.0%</b></td><td>-12.0%〜+15.0%</td><td>高値比-40%超の深押し後は自律反発が入りやすい一方、8月の夏枯れ・信用整理継続リスクあり。半導体セクター全体のセンチメント次第で±2桁のブレ</td></tr>
+<tr><td>1年</td><td><b>+25.0%</b></td><td>-25.0%〜+90.0%</td><td>通期営業利益+58%/+106%の上方修正が保守的(下期原燃料保守見積)なら再上振れ余地。EUV/特殊ガス構造需要CAGR8%継続で高値回復(東洋合成+70%、</td></tr>
+</table>
+<h3>論理</h3>
+<ul>
+<li>前提: 両社の1Q営業利益は+387%/+411%、通期上方修正済で業績モメンタムは明確に上向き(東洋合成 通期営業58億円+58%、関東電化 通期営業113億円+106%)</li>
+<li>前提: にもかかわらず高値比-39%/-47%の押しは、1-6月に東洋合成が高値19,310円まで急騰・関東電化が3.2倍化した後の需給調整(利食い・信用整理)であり、決算後さらに下落=好材料出尽くし+下期の原燃料高騰・在庫剥落懸念(東洋合成が説明資料で明記)を織り込む動き</li>
+<li>前提: EUVレジスト市場CAGR 8%超、特殊ガス市場CAGR 6.5-8%、AIデータセンター需要でNAND稼働率上昇=構造的需要は堅調</li>
+<li>前提: 高ボラ×トレンド局面では急騰追い不可・押し目のみ買う方針、増収増益でも1年2倍達成率は3.6%(Q5でも8%)と低いためエントリー水準が重要</li>
+<li>∴ 業績懸念より需給調整主因の押しであり、200日線・上方修正後PERが市場平均圏(想定PER15-20倍)に収まる水準まで待って分割買いが妥当。関東電化は通期営業+106%に対しPER下がりが早く優先度高い</li>
+</ul>
+<h3>最強の反対材料と耐性</h3>
+<p>「1Q営業+400%は前年同期の異常低水準(東洋合成3.97億・関東電化事故影響)からの反動であり、2Q以降は伸び率急減速。下期は原燃料高騰・固定費増・在庫剥落5.1億円剥がれで前年割れもあり得る=市場は既にそれを織り込み高値時PERが過剰だっただけ」。反論: 通期予想は上期実績+下期慎重見積の合算で既にその減速を織り込んでおり、それでも通期営業+58%/+106%成長。EUV/AI需要は2027年以降も継続見込み。よって業績モメンタム自体は毀損していない=押し目買いは有効。ただし急落継続中はナンピン厳禁、水準到達での分割エントリーに限定。</p>
+<h3>この結論を捨てる条件</h3>
+<p>①2Q決算(2026年11月)で営業利益が四半期ベースで前年同期比+20%未満に減速、または通期予想の下方修正 ②東洋合成が10,000円割れ・関東電化が2,000円割れで出来高急増を伴う下放れ(200日線明確割れ) ③EUVレジスト/特殊ガス需要側(TSMC・SK hynix・Micron)のCapex下方修正 ④原燃料コスト上昇でGP率が四半期比-3pt以上悪化</p>
+<h3>事実(Grok収集・出典つき)</h3>
+<p><b>東洋合成工業 (4970)</b></p>
+<ul>
+<li><b>2027年3月期第1四半期（2026年4-6月）業績（非連結、2026年8月7日発表）</b>: 売上高120.86億円（前年同期比+32.4%）、営業利益19.32億円（+386.4%）、経常利益18.86億円（約6.4倍）、四半期純利益12.90億円（+540.2%）。前年同期は売上91.28億円、営業利益3.97億円など。 <a href="https://www.toyogosei.co.jp/news/20260807_FY2025Q1financial_results.pdf" target="_blank" rel="noopener">[1]</a> <a href="https://finance.yahoo.co.jp/quote/4970.T" target="_blank" rel="noopener">[2]</a> <a href="https://finance.yahoo.co.jp/quote/4970.T/financials" target="_blank" rel="noopener">[3]</a></li>
+<li><b>セグメント寄与（同上）</b>: 感光材（フォトレジスト関連材料）売上73.82億円（+38.4%）、営業利益10.52億円。化学品売上47.04億円（+24.0%）、営業利益8.79億円。先端半導体材料（生成AI向けロジック・メモリ、EUV関連含む先端フォトレジスト材料、高純度溶剤）の販売が大幅増加。 <a href="https://www.toyogosei.co.jp/news/20260807_FY2025Q1financial_presentation.pdf" target="_blank" rel="noopener">[4]</a></li>
+<li><b>業績上方修正（2026年8月7日）</b>: 上期経常利益を25億円→34億円（前年比4.1倍）、通期経常利益を46億円→55億円（+53.1%）に修正。通期売上高500億円（+19%）、営業利益58億円（+58%）見込み（5月予想から売上+5%、営業+16%）。上期に一時的在庫影響5.1億円など寄与、下期は原燃料高騰・固定費増で慎重。 <a href="https://www.toyogosei.co.jp/news/20260807_FY2025Q1financial_presentation.pdf" target="_blank" rel="noopener">[4]</a> <a href="https://finance.yahoo.co.jp/quote/4970.T/forum" target="_blank" rel="noopener">[5]</a></li>
+<li><b>需給・見通し関連</b>: 先端半導体需要堅調（AIデータセンター拡大）、供給体制強化中（新規感光材工場建設準備、淡路工場設備増強完了）。在庫増加15.1億円。原燃料高騰のPL影響を下期に見込む。 <a href="https://www.toyogosei.co.jp/news/20260807_FY2025Q1financial_presentation.pdf" target="_blank" rel="noopener">[4]</a> <a href="https://finance.yahoo.co.jp/quote/4970.T/forum" target="_blank" rel="noopener">[5]</a></li>
+<li><b>株価（2026年）</b>: 年初来高値19,310円（5月14日）、8月21日終値11,390-11,450円付近。高値比約-39%〜-41%。決算後（8月7-8日）下落傾向。 <a href="https://www.nikkei.com/nkd/company/history/yprice/?scode=4970" target="_blank" rel="noopener">[6]</a> <a href="https://quote.nomura.co.jp/nomura/cgi-bin/parser.pl?QCODE=4970&amp;TEMPLATE=nomura_tp_kabu_01&amp;MKTN=T" target="_blank" rel="noopener">[7]</a></li>
+</ul>
+<p><b>関東電化工業 (4047)</b></p>
+<ul>
+<li><b>2027年3月期第1四半期（2026年4-6月）業績（連結、2026年8月10日発表）</b>: 売上高198億円（前年同期比+30.6%）、営業利益40億円（+410.7%）、純利益32億円（+509.3%）。精密化学品事業の大幅増収が主因。 <a href="https://finance.yahoo.co.jp/quote/4047.T/financials" target="_blank" rel="noopener">[8]</a> <a href="https://finance.yahoo.co.jp/quote/4047.T" target="_blank" rel="noopener">[9]</a></li>
+<li><b>通期業績予想修正（同日）</b>: 売上高950億円（+45.3%）、営業利益113億円（+106.2%）、純利益76億円（+100.8%）、年間配当36円（+16円）。上期・通期とも上方修正。 <a href="https://finance.yahoo.co.jp/quote/4047.T/financials" target="_blank" rel="noopener">[8]</a></li>
+<li><b>需給・見通し関連</b>: 精密化学品（電池材料等）増収。原燃料価格上昇懸念。半導体特殊ガス（エッチングガス等）需要はNANDメーカー稼働率上昇などで改善傾向（前年事故影響消滅も寄与）。中国デュアルユース品目輸出管理強化の影響あるが調達多様化。基礎化学品は中国安値品流入・中東情勢で苦戦、下期価格修正実施。 <a href="https://finance.yahoo.co.jp/quote/4047.T/financials" target="_blank" rel="noopener">[8]</a> <a href="https://ir-agents.com/media/2026/06/12/4047-20260527/" target="_blank" rel="noopener">[10]</a></li>
+<li><b>株価（2026年）</b>: 年初来高値4,405円（6月4日）、8月21日終値2,326円。高値比約-47%。決算後（8月10日以降）調整継続（8/18-21で2,715円→2,326円、-7.07%や-3.08%の日あり）。上期（1-6月）に株価3.2倍。 <a href="https://www.nikkei.com/nkd/company/history/yprice/?scode=4047" target="_blank" rel="noopener">[11]</a> <a href="https://finance.yahoo.co.jp/quote/4047.T" target="_blank" rel="noopener">[9]</a> <a href="https://www.nikkei.com/prime/veritas/article/DGXZQOUB30BPJ0Q6A630C2000000" target="_blank" rel="noopener">[12]</a></li>
+</ul>
+<p><b>EUVフォトレジスト材料 / 特殊ガスの需給（市場全体、2026年時点）</b></p>
+<ul>
+<li>EUVフォトレジスト市場: 2025年約6.5億米ドル、2026-2035年に成長継続予測。半導体フォトレジスト市場全体は2026年からCAGR 8.2%成長見込み。次世代EUV（高NA等）で金属酸化物レジストや有機低分子レジストへの移行が進み、2025-2027年に量産貢献開始の見方（東京応化、住友化学、JSRなど国内企業）。供給体制強化（新工場2025-2027年稼働）。 <a href="https://japan.zdnet.com/release/31141297/" target="_blank" rel="noopener">[13]</a> <a href="https://xtech.nikkei.com/atcl/nxt/column/18/00001/09585/" target="_blank" rel="noopener">[14]</a> <a href="https://finance.logmi.jp/articles/383459" target="_blank" rel="noopener">[15]</a></li>
+<li>特殊ガス（半導体製造向け）市場: 2026年に70.3億米ドル（CAGR 6.5%で2034年116.3億米ドル）、または121億ドルから219.6億ドルへ（CAGR約8%）。半導体部門シェア53.86%（2026年）。AI・先端半導体需要拡大で需給逼迫傾向も、原材料価格変動・中国影響あり。 <a href="https://www.gii.co.jp/report/smrc1933110-specialty-gases-semiconductor-manufacturing-market.html" target="_blank" rel="noopener">[16]</a> <a href="https://www.fortunebusinessinsights.com/jp/%E7%89%B9%E6%AE%8A%E3%82%AC%E3%82%B9%E5%B8%82%E5%A0%B4-108437" target="_blank" rel="noopener">[17]</a> <a href="https://straitsresearch.com/jp/report/semiconductor-gases-market" target="_blank" rel="noopener">[18]</a></li>
+</ul>
+<p><b>押しの要因・底の目安に関する具体的な数字・出典記載情報</b></p>
+<ul>
+<li>両社とも好決算（1Q営業利益+387%/+411%）・上方修正後も高値から4割超下落。決算直後（8月上旬-中旬）に調整進行中。在庫積み増し・下期原燃料高騰影響・固定費増・一時的要因剥落が業績懸念材料として決算資料・説明で明記。半導体需給は堅調・改善傾向も、市場全体のボラティリティや夏枯れ・需給調整の指摘あり。底の具体的な価格・PER・出来高目安などの数値情報は検索結果に記載なし（2026年8月21-22日時点）。 <a href="https://www.toyogosei.co.jp/news/20260807_FY2025Q1financial_presentation.pdf" target="_blank" rel="noopener">[4]</a> <a href="https://finance.yahoo.co.jp/quote/4047.T/financials" target="_blank" rel="noopener">[8]</a> <a href="https://finance.yahoo.co.jp/quote/4970.T/forum" target="_blank" rel="noopener">[5]</a> <a href="https://finance.yahoo.co.jp/quote/4047.T" target="_blank" rel="noopener">[9]</a></li>
+</ul>
+<p>（全情報は上記出典の公開資料・報道に基づく数字のみ。推測・意見・未記載の将来予測は排除。最新株価・出来高は日々変動するため上記日付時点の記載値を使用。）</p></div></details>
+<div class=anchor><a href="#D_semi_mat">#D_semi_mat</a></div>
+</article>
+<article class=rep id="D_semi_dev">
+<div class=hd><span class=call style="background:#3fb950">買い</span>
+<h2>半導体装置・部品4銘柄</h2></div>
+<div class=stocks>ハーモニック・ドライブ6324・FUJI6134・アバールデータ6918・イノテック9880</div>
+<p class=concl>FUJI・イノテックを押し目買い最有力、ハーモニックは中国リスクで見送り、アバールは小型出遅れとして条件付き。</p>
+<div class=ev><span><i>1日</i><b>+0.2%</b><em>-3〜+4%</em></span><span><i>1〜2週</i><b>+2.0%</b><em>-8〜+12%</em></span><span><i>1年</i><b>+8.0%</b><em>-25〜+40%</em></span></div>
+<p class=lv><b>水準</b> FUJI・イノテックを5-10%押し目(20日線±)で分割、ハーモニックは中国売上底打ち確認まで見送り、アバールは流動性確認後小口</p>
+<details><summary>根拠・事実を見る</summary><div class=detail><h3>✅ 結論: FUJI・イノテックを押し目買い最有力、ハーモニックは中国リスクで見送り、アバールは小型出遅れとして条件付き。</h3>
+<p><b>行動: 買い</b> ／ 水準: FUJI・イノテックを5-10%押し目(20日線±)で分割、ハーモニックは中国売上底打ち確認まで見送り、アバールは流動性確認後小口 ／ 確信度: 中</p>
+<table>
+<tr><th>期間</th><th>期待値(中央)</th><th>レンジ</th><th>根拠</th></tr>
+<tr><td>1日</td><td><b>+0.2%</b></td><td>-3.0%〜+3.5%</td><td>高ボラレジームで日次±3%は通常変動。決算後の織り込み進行中で方向感なし。</td></tr>
+<tr><td>1〜2週</td><td><b>+2.0%</b></td><td>-8.0%〜+12.0%</td><td>FUJI/イノテックは受注加速+上方修正でモメンタム継続だが+193〜587%既騰で反落リスク併存。ハーモニックは中国懸念で下方バイアス-5%程度。</td></tr>
+<tr><td>1年</td><td><b>+8.0%</b></td><td>-25.0%〜+40.0%</td><td>実測ベースで増収増益上位Q5の1年2倍達成率8%、通常上昇20-30%が中央値レンジ。FUJI/イノテックのAI・NAND需要継続なら+30%超も、需要一巡や中</td></tr>
+</table>
+<h3>論理</h3>
+<ul>
+<li>前提: FUJIは受注+72%・営業+90%で過去最高更新、AIサーバー/半導体需要が本業ロボットソリューション受注+82%を牽引、中国比率も-8ptで低下。</li>
+<li>前提: イノテックは自社テスター売上5.9倍・海外テスト受注+127%と加速、NAND投資回復で通期上方修正済み。</li>
+<li>前提: ハーモニックは受注+55%だが中国売上-18%・利益-36%と顕在化、株価も既に+1408%後-36%調整で減速局面。</li>
+<li>前提: アバールは+75%増収と伸び率大だが小型・時価総額小さく流動性リスク、Q5(売買代金上位)条件を満たしにくい。</li>
+<li>∴ トレンドと最終需要の質・中国耐性・流動性を総合すると、FUJI/イノテック優先、ハーモニック見送り、アバール条件付きが妥当。</li>
+</ul>
+<h3>最強の反対材料と耐性</h3>
+<p>最強反論:「+587%・+341%既騰銘柄は好決算織り込み済みで、AI/NANDピークアウト時に真っ先に売られる。むしろ調整済みハーモニック(-36%)の方がリスクリワード良い」。反論への回答: イノテックの海外テスト受注が+55→95→127%と加速中で減速兆候なし、FUJIも通期上方修正直後で織り込み未了。ハーモニックは中国産業用ロボの構造問題で調整長期化リスクがあり、単なる値幅調整ではない。ただしこの反論は「押し目でのみ買う」制約と整合するため、急騰追いは禁止し20日線接近まで待つ条件は維持。</p>
+<h3>この結論を捨てる条件</h3>
+<p>(1)FUJI/イノテックの次四半期受注が前年同期比プラス幅で半減以下に鈍化 (2)米中半導体規制強化でマウンター/テスターの中国向け出荷停止報道 (3)AIサーバー/NAND設備投資の主要顧客(TSMC/Samsung/Micron/YMTC)がCapEx削減発表 (4)ハーモニック中国売上が2四半期連続で前年比プラス転換した場合はハーモニック見送り判断を撤回</p>
+<h3>事実(Grok収集・出典つき)</h3>
+<p><b>ハーモニック・ドライブ・システムズ (6324)</b></p>
+<ul>
+<li>2027年3月期第1四半期（2026年4-6月）：売上高167億円（前年同期比+23.6%）、営業利益18億円（前年同期1億円）、連結受注高241億円（前年同期比+55.7%）。（出典: <a href="https://finance.yahoo.co.jp/quote/6324.T" target="_blank" rel="noopener">https://finance.yahoo.co.jp/quote/6324.T</a> 、2026年8月7日発表） <a href="https://finance.yahoo.co.jp/quote/6324.T/financials" target="_blank" rel="noopener">[1]</a></li>
+<li>最終需要：半導体製造装置向け、手術支援ロボット向け、産業用ロボット向け。（出典: 同上および <a href="https://finance.biggo.jp/news/jpx_tdnet_140120260804507706" target="_blank" rel="noopener">https://finance.biggo.jp/news/jpx_tdnet_140120260804507706</a> 、2026年8月7日） <a href="https://finance.biggo.jp/news/jpx_tdnet_140120260804507706" target="_blank" rel="noopener">[2]</a></li>
+<li>受注トレンド：北米手術支援ロボット向けまとまった受注、生成AI関連先端半導体設備投資拡大で受注好調。日本・北米・欧州増収増益、中国は産業用ロボット向け受注減により売上-18.3%、セグメント利益-35.8%。（出典: 同上）</li>
+<li>中国リスク：中国売上減（産業用ロボット向け受注減）、2026年3月期に中国地場ロボットメーカー向け売上28%減の影響。（出典: <a href="https://note.com/geekoyahoo/n/nac630fa4b3e0" target="_blank" rel="noopener">https://note.com/geekoyahoo/n/nac630fa4b3e0</a> 、2026年6月21日） <a href="https://note.com/geekoyahoo/n/nac630fa4b3e0" target="_blank" rel="noopener">[3]</a></li>
+</ul>
+<p><b>FUJI (6134)</b></p>
+<ul>
+<li>2026年3月期第3四半期：売上1,272.91億円（+36%）、営業利益188.47億円（+90.59%）、受注1,432.83億円（+72%）、ロボットソリューション受注1,353.17億円（+82.1%）、売上1,185.62億円（+40.6%）。（出典: <a href="https://finance.logmi.jp/articles/383665" target="_blank" rel="noopener">https://finance.logmi.jp/articles/383665</a> 、2026年2月18日頃発表） <a href="https://finance.logmi.jp/articles/383665" target="_blank" rel="noopener">[4]</a></li>
+<li>最終需要・受注トレンド：AIサーバー関連設備需要継続（業種別サーバー+17pt）、半導体関連需要急回復（+3pt）、メモリ市場回復。中国比率-8pt、アジア+7pt。通期業績上方修正（受注+240億円、売上+180億円、営業+86億円、いずれも過去最高見通し）。（出典: 同上）</li>
+<li>中国リスク：中国市場の法規制・米国対中半導体輸出規制がマウンターに波及する可能性（言及のみ）。（出典: <a href="https://note.com/stock1/n/n9a84fc005a61" target="_blank" rel="noopener">https://note.com/stock1/n/n9a84fc005a61</a> 、日付不明だが2026年内容） <a href="https://note.com/stock1/n/n9a84fc005a61" target="_blank" rel="noopener">[5]</a></li>
+</ul>
+<p><b>アバールデータ (6918)</b></p>
+<ul>
+<li>2027年3月期第1四半期（2026年8月13日発表）：売上高32億円（前年同期比+75.3%）、営業利益4億円（+338.6%）、四半期純利益3億円（+250.2%）。（出典: <a href="https://finance.yahoo.co.jp/quote/6918.T" target="_blank" rel="noopener">https://finance.yahoo.co.jp/quote/6918.T</a> 、2026年8月13日） <a href="https://finance.yahoo.co.jp/quote/6918.T" target="_blank" rel="noopener">[6]</a></li>
+<li>最終需要：半導体製造装置関連需要回復、画像処理モジュール需要伸び。（出典: 同上および <a href="https://x.com/quickdisclosure/status/2087789394036158558" target="_blank" rel="noopener">https://x.com/quickdisclosure/status/2087789394036158558</a> ）</li>
+<li>受注トレンド：半導体製造装置関連および画像処理モジュールの需要伸びにより大幅増収増益、通期大幅増収増益見込み。（出典: 同上）</li>
+<li>中国リスク：言及なし。</li>
+</ul>
+<p><b>イノテック (9880)</b></p>
+<ul>
+<li>2027年3月期第1四半期：売上高139.96億円、営業利益16.08億円（前年同期2.34億円から約6.9倍）。自社テスター売上32.5億円（前年同期5.5億円から約5.9倍）。通期営業利益予想を40億円へ上方修正。（出典: <a href="https://finance.logmi.jp/articles/385814" target="_blank" rel="noopener">https://finance.logmi.jp/articles/385814</a> 、2026年8月発表） <a href="https://finance.logmi.jp/articles/385814" target="_blank" rel="noopener">[7]</a></li>
+<li>最終需要：テストソリューション（NAND型フラッシュメモリー向けテスターなど、構成比39.5%）、半導体設計関連。NAND投資回復、海外顧客向け販売増。（出典: 同上）</li>
+<li>受注トレンド：自社テスター計画69億円（前期比+62%）、海外向けテスト事業売上急拡大（過去四半期で+55%→+95%→+127%）。（出典: <a href="https://note.com/poaro_invest/n/naff184f69761" target="_blank" rel="noopener">https://note.com/poaro_invest/n/naff184f69761</a> および上記）</li>
+<li>中国リスク：中国芯卓科技（持分法適用関連会社、プローブカード製造）、YMTC言及例ありだが具体的なリスク数字なし。海外比率拡大で国内依存脱却進行中。（出典: 上記および会社情報）</li>
+</ul>
+<p>全データは2026年8月時点の公開決算・IR資料に基づく。数字は売上・受注・伸び率を優先抽出。中国リスクはハーモニックで顕在化、FUJIで規制言及、他2社は限定的。</p></div></details>
+<div class=anchor><a href="#D_semi_dev">#D_semi_dev</a></div>
+</article>
+<div class=note>各レポートは Grok(事実収集) → Claude(結論形成) の自動生成。
+期待値は中央値と現実的レンジ。<b>個人の分析メモであり、投資判断は自己責任で。</b></div>
+</body></html>
