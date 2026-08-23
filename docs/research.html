@@ -39,9 +39,521 @@ summary{cursor:pointer;color:var(--dim);font-size:12px;padding:4px 0}
 .note{color:var(--dim);font-size:11px;border-top:1px solid var(--line);
  margin-top:18px;padding-top:10px}
 </style></head><body>
-<div id="sitenav" style="font-size:12px;margin:0 0 12px 0;display:flex;gap:6px;flex-wrap:wrap"><a href="/watchlist-viewer/dash.html" style="background:#3fb950;color:#000;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700">⚔️ダッシュ</a><a href="/watchlist-viewer/mind.html" style="background:#a371f7;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700">🧠思考</a><a href="/watchlist-viewer/brain.html" style="background:#d4a017;color:#000;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700">🧠判断</a><a href="/watchlist-viewer/live.html" style="background:#f85149;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700">⚡ライブ</a><a href="/watchlist-viewer/portfolio.html" style="background:#d4a017;color:#000;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700">💼今日のPF</a><a href="/watchlist-viewer/" style="background:#2f6bd8;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none">📋ファンダ</a><a href="/watchlist-viewer/volume/" style="background:#8f6bbf;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none">📈アキュミ検知</a><a href="/watchlist-viewer/research.html" style="background:#c2452f;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700">🔬研究</a><a href="/watchlist-viewer/activist.html" style="background:#d29922;color:#000;padding:3px 10px;border-radius:10px;text-decoration:none">🏴アクティビスト</a><a href="/watchlist-viewer/pcr-vi.html" style="background:#a371f7;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none">📉マクロ</a><a href="/watchlist-viewer/options.html" style="background:#2ea0a0;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none">🎯オプション</a><a href="/watchlist-viewer/token-share.html" style="background:#e0603a;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none">🌐トークンシェア</a><a href="/watchlist-viewer/margin.html" style="background:#7c5cbf;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none">📊信用玉</a><a href="/watchlist-viewer/cycle.html" style="background:#1f7a8c;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none">🔄半導体サイクル</a><a href="/watchlist-viewer/volume/plan.html" style="background:#0f9d58;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none">💹決算計画</a><a href="/watchlist-viewer/volume/shodo.html" style="background:#c2452f;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none">⚡初動</a><a href="/watchlist-viewer/volume/record.html" style="background:#5b6472;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none">📊検証実績</a><a href="/watchlist-viewer/volume/gallery/" style="background:#b4870a;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none">🖼ギャラリー</a></div>
+<div id="sitenav" style="font-size:12px;margin:0 0 12px 0;display:flex;gap:6px;flex-wrap:wrap"><a href="/watchlist-viewer/dash.html" style="background:#3fb950;color:#000;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700">⚔️ダッシュ</a><a href="/watchlist-viewer/mind.html" style="background:#a371f7;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700">🧠思考</a><a href="/watchlist-viewer/brain.html" style="background:#d4a017;color:#000;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700">🧠判断</a><a href="/watchlist-viewer/live.html" style="background:#f85149;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700">📡X監視</a><a href="/watchlist-viewer/portfolio.html" style="background:#d4a017;color:#000;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700">💼今日のPF</a><a href="/watchlist-viewer/" style="background:#2f6bd8;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none">📋ファンダ</a><a href="/watchlist-viewer/volume/" style="background:#8f6bbf;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none">📈アキュミ検知</a><a href="/watchlist-viewer/research.html" style="background:#c2452f;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700">🔬研究</a><a href="/watchlist-viewer/activist.html" style="background:#d29922;color:#000;padding:3px 10px;border-radius:10px;text-decoration:none">🏴アクティビスト</a><a href="/watchlist-viewer/pcr-vi.html" style="background:#a371f7;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none">📉マクロ</a><a href="/watchlist-viewer/options.html" style="background:#2ea0a0;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none">🎯オプション</a><a href="/watchlist-viewer/token-share.html" style="background:#e0603a;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none">🌐トークンシェア</a><a href="/watchlist-viewer/margin.html" style="background:#7c5cbf;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none">📊信用玉</a><a href="/watchlist-viewer/cycle.html" style="background:#1f7a8c;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none">🔄半導体サイクル</a><a href="/watchlist-viewer/volume/plan.html" style="background:#0f9d58;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none">💹決算計画</a><a href="/watchlist-viewer/volume/shodo.html" style="background:#c2452f;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none">⚡初動</a><a href="/watchlist-viewer/volume/record.html" style="background:#5b6472;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none">📊検証実績</a><a href="/watchlist-viewer/volume/gallery/" style="background:#b4870a;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none">🖼ギャラリー</a></div>
 <h1>🔬 研究レポート</h1>
-<div class=sub>14件 / 更新 2026-08-22 20:18 JST — 結論・期待値・根拠。判断エンジンの深堀り結果</div>
+<div class=sub>22件 / 更新 2026-08-24 00:49 JST — 結論・期待値・根拠。判断エンジンの深堀り結果</div>
+<article class=rep id="Q_6804_hosiden">
+<div class=hd><span class=call style="background:#8b949e">見送り</span>
+<h2>ホシデン6804の増益の中身と持続性</h2></div>
+<div class=stocks>ホシデン6804</div>
+<p class=concl>1Q増益は前年円高の反動が主因、通期会社予想は減益。Switch2特需の持続性に疑義があり見送り。</p>
+<div class=ev><span><i>1日</i><b>+0.0%</b><em>-3〜+3%</em></span><span><i>1〜2週</i><b>-1.0%</b><em>-6〜+5%</em></span><span><i>1年</i><b>+3.0%</b><em>-20〜+25%</em></span></div>
+<p class=lv><b>水準</b> 2749円では手を出さない。2400円割れ(PER10割れ)かつ2Qで数量寄与が確認できた段階で1単元検討</p>
+<details><summary>根拠・事実を見る</summary><div class=detail><h3>✅ 結論: 1Q増益は前年円高の反動が主因、通期会社予想は減益。Switch2特需の持続性に疑義があり見送り。</h3>
+<p><b>行動: 見送り</b> ／ 水準: 2749円では手を出さない。2400円割れ(PER10割れ)かつ2Qで数量寄与が確認できた段階で1単元検討 ／ 確信度: 中</p>
+<table>
+<tr><th>期間</th><th>期待値(中央)</th><th>レンジ</th><th>根拠</th></tr>
+<tr><td>1日</td><td><b>+0.0%</b></td><td>-3.0%〜+3.0%</td><td>特段の材料日ではなく、PER11倍・出来高並みで日次はβ相当のノイズ。</td></tr>
+<tr><td>1〜2週</td><td><b>-1.0%</b></td><td>-6.0%〜+5.0%</td><td>1Q進捗率60%は既に株価織込み、通期減益ガイダンスと現預金減少が上値抑制。Switch2関連ニュース次第で上振れ余地。</td></tr>
+<tr><td>1年</td><td><b>+3.0%</b></td><td>-20.0%〜+25.0%</td><td>PER11・CNPER2.5と割安だが、任天堂依存57%・Switch2ハードが早くも前年割れで一過性懸念、通期純利益-22.9%予想。新中計・車載多角化が奏功</td></tr>
+</table>
+<h3>論理</h3>
+<ul>
+<li>前提: 1Q営業利益+84.9%(+20.3億円)だが売上は-15.7%減、会社は要因を『前期円高影響剥落』と説明し数量・ミックス寄与の開示なし。</li>
+<li>前提: 経常利益には為替差益6.42億円が含まれ、営業外での円安メリットが利益を押し上げている(実力ベースの営業増益幅はこれより小さい)。</li>
+<li>前提: 2027/3期通期会社予想は売上-2.7%・営業-6.4%・純利益-22.9%と減益ガイダンス、修正なし。任天堂1QでSwitch2ハード-34.4%とピークアウト示唆。</li>
+<li>前提: 任天堂向け比率57.4%と集中度高く、CNPER2.5・NC比率77%は在庫を現金換算した数値で、実際の現預金は424億円(前期末比-236億円で在庫積み増しに流出)。</li>
+<li>∴ 1Qの増益は円高反動+為替差益による見かけ上の色彩が強く、会社自身が通期減益予想を据置く以上、+85%は実力ではなく循環要因。RSI42の出遅れは市場が一過性性を織り込んでいる合理的反応。</li>
+</ul>
+<h3>最強の反対材料と耐性</h3>
+<p>反対材料: 1Q経常進捗60%が5年平均53%を上回り会社予想は保守的、上方修正余地あり。またCNPER2.5・NC比率77%は流動資産ベースでも現預金424億(時価総額の相当部分)を持ち下値は堅い。反論: それでも会社は8/7時点で修正せず、Switch2ハード-34.4%を見て慎重姿勢、現預金は前期末から236億減で在庫化しており額面ほど現金余力はない。よって『下値堅いが上値も重い』見送りが妥当。</p>
+<h3>この結論を捨てる条件</h3>
+<p>①2Q決算で通期営業利益を200億円以上に上方修正 ②任天堂Switch2ハードが前年比プラス転換 ③1Q要因説明で『数量増寄与○○億円』と明示的に開示、のいずれかが出れば見送り撤回し買いに切替。逆に2Q時点で現預金がさらに減少・在庫回転悪化なら売り検討。</p>
+<h3>事実(Grok収集・出典つき)</h3>
+<p><b>① 2027年3月期通期会社予想（売上・営業利益・純利益・EPS）と直近決算での修正有無、1Q/2Q進捗率</b></p>
+<ul>
+<li>2027年3月期通期会社予想：売上高4,360億円（前期比2.7%減）、営業利益180億円（前期比6.4%減）、親会社株主に帰属する当期純利益125億円（前期比22.9%減）、EPS 253円。為替前提155円/USD。上期予想売上2,380億円・営業利益96億円。2026年5月8日発表から変更なし（修正なし）。（出典: ホシデン公式2027年3月期第1四半期決算短信 <a href="https://www.hosiden.com/dcms_media/other/gyouseki_260807.pdf" target="_blank" rel="noopener">https://www.hosiden.com/dcms_media/other/gyouseki_260807.pdf</a> 、2026年8月7日公表；Yahoo!ファイナンス決算情報 <a href="https://finance.yahoo.co.jp/quote/6804.O/financials" target="_blank" rel="noopener">https://finance.yahoo.co.jp/quote/6804.O/financials</a> 、2026年8月7日更新） <a href="https://www.hosiden.com/dcms_media/other/gyouseki_260807.pdf" target="_blank" rel="noopener">[1]</a> <a href="https://finance.yahoo.co.jp/quote/6804.O/financials" target="_blank" rel="noopener">[2]</a></li>
+</ul>
+<ul>
+<li>2027年3月期1Q実績（2026年4-6月）：売上高981.3億円（前年同期比15.7%減）、営業利益44.22億円（同84.9%増）、経常利益54.75億円（同2.8倍）、親会社株主帰属純利益36.36億円（同176.8%増）、EPS 73円。上期計画に対する進捗率：経常利益60.2%（5年平均53.0%を上回る）。（出典: 同上決算短信・補足資料、2026年8月7日）</li>
+</ul>
+<p><b>② 営業増益+85%（1Q営業利益+84.9%/+20.3億円）の要因分解</b></p>
+<ul>
+<li>売上高は前年同期比182億円（15.7%）減少（アミューズメント関連・移動体通信関連減少、輸送機器関連増加）。営業利益は前年同期の急激な円高による利益押し下げ影響がなくなったため増加。前年同期円高影響が大きく、本期は為替差益642百万円計上（経常利益押し上げ）。セグメント別：機構部品等で利益率改善。数量・製品ミックス・価格改定の詳細内訳は開示なし。在庫評価益等の一過性項目の明記なし。（出典: ホシデン2027年3月期第1四半期決算短信・補足資料 <a href="https://www.hosiden.com/dcms_media/other/gyouseki_260807.pdf" target="_blank" rel="noopener">https://www.hosiden.com/dcms_media/other/gyouseki_260807.pdf</a> および <a href="https://www.hosiden.com/dcms_media/other/gyousekihosoku_260807.pdf" target="_blank" rel="noopener">https://www.hosiden.com/dcms_media/other/gyousekihosoku_260807.pdf</a> 、2026年8月7日） <a href="https://www.hosiden.com/dcms_media/other/gyouseki_260807.pdf" target="_blank" rel="noopener">[1]</a> <a href="https://www.hosiden.com/dcms_media/other/gyousekihosoku_260807.pdf" target="_blank" rel="noopener">[3]</a></li>
+</ul>
+<p><b>③ 任天堂向け売上比率とSwitch2のライフサイクル上の位置</b></p>
+<ul>
+<li>任天堂（アミューズメント関連）向け売上比率：2025年3月期時点で57.4%（直近資料）。連結売上高の過半を任天堂向け取引が占める。2026年3月期はアミューズメント向け売上大幅伸長により売上81.1%増・営業利益41.7%増を達成。（出典: note.com/cosmos_invest記事 <a href="https://note.com/cosmos_invest/n/nfdbef7c1a580" target="_blank" rel="noopener">https://note.com/cosmos_invest/n/nfdbef7c1a580</a> 、2026年頃；日経「Switch2銘柄のホシデン」 <a href="https://www.nikkei.com/prime/veritas/article/DGXZQOUF05AJL0V00C26A8000000" target="_blank" rel="noopener">https://www.nikkei.com/prime/veritas/article/DGXZQOUF05AJL0V00C26A8000000</a> 、2026年8月7日；investalk.jp <a href="https://investalk.jp/6804/hosiden-2026-03-earnings/" target="_blank" rel="noopener">https://investalk.jp/6804/hosiden-2026-03-earnings/</a> 、2026年8月頃） <a href="https://note.com/cosmos_invest/n/nfdbef7c1a580" target="_blank" rel="noopener">[4]</a></li>
+</ul>
+<ul>
+<li>Switch2位置：2026年6月発売後、2027年3月期1Q時点で任天堂決算ではSwitch2ハード販売前年比34.4%減（382万台）、ソフトは増加傾向。ライフサイクルとして立ち上がり期から成熟期への移行過程と見られるが、詳細位置の会社公式言及なし。（出典: 任天堂2027年3月期第1四半期決算説明資料 <a href="https://www.nintendo.co.jp/ir/pdf/2026/260806_2.pdf" target="_blank" rel="noopener">https://www.nintendo.co.jp/ir/pdf/2026/260806_2.pdf</a> 、2026年8月6日；gamebiz.jp <a href="https://gamebiz.jp/news/428377" target="_blank" rel="noopener">https://gamebiz.jp/news/428377</a> 、2026年8月頃） <a href="https://www.nintendo.co.jp/ir/pdf/2026/260806_2.pdf" target="_blank" rel="noopener">[5]</a></li>
+</ul>
+<p><b>④ ネットキャッシュ（現預金-有利子負債）の実額。ウォッチリストのNC比率77%は流動資産ベースなので、現預金ベースだといくらか</b></p>
+<ul>
+<li>2027年3月期1Q末現金及び現金同等物：424.04億円（前連結会計年度末比236.46億円減）。総資産2,314.56億円、自己資本比率66.5%。有利子負債の明細額は決算短信に明記なし（総負債774.32億円）。流動資産ベースのウォッチリストNC比率77%に関する会社公式数値および現預金ベース換算値は開示なし。在庫増加等により現金減少。（出典: ホシデン2027年3月期第1四半期決算短信 <a href="https://www.hosiden.com/dcms_media/other/gyouseki_260807.pdf" target="_blank" rel="noopener">https://www.hosiden.com/dcms_media/other/gyouseki_260807.pdf</a> 、2026年8月7日） <a href="https://www.hosiden.com/dcms_media/other/gyouseki_260807.pdf" target="_blank" rel="noopener">[1]</a></li>
+</ul>
+<p><b>⑤ RSI42と出遅れている理由（市場が何を懸念しているか）</b></p>
+<ul>
+<li>RSI42および出遅れ理由に関する会社公式発表・IR資料は存在せず。市場記事では「Switch2特需で最高益もPER同業の半分以下で市場は冷ややか」「一過性特需懸念」「新中計次第」「車載・通信への多角化図る」との記述あり。詳細な市場懸念の定量データなし。（出典: topics.smt.docomo.ne.jp記事 <a href="https://topics.smt.docomo.ne.jp/article/finasee/business/finasee-18906" target="_blank" rel="noopener">https://topics.smt.docomo.ne.jp/article/finasee/business/finasee-18906</a> 、2026年頃；日経Veritas記事、2026年8月7日） <a href="https://topics.smt.docomo.ne.jp/article/finasee/business/finasee-18906" target="_blank" rel="noopener">[6]</a></li>
+</ul>
+<p><b>補足事実（背景関連）</b></p>
+<ul>
+<li>2026年3月期実績（前期）：売上高4,482.5億円（同81.1%増）、営業利益192.36億円（同41.7%増）、親会社株主帰属純利益162.06億円（同61.5%増）。主にアミューズメント（任天堂）向け伸長。（出典: investalk.jp・gamebiz.jp・Biggoニュース、2026年5月8日発表分） <a href="https://investalk.jp/6804/hosiden-2026-03-earnings/" target="_blank" rel="noopener">[7]</a></li>
+</ul>
+<p>すべての数値は公式決算短信・補足資料および信頼できる報道からの直接引用。在庫評価益等の一過性急増益の明確な言及は1Q資料にない。追加詳細が必要な場合は最新IR資料参照。</p></div></details>
+<div class=anchor><a href="#Q_6804_hosiden">#Q_6804_hosiden</a></div>
+</article>
+<article class=rep id="Q_4516_nipponshinyaku">
+<div class=hd><span class=call style="background:#3fb950">買い</span>
+<h2>日本新薬4516と持田製薬4534の比較</h2></div>
+<div class=stocks>日本新薬4516・持田製薬4534・両社の2027</div>
+<p class=concl>ディフェンシブ枠として財務・薬価耐性で優る持田製薬を選好、日本新薬は27年ウプトラビ特許切れで見送り。</p>
+<div class=ev><span><i>1日</i><b>+0.0%</b><em>-2〜+2%</em></span><span><i>1〜2週</i><b>+1.5%</b><em>-4〜+6%</em></span><span><i>1年</i><b>+8.0%</b><em>-15〜+25%</em></span></div>
+<p class=lv><b>水準</b> 持田製薬(4534)3260円前後で1単元、日本新薬(4516)は特許切れ通過(2027年後半)まで見送り</p>
+<details><summary>根拠・事実を見る</summary><div class=detail><h3>✅ 結論: ディフェンシブ枠として財務・薬価耐性で優る持田製薬を選好、日本新薬は27年ウプトラビ特許切れで見送り。</h3>
+<p><b>行動: 買い</b> ／ 水準: 持田製薬(4534)3260円前後で1単元、日本新薬(4516)は特許切れ通過(2027年後半)まで見送り ／ 確信度: 中</p>
+<table>
+<tr><th>期間</th><th>期待値(中央)</th><th>レンジ</th><th>根拠</th></tr>
+<tr><td>1日</td><td><b>+0.0%</b></td><td>-2.0%〜+2.0%</td><td>両社ともRSI中位(46/57)で過熱感なし、材料難のため日次はノイズ中心。</td></tr>
+<tr><td>1〜2週</td><td><b>+1.5%</b></td><td>-4.0%〜+6.0%</td><td>持田Q1進捗34%で通期上方修正観測+RSI57で緩やかな上値追い可、日本新薬は進捗率高いが特許観測が上値抑制。中央値は持田寄り。</td></tr>
+<tr><td>1年</td><td><b>+8.0%</b></td><td>-15.0%〜+25.0%</td><td>持田:PER9.3・NC77%・新薬群+39%継続なら再評価余地10-20%。日本新薬:27/4ウプトラビ特許切れで下方リスク、PER6.4は既に割引済だが顕在</td></tr>
+</table>
+<h3>論理</h3>
+<ul>
+<li>前提: 持田はQ1営業利益+38.5%(進捗34%)・NC77%・長期収載品リスクあるも新薬群(リアルダ・グーフィス・ユリス)が牽引しPER9.3。</li>
+<li>前提: 日本新薬はQ1営業利益+22.1%だが会社通期予想は営業利益+7.1%と保守的、かつウプトラビが26/10米・27/4米外で特許切れ→27年度以降ロイヤリティ剥落リスク。</li>
+<li>前提: PERは日本新薬6.4と割安だが、これはウプトラビ・クリフを市場が織込中の可能性が高い(バリュートラップ懸念)。</li>
+<li>前提: ディフェンシブ要件=業績変動小・財務健全・イベントリスク低。持田はネットキャッシュ厚くイベント集中せず、日本新薬は27年に明確なクリフ。</li>
+<li>∴ 同じ製薬内Pairで比較するなら持田を買い、日本新薬は見送り(または比率下げ)が合理的。</li>
+</ul>
+<h3>最強の反対材料と耐性</h3>
+<p>「日本新薬はPER6.4・CNPER3.1と極端に割安で、ウプトラビ・クリフは既にコンセンサス。ビルテプソ・フィンテプラ・ジャイパーカ等次世代品が育っており、Q1増収+24%は再加速の兆候。持田は長期収載品3割で薬価改定に脆弱」との反論あり。しかしQ1の営業利益進捗は持田34%&gt;日本新薬32.4%(123/380)で持田優位、かつ持田はQ1純利益+67.8%と改善モメンタム明確・NC77%&gt;52%で下値耐性も上。ディフェンシブ枠(=下値耐性重視)という当初目的に照らせば持田選好は維持。日本新薬は「グロース割安株」であってディフェンシブではない。</p>
+<h3>この結論を捨てる条件</h3>
+<p>①日本新薬が27年3月期通期営業利益を+15%以上に上方修正(=ウプトラビ剥落を次世代品で吸収可能と示す)、②持田が通期下方修正 or 主力リアルダ/グーフィスに後発参入報道、③ウプトラビの特許延長認定または後発参入遅延の公式発表、のいずれかが出れば結論を反転(日本新薬買い/持田見送り)。</p>
+<h3>事実(Grok収集・出典つき)</h3>
+<p><b>①両社の2027年3月期通期会社予想と直近決算（2027年3月期第1四半期）の進捗率</b></p>
+<p><b>日本新薬 (4516, IFRS):</b></p>
+<ul>
+<li>2027年3月期通期会社予想（据え置き）：売上収益2,000億円（前期比17.1%増）、営業利益380億円（同7.1%増）、親会社帰属利益303億円（同1.9%増）。（2026年8月6日公表、2027年3月期第1四半期決算短信） <a href="https://www.nippon-shinyaku.co.jp/file/download.php?file_id=11481" target="_blank" rel="noopener">[1]</a></li>
+<li>2027年3月期第1四半期実績：売上収益490.66億円（前年同期比24.1%増）、営業利益123.11億円（同22.1%増）、親会社帰属四半期利益101.09億円（同22.5%増）。（2026年8月6日） <a href="https://www.nippon-shinyaku.co.jp/file/download.php?file_id=11481" target="_blank" rel="noopener">[1]</a></li>
+<li>上期計画に対する進捗率（親会社帰属利益140億円に対し）：72.2%。（2026年8月6日時点） <a href="https://finance.matsui.co.jp/stock/4516/settlement/index" target="_blank" rel="noopener">[2]</a></li>
+</ul>
+<p><b>持田製薬 (4534, 日本基準):</b></p>
+<ul>
+<li>2027年3月期通期会社予想（据え置き）：売上高1,260億円、営業利益105億円、純利益100億円。（2026年8月3日公表、2027年3月期第1四半期決算短信） <a href="https://finance.biggo.jp/news/jpx_tdnet_140120260723598473" target="_blank" rel="noopener">[3]</a></li>
+<li>2027年3月期第1四半期実績：売上高317.19億円（前年同期比19.1%増）、営業利益35.64億円（同38.5%増）、純利益31.78億円（同67.8%増）。（2026年8月3日） <a href="https://finance.biggo.jp/news/jpx_tdnet_140120260723598473" target="_blank" rel="noopener">[3]</a></li>
+<li>通期計画に対する進捗率：売上高約25.2%、営業利益約34%、純利益約31.8%。（2026年8月3日時点） <a href="https://finance.biggo.jp/news/jpx_tdnet_140120260723598473" target="_blank" rel="noopener">[3]</a></li>
+</ul>
+<p><b>②日本新薬の営業増益+22%・持田製薬+39%の要因（2027年3月期第1四半期）</b></p>
+<p><b>日本新薬（営業利益+22.1%）：</b></p>
+<ul>
+<li>増収とその他の収益の増加による。医薬品事業売上収益432.56億円（+26.6%）：薬価改定や後発品影響あったが、ウプトラビ（肺動脈性肺高血圧症・慢性血栓塞栓性肺高血圧症治療剤）、同製品の海外売上伴うロイヤリティ収入、フィンテプラ（てんかん発作治療剤）、ジャイパーカ（マントル細胞リンパ腫・慢性リンパ性白血病治療剤）等が伸長。アーリーダ（前立腺癌治療剤、2025年10月契約改定後製品売上計上）が寄与。機能食品事業も+8.0%。（2026年8月6日、決算短信・業績ハイライト） <a href="https://www.nippon-shinyaku.co.jp/file/download.php?file_id=11481" target="_blank" rel="noopener">[1]</a></li>
+</ul>
+<p><b>持田製薬（営業利益+38.5%）：</b></p>
+<ul>
+<li>新薬群伸長、売上総利益拡大、持分法投資利益計上。（2026年8月3日、決算短信） <a href="https://finance.biggo.jp/news/jpx_tdnet_140120260723598473" target="_blank" rel="noopener">[3]</a></li>
+<li>参考：2026年3月期通期は新薬群牽引で営業利益+24.9%（101.47億円）。（2026年5月15日発表） <a href="https://www.mixonline.jp/tabid55.html?artid=80233" target="_blank" rel="noopener">[4]</a></li>
+</ul>
+<p><b>③日本新薬のビルテプソ/ウプトラビ等の主力パイプラインの特許期限と薬価改定リスク</b></p>
+<ul>
+<li>ウプトラビ：2026〜2027年に特許切れ（米国26年10月、米国以外27年4月）。2027年4月以降パテントクリフで後発参入により国内売上低下見込み。ロイヤリティ収入も影響。（2024年5月13日記事、2023年11月20日中井社長発言、2026年6月16日記事） <a href="https://www.mixonline.jp/tabid55.html?artid=76522" target="_blank" rel="noopener">[5]</a></li>
+<li>ビルテプソ：米国でサレプタ社との特許侵害訴訟継続中（2025年1月時点で陪審評決、特許有効・損害額115.2百万ドル）。日本新薬の生産・販売行為が対象。（2025年1月30日プレス、2025年1月6日記事） <a href="https://www.tokkyoteki.com/2025/01/viltolarsen.html" target="_blank" rel="noopener">[6]</a></li>
+<li>薬価改定リスク：第1四半期で薬価改定や後発品影響を明記しつつ主力品伸長で吸収。（2026年8月6日決算短信） <a href="https://www.nippon-shinyaku.co.jp/file/download.php?file_id=11481" target="_blank" rel="noopener">[1]</a></li>
+</ul>
+<p><b>④持田製薬の主力品と同リスク</b></p>
+<ul>
+<li>主力品：潰瘍性大腸炎治療剤「リアルダ」（Q1売上46億円）、慢性便秘症治療剤「グーフィス」（23億円）、肺高血圧症治療剤「トレプロスト」（17億円）、痛風・高尿酸血症治療剤「ユリス」（17億円）、その他エパデール・ヘパリンNa・ジェノゲスト・コラージュフルフル等。新薬群が牽引。（2026年8月3日決算短信） <a href="https://finance.biggo.jp/news/jpx_tdnet_140120260723598473" target="_blank" rel="noopener">[3]</a></li>
+<li>リスク：収益の約3割を長期収載品が占め、薬価改定の影響を吸収しにくい体質。（note記事、日付未特定、背景情報として参考） <a href="https://note.com/pharma_manage/n/n77890a69461b" target="_blank" rel="noopener">[7]</a></li>
+<li>2026年3月期は新薬群とBS含む後発品事業好調で2桁増収増益。（2026年5月15日） <a href="https://www.mixonline.jp/tabid55.html?artid=80233" target="_blank" rel="noopener">[4]</a></li>
+</ul>
+<p><b>⑤過去3年の株価と日経平均・米10年金利との相関（ディフェンシブとして機能しているか）</b></p>
+<ul>
+<li>具体的な相関係数データは検索結果に記載なし。株価推移チャートは日経電子版等で確認可能だが、数値相関の定量データは見つからず。（日経電子版株価推移ページ、2026年8月時点閲覧可能） <a href="https://www.nikkei.com/nkd/company/history/yprice/?scode=4534" target="_blank" rel="noopener">[8]</a></li>
+</ul>
+<p><b>⑥両社のネットキャッシュ（現預金-有利子負債）の実額（現預金ベースに引き直し）</b></p>
+<ul>
+<li>日本新薬：2026年3月期決算短信で有利子負債の定義記載（利子支払う全ての負債）があるが、具体的な現預金・有利子負債・ネットキャッシュの実額は抽出された資料に明記なし。2027年3月期Q1時点で現金及び預金の変動言及あり。（2026年5月15日決算短信、2026年8月6日短信） <a href="https://www.nippon-shinyaku.co.jp/file/download.php?file_id=11058" target="_blank" rel="noopener">[9]</a></li>
+<li>持田製薬：2027年3月期Q1で現金及び預金が減少した旨記載。FY2025中間期末で現預金・有価証券527億円、保守的評価加味ネットキャッシュ約654億円（時価総額比53%）とする記述あり。（2026年8月3日短信、別note 2026年8月23日閲覧） <a href="https://note.com/sushitaro_kabu/n/n4e4f92749b85" target="_blank" rel="noopener">[10]</a></li>
+</ul>
+<p><b>出典・日付まとめ（主なもの）</b></p>
+<ul>
+<li>日本新薬決算短信（IFRS）：2026年8月6日（<a href="https://www.nippon-shinyaku.co.jp/file/download.php?file_id=11481" target="_blank" rel="noopener">https://www.nippon-shinyaku.co.jp/file/download.php?file_id=11481</a> ほか）</li>
+<li>持田製薬決算短信（日本基準）：2026年8月3日（TDnet）</li>
+<li>関連記事：2026年5〜8月（Nikkei、Mixonline、Kabutan等）</li>
+<li>特許関連：2024年5月13日、2023年11月20日、2025年1月記事</li>
+</ul>
+<p>全て上記検索結果・公式資料からの直接抽出。推測・意見は含めず。最新決算は2026年8月時点。</p></div></details>
+<div class=anchor><a href="#Q_4516_nipponshinyaku">#Q_4516_nipponshinyaku</a></div>
+</article>
+<article class=rep id="Q_7222_nissanshatai">
+<div class=hd><span class=call style="background:#3fb950">買い</span>
+<h2>日産車体7222の増益の持続性と親会社リスク</h2></div>
+<div class=stocks>日産車体7222</div>
+<p class=concl>1Q進捗で通期上振れ余地は大だが、親会社リスクで割安放置、押し目買い妥当。</p>
+<div class=ev><span><i>1日</i><b>+0.3%</b><em>-2〜+3%</em></span><span><i>1〜2週</i><b>+2.0%</b><em>-5〜+8%</em></span><span><i>1年</i><b>+8.0%</b><em>-20〜+25%</em></span></div>
+<p class=lv><b>水準</b> 950円以下で打診、900円割れで本格。CNPER5倍(≒1,100円)接近で一部利確</p>
+<details><summary>根拠・事実を見る</summary><div class=detail><h3>✅ 結論: 1Q進捗で通期上振れ余地は大だが、親会社リスクで割安放置、押し目買い妥当。</h3>
+<p><b>行動: 買い</b> ／ 水準: 950円以下で打診、900円割れで本格。CNPER5倍(≒1,100円)接近で一部利確 ／ 確信度: 中</p>
+<table>
+<tr><th>期間</th><th>期待値(中央)</th><th>レンジ</th><th>根拠</th></tr>
+<tr><td>1日</td><td><b>+0.3%</b></td><td>-2.0%〜+3.0%</td><td>1Q好決算は8/3既出で織り込み進行。円安継続と地合いで小幅上昇バイアスだが、日産本体の販売下方修正が重石。</td></tr>
+<tr><td>1〜2週</td><td><b>+2.0%</b></td><td>-5.0%〜+8.0%</td><td>1Q進捗25.8%で通期上振れ観測が広がる余地。ただし日産関連ニュース(再建進捗・生産計画修正)で振れやすく、レンジ広め。</td></tr>
+<tr><td>1年</td><td><b>+8.0%</b></td><td>-20.0%〜+25.0%</td><td>PER8.6/CNPER4.3の割安と配当性向30%+NC50%で下値耐性。上値は日産再建成功+新型車寄与で15-25%。下振れは日産の再減産・NV200終了後</td></tr>
+</table>
+<h3>論理</h3>
+<ul>
+<li>前提: 1Q営業利益54.22億は通期予想210億の25.8%進捗で、前年同期比2.4倍(要因は新型エルグランド寄与+台数11.5%増+原価低減)。</li>
+<li>前提: 通期会社予想は据え置きだが、円安158円台継続と新型車寄与で下期も追い風、上方修正余地あり。</li>
+<li>前提: 日産向け売上比率98.2%で受注は日産の生産計画(305万台→315万台下方修正)に完全連動、Re:Nissan再編で車種打切り(AD/NV200)は決定済み。</li>
+<li>前提: ネットキャッシュ~660億円規模(時価総額1,323億の約50%)、PER8.6/CNPER4.3と割安だが、親会社への預け金・貸付で実質的に日産のキャッシュプール化。</li>
+<li>∴ 業績モメンタムと割安性で下値限定、ただし親会社リスクがバリュエーション上限を規定するため中長期は緩やかなリレーティング狙いの押し目買い。</li>
+</ul>
+<h3>最強の反対材料と耐性</h3>
+<p>最強の反論は『親会社依存98.2%の日産が構造的減販フェーズにあり、日産車体はキャッシュを吸い上げられる下請け子会社に過ぎない』こと。実際AD/NV200の車種打切り、湘南工場のサービス拠点化、預け金・貸付で数百億が親会社に滞留しており、少数株主にNCが還元される保証はない。それでも成立する理由は、(a)1Qの利益水準が年換算216億で通期予想を既に超過ペース、(b)新型エルグランドという明確な数量ドライバーが顕在化、(c)配当性向30%は維持されており最悪でもインカム4%程度は確保、(d)PBR・CNPER水準が既に親会社リスクを相当織り込み済みで、下値余地より上値余地が大きい非対称性がある点。ただしポジションサイズは限定すべき。</p>
+<h3>この結論を捨てる条件</h3>
+<p>①日産が再度大規模減産(2026年度生産計画を290万台以下に再下方修正)を発表 ②日産車体が親会社への大型貸付・第三者割当・上場廃止(完全子会社化を安値で)を発表 ③2Q以降で営業利益が前年割れに転じ通期下方修正 ④エルグランド以外の主力(セレナ・パトロール系)で減産・リコール発生 のいずれかが観測されたら結論撤回。</p>
+<h3>事実(Grok収集・出典つき)</h3>
+<p><b>① 2027年3月期通期会社予想と8/3の1Q決算での修正有無</b></p>
+<ul>
+<li>2027年3月期通期会社予想：売上高4,480億円、営業利益210億円、経常利益215億円、親会社株主に帰属する当期純利益140億円。2026年5月13日公表分から変更なし（据え置き）。 <a href="https://www.nissan-shatai.co.jp/IR/ACHIEVEMENT/OUTLOOK/index.html" target="_blank" rel="noopener">[1]</a> <a href="https://finance.biggo.jp/news/jpx_tdnet_140120260731504973" target="_blank" rel="noopener">[2]</a></li>
+<li>2026年8月3日1Q決算短信にて、通期予想を変更していない（2026年8月3日）。 <a href="https://finance.biggo.jp/news/jpx_tdnet_140120260731504973" target="_blank" rel="noopener">[2]</a> <a href="https://finance.biggo.jp/news/jpx_tdnet_140120260731504973" target="_blank" rel="noopener">[2]</a></li>
+</ul>
+<p><b>前期通期（2026年3月期、2026年5月13日公表）</b>：売上高4,038億円、営業利益141.61億円（前々期比175.1%増）。 <a href="https://finance.biggo.jp/news/jpx_tdnet_140120260513527777" target="_blank" rel="noopener">[3]</a></p>
+<p><b>② 1Q営業利益54.22億円（前年同期22.26億円、2.4倍超）の要因</b></p>
+<ul>
+<li>1Q実績（2026年4-6月）：売上高1,119.62億円（前年同期比27.4%増）、営業利益54.22億円（143.5%増）、経常利益56.69億円（132.7%増）、親会社株主純利益38.39億円（122.1%増）。売上台数39,428台（11.5%増）（2026年8月3日）。 <a href="https://www.nissan-shatai.co.jp/IR/ACHIEVEMENT/OUTLOOK/index.html" target="_blank" rel="noopener">[1]</a> <a href="https://finance.biggo.jp/news/jpx_tdnet_140120260731504973" target="_blank" rel="noopener">[2]</a></li>
+<li>要因：新型エルグランド生産開始等による販売台数11.5%増、車種構成改善、原価低減活動による生産コスト削減等（円安の明示的言及なし）（2026年8月3日）。 <a href="https://www.nissan-shatai.co.jp/IR/ACHIEVEMENT/OUTLOOK/index.html" target="_blank" rel="noopener">[1]</a> <a href="https://www.nissan-shatai.co.jp/IR/ACHIEVEMENT/OUTLOOK/index.html" target="_blank" rel="noopener">[1]</a></li>
+</ul>
+<p><b>③ 日産自動車の生産計画と、日産車体の受託生産の依存度（日産向け売上比率）</b></p>
+<ul>
+<li>日産車体の日産自動車向け売上比率：連結98.2%、単独99.9%（2026年6月25日現在）。 <a href="https://www.nissan-shatai.co.jp/IR/MANAGEMENT/RISK/index.html" target="_blank" rel="noopener">[4]</a> <a href="https://www.nissan-shatai.co.jp/IR/MANAGEMENT/RISK/index.html" target="_blank" rel="noopener">[4]</a></li>
+<li>日産の2026年度世界生産計画：305万台程度（2026年2月11日頃）。グローバル販売台数見通しを330万台から315万台へ下方修正（中国市場影響、2026年8月3日）。 <a href="https://www.47news.jp/13853770.html" target="_blank" rel="noopener">[5]</a> <a href="https://global.nissannews.com/ja-JP/releases/260803-01-j" target="_blank" rel="noopener">[6]</a></li>
+</ul>
+<p><b>④ 日産の経営再建が日産車体の受注に与える影響</b></p>
+<ul>
+<li>日産車体リスク記載：親会社日産自動車の販売戦略・生産体制方針転換により経営成績に大きな影響可能性。AD生産2025年10月終了、NV200バネット生産2027年3月終了予定。以後湘南工場はサービス部品拠点。親会社グループ内競合もリスク（2026年6月25日現在）。 <a href="https://www.nissan-shatai.co.jp/IR/MANAGEMENT/RISK/index.html" target="_blank" rel="noopener">[4]</a> <a href="https://www.nissan-shatai.co.jp/IR/MANAGEMENT/RISK/index.html" target="_blank" rel="noopener">[4]</a></li>
+<li>日産Re:Nissan計画：2026年度までに自動車事業営業利益・FCF黒字化目指し、固定費・変動費計5,000億円削減、生産拠点17→10に再編（7拠点閉鎖、2026年度中に6拠点統廃合完了予定）（2025年5月13日発表、2026年8月時点進捗）。 <a href="https://www.nissan-global.com/JP/COMPANY/PLAN/RENISSAN/" target="_blank" rel="noopener">[7]</a> <a href="https://monoist.itmedia.co.jp/mn/articles/2605/18/news022.html" target="_blank" rel="noopener">[8]</a></li>
+</ul>
+<p><b>⑤ ネットキャッシュが時価総額の50%とされる根拠と、親会社への資金流出リスク（配当性向・貸付）</b></p>
+<ul>
+<li>ネットキャッシュ・ポジティブ（実質無借金）を長年継続、現金保有額が時価総額を上回る水準との指摘あり（2026年1月2日記事、具体的な2026年3月末数字未確認）。時価総額は株価977円ベースで約1,323億円前後（発行済株式135,452,804株）（2026年8月時点）。 <a href="https://note.com/tatsuya_sabato/n/n2684ed9782b4" target="_blank" rel="noopener">[9]</a> <a href="https://www.nissan-shatai.co.jp/IR/STOCK/SHARES/index.html" target="_blank" rel="noopener">[10]</a></li>
+<li>配当政策：配当性向30%以上を目処に安定配当継続。2025年度（2026年3月期）実績15.5円（中間6.5円、期末9円）。2027年3月期予想未定（2026年8月時点）。 <a href="https://www.nissan-shatai.co.jp/IR/STOCK/DIVIDEND/index.html" target="_blank" rel="noopener">[11]</a></li>
+<li>親会社資金提供：過去に預け金・貸付金で日産へ多額資金提供の実績あり（例: 2023年末預け金395億円+貸付金700億円など）。リスク情報では親会社依存98.2%を明記するが、2026年最新貸付残高の具体数値は上記決算ページで一部確認（長期貸付金・預け金変動あり）（2026年6月25日リスク開示）。 <a href="https://stracap.jp/7222-NISSANSHATAI/" target="_blank" rel="noopener">[12]</a> <a href="https://www.nissan-shatai.co.jp/IR/ACHIEVEMENT/FINANCIAL/index.html" target="_blank" rel="noopener">[13]</a></li>
+</ul>
+<p>全情報は2026年5-8月の開示・記事に基づく。出典URLは上記引用元参照。数字は決算短信・IRページの記載を優先抽出。</p></div></details>
+<div class=anchor><a href="#Q_7222_nissanshatai">#Q_7222_nissanshatai</a></div>
+</article>
+<article class=rep id="Q_6143_sodick">
+<div class=hd><span class=call style="background:#3fb950">買い</span>
+<h2>ソディック6143の増益の中身と持続性</h2></div>
+<div class=stocks>ソディック6143</div>
+<p class=concl>中華圏放電加工機の数量増と操業度改善による実力増益。ネットキャッシュ厚くPER11.5倍で買い妥当。</p>
+<div class=ev><span><i>1日</i><b>+0.2%</b><em>-2〜+2%</em></span><span><i>1〜2週</i><b>+3.0%</b><em>-4〜+10%</em></span><span><i>1年</i><b>+18.0%</b><em>-15〜+45%</em></span></div>
+<p class=lv><b>水準</b> 1667円近辺で打診買い、1500円割れで買増、1900-2000円で一部利確</p>
+<details><summary>根拠・事実を見る</summary><div class=detail><h3>✅ 結論: 中華圏放電加工機の数量増と操業度改善による実力増益。ネットキャッシュ厚くPER11.5倍で買い妥当。</h3>
+<p><b>行動: 買い</b> ／ 水準: 1667円近辺で打診買い、1500円割れで買増、1900-2000円で一部利確 ／ 確信度: 中</p>
+<table>
+<tr><th>期間</th><th>期待値(中央)</th><th>レンジ</th><th>根拠</th></tr>
+<tr><td>1日</td><td><b>+0.2%</b></td><td>-2.0%〜+2.5%</td><td>決算は8/7に既に消化済み、RSI43で過熱感なく方向感中立。上方修正のポジ材料は織込み進行中</td></tr>
+<tr><td>1〜2週</td><td><b>+3.0%</b></td><td>-4.0%〜+10.0%</td><td>PER11.5・CNPER5.6の割安感と+67%上方修正のモメンタムで再評価余地。中国景気指標・機械受注統計に感応</td></tr>
+<tr><td>1年</td><td><b>+18.0%</b></td><td>-15.0%〜+45.0%</td><td>会社予想EPSベースPER11.5倍、同業平均15-18倍への修正余地。ネットキャッシュ厚く下値限定。中華圏需要反落なら-15%リスク</td></tr>
+</table>
+<h3>論理</h3>
+<ul>
+<li>前提: 通期営業利益を55→92億円へ+67%上方修正、上期44.52億は前年同期比2.07倍で工作機械セグメント利益+78.7%が牽引</li>
+<li>前提: 増益要因は中華圏NC放電加工機の販売台数増と生産台数増加による工場操業度向上であり、在庫評価益・安値在庫消化などの一過性要因の言及なし</li>
+<li>前提: 2Q単独26.74億(1Q17.78億)と加速し下期予想は約500億売上を織り込む=中華圏需要とAI/半導体/NEV向けの複線需要が継続</li>
+<li>前提: 現預金511億・有利子負債373億でネットキャッシュ約138億、株価1667円・PER11.5・CNPER5.6と実質バリュエーションが低い</li>
+<li>∴ 一過性でない数量・操業度ドリブンの増益であり、キャッシュリッチかつ低PERで買いに妥当</li>
+</ul>
+<h3>最強の反対材料と耐性</h3>
+<p>中華圏放電加工機需要は中国の設備投資サイクル・不動産不況・米中摩擦次第で急反落する可能性。上期の大幅上振れ自体が中国顧客の駆込み需要(関税・補助金絡み)である疑い。ただし①AI/データセンター・半導体・NEVと需要源が複線化②操業度改善は構造的③ネットキャッシュ138億が下値クッション、で買い結論は維持。ただし中国依存度の正確な開示がない点は減点要因でconfidence=中に留める</p>
+<h3>この結論を捨てる条件</h3>
+<p>①次四半期(3Q)で工作機械セグメント売上が前年同期比一桁増以下に減速②中華圏受注の反落を会社が言及③通期予想の下方修正④在庫評価益等の一過性要因が後日判明⑤有利子負債が急増しネットキャッシュ比率が30%割れ</p>
+<h3>事実(Grok収集・出典つき)</h3>
+<p><b>① 2027年3月期の通期会社予想（売上・営業利益・純利益・EPS）と、8/7の2Q決算で上方修正したか</b></p>
+<ul>
+<li>2026年12月期（同社決算期）通期会社予想（8/7修正後）：売上高970億円（期初88,500百万円から+9.6%上方修正）、営業利益92億円（期初55億円から+67.3%上方修正）、経常利益99億円（期初60億円から+65.0%上方修正）、親会社株主に帰属する当期純利益74億円（期初51億円から+45.1%上方修正）。（出典：ソディック公式決算説明資料 <a href="https://www.sodick.co.jp/ir/pdf/tmp/20260807135320.pdf" target="_blank" rel="noopener">https://www.sodick.co.jp/ir/pdf/tmp/20260807135320.pdf</a> 、2026年8月7日） <a href="https://www.sodick.co.jp/ir/pdf/tmp/20260807135320.pdf" target="_blank" rel="noopener">[1]</a></li>
+<li>日経新聞：2026年12月期純利益74億円（前期比63.9%増）、営業利益92億円（同2.2倍）。上方修正幅は売上高85億円、営業利益37億円、純利益23億円。（出典：<a href="https://www.nikkei.com/article/DGXZRST0515006X00C26A8000000/" target="_blank" rel="noopener">https://www.nikkei.com/article/DGXZRST0515006X00C26A8000000/</a> 、2026年8月7日） <a href="https://www.nikkei.com/article/DGXZRST0515006X00C26A8000000/" target="_blank" rel="noopener">[2]</a></li>
+<li>2027年3月期または2027年12月期の売上・営業利益・純利益・EPSの会社予想数値は確認されず。配当予想（2027年3月期120円など）は存在するが業績予想なし。（出典：ソディックIRページおよび関連開示、2026年8月時点）</li>
+</ul>
+<p><b>② 上期営業利益44.52億（前年同期21.50億の2.07倍）の要因分解: 何の製品が伸びたか(NC放電加工機・金属3Dプリンタ・射出成形機の別)、価格改定か数量か</b></p>
+<ul>
+<li>上期（2026年1-6月）売上高469.21億円（前年同期379.8億円、+23.5%）、営業利益44.52億円（前年同期21.50億円、+107.0%）。（出典：ソディック決算説明資料 <a href="https://www.sodick.co.jp/ir/pdf/tmp/20260807135320.pdf" target="_blank" rel="noopener">https://www.sodick.co.jp/ir/pdf/tmp/20260807135320.pdf</a> 、2026年8月7日）</li>
+<li>セグメント内訳：工作機械事業（主力：NC放電加工機/形彫り・ワイヤ放電加工機、金属3Dプリンタ含む）売上365.91億円（+30.3%）、セグメント利益54.95億円（+78.7%）；産業機械事業売上52.17億円（+10.3%）、セグメント利益3.21億円（+126.8%）；食品機械事業売上26.81億円（-1.3%）、セグメント利益2.93億円（-17.3%）。（同資料、2026年8月7日）</li>
+<li>要因：中華圏を中心とした放電加工機（NC放電加工機）の販売台数増加による増収効果、生産台数増加による工場稼働率向上・生産効率改善。価格改定の明示的言及なし、数量（販売台数・生産台数）増加が主。（同資料「中華圏の旺盛な需要を背景に、放電加工機の販売が増加」「生産台数増加による工場操業度の向上」、2026年8月7日）</li>
+</ul>
+<p><b>③ 2Q単独26.74億は1Q17.78億から加速しているが、その理由と下期の受注残</b></p>
+<ul>
+<li>1Q（2026年1-3月）：売上216.24億円、営業利益17.78億円（または経常利益21.90億円）。2Q（4-6月）：売上252.96億円、営業利益26.74億円（加速）。上期合計売上469.21億円、営業利益44.52億円。（出典：ソディック決算説明資料および松井証券まとめ <a href="https://finance.matsui.co.jp/stock/6143/settlement/index" target="_blank" rel="noopener">https://finance.matsui.co.jp/stock/6143/settlement/index</a> 、2026年8月時点）</li>
+<li>加速理由：工作機械事業（放電加工機）の売上・利益が1Qから2Qで拡大。中華圏需要継続、生産台数増加による工場稼働率向上・操業度改善。（出典：同決算説明資料「生産台数増加による工場操業度の向上も見込む」「放電加工機販売が想定を大幅に上回って推移」、2026年8月7日）</li>
+<li>下期の受注残高の具体的な数値は資料に明記なし。通期売上予想97,000百万円（上期実績469.21億円に対し下期約500.79億円見込み）で、工作機械事業の販売台数見込み引き上げを反映。（同資料、2026年8月7日）</li>
+</ul>
+<p><b>④ 半導体・EV向けの需要構成と、中国市場の比率</b></p>
+<ul>
+<li>需要構成：工作機械事業でデータセンター向け光コネクタ・電源設備（AI需要関連）、半導体・半導体製造装置向け、NEV（新エネルギー車/EV関連）、モバイル関連が幅広く寄与。産業機械事業でもデータセンター向けが堅調。（出典：ソディック決算説明資料および日本経済新聞 <a href="https://www.nikkei.com/article/DGXZQOUC078P10X00C26A8000000/" target="_blank" rel="noopener">https://www.nikkei.com/article/DGXZQOUC078P10X00C26A8000000/</a> 、2026年8月7日）</li>
+<li>中国市場比率：中華圏を中心とした放電加工機販売が期初想定を大幅に上回り、工作機械事業増収の主因。「中華圏の旺盛な需要」が繰り返し記載されるが、全体売上または工作機械売上に占める正確な数値比率（例：XX%）は資料に明記なし。（出典：同決算説明資料「中華圏を中心とした放電加工機販売が想定を大幅に上回って推移」、2026年8月7日）</li>
+</ul>
+<p><b>⑤ ネットキャッシュが時価総額の51%とされる根拠(現預金・有利子負債の実額)</b></p>
+<ul>
+<li>2026年6月30日時点：現金及び預金（現預金）51,113百万円（511.13億円）。有利子負債の実額は資料に37,328百万円程度と推定される記述あり（ネットキャッシュ約13,785百万円）。自己資本比率59.5%。（出典：ソディック決算説明資料 貸借対照表・キャッシュフロー <a href="https://www.sodick.co.jp/ir/pdf/tmp/20260807135320.pdf" target="_blank" rel="noopener">https://www.sodick.co.jp/ir/pdf/tmp/20260807135320.pdf</a> 、2026年8月7日）</li>
+<li>時価総額に対するネットキャッシュ51%という具体的な記載・計算根拠（時価総額額やネットキャッシュ正確額）は同資料に明記なし。株価1667円時の時価総額はおよそ910億円前後（発行済株式数による）と推定されるが、51%に合致する公式数値は確認されず。（同資料およびIRページ、2026年8月時点）</li>
+</ul>
+<p><b>注意点（背景記載のUACJ・ダイジェット類似の一過性要因）</b></p>
+<ul>
+<li>資料では「一過性の急増益」を示す在庫評価益や安値在庫消化の言及はなく、放電加工機販売台数増加・工場稼働率向上・構造改革効果が主な増益要因として記載。（出典：上記決算説明資料、2026年8月7日）</li>
+</ul>
+<p>全情報は2026年8月7日開示の公式決算短信・説明資料および同日報道に基づく。2027年3月期の本業績予想は現時点で開示なし。数字は資料の単位（百万円）を億円に換算して記載（例：4,452百万円＝44.52億円）。</p></div></details>
+<div class=anchor><a href="#Q_6143_sodick">#Q_6143_sodick</a></div>
+</article>
+<article class=rep id="Q_typeB_impair">
+<div class=hd><span class=call style="background:#3fb950">買い</span>
+<h2>ハイパースケーラーの『類型B</h2></div>
+
+<p class=concl>類型Bは開示上分離可・カウンターパーティ非開示だが売り手側積み上げで実在確認、メモリ需要は硬い</p>
+<div class=ev><span><i>1日</i><b>+0.0%</b><em>-3〜+3%</em></span><span><i>1〜2週</i><b>+1.0%</b><em>-6〜+8%</em></span><span><i>1年</i><b>+12.0%</b><em>-25〜+40%</em></span></div>
+<p class=lv><b>水準</b> Micron/SanDiskをtake-or-pay+現金デポジット裏付けの需要ボトム銘柄として押し目買い、hyperscaler側(Meta/Oracle)は簿外債務$420B/$273Bの類型B比率不透明で見送り</p>
+<details><summary>根拠・事実を見る</summary><div class=detail><h3>✅ 結論: 類型Bは開示上分離可・カウンターパーティ非開示だが売り手側積み上げで実在確認、メモリ需要は硬い</h3>
+<p><b>行動: 買い</b> ／ 水準: Micron/SanDiskをtake-or-pay+現金デポジット裏付けの需要ボトム銘柄として押し目買い、hyperscaler側(Meta/Oracle)は簿外債務$420B/$273Bの類型B比率不透明で見送り ／ 確信度: 中</p>
+<table>
+<tr><th>期間</th><th>期待値(中央)</th><th>レンジ</th><th>根拠</th></tr>
+<tr><td>1日</td><td><b>+0.0%</b></td><td>-3.0%〜+3.0%</td><td>1日ではhyperscaler capex報道やNvidia backstop縮小のような単発ニュースに左右されるのみ、方向感なし</td></tr>
+<tr><td>1〜2週</td><td><b>+1.0%</b></td><td>-6.0%〜+8.0%</td><td>2週間ではMicron/SanDiskの決算・追加SCA発表がカタリスト、$100B/$93.9Bの積み上げ継続なら上振れ、Nvidia型のbackstop半減</td></tr>
+<tr><td>1年</td><td><b>+12.0%</b></td><td>-25.0%〜+40.0%</td><td>1年ではMicron SCA $100B+SanDisk NBM $93.9Bのtake-or-pay+現金デポジット$38.5Bが収益ボトム保証、DRAM/N</td></tr>
+</table>
+<h3>論理</h3>
+<ul>
+<li>前提: Meta $420.55B・Oracle $273.3Bの簿外債務は10-Q/K注記でリース(A)と無条件購入義務(B)に分離済み(Meta購入コミット$237.67B、Oracle無条件購入$13.31B+追加$19B)</li>
+<li>前提: 買い手側でBのGPU/サーバー内訳・カウンターパーティは非開示だが、売り手側でMicron SCA $100B(14件、うち4社very large=hyperscaler)・SanDisk NBM $93.9B(8社)がtake-or-pay+現金デポジット$22B/$16.5Bで裏付け</li>
+<li>前提: 2026年のAI関連減損・大型キャンセルは限定的(Meta severance $1.18B、Oracle restructuring $1.84B、Nvidia OpenAI backstop $250B→&lt;$120Bへ半減のみ)</li>
+<li>前提: Micron/SanDiskはDRAM~20%・NAND~33%・FY27供給50%以上をカバーする長期固定、キャンセル不可条項+現金デポジット受領</li>
+<li>∴ 類型Bは会計上分離可能かつ売り手側で実額確認済み、メモリ供給は2027-2030年にわたりtake-or-payで固定化されており需要蒸発リスクは短期では顕在化しない</li>
+</ul>
+<h3>最強の反対材料と耐性</h3>
+<p>Nvidia-OpenAI backstopが$250B→&lt;$120Bへ半減した先例は、&#x27;キャンセル不可&#x27;とされる類型B契約も投資家圧力や技術問題(GB200加熱)で実質再交渉されうることを示す。Micron SCA/SanDisk NBMも顧客集中(4社+8社)で、hyperscaler 1-2社の減額要請で$100B規模が毀損しうる。それでも成り立つ理由: (1)現金デポジット$22B/$16.5Bが実際に受領済みで解約コストが売り手保護、(2)DRAM 20%/NAND 33%は業界全体の供給逼迫下では代替顧客が存在、(3)Nvidia backstopは&#x27;保証&#x27;であって購入義務ではなく性質が異なる。ただしテール認識のためy1下限を-25%と広く取る。</p>
+<h3>この結論を捨てる条件</h3>
+<p>①Micron/SanDiskのSCA/NBMからhyperscaler 1社以上が数量削減・解約を公表 ②現金デポジット$22B/$16.5Bの一部返還・条件緩和が開示 ③Meta/Oracleの次回10-Qで購入コミットメントが前四半期比10%以上減少 ④DRAM/NANDスポット価格が四半期で15%以上下落 のいずれかが起きれば結論を撤回</p>
+<h3>事実(Grok収集・出典つき)</h3>
+<p><b>① Meta約4,200億ドル・Oracle約2,733億ドルの簿外債務のうち、購入義務(類型B)がいくらか(10-Qのcontractual obligations注記から分離)</b></p>
+<ul>
+<li>Meta（2026年3月31日時点）：未開始リース182.88億ドル、非キャンセル契約コミットメント（主に第三者クラウド容量、サーバー/ネットワークインフラ、データセンター投資）237.67億ドル、合計420.55億ドル。2026年6月30日時点では未開始リース278.99億ドル、非キャンセル契約コミットメント349.31億ドル（2026年53.52億ドル、2027年81.65億ドル到期分含む）、追加で最大147.2億ドルの条件付きクラウド購入義務（他社販売で削減可能）。10-Q注記でリースと購入/契約コミットメントは分離記載されているが、GPU/サーバー特有のtake-or-pay内訳は明記なし。 <a href="https://www.sec.gov/Archives/edgar/data/1326801/000162828026028526/meta-20260331.htm" target="_blank" rel="noopener">[1]</a> <a href="https://winbuzzer.com/2026/08/21/big-techs-future-ai-spending-commitments-total-3-trillion-wa-xcxwbn/" target="_blank" rel="noopener">[2]</a> <a href="https://www.sec.gov/Archives/edgar/data/1326801/000162828026050705/meta-20260630.htm" target="_blank" rel="noopener">[3]</a></li>
+</ul>
+<ul>
+<li>Oracle（2026年5月31日時点）：未開始リースコミットメント2600億ドル（主にデータセンター、15-19年契約、2027年第1四半期以降開始）、無条件購入義務（主にデータセンター電力関連）133.09億ドル（FY2027:18.41億、2028:10.34億、2029:10.53億、2030:9.52億、2031:8.96億、以後75.33億）。5月31日以降に追加190億ドルのクラウドインフラ無条件購入コミットメント（5年契約）。10-K/10-Q注記でリースと無条件購入義務は明確に分離記載。take-or-payという用語は使用されていない。 <a href="https://www.sec.gov/Archives/edgar/data/1341439/000119312526277521/orcl-20260531.htm" target="_blank" rel="noopener">[4]</a> <a href="https://www.sec.gov/Archives/edgar/data/1341439/000119312526277521/orcl-20260531.htm" target="_blank" rel="noopener">[4]</a></li>
+</ul>
+<p>（注：報道ではMetaの簿外総額を約4200億ドル、Oracleを約2733億ドルと集計。10-Q/10-Kのcontractual obligations注記ではリース（類型A相当）と購入/無条件義務（類型B相当）が分離されているが、購入義務内のGPU/サーバー特有のtake-or-pay金額は特定されていない。）</p>
+<p><b>② 2026年に入ってからAI関連の減損・restructuring chargeを計上した企業と金額</b></p>
+<ul>
+<li>Meta（2026年Q2）：May 2026の人員削減に伴うseverance expense 11.8億ドル（restructuring charge）。AI関連と明記されていないが、AIインフラ投資シフトの一環として実施。追加でlegal proceedings関連charge 24億ドル（AI関連ではない）。 <a href="https://www.sec.gov/Archives/edgar/data/1326801/000162828026050596/meta-06302026xexhibit991.htm" target="_blank" rel="noopener">[5]</a> <a href="https://s21.q4cdn.com/399680738/files/doc_financials/2026/q2/Meta-06-30-2026-Exhibit-99-1-FINAL.pdf" target="_blank" rel="noopener">[6]</a></li>
+</ul>
+<ul>
+<li>Oracle（FY2026全体）：Restructuring and other expenses 18.38億ドル（うち2026 Restructuring Plan 17.79億ドル）。AI技術採用と運用効率化を目的としたもの。 <a href="https://seekingalpha.com/filings/pdf/19552176" target="_blank" rel="noopener">[7]</a></li>
+</ul>
+<p>（その他の大手ハイパースケーラー（Microsoft, Alphabet, Amazon, Nvidiaなど）について、2026年に入ってからのAI特有の減損またはrestructuring chargeの計上事例は確認されなかった。）</p>
+<p><b>③ GPU/サーバー購入義務のキャンセル・縮小が報じられた事例</b></p>
+<ul>
+<li>Nvidia（2026年8月）：OpenAI Ohioデータセンター計画（10GW）に関する財務保証（backstop）を当初の2500億ドルから1200億ドル未満に半減（第1フェーズのみ）。投資家圧力によるリスク低減。Nvidiaは未使用GPU容量のレンタルバック保証も行う。 <a href="https://capacityglobal.com/news/nvidia-halves-openai-backstop/" target="_blank" rel="noopener">[8]</a> <a href="https://insideai.news/news/ai-hardware-infrastructure/nvidia-scales-back-250-billion-openai-data-center-guarantee-to-under-120-billion/7860/" target="_blank" rel="noopener">[9]</a></li>
+</ul>
+<ul>
+<li>その他：GB200 NVL72ラックの加熱問題により、一部hyperscaler（Microsoft, Amazon, Google, Meta）のBlackwellラック注文がキャンセルまたは遅延された事例が報じられているが、具体的な購入義務金額は非公開。Nvidia自体もDGX Cloud戦略を縮小・再編成（2025年末）。 <a href="https://epoch.ai/data/ai-chip-owners-documentation/methodology" target="_blank" rel="noopener">[10]</a></li>
+</ul>
+<p>（大規模なtake-or-pay型GPU/サーバー購入義務のキャンセル事例は限定的で、主に保証額縮小や技術問題に伴う調整。）</p>
+<p><b>④ Micron SCA約1,000億ドル・SanDisk NBM約939億ドルの相手先(カウンターパーティ)が特定できるか</b></p>
+<ul>
+<li>Micron（2026年6月発表、FY2026 Q3決算）：16件のStrategic Customer Agreements (SCA)を締結（うち14件で最小契約価格ベースの累積収益約1000億ドル、2026-2030年主に5年契約、自動車向けは3年）。take-or-pay構造で、顧客は指定数量を購入義務付け（キャンセル不可）。4社の「very large customers」（hyperscalers含む）と3社の中規模顧客、残りは自動車セクター。相手先名は非開示。現金預託・金融コミットメント220億ドル（うち現金180億ドル）受領予定。DRAMの約20%、NANDの約33%をカバー。 <a href="https://www.tomshardware.com/pc-components/dram/micron-inks-long-term-supply-agreements-worth-usd100-billion-says-it-has-no-idea-when-ram-crisis-will-end" target="_blank" rel="noopener">[11]</a> <a href="https://www.sahmcapital.com/news/content/full-transcript-micron-technology-q3-2026-earnings-call-2026-06-25" target="_blank" rel="noopener">[12]</a> <a href="https://wccftech.com/micron-signs-up-16-strategic-customer-agreements-for-memory-in-a-5-year-plan/" target="_blank" rel="noopener">[13]</a></li>
+</ul>
+<ul>
+<li>SanDisk / Western Digital（NBM = New Business Model）：最小契約収益939億ドル（RPO 598億ドル、追加契約後911億ドル）。データセンター・エッジコンピューティング向け8社と契約（最長5年、加重平均4年以上、FY2027供給の50%以上、FY2028の約2/3をカバー）。財務保護総額165億ドル（現金預託、金融商品など）。相手先名は非開示。最大顧客は契約後にさらなる数量増加を要請。 <a href="https://seekingalpha.com/article/4937858-ai-memory-customer-backing-sandisk-not-micron-or-sk-hynix-extracts-top-value" target="_blank" rel="noopener">[14]</a> <a href="https://news.futunn.com/en/post/77202683/sandisk-earnings-call-ai-storage-demand-is-still-in-the" target="_blank" rel="noopener">[15]</a></li>
+</ul>
+<p>（両社とも相手先（カウンターパーティ）を特定・開示していない。背景の「買い手側の類型Bを売り手側から見たもの」に該当するtake-or-pay型長期供給契約だが、個別企業名は非公開。）</p>
+<p><b>出典・日付概要（主なもの）</b></p>
+<ul>
+<li>Meta 10-Q (period ended June 30, 2026 / March 31, 2026): SEC filing, July 2026 / April 2026. <a href="https://www.sec.gov/Archives/edgar/data/1326801/000162828026050705/meta-20260630.htm" target="_blank" rel="noopener">[3]</a> <a href="https://www.sec.gov/Archives/edgar/data/1326801/000162828026028526/meta-20260331.htm" target="_blank" rel="noopener">[1]</a></li>
+<li>Oracle 10-K (fiscal year ended May 31, 2026): SEC filing, June 2026. <a href="https://www.sec.gov/Archives/edgar/data/1341439/000119312526277521/orcl-20260531.htm" target="_blank" rel="noopener">[4]</a></li>
+<li>WinBuzzer / Nikkei / WSJ系分析 (Meta $420.55B, Oracle $273.309B): 2026年8月21日、8月17日、8月19日。 <a href="https://winbuzzer.com/2026/08/21/big-techs-future-ai-spending-commitments-total-3-trillion-wa-xcxwbn/" target="_blank" rel="noopener">[2]</a> <a href="https://www.techtimes.com/articles/324721/20260817/metas-balance-sheet-hides-420b-off-balance-sheet-ai-debt-ey-flagged-largest-structure.htm" target="_blank" rel="noopener">[16]</a></li>
+<li>Micron Q3 2026 Earnings (SCA $100B): 2026年6月25日発表。 <a href="https://www.tomshardware.com/pc-components/dram/micron-inks-long-term-supply-agreements-worth-usd100-billion-says-it-has-no-idea-when-ram-crisis-will-end" target="_blank" rel="noopener">[11]</a></li>
+<li>SanDisk NBM $93.9B: 2026年8月頃決算関連報道。 <a href="https://seekingalpha.com/article/4937858-ai-memory-customer-backing-sandisk-not-micron-or-sk-hynix-extracts-top-value" target="_blank" rel="noopener">[14]</a></li>
+<li>Nvidia Ohio backstop縮小: Wall Street Journal報道、2026年8月14-17日。 <a href="https://capacityglobal.com/news/nvidia-halves-openai-backstop/" target="_blank" rel="noopener">[8]</a></li>
+</ul>
+<p>すべての数値は10-Q/10-Kまたはそれに基づく報道からの直接引用。10-Q注記でリースと購入義務は分離されているが、類型B（take-or-pay）のGPU/サーバー特有内訳やカウンターパーティ名は公開されていない。</p></div></details>
+<div class=anchor><a href="#Q_typeB_impair">#Q_typeB_impair</a></div>
+</article>
+<article class=rep id="Q_semi_cycle_5">
+<div class=hd><span class=call style="background:#3fb950">買い</span>
+<h2>中華メモリ(CXMT・YMTC)の2026-2027年の生産能力とビット産出</h2></div>
+<div class=stocks>mmメモリ能力予測2026</div>
+<p class=concl>中華メモリは2026-27年もDRAM需給緩和の主役になれず、西側メーカーの供給ひっ迫シナリオは維持される。</p>
+<div class=ev><span><i>1日</i><b>+0.0%</b><em>-2〜+2%</em></span><span><i>1〜2週</i><b>+2.0%</b><em>-3〜+6%</em></span><span><i>1年</i><b>+15.0%</b><em>-10〜+40%</em></span></div>
+<p class=lv><b>水準</b> DRAMレバレッジ(Micron/SK hynix)を押し目で。NAND単独(Kioxia等)は中立以下。CXMT関連は指定リスクで見送り。</p>
+<details><summary>根拠・事実を見る</summary><div class=detail><h3>✅ 結論: 中華メモリは2026-27年もDRAM需給緩和の主役になれず、西側メーカーの供給ひっ迫シナリオは維持される。</h3>
+<p><b>行動: 買い</b> ／ 水準: DRAMレバレッジ(Micron/SK hynix)を押し目で。NAND単独(Kioxia等)は中立以下。CXMT関連は指定リスクで見送り。 ／ 確信度: 中</p>
+<table>
+<tr><th>期間</th><th>期待値(中央)</th><th>レンジ</th><th>根拠</th></tr>
+<tr><td>1日</td><td><b>+0.0%</b></td><td>-2.0%〜+2.0%</td><td>日次では材料出尽くしなく、DRAM現物価格・中国関連報道次第でノイズ範囲。</td></tr>
+<tr><td>1〜2週</td><td><b>+2.0%</b></td><td>-3.0%〜+6.0%</td><td>DDR5スポット・HBM需給タイト継続報道と中国流入限定確認でMicron/SK系にプラス、YMTCシェア拡大報道でNAND系(Kioxia/WDC)は重石。</td></tr>
+<tr><td>1年</td><td><b>+15.0%</b></td><td>-10.0%〜+40.0%</td><td>SEMI能力+2.4%×HBM交換でDRAM実効供給マイナス、CXMTのDDR5ビット寄与はbitシェア9→12%と限定的。Micron/SK主導のDRAMサイ</td></tr>
+</table>
+<h3>論理</h3>
+<ul>
+<li>前提: SEMIの300mm能力は2026→27年で410→420万枚/月と+2.4%増に留まり、HBMウェハ交換比率3倍超で汎用DRAM実効供給は目減りする。</li>
+<li>前提: CXMTのDRAM WSPMはSemiAnalysis推計で2026末35万→27末42万枚だがHBM割当が5千→3万→5.5万枚と先食いし、DDR5歩留・世代遅れでビット寄与は限定(bitシェア2025年9%→27年12%予想)。</li>
+<li>前提: YMTCのNANDビットシェアはTrendForce 19%(中国全体)/Counterpoint 14%(YMTC単体)へ上昇、こちらは既にビットで効いておりNANDは需給緩みやすい。</li>
+<li>前提: 米DoD 1260H・Entity List指定と2026年8月商務長官発言で西側大手(Apple等)は政治リスクから中国メモリ採用を躊躇、中国出力は国内(ByteDance/Tencent)へ吸収されfungibilityは中国域内需要控除方向に働く。</li>
+<li>∴ NANDはYMTCで軟化余地あるがDRAM(特にDDR5/HBM)は中国増産が西側供給不足を埋められず、Micron/SK/Samsungの価格決定力は2027年まで温存。</li>
+</ul>
+<h3>最強の反対材料と耐性</h3>
+<p>CXMTのDDR5が9,000MT/s到達(2026年8月)しAMDプラットフォームで採用進めば、2027年にbitシェア12%超え&amp;中国国内需要をほぼ自給化し、西側の中国向け輸出が消えて実質供給過剰化する可能性。反論: CXMTはIPO資金でも99%が汎用DRAM向けでHBM専用投資なく、HBM3歩留25%モデルでは2027年のHBMウェハ交換ロス(月5.5万枚)を中国側も被る。汎用DDR5が余ってもHBM/DDR5高速品の逼迫は別レイヤーで残るため、DRAM大手のミックス改善益は維持され結論は崩れない。</p>
+<h3>この結論を捨てる条件</h3>
+<p>①CXMTの2027年DRAM WSPMが50万枚超かつHBM歩留50%超の確報、②TrendForceの中国DRAM bitシェアが2027年に18%超へ上方修正、③米国が中国メモリ購入禁止を実施せずApple/Dellが大量採用を公表、④SEMI 300mm能力2027年予測が440万枚以上へ上方修正、のいずれかが起これば供給不足シナリオを撤回。</p>
+<h3>事実(Grok収集・出典つき)</h3>
+<p><b>① CXMTのDRAM月産ウエハ枚数とDDR5比率、HBM参入の有無と時期</b></p>
+<ul>
+<li>SemiAnalysis推計：CXMT DRAMウェハ投入能力（WSPM）2025年末 月26.5万枚、2026年末 月35万枚（Micronの90.9%＝月38.5万枚に対し）、2027年末 月42万枚、2028年末 月50万枚（すべてforecast）。2026年に月8.5万枚増産。 <a href="https://xenospectrum.com/cxmt-2026-dram-wafer-capacity-micron-350k-wspm/" target="_blank" rel="noopener">[1]</a> <a href="https://xenospectrum.com/en/cxmt-2026-dram-wafer-capacity-micron-350k-wspm/" target="_blank" rel="noopener">[2]</a> <a href="https://xenospectrum.com/cxmt-2026-dram-wafer-capacity-micron-350k-wspm/" target="_blank" rel="noopener">[1]</a></li>
+<li>SemiAnalysis：CXMT HBM割り当て 2025年末 月5,000枚（総能力の約2%未満）、2026年末 月30,000枚（総能力の10%未満）、2027年末 月55,000枚、2028年末 月100,000枚（HBMウェハシェア 2025年1%→2028年12%）。IPO目論見書にHBM専用プロジェクトなし、99%収益が従来DRAM（主にDDR/LPDDR）。HBM3 8-high歩留まりモデル約25%。CXMT IPO（2026年7月）資金は主にDRAM技術アップグレード・ウェハラインに充当。 <a href="https://www.tomshardware.com/tech-industry/cxmt-closes-up-466-percent-in-shanghai-debut-with-no-hbm-project-in-its-ipo-prospectus" target="_blank" rel="noopener">[3]</a> <a href="https://www.aicoin.com/en/article/541451" target="_blank" rel="noopener">[4]</a> <a href="https://newsletter.semianalysis.com/p/chinas-cxmt-is-set-to-challenge-dram" target="_blank" rel="noopener">[5]</a> <a href="https://www.chosun.com/english/industry-en/2026/07/08/3EDTLLTSH5CMHGNLY3CI6D2UBU/" target="_blank" rel="noopener">[6]</a></li>
+<li>2026年1-3月期 CXMT DRAM収益シェア世界4位7.6%。DDR5性能 AMDプラットフォームで9,000MT/s超（2026年8月報道）。ビット出荷シェア forecast 2025年9%→2027年12%。 <a href="https://www.trendforce.com/news/2026/08/18/news-cxmt-ddr5-reportedly-tops-9000-mts-on-amd-platform-narrowing-performance-gap-with-global-leaders/" target="_blank" rel="noopener">[7]</a></li>
+</ul>
+<p><b>② YMTCのNAND月産と世界ビットシェア(19%という数字の出所と最新値)</b></p>
+<ul>
+<li>YMTC NAND現行月産能力：Wuhan 2 fab合計約20万枚/月（2026年）。第3 fab（2026年稼働開始予定）+10万枚/月追加で合計30万枚、将来的に2 fab追加（各5万枚）で合計40万枚目標（すべて計画）。 <a href="https://wccftech.com/chinas-ymtc-becomes-the-worlds-third-largest-nand-manufacturer-clocking-in-explosive-growth-while-eyeing-samsung-level-capacity/" target="_blank" rel="noopener">[8]</a> <a href="https://www.tweaktown.com/news/113106/chinas-ymtc-has-climbed-to-third-place-in-global-nand-flash-shipments/index.html" target="_blank" rel="noopener">[9]</a></li>
+<li>世界ビットシェア：Counterpoint Research 2026年1Q 13%、2026年4-6月（2Q）14%（bit出荷量ベース、サムスン25%、SK hynix 22%、Kioxiaと同率で3位）。前年比+22%、前四半期比+5%。収益シェアは5位（消費者向け中心のため）。 <a href="https://www.blocksandfiles.com/flash/2026/07/24/where-did-that-nand-upstart-come-from/5278261" target="_blank" rel="noopener">[10]</a> <a href="https://www.nikkei.com/article/DGXZQOUC123L10S6A810C2000000/" target="_blank" rel="noopener">[11]</a> <a href="https://www.scmp.com/tech/tech-trends/article/3363854/chinas-ymtc-breaks-global-top-three-flash-memory-suppliers-first-time" target="_blank" rel="noopener">[12]</a></li>
+<li>19%：TrendForce 2026年7月更新「中国サプライヤーのグローバルNAND bit outputシェアがほぼ19%へ上昇」（中国全体、YMTC主導）。出所はTrendForce NAND Flash Monthly Datasheet（2026年8月17日更新）。 <a href="https://www.blocksandfiles.com/flash/2026/07/24/where-did-that-nand-upstart-come-from/5278261" target="_blank" rel="noopener">[10]</a> <a href="https://www.trendforce.com/research/download/RP131220RX" target="_blank" rel="noopener">[13]</a></li>
+</ul>
+<p><b>③ SEMIの300mmメモリ能力予測(2026年410万→2027年420万枚/月)に中国分が含まれているか、含まれるなら何枚か</b></p>
+<ul>
+<li>SEMI 300mm Fab Outlook（2Q26版、2026年6月29日公表）：worldwide 300mm memory capacity 2026年 410万枚/月、2027年 420万枚/月（global total、設備投資52B→57Bドル）。中国分個別記載なし、global totalに含まれると明記された記述なし。 <a href="https://www.semi.org/en/semi-press-release/semi-projects-300mm-memory-equipment-investment-to-surpass-50-billion-dollars-in-2026" target="_blank" rel="noopener">[14]</a> <a href="https://www.techpowerup.com/350397/semi-projects-300-mm-memory-equipment-investment-to-surpass-usd-50-billion-in-2026" target="_blank" rel="noopener">[15]</a> <a href="https://www.semi.org/en/semi-press-release/semi-projects-300mm-memory-equipment-investment-to-surpass-50-billion-dollars-in-2026" target="_blank" rel="noopener">[14]</a></li>
+<li>SEMIレポートはworldwide集計（413 fab/line追跡）で地域別内訳（中国含む）は公開プレスリリースに記載なし。CXMT/YMTC等の中国能力はglobal totalに組み込まれている可能性が高いが、具体的な中国枚数（例：CXMT 35万枚など）はSEMI予測に明示されていない。 <a href="https://www.semi.org/en/products-services/market-data/300mm-fab-outlook" target="_blank" rel="noopener">[16]</a></li>
+</ul>
+<p><b>④ 中国製メモリの西側への流入実態(輸出規制の対象範囲と抜け道)</b></p>
+<ul>
+<li>CXMT：米国DoD Section 1260H「Chinese Military Company」指定（2026年6月）。YMTC：BIS Entity List指定。米国企業による購入自体は法的に禁止されていないが、2026年7月に米下院中国委員会委員長らが「Entity List追加・購入禁止ガイダンス発行・同盟国（韓日EU）と協調規制」を要請。政府調達・AI/データセンター向けは国家安全保障リスクと位置づけ。AppleがCXMT DRAM検証中との報道に対し、商務長官「中国メモリ使用は支持しない」と声明（2026年8月）。 <a href="https://www.theregister.com/systems/2026/07/17/chinese-memory-ban-would-cut-off-rampocalypse-relief/5273993" target="_blank" rel="noopener">[17]</a> <a href="https://www.ft.com/content/9e7cdf3c-2e52-492f-afeb-b63d86a53ce6?syn-25a6b1a6=1" target="_blank" rel="noopener">[18]</a> <a href="https://d1e00ek4ebabms.cloudfront.net/production/uploaded-files/Moolenaar%20Letter%20on%20DRAM%20Shortage-09b4a86b-9ff5-486e-aff0-f0cf41eb3b91.pdf" target="_blank" rel="noopener">[19]</a> <a href="https://www.heise.de/en/news/RAM-from-China-US-government-pressures-Apple-11415843.html" target="_blank" rel="noopener">[20]</a></li>
+<li>規制対象：米国技術（装置・ソフトウェア）の対中輸出制限が主。完成品メモリ（DRAM/NAND）の西側企業購入は直接禁止されていないが、DoDリスト企業との取引は政府関連サプライチェーンで実質制限（2027年以降連邦機関全面禁止の動き）。抜け道として非政府民間購入は可能だが、政治的圧力・サプライチェーン審査あり。中国国内販売が主力で、西側輸出は限定的。 <a href="https://www.emsnow.com/u-s-department-of-commerce-again-imposes-restrictions-on-china-expanding-scope-of-sanctions-from-logic-ics-to-memory-sector-says-trendforce/" target="_blank" rel="noopener">[21]</a> <a href="https://www.semafor.com/article/08/11/2026/chinese-chip-giant-plays-down-us-curbs" target="_blank" rel="noopener">[22]</a></li>
+</ul>
+<p><b>⑤ 中国国内需要が西側供給から抜ける量(fungibility)</b></p>
+<ul>
+<li>具体的なfungibility数値（西側供給からの置き換え量、例：X百万枚/月やビット量）は2026年8月時点の公開情報に実測値なし。CXMT出力は2027年末まで予約済みで、主に中国国内（ByteDance、Tencent等）とPCメーカー（Dell/HP/Lenovo/Appleの一部検証）。中国国内需要吸収により西側サプライヤーの中国向け販売が減少する効果は指摘されるが、定量データ（例：中国DRAM需要の何%をCXMT/YMTCがカバー）は見つからず。TrendForce等は中国サプライヤー拡大で国内充足が進むと記述。 <a href="https://xenospectrum.com/en/cxmt-dram-allocation-2027/" target="_blank" rel="noopener">[23]</a> <a href="https://www.blocksandfiles.com/flash/2026/07/24/where-did-that-nand-upstart-come-from/5278261" target="_blank" rel="noopener">[10]</a></li>
+</ul>
+<p><b>注記</b>：上記はすべて公開ソースからの数値・記述のみを抽出。SemiAnalysis/TrendForce/Counterpoint/SEMI等のforecastが大半を占め、「実測ビット産出」（量産出荷実績の月次ビット総量）は公開データにほとんど存在しない。IPO・当局発表はポジショントークとして扱う前提に沿い、数値は出典付きで記載。最新日付は2026年8月20日前後。</p></div></details>
+<div class=anchor><a href="#Q_semi_cycle_5">#Q_semi_cycle_5</a></div>
+</article>
+<article class=rep id="Q_monday_setup">
+<div class=hd><span class=call style="background:#d4a017">保有継続</span>
+<h2>2026年8月24日(月)の日本株の寄り付き前提</h2></div>
+
+<p class=concl>8/24寄りは小幅高スタート後イベント前の様子見、既存PF保有継続で新規は指値待ち</p>
+<div class=ev><span><i>1日</i><b>+0.4%</b><em>-1〜+1%</em></span><span><i>1〜2週</i><b>-0.5%</b><em>-4〜+3%</em></span><span><i>1年</i><b>+6.0%</b><em>-12〜+20%</em></span></div>
+<p class=lv><b>水準</b> 既存5銘柄は保有維持(+4.2%含み益)。新規4047関東電化は2100円で1/3、2050で1/3、2000で1/3の分割指値。4461第一工業製薬は12000円指値、NVDA決算・Jackson Hole通過後の押し目で執行</p>
+<details><summary>根拠・事実を見る</summary><div class=detail><h3>✅ 結論: 8/24寄りは小幅高スタート後イベント前の様子見、既存PF保有継続で新規は指値待ち</h3>
+<p><b>行動: 保有継続</b> ／ 水準: 既存5銘柄は保有維持(+4.2%含み益)。新規4047関東電化は2100円で1/3、2050で1/3、2000で1/3の分割指値。4461第一工業製薬は12000円指値、NVDA決算・Jackson Hole通過後の押し目で執行 ／ 確信度: 中</p>
+<table>
+<tr><th>期間</th><th>期待値(中央)</th><th>レンジ</th><th>根拠</th></tr>
+<tr><td>1日</td><td><b>+0.4%</b></td><td>-0.8%〜+1.2%</td><td>CME+345円/CFD+485円=+0.5〜0.7%の寄り高織り込み。SOX-0.5%と週-5.45%の半導体重石、イラン制裁発表の内容次第で±0.5%振れ。</td></tr>
+<tr><td>1〜2週</td><td><b>-0.5%</b></td><td>-4.0%〜+3.0%</td><td>NVDA決算(売上$91.94B予想)・Warsh議長Jackson Hole講演(30年債5.27%高止まり)・日銀副総裁講演の3大イベント通過で方向決定。ポ</td></tr>
+<tr><td>1年</td><td><b>+6.0%</b></td><td>-12.0%〜+20.0%</td><td>日本企業営業利益+85%増益(72社中61社)の業績相場継続シナリオが基本、ただし米長期金利5%超・イラン地政学・AI投資調整で下振れも。66,000pt水準は</td></tr>
+</table>
+<h3>論理</h3>
+<ul>
+<li>前提: 8/22米株はS&amp;P+0.43%・Nasdaq+0.44%と反発もSOX-0.5%・週間-5.45%で半導体は依然弱い</li>
+<li>前提: CME日経225円建て65,915(大証比+345)・CFD 65,987で+300〜480円高織り込み、ドル円158.98で円安追い風</li>
+<li>前提: 8/24イラン制裁詳細公表・8/26 NVDA決算・8/27-28 Jackson Hole・8/27日銀副総裁講演と重要イベントが週内集中しポジション調整優勢</li>
+<li>前提: 原油Brent$94/WTI$87で週+5-6%、金$4,661で3週続伸、地政学リスクは相応に織り込み済みだが上振れ余地残す</li>
+<li>∴ 寄りは先物ギャップ通り+300円前後高で始まるが半導体重石・イベント警戒で伸びづらく、既存PF(金融・食品・工作機械・小型・不動産)は業種分散が効きイベント通過待ちの保有継続が最適</li>
+</ul>
+<h3>最強の反対材料と耐性</h3>
+<p>最強の反論は『イラン制裁で原油急伸→インフレ再燃→Fedタカ派化→米金利急騰→円安加速でも日本株はバリュエーション圧縮で下落』というスタグフレシナリオ。ただし現時点で30年債5.27%は既に高止まりで追加ショックには耐性あり、原油+5-6%は織り込み進行中、日本株は業績相場(営業利益+85%)の裏付けがあり、PFの業種分散(地銀・食品・工作機械・不動産)がセクター偏りリスクを緩和するため結論は維持</p>
+<h3>この結論を捨てる条件</h3>
+<p>①CME日経が寄り前に65,500割れ(-500円超)まで急落、②ドル円が157円割れの円高進行、③イラン制裁発表で原油Brent$100超え急騰、④NVDA決算でガイダンス$100B割れ、⑤Warsh議長がタカ派サプライズ—いずれか2つ以上発生した場合は保有継続方針を撤回し利食い優先に切替</p>
+<h3>事実(Grok収集・出典つき)</h3>
+<p><b>2026年8月22日(金)時点の事実収集（寄り付き前提：8/24月）。数字優先で出典・日付付き。</b></p>
+<h4>① 8/22(金)の米国市場結果（S&amp;P・ナスダック・SOX・主要ハイテク個別）と22日夜〜23日材料</h4>
+<ul>
+<li><b>S&amp;P 500</b>: +33.21pt (+0.43%) で終値 <b>7,674.37</b>。週間 -1.43%。 <a href="https://www.moneycontrol.com/news/business/markets/wall-st-rises-on-the-day-but-falls-for-the-week-bond-yields-and-iran-in-focus-14012728.html" target="_blank" rel="noopener">[1]</a> <a href="https://countryeconomy.com/stock-exchange/usa" target="_blank" rel="noopener">[2]</a></li>
+<li><b>Nasdaq Composite</b>: +113.29pt (+0.44%) で終値 <b>26,180.46</b>（別出典 26,180.45）。週間 -2.05%。 <a href="https://www.moneycontrol.com/news/business/markets/wall-st-rises-on-the-day-but-falls-for-the-week-bond-yields-and-iran-in-focus-14012728.html" target="_blank" rel="noopener">[1]</a> <a href="https://k.sina.cn/article_7857201856_1d45362c001908kfgy.html" target="_blank" rel="noopener">[3]</a></li>
+<li><b>Dow Jones</b>: +517.80pt (+0.98%) で終値 <b>53,277.01</b>。週間 -0.85%。 <a href="https://www.moneycontrol.com/news/business/markets/wall-st-rises-on-the-day-but-falls-for-the-week-bond-yields-and-iran-in-focus-14012728.html" target="_blank" rel="noopener">[1]</a></li>
+<li><b>SOX (Philadelphia Semiconductor Index)</b>: -0.51% または約 -0.63%（11,740.37）。週間 -5.45%。 <a href="https://www.marketwatch.com/investing/index/sox" target="_blank" rel="noopener">[4]</a> <a href="https://seekingalpha.com/news/4635914-ai-chip-stocks-largely-mixed-amid-broader-wall-street-gains" target="_blank" rel="noopener">[5]</a></li>
+<li><b>主要ハイテク個別 (8/22)</b>: Nvidia 下落傾向（週間 -4.5%超の言及あり、日次 -1%またはほぼ横ばい/微減）。Micron -0.8%、Intel -2.2%。Alphabet +1.1%、Microsoft +0.4%、Meta +0.8%。Broadcom +1%前後、AMD/Qualcomm 上昇も全体混合。 <a href="https://www.goodreturns.in/news/us-stock-market-weekly-wrap-nasdaq-crashes-600-pts-dow-jones-s-p-500-fall-1-1-5-why-wall-street-fell-1530075.html" target="_blank" rel="noopener">[6]</a> <a href="https://seekingalpha.com/news/4635914-ai-chip-stocks-largely-mixed-amid-broader-wall-street-gains" target="_blank" rel="noopener">[5]</a></li>
+<li><b>材料（22夜〜23日）</b>: 来週Nvidia決算（8/26）、Jackson Hole（8/27-29）、PCEインフレデータなど。イラン制裁関連の地政学・長期金利変動が焦点。週全体で債券利回り上昇・中東緊張が圧力。 <a href="https://www.investors.com/research/investing-action-plan/stock-market-week-ahead-a-choppy-market-heads-for-nvidia-earnings-jackson-hole/" target="_blank" rel="noopener">[7]</a> <a href="https://www.reuters.com/business/wall-st-week-ahead-nvidia-earnings-jackson-hole-test-pillars-stock-rally-2026-08-21/" target="_blank" rel="noopener">[8]</a></li>
+</ul>
+<h4>② 米国の対イラン経済制裁（8/24予定）の内容と原油・金への織り込み状況</h4>
+<ul>
+<li><b>制裁内容</b>: 8/24（月）に詳細公表予定。「史上最強の制裁（toughest sanctions in history）」をTreasury Secretary Scott Bessentが明言。Trump大統領が「経済戦争・孤立化の前例のない規模」と警告、支援国（中国含む）への二次制裁も示唆。海軍封鎖と組み合わせた「one-two punch」。イランは「経済テロ」と非難。 <a href="https://www.reuters.com/world/middle-east/trump-warns-economic-consequences-any-country-that-supports-iran-2026-08-20/" target="_blank" rel="noopener">[9]</a> <a href="https://www.reuters.com/world/middle-east/us-says-it-will-impose-toughest-sanctions-history-iran-2026-08-20/" target="_blank" rel="noopener">[10]</a></li>
+<li><b>原油への織り込み</b>: Brent $93.98（+0.21%）、WTI $86.90（+0.08%）前後。週間 +6.1%（Brent）/+5.3%（WTI）、7/24以来高値圏。封鎖・輸出減少で供給懸念が価格を押し上げ。8/22時点で$93-94台。 <a href="https://www.reuters.com/business/energy/oil-set-second-weekly-rise-unsettled-us-iran-war-crimps-supply-2026-08-21/" target="_blank" rel="noopener">[11]</a> <a href="https://www.reuters.com/business/energy/oil-set-second-weekly-rise-unsettled-us-iran-war-crimps-supply-2026-08-21/" target="_blank" rel="noopener">[11]</a></li>
+<li><b>金への織り込み</b>: 安全資産として上昇傾向（8/21時点で$4,661.60、+1.97%の報道）。ただし高金利・原油上昇によるFed引き締め懸念で一時圧力も、週全体で3週連続上昇見込み。 <a href="https://tradingeconomics.com/commodity/gold/news/570104" target="_blank" rel="noopener">[12]</a></li>
+</ul>
+<h4>③ Jackson Hole（8/27-28）・NVDA決算（8/26）・日銀副総裁講演（8/27）に対する市場のポジション</h4>
+<ul>
+<li><b>Jackson Hole (8/27-29)</b>: Fed Chair Kevin Warsh講演（8/28予定）が最大焦点。長期金利・政策姿勢・AI投資環境のヒントを探る。市場は成長減速・インフレ低下で追加利上げ懸念後退も、30年債利回り5.27%近辺の高止まりで警戒。 <a href="https://finance.biggo.com/news/4d1700cc-458e-481a-8a2d-a600ab13fc57" target="_blank" rel="noopener">[13]</a> <a href="https://www.reuters.com/business/wall-st-week-ahead-nvidia-earnings-jackson-hole-test-pillars-stock-rally-2026-08-21/" target="_blank" rel="noopener">[8]</a></li>
+<li><b>NVDA決算 (8/26)</b>: AI支出需要・Blackwell Ultraの見通しが鍵。調整後EPS予想 $2.08、売上 $91.94B（次四半期 $103.38B）。市場はAIトレード持続性のテストと位置づけ、ポジティブサプライズ期待もボラティリティ高。 <a href="https://www.newsquawk.com/headlines/week-in-focus-24-28th-august-2026-highlights-include-nvda-earnings-us-pce-bls-revisions-bessent-on-iran-and-jackson-hole-" target="_blank" rel="noopener">[14]</a> <a href="https://www.home.saxo/en-gb/content/articles/equities/week-ahead-24--28-aug-21082026" target="_blank" rel="noopener">[15]</a></li>
+<li><b>日銀副総裁講演 (8/27)</b>: 具体的な市場ポジション言及なし（検索範囲内）。全体として来週イベント前でポジション調整・様子見姿勢が強い。 <a href="https://finance.biggo.com/news/4d1700cc-458e-481a-8a2d-a600ab13fc57" target="_blank" rel="noopener">[13]</a></li>
+</ul>
+<h4>④ 日経平均先物・CME・ドル円の現在値（8/22夜〜23日時点）</h4>
+<ul>
+<li><b>日経225先物（大阪）</b>: 8/22 2時時点 <b>65,950</b>（-140）。0時時点 <b>65,710</b>（-380）。日経現物終値 <b>66,016.36</b>（-200.43/-0.30%）。 <a href="https://minkabu.jp/news/4603034" target="_blank" rel="noopener">[16]</a> <a href="https://minkabu.jp/news/4603023" target="_blank" rel="noopener">[17]</a></li>
+<li><b>CME日経225先物</b>: 8/21清算値 ドル建て <b>65,930</b>、円建て <b>65,915</b>（大証比 +345）。8/22夜の最新CFD参考値 <b>65,987.5</b>（+485/+0.74%）。 <a href="https://finance.yahoo.co.jp/news/detail/533be918f6910546bc232aad0f11a2f444bd5ebd" target="_blank" rel="noopener">[18]</a> <a href="https://cn.investing.com/indices/japan-225-futures-historical-data" target="_blank" rel="noopener">[19]</a></li>
+<li><b>ドル円</b>: 158.98（-0.07/-0.04%）。 <a href="https://cn.investing.com/indices/japan-225-futures-historical-data" target="_blank" rel="noopener">[19]</a></li>
+</ul>
+<h4>⑤ 週末（8/21-22）に出た日本株個別の材料（決算・上方修正・大量保有報告）</h4>
+<ul>
+<li><b>業績上方修正（8/17-21発表分）</b>: 日宣&lt;6543&gt;（上期経常一転17%増益・最高益更新）、オリエンタルコンサルタンツHD&lt;2498&gt;（今期経常微増益・最高益・配当+5円）、ワッツ&lt;2735&gt;（今期最終+11%・配当+3円）、シーイーシー&lt;9692&gt;（今期経常+8%上方・最高益上乗せ）、MERF&lt;3168&gt;（配当+10円）、日本甜菜製糖&lt;2108&gt;（配当実質増額・株式分割）、AFC-HDアムス&lt;2927&gt;（配当+4円）など。全体で28社決算・修正（四半期2、本決算13、修正13）。ポジティブ11、中立3、ネガティブ14。 <a href="https://finance.yahoo.co.jp/news/detail/677d0cc87fb20c439a56bad96ffbd3ffbab26c17" target="_blank" rel="noopener">[20]</a> <a href="https://www.diamond.co.jp/zai/articles/-/717" target="_blank" rel="noopener">[21]</a></li>
+<li><b>大量保有報告（8/21提出分）</b>: みずほ信託銀行がサンゲツ&lt;8130&gt;を5.02%（新規、義務発生8/14）。同銀行が新光商事&lt;8141&gt;保有減少（1.93%）。その他みずほ銀行&lt;タクマ&gt;6.85%、野村證券&lt;フェローテックHD&gt;7.24%、ウエリントン&lt;京阪神ビル&gt;5.06%など複数報告。 <a href="https://maonline.jp/kabuhoyu/sh-s100yxu6" target="_blank" rel="noopener">[22]</a> <a href="https://lvh.navibase.net/holding_reports?filer_group=multi_fund_issuers" target="_blank" rel="noopener">[23]</a></li>
+<li><b>その他</b>: 8月決算シーズン全体で営業利益増益率85%超（72社中61社）、純利益77%増益。キオクシアHD（売上+415%、営業27倍）など資源・メモリ関連が強いが、好決算でも株価反応薄いケース多し（例: ディスコ+42%→-12.3%）。 <a href="https://x.com/irbank/status/2089588010199421268" target="_blank" rel="noopener">[24]</a></li>
+</ul>
+<p><b>出典は主にReuters、Moneycontrol、Sina、Investing.com、株探、M&amp;A Online、FREDなど（2026/8/20-22公開分）。</b> 全て検索結果に基づく公開事実のみ。</p></div></details>
+<div class=anchor><a href="#Q_monday_setup">#Q_monday_setup</a></div>
+</article>
+<article class=rep id="Q_6138_tungsten">
+<div class=hd><span class=call style="background:#8b949e">見送り</span>
+<h2>ダイジェット工業6138の1Q営業利益率6.2%→18.1%の持続性</h2></div>
+<div class=stocks>ダイジェット工業6138</div>
+<p class=concl>1Q利益は安値在庫と値上げ浸透の重なりで上振れ、通期は在庫枯渇と原料急騰で減速の会社見立て、RSI84で見送り。</p>
+<div class=ev><span><i>1日</i><b>-1.5%</b><em>-6〜+3%</em></span><span><i>1〜2週</i><b>-4.0%</b><em>-15〜+8%</em></span><span><i>1年</i><b>+5.0%</b><em>-30〜+40%</em></span></div>
+<p class=lv><b>水準</b> 現値2083円・RSI84では新規買い不可。1800円割れ(PER6.3倍)まで押し目待ち、または2Q開示で18%マージン継続確認まで待機</p>
+<details><summary>根拠・事実を見る</summary><div class=detail><h3>✅ 結論: 1Q利益は安値在庫と値上げ浸透の重なりで上振れ、通期は在庫枯渇と原料急騰で減速の会社見立て、RSI84で見送り。</h3>
+<p><b>行動: 見送り</b> ／ 水準: 現値2083円・RSI84では新規買い不可。1800円割れ(PER6.3倍)まで押し目待ち、または2Q開示で18%マージン継続確認まで待機 ／ 確信度: 中</p>
+<table>
+<tr><th>期間</th><th>期待値(中央)</th><th>レンジ</th><th>根拠</th></tr>
+<tr><td>1日</td><td><b>-1.5%</b></td><td>-6.0%〜+3.0%</td><td>RSI84の過熱局面。8/7開示から日柄経過で材料出尽くし、短期は利食い優勢。ただし住友電工追随や値上げ発表で+方向の可能性も残る。</td></tr>
+<tr><td>1〜2週</td><td><b>-4.0%</b></td><td>-15.0%〜+8.0%</td><td>RSI84はテクニカル的に2週間で調整入りが定石。通期予想が1Q年率の54%=減速示唆、EPS286円・現値2083円でPER7.3倍は割安だが過熱剥落が先行し</td></tr>
+<tr><td>1年</td><td><b>+5.0%</b></td><td>-30.0%〜+40.0%</td><td>会社予想EPS286円のPER7倍で理論2000円前後=現値近辺が妥当。上振れ余地はタングステン価格転嫁成功・追加値上げ・サーメタル寄与、下振れは在庫枯渇後の原</td></tr>
+</table>
+<h3>論理</h3>
+<ul>
+<li>前提: 1Q営業利益率18.1%は前期通期7.0%・前年同期6.2%から急伸し、会社は『安値在庫品の売上拡大』と原価率改善を要因に挙げている。</li>
+<li>前提: 中国輸出許可制で2026年1月以降日本向け実質ゼロ・国際価格3倍、在庫月数・リサイクル比率の開示なし=安値在庫は有限。</li>
+<li>前提: 通期営業利益11.0億は1Q年率換算20.3億の54%で、会社は原材料・エネルギー高騰リスクを明記=2Q以降の原価上昇織込み。</li>
+<li>前提: 住友電工の2026/10 +25%値上げに対しダイジェットの追随発表なし、富士ダイス提携の今期寄与は『軽微』。</li>
+<li>∴ 1Qのマージン18%は持続前提が乏しく通期予想が正しい確率が高い、RSI84の過熱で新規買いは不利。</li>
+</ul>
+<h3>最強の反対材料と耐性</h3>
+<p>PER7.3倍・配当利回り3.4%(70円)は割安で、住友電工+25%値上げに追随すれば通期予想は保守的すぎ再上方修正の可能性。ただし①中国輸出ゼロで原料入手自体が制約=数量成長に上限②会社が通期を1Q年率の54%に据置いた=在庫枯渇後の原価上昇を最も知る立場の判断、を優先すべきで、過熱時の押し目待ちが合理的。結論維持。</p>
+<h3>この結論を捨てる条件</h3>
+<p>①2Q(7-9月)営業利益率が15%以上を維持し会社が通期を再上方修正、②ダイジェットが+20%超の値上げを正式発表、③タングステン在庫月数6ヶ月以上の開示、のいずれかが出れば見送り判断を撤回し買いに転換。逆に2Qで利益率10%割れなら売り。</p>
+<h3>事実(Grok収集・出典つき)</h3>
+<p><b>①タングステン原料の調達構造(中国依存度・リサイクル比率・在庫月数)、安い在庫を持っている間の一時的な利益か、値上げが原価上昇を上回る構造か</b></p>
+<ul>
+<li>2026年3月期（前期）：新製品効果、タングステン安値在庫品の売上拡大により売上高92.9億円（+5.7%）、営業利益6.48億円（前々期比2.96倍）。（出典：<a href="https://www.iru-miru.com/article/83855、2026年6月23日）" target="_blank" rel="noopener">https://www.iru-miru.com/article/83855、2026年6月23日）</a> <a href="https://www.iru-miru.com/article/83855" target="_blank" rel="noopener">[1]</a></li>
+<li>2027年3月期1Q（2026年4-6月）：売上高27.99億円（+25.2%）、営業利益5.08億円（+265.8%、営業利益率18.1% vs 前年同期6.2%）、経常利益5.33億円、純利益4.51億円。売上原価率改善等により営業利益増加。製品別：切削工具22.85億円（+36.7%）、焼肌チップ2.44億円（+83.6%）。（出典：決算短信 <a href="https://finance.biggo.jp/news/jpx_tdnet_140120260805509688" target="_blank" rel="noopener">https://finance.biggo.jp/news/jpx_tdnet_140120260805509688</a> およびPDF、2026年8月7日15:30開示） <a href="https://finance.biggo.jp/news/jpx_tdnet_140120260805509688" target="_blank" rel="noopener">[2]</a> <a href="https://finance-frontend-pc-dist.west.edge.storage-yahoo.jp/disclosure/20260807/20260805509688.pdf" target="_blank" rel="noopener">[3]</a></li>
+<li>原材料・貯蔵品在庫増加（+2.88億円）、仕掛品増加（+3.33億円）。原材料・エネルギー価格高騰をリスク要因として注視。（出典：同決算短信、2026年8月7日） <a href="https://finance-frontend-pc-dist.west.edge.storage-yahoo.jp/disclosure/20260807/20260805509688.pdf" target="_blank" rel="noopener">[3]</a></li>
+<li>中国依存に関する具体的な自社比率・リサイクル比率・在庫月数の数値は1Q決算資料・関連記事に記載なし。安値在庫効果は前期（2026/3期）に言及あり。値上げが原価上昇を上回る構造か一時的かの会社直接説明は確認された資料に記載なし。</li>
+</ul>
+<p><b>②通期会社予想(8/7上方修正: 営業利益11.0億)が1Q年率換算20.3億の55%にとどまる理由の会社側説明</b></p>
+<ul>
+<li>2027年3月期通期修正予想（2026年8月7日）：売上高102億円（前回96億円から上方）、営業利益11.0億円（前回4.0億円から上方）、経常利益10.0億円（前回3.5億円から上方）、純利益8.5億円（前回3.0億円から上方）、EPS 286.06円、期末配当70円（前回35円から増額、年間70円）。前期（2026/3期）実績：売上92.92億円、営業利益6.48億円、経常利益6.87億円、純利益7.83億円。 <a href="https://finance.biggo.jp/news/jpx_tdnet_140120260805509688" target="_blank" rel="noopener">[2]</a> <a href="https://kabutan.jp/news/?b=k202608070318" target="_blank" rel="noopener">[4]</a></li>
+<li>1Q営業利益5.08億円の年率換算約20.3億円に対し、通期予想11.0億円は約54%水準。</li>
+<li>会社側説明：売上原価率改善等により1Q利益増加。一方、通期見通しは「ロシア・ウクライナ情勢や中東問題、米中通商政策、原材料・エネルギー価格の高騰等を注視する必要があり」「業績見通しは現在入手している情報及び合理的と判断する前提に基づくが、実際の業績は様々な要因により大きく異なる可能性がある」との記述あり。具体的に「1Q年率換算に対し通期を55%水準に抑えた理由」の直接説明は記載なし。（出典：決算短信、2026年8月7日） <a href="https://finance-frontend-pc-dist.west.edge.storage-yahoo.jp/disclosure/20260807/20260805509688.pdf" target="_blank" rel="noopener">[3]</a></li>
+</ul>
+<p><b>③2026年10月の住友電工+25%値上げにダイジェットが追随するか、追加値上げの発表有無</b></p>
+<ul>
+<li>住友電工：2026年8月7日発表、2026年10月1日受注分から切削工具価格を最大25%以上引き上げ（超硬インサート製品は25%以上）。背景はタングステン価格高騰（中国輸出規制影響）。4月にも5-60%以上値上げ発表済み。（出典：<a href="https://www.nikkei.com/article/DGXZQOUF0756N0X00C26A8000000/、2026年8月7日；住友電工プレスリリース、2026年8月7日）" target="_blank" rel="noopener">https://www.nikkei.com/article/DGXZQOUF0756N0X00C26A8000000/、2026年8月7日；住友電工プレスリリース、2026年8月7日）</a> <a href="https://www.nikkei.com/article/DGXZQOUF0756N0X00C26A8000000/" target="_blank" rel="noopener">[5]</a></li>
+<li>ダイジェット工業による追随値上げ、追加値上げ発表の有無：2026年8月7日時点の決算修正発表および関連資料に記載なし。</li>
+</ul>
+<p><b>④サーメタル(脱タングステン)と冨士ダイスとの提携の売上寄与時期</b></p>
+<ul>
+<li>提携発表日：2026年6月26日。内容：タングステン・コバルト使用量を削減した合金の販路拡大。ダイジェット工業が製造する「サーメタル」（タングステン・コバルト不含合金）を冨士ダイスに供給、冨士ダイスが素材または加工品として工具・金型で販売。両社の販売ネットワーク活用。冨士ダイスは「サステロイ」についても販路拡大検討。（出典：冨士ダイスIR <a href="https://www.fujidie.co.jp/file-dl/ir_news/156、2026年6月26日；https://www.logi-today.com/970062、2026年6月26日頃）" target="_blank" rel="noopener">https://www.fujidie.co.jp/file-dl/ir_news/156、2026年6月26日；https://www.logi-today.com/970062、2026年6月26日頃）</a> <a href="https://www.fujidie.co.jp/file-dl/ir_news/156" target="_blank" rel="noopener">[6]</a> <a href="https://www.logi-today.com/970062" target="_blank" rel="noopener">[7]</a></li>
+<li>2027年3月期業績への影響：冨士ダイス側「軽微と判断」。ダイジェット側具体的な売上寄与時期・金額の記載なし。中長期的な脱レアメタル戦略として注目。（出典：同提携発表資料、2026年6月26日；iru-miru記事2026年6月23日） <a href="https://www.fujidie.co.jp/file-dl/ir_news/156" target="_blank" rel="noopener">[6]</a></li>
+</ul>
+<p>上記は公開資料・決算短信から抽出された数字・記述のみを記載。推測・意見は含まない。中国輸出許可制・国際価格3倍等の背景事実は依頼に記載の通りで、新規出典からの追加事実は確認されなかった。詳細は各URLのPDF・記事を参照。</p></div></details>
+<div class=anchor><a href="#Q_6138_tungsten">#Q_6138_tungsten</a></div>
+</article>
 <article class=rep id="V_uacj_stock">
 <div class=hd><span class=call style="background:#8b949e">見送り</span>
 <h2>UACJ5741の2027年3月期1Q営業利益538.11億円のうち</h2></div>
