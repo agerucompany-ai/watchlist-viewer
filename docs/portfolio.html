@@ -1,134 +1,17 @@
-<!DOCTYPE html><html lang="ja"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>今日のポートフォリオ</title><style>
-:root{--bg:#0d1117;--bg2:#161b22;--bg3:#21262d;--border:#30363d;--text:#e6edf3;--muted:#8b949e;--blue:#58a6ff}
-body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,"Hiragino Sans","Yu Gothic UI",sans-serif;font-size:13px;padding:14px}
-h1{font-size:18px;margin:6px 0} h2{font-size:14px;margin:18px 0 8px;border-left:4px solid var(--blue);padding-left:8px}
-table{border-collapse:collapse;width:100%;background:var(--bg2);font-size:12px}
-th,td{border:1px solid var(--border);padding:5px 8px;text-align:left} th{background:var(--bg3);white-space:nowrap}
-td.r{text-align:right} .up{color:#3fb950} .down{color:#f85149}
-a{color:var(--blue);text-decoration:none}
-.macro{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:10px 14px;margin:10px 0;display:flex;gap:18px;flex-wrap:wrap;font-size:13px}
-.alloc{display:flex;height:26px;border-radius:6px;overflow:hidden;margin:8px 0;font-size:11px;color:#000;font-weight:700}
-.act{background:var(--bg2);border:1px solid var(--border);border-left:4px solid #d4a017;border-radius:6px;padding:8px 12px;margin:6px 0}
-.rsn{color:var(--muted);font-size:11px;margin-top:2px}
-.pillar{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px}
-.pcard{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:10px 12px}
-.pcard b{display:block;margin-bottom:6px} .pcard ul{margin:4px 0;padding-left:18px} .pcard li{margin:2px 0}
-.wrap{overflow-x:auto}
-.muted{color:var(--muted)}
-.why{background:var(--bg2);border:1px solid var(--border);border-left:4px solid #58a6ff;border-radius:6px;padding:9px 12px;margin:7px 0}
-.wh{font-size:13px;margin-bottom:5px;overflow:hidden}
-.wr{font-size:12px;color:#c9d1d9;margin:2px 0}
-.wn{font-size:11.5px;color:var(--muted);margin-top:5px;border-top:1px solid var(--border);padding-top:5px}
-.hday{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:8px 12px;margin:6px 0}
-.hday ul{margin:5px 0 0;padding-left:18px} .hday li{margin:5px 0;font-size:12px}
-.rules{background:var(--bg2);border:1px solid var(--border);border-left:4px solid #3fb950;border-radius:6px;padding:10px 14px;margin:8px 0;font-size:12.5px}
-.rules ul{margin:6px 0 0;padding-left:18px} .rules li{margin:5px 0;line-height:1.7}
-</style></head><body>
-<div id="sitenav" style="font-size:12px;margin:0 0 10px 0"><div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center"><a href="/watchlist-viewer/dash.html" style="background:#3fb950;color:#000;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700;">⚔️ダッシュ</a><a href="/watchlist-viewer/mind.html" style="background:#a371f7;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700;">🧠思考</a><a href="/watchlist-viewer/portfolio.html" style="background:#d4a017;color:#000;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700;box-shadow:0 0 0 2px #e6edf3;">💼今日のPF</a><a href="/watchlist-viewer/volume/" style="background:#8f6bbf;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700;">📈出来高</a><a href="/watchlist-viewer/kinouchi.html" style="background:#2ea0a0;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700;">🤖AIマクロ</a><a href="/watchlist-viewer/activist.html" style="background:#d29922;color:#000;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700;">🏷テーマ</a></div></div>
-<h1>💼 今日のポートフォリオ <span style="font-size:12px;color:var(--muted)">2026-08-21 自動組み替え(毎晩19:30)</span></h1>
-<div class="macro">
-  <span>📉マクロ: <b>🟢リスクオン(機械枠 稼働)</b> ⚠️VI30超=パニック圏、バリューRSI買い窓に注目</span>
-  <span>モメンタム(PCR/VIスプレッドROC10) <b>+7.5</b></span>
-  <span>日経VI <b>32.1</b></span>
-  <span>PCR <b>1.92</b></span>
-</div>
-<div>想定元本1,000万 / 評価額 <b>10,762,200円</b> (含み+7,000 / 実現+755,200)</div>
-<div class="alloc">
-  <div style="background:#8f6bbf;width:0%;min-width:40px;display:flex;align-items:center;justify-content:center">機械 0万</div>
-  <div style="background:#58a6ff;width:10%;min-width:40px;display:flex;align-items:center;justify-content:center">ファンダ 99万</div>
-  <div style="background:#3fb950;width:90%;min-width:40px;display:flex;align-items:center;justify-content:center">現金 901万</div>
-</div>
-
-<h2>🔄 本日の組み替え</h2>
-<div style="color:#8b949e">本日の組み替えなし(全ルール条件未成立)</div>
-
-<h2>📘 ファンダ枠 (40%上限・CNPER判定×RSI≤30買い窓・第6条)</h2>
-<div class="wrap"><table><tr><th>コード</th><th>銘柄</th><th>戦略</th><th>建日</th><th>建値</th><th>株数</th><th>含み損益</th><th>出口(事前宣言)</th></tr>
-<tr><td><a href="https://shikiho.toyokeizai.net/stocks/7062" target="_blank">7062</a></td><td>フレアス</td><td>RSI買い窓</td><td class="r">08-20</td><td class="r">707</td><td class="r">1,400株</td><td class="r up">+7,000</td><td style="font-size:11px;color:#8b949e">+20%利確 / RSI70過熱 / 判定消失 / -15%損切</td></tr></table></div>
-
-<h2>🚫 ストップ高のため見送り</h2><div class='note'>終値がストップ高＝引けで約定できない(比例配分)ため、S高追撃の候補から外しています。表示だけの建玉を作らないためです。</div><div class='wrap'><table><tr><th>コード</th><th>銘柄</th><th>当日</th><th>終値</th></tr><tr><td>296A</td><td>令和アカウンティング・ホールディングス</td><td class='num'>+16.0%</td><td class='num'>1,087</td></tr><tr><td>3189</td><td>ＡＮＡＰホールディングス</td><td class='num'>+44.2%</td><td class='num'>163</td></tr><tr><td>456A</td><td>ＨＵＭＡＮ　ＭＡＤＥ</td><td class='num'>+22.0%</td><td class='num'>1,662</td></tr><tr><td>7138</td><td>ＴＯＲＩＣＯ</td><td class='num'>+35.0%</td><td class='num'>193</td></tr><tr><td>9115</td><td>明海グループ</td><td class='num'>+15.3%</td><td class='num'>1,129</td></tr></table></div>
-<h2>⚙️ 機械枠 (30%上限・セリクラ◎/S高追撃・リスクオン時のみ)</h2>
-<div class="wrap"><table><tr><th>コード</th><th>銘柄</th><th>戦略</th><th>建日</th><th>建値</th><th>株数</th><th>含み損益</th><th>出口(事前宣言)</th></tr>
-<tr><td colspan="8" style="color:#8b949e">ポジションなし → 現金待機</td></tr></table></div>
-
-<h2>📝 なぜ今この形なのか (保有理由と出口までの距離)</h2>
-<div class="muted" style="font-size:11.5px;margin-bottom:8px">
-建てた時の理由と、事前に宣言した出口条件をそのまま載せています。出口は機械執行なので、
-「あと何%で利確/損切に当たるか」「期限まであと何日か」が今の距離です。</div>
-<div style="font-weight:700;margin:10px 0 4px">📘 ファンダ枠</div>
-<div class="why"><div class="wh"><b>7062 フレアス</b> <span class="muted">RSI買い窓・2026-08-20に707円×1,400株</span><span class="up" style="float:right">+7,000円 (+0.7%)</span></div><div class="wr"><b>買った理由:</b> CNPER判定[20%増益]×RSI29≤30 買い窓</div><div class="wr"><b>出口(事前宣言):</b> +20%利確 / RSI70過熱 / 判定消失 / -15%損切</div><div class="wn">利確(+20%)まで <b>+19.2%</b> ／ 損切(-15%)まで <b>-15.6%</b> ／ 現在RSI <b>32</b>(70で過熱利確) ／ CNPER判定 <b>連増益+50%成長</b> 継続中</div></div>
-<div style="font-weight:700;margin:14px 0 4px">⚙️ 機械枠</div>
-<div style="color:var(--muted)">保有なし。条件が成立していないため現金待機中です。</div>
-
-<h2>🕘 これまでの経緯 (この形になるまで)</h2>
-<div class="muted" style="font-size:11.5px;margin-bottom:8px">
-売買はすべてルールの自動執行です。実現損益 <b class="up">+755,200円</b>。</div>
-<div class="hday"><b>2026-08-24</b><ul><li>🔴売 <b>296A 令和アカウンティング・ホールディングス</b> 900株@1,087 <span class="up">+0円</span><div class="rsn">ストップ高引けで約定不可(比例配分)のため建玉を取消。表示だけの建玉を作らない</div></li><li>🔴売 <b>456A ＨＵＭＡＮ　ＭＡＤＥ</b> 600株@1,662 <span class="up">+0円</span><div class="rsn">ストップ高引けで約定不可(比例配分)のため建玉を取消。表示だけの建玉を作らない</div></li><li>🔴売 <b>7138 ＴＯＲＩＣＯ</b> 5,100株@193 <span class="up">+0円</span><div class="rsn">ストップ高引けで約定不可(比例配分)のため建玉を取消。表示だけの建玉を作らない</div></li></ul></div><div class="hday"><b>2026-08-21</b><ul><li>🔴売 <b>8144 デンキョーグループホールディングス</b> 800株@1,241 <span class="up">+5,600円</span><div class="rsn">CNPER判定消失(ファンダ悪化)</div></li><li>🔴売 <b>7273 イクヨ</b> 1,700株@583 <span class="up">+0円</span><div class="rsn">CNPER判定消失(ファンダ悪化)</div></li></ul></div><div class="hday"><b>2026-08-21</b><ul><li>🔴売 <b>7138 ＴＯＲＩＣＯ</b> 6,900株@193 <span class="up">+345,000円</span><div class="rsn">+10%タッチ利確</div></li><li>🔴売 <b>2345 ＨＯＤＬ１</b> 10,100株@108 <span class="up">+90,900円</span><div class="rsn">5営業日期限</div></li><li>🟢買 <b>296A 令和アカウンティング・ホールディングス</b> 900株@1,087<div class="rsn">当日+16% 引け買い2日+10%売切(実測+1.85%/勝率60%) / ファンダ:判定なし 営利+551百万</div></li><li>🟢買 <b>456A ＨＵＭＡＮ　ＭＡＤＥ</b> 600株@1,662<div class="rsn">当日+22% 引け買い2日+10%売切(実測+1.85%/勝率60%) / ファンダ:判定なし 営利+4,531百万</div></li><li>🟢買 <b>7138 ＴＯＲＩＣＯ</b> 5,100株@193<div class="rsn">当日+35% 引け買い2日+10%売切(実測+1.85%/勝率60%) / ファンダ:判定なし</div></li></ul></div><div class="hday"><b>2026-08-20</b><ul><li>🔴売 <b>4813 ＡＣＣＥＳＳ</b> 2,200株@447 <span class="up">+0円</span><div class="rsn">ユーザー指示による除外: 純利率-10%・CNPER判定なし。同上(本日買付分をルール改定に合わせ即日取消)</div></li><li>🟢買 <b>2345 ＨＯＤＬ１</b> 0株@103<div class="rsn">除外→ユーザー判断で撤回。手動ホールド(暗号資産)へ変更</div></li></ul></div><div class="hday"><b>2026-08-20</b><ul><li>🔴売 <b>2585 ライフドリンク　カンパニー</b> 500株@1,628 <span class="down">-79,500円</span><div class="rsn">2営業日期限</div></li><li>🔴売 <b>3054 ハイパー</b> 3,100株@373 <span class="up">+161,200円</span><div class="rsn">+10%タッチ利確</div></li><li>🟢買 <b>7062 フレアス</b> 1,400株@707<div class="rsn">CNPER判定[20%増益]×RSI29≤30 買い窓</div></li><li>🟢買 <b>4813 ＡＣＣＥＳＳ</b> 2,200株@447<div class="rsn">セリクラ型◎ spike14.5x×反発+6.4% / ファンダ:判定なし 営利-2,688百万</div></li><li>🟢買 <b>7138 ＴＯＲＩＣＯ</b> 6,900株@143<div class="rsn">当日+15% 引け買い4日持ち(検証+6.4%) / ファンダ:判定なし</div></li></ul></div><div class="hday"><b>2026-08-18</b><ul><li>🔴売 <b>150A ＪＳＨ</b> 1,600株@764 <span class="up">+232,000円</span><div class="rsn">+20%タッチ利確</div></li><li>🟢買 <b>7273 イクヨ</b> 1,700株@583<div class="rsn">CNPER判定[20%増益]×RSI29≤30 買い窓</div></li><li>🟢買 <b>3054 ハイパー</b> 3,100株@321<div class="rsn">当日+33% 引け買い4日持ち(検証+6.4%) / ファンダ:連増益+20%増益 営利+320百万</div></li></ul></div><div class="hday"><b>2026-08-14</b><ul><li>🟢買 <b>8144 デンキョーグループホールディングス</b> 800株@1,234<div class="rsn">CNPER判定[20%増益]×RSI21≤30 買い窓</div></li><li>🟢買 <b>2345 ＨＯＤＬ１</b> 10,100株@99<div class="rsn">セリクラ型◎ spike9.8x×反発+5.3%</div></li><li>🟢買 <b>150A ＪＳＨ</b> 1,600株@619<div class="rsn">当日+19% 引け買い4日持ち(検証+6.4%)</div></li><li>🟢買 <b>2585 ライフドリンク　カンパニー</b> 500株@1,787<div class="rsn">当日+20% 引け買い4日持ち(検証+6.4%)</div></li></ul></div>
-
-<h2>💼 実保有 (楽天証券・手動運用)</h2>
-<div class="rules" style="border-left-color:#d29922">
-  <b>実保有 5銘柄 <span class="up">+3.90%</span></b>（投資額 1,698,900円 → 評価額 1,765,200円 ／ 損益 <span class="up">+66,300円</span> ／ 楽天証券 ／ 2026-08-21時点）<table style="margin-top:6px"><tr><th>コード</th><th>銘柄</th><th>テーマ</th><th class="r">株数</th><th class="r">取得</th><th class="r">現値</th><th class="r">損益</th></tr><tr><td>5830</td><td>いよぎんHD</td><td style="font-size:11px;color:var(--muted)">銀行</td><td class="r">100</td><td class="r">3,826</td><td class="r">3,876</td><td class="r"><b class="up">+1.31%</b></td></tr><tr><td>2001</td><td>ニップン</td><td style="font-size:11px;color:var(--muted)">アクティビスト</td><td class="r">200</td><td class="r">2,854</td><td class="r">2,953</td><td class="r"><b class="up">+3.47%</b></td></tr><tr><td>6138</td><td>ダイジェット工業</td><td style="font-size:11px;color:var(--muted)">工具・割安</td><td class="r">100</td><td class="r">1,901</td><td class="r">2,042</td><td class="r"><b class="up">+7.42%</b></td></tr><tr><td>8737</td><td>あかつき本社</td><td style="font-size:11px;color:var(--muted)">証券・暗号資産</td><td class="r">300</td><td class="r">620</td><td class="r">641</td><td class="r"><b class="up">+3.39%</b></td></tr><tr><td>5857</td><td>AREホールディングス</td><td style="font-size:11px;color:var(--muted)">貴金属リサイクル</td><td class="r">100</td><td class="r">3,694</td><td class="r">3,905</td><td class="r"><b class="up">+5.71%</b></td></tr></table>
-  <div style="margin-top:8px">
-    <a href="/watchlist-viewer/activist-portfolio.html">→ 保有銘柄の投資仮説と出口</a>
-    <a href="/watchlist-viewer/activist.html">→ アクティビスト保有マップ</a>
-    <a href="/watchlist-viewer/banks.html">→ 銀行スクリーナー</a>
-  </div>
-  <div class="rsn" style="margin-top:6px"><b>正本は real_portfolio.json のみ</b>です(2026-08-21に一本化)。
-  以前はこの枠に別ページの仮想配分「相乗りPF v4 期待値+9.6%・9銘柄」を出していましたが、実際には買われておらず
-  画面ごとに別のPFが表示されていたため廃止しました。上の表が実際に持っている玉です。<br>
-  この枠は<b>今日のPF(自動組み替え)とは別勘定</b>です。今日のPFのファンダ枠は「判定あり×RSI(14)≤30」が条件で、
-  アクティビスト銘柄は同点時に優先されるだけなので、RSIが30に入らない限り自動では買いません。</div>
-</div>
-
-<h2>⚖️ 期待値・資金効率くらべ (1日あたりに揃えて比較)</h2>
-<div class="muted" style="font-size:11.5px;margin-bottom:6px">
-資金を1日拘束したときに、どれだけ期待リターンが得られるかで並べています。
-「実測」= <b>運用ルールそのまま</b>(終値で買い→+20%タッチで利確／届かなければN営業日後の終値)で再計算した値
-（backtest_hold.py・2022-01-04〜2026-08-14）。
-検証実績ページ(2022-11-24〜2026-08-07)の「+20%タッチ率」は<b>20営業日</b>基準の到達率であって、期待値ではありません。</div>
-<div class="wrap"><table><tr><th>戦略</th><th>拘束日数</th><th>期待値</th><th>1日あたり</th><th>根拠</th></tr><tr><td>⚙️ S高追撃</td><td class="r">2営業日</td><td class="r">+2.0%</td><td class="r"><b class="up">+1.01%</b></td><td style="font-size:11px">実測 平均+2.03%・中央値+0.37%・勝率52%(n=1164)<div class="rsn">⚠️ストップ高は終値で買えないことがある(実際の約定はこれより悪い)。シグナルは平均1.3件/日</div></td></tr><tr><td>⚙️ セリクラ◎</td><td class="r">5営業日</td><td class="r">+0.6%</td><td class="r"><b class="up">+0.12%</b></td><td style="font-size:11px">実測 平均+0.61%・<b>中央値-0.34%</b>・勝率46%(n=1175)<div class="rsn"><b>半分以上が負け</b>(中央値マイナス)。+20%到達は15%だけ。検証で有利とされた◎(spike8x)は、期待値ではむしろ全体(spike5x)より劣る</div></td></tr><tr><td>📘 ファンダRSI買い窓</td><td class="r">42営業日</td><td class="r">+2.9%</td><td class="r"><b class="up">+0.07%</b></td><td style="font-size:11px">実測 平均+2.91%・中央値+4.75%・勝率60%・平均保有42営業日(n=837)<div class="rsn">中央値がプラス＝<b>素直に勝てる形</b>だが資金拘束が長い。⚠️CNPER判定で絞っても平均+2.59%→+2.91%とほぼ変わらず(<b>判定フィルタの上乗せはほぼ無い</b>)。40%が60営業日でも決着せず</div></td></tr></table></div>
-<div class="muted" style="font-size:11px;margin-top:4px">
-※1日あたりが高い＝常に有利ではありません。S高追撃はシグナルの出る日が限られ、枠も3つまで。
-資金が遊ぶ時間まで含めた実効利回りは、この表だけでは決まりません。</div>
-
-<h2>👀 監視リスト (次の買い候補) — 何がどうなったら買いか</h2>
-<div class="rules">
-  <b>買いの条件(この通りに機械執行します)</b>
-  <ul>
-    <li><b>📘ファンダ枠</b>(残り<b>3</b>枠/4): CNPER判定あり <b>かつ RSI(Wilder14)が30以下</b> に入ったら買い。
-        アクティビスト保有銘柄を優先。<b>決算7日前からはブラックアウト</b>(跨がない)。
-        1銘柄あたり100万円上限。</li>
-    <li><b>⚙️機械枠</b>(残り<b>3</b>枠/3): ①セリクラ型◎(出来高spike8倍以上×反発)、
-        ②S高追撃(当日+15%以上の個別株を引けで買い2営業日持ち)。
-        <b>2026-08-17追加: ウォッチリスト(CNPER分析済み)に載っている銘柄のみ</b>
-        — ファンダが取れない雑株を除外。実測でS高+2.30%→+2.89%、セリクラ◎+0.69%→+1.28%と期待値が上がる。
-        <b>🟢いまリスクオンなので稼働中</b>
-        (マクロのモメンタムがマイナスの間は機械枠を止めます)。</li>
-    <li><b>買わない条件</b>: 判定なし / RSIが30超 / 決算直前 / 枠が満杯 / リスクオフ(機械枠)。</li>
-  </ul>
-</div>
-<div class="wrap"><table><tr><th>コード</th><th>銘柄</th><th>株価</th><th>RSI(14)</th><th>判定</th><th>CNPER</th><th>アクティビスト</th><th>買いトリガーまで</th></tr>
-<tr><td><a href="https://shikiho.toyokeizai.net/stocks/3719" target="_blank">3719</a></td><td>ＡＩストーム</td><td class="r">123</td><td class="r"><b>33</b></td><td>50%成長</td><td class="r">5.21</td><td>-</td><td style="color:#8b949e;font-size:11px">RSIがあと<b>3pt</b>下がって30以下になれば買い</td></tr><tr><td><a href="https://shikiho.toyokeizai.net/stocks/3566" target="_blank">3566</a></td><td>ユニフォームネクスト</td><td class="r">756</td><td class="r"><b>34</b></td><td>連増益+50%成長</td><td class="r">9.42</td><td>-</td><td style="color:#8b949e;font-size:11px">RSIがあと<b>4pt</b>下がって30以下になれば買い</td></tr><tr><td><a href="https://shikiho.toyokeizai.net/stocks/6101" target="_blank">6101</a></td><td>ツガミ</td><td class="r">5,410</td><td class="r"><b>37</b></td><td>連増益+50%成長</td><td class="r">6.59</td><td>-</td><td style="color:#8b949e;font-size:11px">RSIがあと<b>7pt</b>下がって30以下になれば買い</td></tr><tr><td><a href="https://shikiho.toyokeizai.net/stocks/3905" target="_blank">3905</a></td><td>データセクション</td><td class="r">1,840</td><td class="r"><b>38</b></td><td>50%成長</td><td class="r">3.22</td><td>-</td><td style="color:#8b949e;font-size:11px">RSIがあと<b>8pt</b>下がって30以下になれば買い</td></tr><tr><td><a href="https://shikiho.toyokeizai.net/stocks/7069" target="_blank">7069</a></td><td>サイバー・バズ</td><td class="r">550</td><td class="r"><b>38</b></td><td>連増益+50%成長</td><td class="r">9.26</td><td>-</td><td style="color:#8b949e;font-size:11px">RSIがあと<b>8pt</b>下がって30以下になれば買い</td></tr><tr><td><a href="https://shikiho.toyokeizai.net/stocks/5956" target="_blank">5956</a></td><td>トーソー</td><td class="r">572</td><td class="r"><b>38</b></td><td>連増益</td><td class="r">-27.03</td><td>-</td><td style="color:#8b949e;font-size:11px">RSIがあと<b>8pt</b>下がって30以下になれば買い</td></tr><tr><td><a href="https://shikiho.toyokeizai.net/stocks/6466" target="_blank">6466</a></td><td>ＴＶＥ</td><td class="r">3,780</td><td class="r"><b>39</b></td><td>50%成長</td><td class="r">3.42</td><td>光通信(株)</td><td style="color:#8b949e;font-size:11px">RSIがあと<b>9pt</b>下がって30以下になれば買い</td></tr><tr><td><a href="https://shikiho.toyokeizai.net/stocks/3035" target="_blank">3035</a></td><td>ケイティケイ</td><td class="r">769</td><td class="r"><b>40</b></td><td>連増益</td><td class="r">7.75</td><td>-</td><td style="color:#8b949e;font-size:11px">RSIがあと<b>10pt</b>下がって30以下になれば買い</td></tr><tr><td><a href="https://shikiho.toyokeizai.net/stocks/8085" target="_blank">8085</a></td><td>ナラサキ産業</td><td class="r">4,120</td><td class="r"><b>40</b></td><td>50%成長</td><td class="r">5.99</td><td>-</td><td style="color:#8b949e;font-size:11px">RSIがあと<b>10pt</b>下がって30以下になれば買い</td></tr><tr><td><a href="https://shikiho.toyokeizai.net/stocks/5741" target="_blank">5741</a></td><td>ＵＡＣＪ</td><td class="r">2,241</td><td class="r"><b>40</b></td><td>50%成長</td><td class="r">3.62</td><td>-</td><td style="color:#8b949e;font-size:11px">RSIがあと<b>10pt</b>下がって30以下になれば買い</td></tr><tr><td><a href="https://shikiho.toyokeizai.net/stocks/4168" target="_blank">4168</a></td><td>ヤプリ</td><td class="r">748</td><td class="r"><b>40</b></td><td>連増益</td><td class="r">5.79</td><td>-</td><td style="color:#8b949e;font-size:11px">RSIがあと<b>10pt</b>下がって30以下になれば買い</td></tr><tr><td><a href="https://shikiho.toyokeizai.net/stocks/6518" target="_blank">6518</a></td><td>三相電機</td><td class="r">1,751</td><td class="r"><b>40</b></td><td>連増益+50%成長</td><td class="r">2.58</td><td>-</td><td style="color:#8b949e;font-size:11px">RSIがあと<b>10pt</b>下がって30以下になれば買い</td></tr><tr><td><a href="https://shikiho.toyokeizai.net/stocks/6800" target="_blank">6800</a></td><td>ヨコオ</td><td class="r">3,850</td><td class="r"><b>41</b></td><td>50%成長</td><td class="r">9.02</td><td>-</td><td style="color:#8b949e;font-size:11px">RSIがあと<b>11pt</b>下がって30以下になれば買い</td></tr><tr><td><a href="https://shikiho.toyokeizai.net/stocks/7058" target="_blank">7058</a></td><td>共栄セキュリティーサービス</td><td class="r">2,928</td><td class="r"><b>41</b></td><td>連増益+50%成長</td><td class="r">4.67</td><td>光通信KK投資事業有限責</td><td style="color:#8b949e;font-size:11px">RSIがあと<b>11pt</b>下がって30以下になれば買い</td></tr></table></div>
-<div class="muted" style="font-size:11px;margin-top:4px">
-判定あり×RSI45以下を、トリガーに近い順(RSIの低い順)に表示。RSIが30に入った時点で自動で買い候補に上がります。</div>
-
-<h2>📡 4本柱シグナル (本日)</h2>
-<div class="pillar">
-  <div class="pcard"><b>📘①ファンダ買い窓 (判定×RSI≤30)</b><ul><li>なし</li></ul>
-    <a href="/watchlist-viewer/">→ ウォッチリストで確認</a></div>
-  <div class="pcard"><b>📈②アキュミ/セリクラ検知</b><div>セリクラ型 3件(◎3) / アキュミ型 0件(★0)</div>
-    <a href="/watchlist-viewer/volume/">→ チャート一覧</a></div>
-  <div class="pcard"><b>🏴③アクティビスト×判定あり (RSI低い順)</b><ul><li>6466 ＴＶＥ RSI39 (光通信(株))</li><li>7058 共栄セキュリティーサービス RSI41 (光通信KK投資事業有限責任組)</li><li>6492 岡野バルブ製造 RSI45 (光通信KK投資事業有限責任組)</li><li>9340 アソインターナショナル RSI48 (光通信KK投資事業有限責任組)</li><li>9820 エムティジェネックス RSI48 (光通信KK投資事業有限責任組)</li><li>7673 ダイコー通産 RSI48 (光通信KK投資事業有限責任組)</li></ul>
-    <a href="/watchlist-viewer/activist.html">→ アクティビスト一覧</a></div>
-  <div class="pcard"><b>📉④マクロ</b><div>🟢リスクオン(機械枠 稼働)<br>モメンタム+7.5 / VI 32.1 ⚠️VI30超=パニック圏、バリューRSI買い窓に注目</div>
-    <a href="/watchlist-viewer/pcr-vi.html">→ PCR/VI詳細</a></div>
-</div>
-
-<div style="margin-top:16px;font-size:11px;color:var(--muted)">
-ルール: <a href="/watchlist-viewer/volume/plan.html">運用規程v1</a> — 資金区分30/40/30・1銘柄10%上限・出口事前宣言・
-ファンダ枠=CNPER判定×RSI≤30のみ買い可(成長枠RSI≤40はLINE通知)・機械枠=セリクラ◎/S高追撃・決算7日前ブラックアウト・
-リスクオフ(モメンタム<0)で機械枠新規停止。これはモデルポートフォリオであり実際の発注は行いません。
-</div>
-</body></html>
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>今日のターゲットPF</title><link rel="stylesheet" href="strategy.css"></head><body>
+<nav class="nav"><a href="dash.html">⚔️ ダッシュ</a><a href="mind.html">🧠 3人の思考</a><a class="on pf" href="portfolio.html">💼 今日のPF</a><a href="volume/">📈 出来高</a><a href="kinouchi.html">🌐 木野内詳細</a><a href="activist.html">🏴 カタリスト</a></nav>
+<header class="hero"><div class="eyebrow">Daily highest-conviction portfolio</div><h1>今日のターゲットPF</h1><p class="lead">合議で決めた売買を実保有へ即時反映した、今日もっとも確信度の高い形。実保有と自動モデルは混ぜず、差分だけを明示します。</p><div id="asof" class="meta">読み込み中…</div></header>
+<section class="decision"><div class="eyebrow">Strategy</div><h2 id="headline">—</h2><div id="strategyMeta"></div></section>
+<h2>ターゲット配分</h2><div id="gap"></div><div class="tablebox"><table><thead><tr><th>コード / 銘柄</th><th>テーマ</th><th class="num">目標株数</th><th class="num">現値</th><th class="num">時価</th><th>採用理由</th><th>出口</th></tr></thead><tbody id="target"></tbody><tfoot id="totals"></tfoot></table></div>
+<h2>今日やること</h2><div id="orders" class="actions"></div>
+<h2>候補だが、まだ買わない</h2><div class="tablebox"><table><thead><tr><th>コード / 銘柄</th><th class="num">現値</th><th class="num">トリガー</th><th class="num">あと</th><th>待つ理由</th></tr></thead><tbody id="candidates"></tbody></table></div>
+<details open><summary>実保有との照合</summary><div id="actualNote" class="meta"></div><div class="tablebox"><table><thead><tr><th>コード / 銘柄</th><th class="num">実株数</th><th class="num">損益</th><th>ターゲットとの差</th></tr></thead><tbody id="actual"></tbody></table></div></details>
+<details><summary>ルール実験PF（別勘定・比較用）</summary><p class="meta">RSI買い窓などの自動ルール検証枠です。上の合議PF・実保有とは合算しません。</p><div class="tablebox"><table><thead><tr><th>コード / 銘柄</th><th>ルール</th><th class="num">株数</th><th class="num">損益</th><th>状態</th></tr></thead><tbody id="model"></tbody></table></div></details>
+<p class="footer">ターゲットPFの唯一の入力は dash.json の実保有と最新合議判断です。live.json の自動モデルは別勘定としてのみ表示します。発注は行いません。</p>
+<script>
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));const yen=n=>n==null?"—":Number(n).toLocaleString("ja-JP");const pct=n=>n==null?"—":`${n>=0?"+":""}${Number(n).toFixed(1)}%`;const cls=n=>Number(n)>=0?"up":"down";const get=async p=>{const r=await fetch(p+`?t=${Date.now()}`,{cache:"no-store"});if(!r.ok)throw Error(`${p} ${r.status}`);return r.json()};const exit=a=>a&&/(全部利確|全撤退|全売|売却)/.test(a.do||"");const kind=t=>/(利確|撤退|売)/.test(t)?"sell":/(買|追加)/.test(t)?"buy":"wait";
+async function load(){try{const[d,l]=await Promise.all([get("dash.json"),get("live.json")]);const b=d.latest_brain||{},pos=d.pf?.positions||[],am=new Map((b.actions||[]).map(a=>[String(a.symbol),a])),target=pos.filter(p=>!exit(am.get(String(p.code)))),removed=pos.filter(p=>exit(am.get(String(p.code))));document.getElementById("asof").innerHTML=`合議 <b>${esc(b.at||d.at||"—")}</b> ／ 株価 <b>${esc(d.at||"—")}</b> ／ 実保有スナップショット <b>${esc(d.pf?.as_of||"—")}</b>`;document.getElementById("headline").textContent=b.headline||"判断待ち";document.getElementById("strategyMeta").innerHTML=`<span class="status ${b.stance==="ノーポジ"?"flat":""}">${esc(b.stance||"—")}</span>　投下目安 <b>${esc(b.sizing_pct??"—")}%</b>　信頼度 <b>${esc(b.confidence||"—")}</b>`;document.getElementById("gap").innerHTML=removed.length?`<div class="alert">同期差分: ${removed.map(p=>`<b>${esc(p.code)} ${esc(p.name)}</b> は「${esc(am.get(String(p.code))?.do)}」判断済みのため、ターゲットから除外`).join(" ／ ")}</div>`:`<div class="alert ok">実保有とターゲットの銘柄構成は一致</div>`;
+let mv=0;document.getElementById("target").innerHTML=target.map(p=>{const a=am.get(String(p.code));const v=(p.price||0)*(p.shares||0);mv+=v;return`<tr><td><b>${esc(p.code)} ${esc(p.name)}</b></td><td>${esc(p.theme||"—")}</td><td class="num">${yen(p.shares)}</td><td class="num">${yen(p.price)}</td><td class="num">${yen(v)}円</td><td class="why">${esc(a?.why||p.note||"継続採用")}</td><td class="why">${esc(a?.level||"既定の撤退条件")}</td></tr>`}).join("")||`<tr><td colspan="7" class="empty">現金待機</td></tr>`;document.getElementById("totals").innerHTML=`<tr><th colspan="4">ターゲット時価合計（現金を除く）</th><th class="num">${yen(mv)}円</th><th colspan="2"></th></tr>`;document.getElementById("orders").innerHTML=(b.actions||[]).map(a=>`<div class="action"><span class="chip ${kind(a.do||"")}">${esc(a.do)}</span> <strong>${esc(a.symbol)} ${esc(a.name||"")}</strong><p>${esc(a.why||"")}</p><p class="meta">執行/監視水準: ${esc(a.level||"—")}</p></div>`).join("")||`<div class="empty">本日の変更なし</div>`;
+document.getElementById("candidates").innerHTML=(d.watch||[]).slice(0,10).map(w=>{const lim=w.below??w.above;return`<tr><td><b>${esc(w.code)} ${esc(w.name)}</b></td><td class="num">${yen(w.price)}</td><td class="num">${w.below!=null?"↓":"↑"}${yen(lim)}</td><td class="num">${pct(w.dist_pct)}</td><td class="why">${esc(w.note||"")}</td></tr>`}).join("");document.getElementById("actualNote").textContent=`${d.pf?.as_of||"—"} 時点。合議と約定・口座同期の時間差をここで確認。`;document.getElementById("actual").innerHTML=pos.map(p=>{const a=am.get(String(p.code)),out=exit(a);return`<tr><td><b>${esc(p.code)} ${esc(p.name)}</b></td><td class="num">${yen(p.shares)}</td><td class="num ${cls(p.pnl_pct)}">${pct(p.pnl_pct)}</td><td>${out?`<span class="chip sell">${esc(a.do)} → 目標0株</span>`:`<span class="chip wait">一致 / 継続</span>`}</td></tr>`}).join("");document.getElementById("model").innerHTML=(l.positions||[]).map(p=>`<tr><td><b>${esc(p.code)} ${esc(p.name)}</b></td><td>${esc(p.strategy||p.frame||"—")}</td><td class="num">${yen(p.shares)}</td><td class="num ${cls(p.pnl_pct)}">${pct(p.pnl_pct)}</td><td>${esc(p.action||"—")}<div class="meta">${esc(p.why||"")}</div></td></tr>`).join("")||`<tr><td colspan="5" class="empty">モデル保有なし</td></tr>`;}catch(e){document.getElementById("asof").textContent="データ取得に失敗: "+e.message}}
+load();setInterval(load,60000);
+</script></body></html>
