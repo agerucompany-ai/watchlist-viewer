@@ -3,7 +3,7 @@
 <nav class="nav"><a href="dash.html">⚔️ ダッシュ</a><a class="on mind" href="mind.html">🧠 3人の思考</a><a href="portfolio.html">💼 今日のPF</a><a href="volume/">📈 AIテスタ</a><a href="kinouchi.html">🌐 AI木野内</a><a href="activist.html">🏴 AI片山</a></nav>
 <header class="hero"><div class="eyebrow">Three independent streams → one committee</div><h1>3人の思考と合議</h1><p class="lead">マクロ・ファンダ・大口需給は混ぜずに流し、最後にだけ議論します。誰の根拠が戦略を動かしたか、反対材料は何かを追える画面です。</p><div id="clock" class="meta">読み込み中…</div></header>
 <div class="grid"><section class="card agent"><div class="role">Macro technical stream</div><div class="name">🌐 AI木野内</div><p class="meta">金利・為替・VI・指数フロー・イベント日程</p><div class="flowline"></div><div id="kinouchiStream" class="stream"></div></section><section id="imura" class="card agent imura"><div class="role">Fundamental / activist / catalyst stream</div><div class="name">🏴 AI片山</div><p class="meta">業績・割安・大量保有・還元・決算カタリスト</p><div class="flowline"></div><div id="imuraStream" class="stream"></div></section><section class="card agent flow"><div class="role">Accumulation / whale stream</div><div class="name">🐋 AIテスタ</div><p class="meta">出来高集中・信用残・仕込み窓・セリクラ</p><div class="flowline"></div><div id="whaleStream" class="stream"></div></section></div>
-<section class="decision" id="debateBox"><div class="eyebrow">Debate timeline</div><h2>⚖️ ディベート判定タイムライン</h2><p class="meta">3人のうち2人が議論し、残りの1人が「論理の妥当性」と「結論の真偽」を別々に判定。結論だけを新しい順に流します。全文は各行のリンク先(今日のPF)。</p><div id="debateTimeline" class="actions"></div></section><h2>3人の議論</h2><div class="grid"><div class="card"><h3>🌐 地合いの許可</h3><p id="macroVote">—</p></div><div class="card"><h3>🏴 個別アルファ</h3><p id="fundVote">—</p></div><div class="card"><h3>🐋 執行タイミング</h3><p id="flowVote">—</p></div></div>
+<section class="decision" id="debateBox"><div class="eyebrow">Debate timeline</div><h2>⚖️ ディベート判定タイムライン</h2><p class="meta">3人のうち2人が議論し、残りの1人が「論理の妥当性」と「結論の真偽」を別々に判定。結論だけを新しい順に流します。全文は各行のリンク先(今日のPF)。</p><div id="debateTimeline" class="actions"><div class="empty">読み込み中…</div></div></section><h2>3人の議論</h2><div class="grid"><div class="card"><h3>🌐 地合いの許可</h3><p id="macroVote">—</p></div><div class="card"><h3>🏴 個別アルファ</h3><p id="fundVote">—</p></div><div class="card"><h3>🐋 執行タイミング</h3><p id="flowVote">—</p></div></div>
 <section class="decision" style="margin-top:12px"><div class="eyebrow">Committee output</div><h2 id="headline">—</h2><div id="committeeMeta" class="meta"></div><div id="committeeActions" class="actions" style="margin-top:14px"></div></section>
 <h2>反証条件</h2><div id="falsifiers" class="actions"></div><p class="footer">各ストリームは元データの更新時刻を保持します。合議結果は dash.json の latest_brain を唯一の戦略出力として使用します。</p>
 <script>
@@ -15,4 +15,26 @@ const fps=(m.footprints||[]).filter(x=>(x.codes||[]).length||/カタリスト|�
 document.getElementById("macroVote").textContent=`${d.regime?.label||"未判定"}。${(l.comment||"").split("\n").find(x=>x.includes("木野内"))||"イベント前後の総量と地合いを優先"}`;const latest=fps[0];document.getElementById("fundVote").textContent=latest?.verdict||b.interpretation?.find(x=>/PF|保有|割安|カタリスト/.test(x))||"既存の業績・イベント仮説を維持";const acc=vol.cards.filter(x=>x.cat==="アキュミ");document.getElementById("flowVote").textContent=acc.length?`アキュミ ${acc.length}件。${acc.slice(0,3).map(x=>x.name).join("、")}を候補化。ただし合議条件を満たすまで買わない。`:`アキュミ新規候補なし。出来高だけを理由に追わず、条件成立を待つ。`;
 document.getElementById("headline").textContent=b.headline||"判断待ち";document.getElementById("committeeMeta").innerHTML=`スタンス <span class="status ${b.stance==="ノーポジ"?"flat":""}">${esc(b.stance||"—")}</span>　投下目安 ${esc(b.sizing_pct??"—")}%　信頼度 ${esc(b.confidence||"—")}`;document.getElementById("committeeActions").innerHTML=(b.actions||[]).map(a=>`<div class="action"><span class="chip ${kind(a.do||"")}">${esc(a.do)}</span> <strong>${esc(a.symbol)} ${esc(a.name||"")}</strong><p>${esc(a.why||"")}</p><p class="meta">${esc(a.level||"")}</p></div>`).join("");document.getElementById("falsifiers").innerHTML=(b.falsifiers||[]).map(f=>`<div class="action"><strong>${esc(f.condition)}</strong><p>${esc(f.then)}</p><p class="meta">期限: ${esc(f.by_when)}</p></div>`).join("")||`<div class="empty">反証条件なし</div>`;}catch(e){document.getElementById("clock").textContent="データ取得に失敗: "+e.message}}
 load();setInterval(load,60000);
-</script><script>(function(){const _load=window.load;if(typeof _load!=="function")return;window.load=async function(){await _load.apply(this,arguments);try{const r=await fetch("mind.json?t="+Date.now(),{cache:"no-store"});const m=await r.json();const esc2=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));const box=document.getElementById("debateTimeline");if(!box)return;const rows=(m.debates||[]).slice(0,12);box.innerHTML=rows.map(d=>`<div class="action"><span class="chip ${/売|見送/.test(d.action||"")?"sell":/買|保有/.test(d.action||"")?"buy":"wait"}">${esc2(d.action||"—")}</span> <strong>議題${esc2(d.topic)} ${esc2(d.stock)}</strong> <span class="meta">${esc2(String(d.at||"").slice(5,16))}</span><p>${esc2(d.headline)}</p><p class="meta">${esc2(d.opener)} → ${esc2(d.opponent)}（判定 ${esc2(d.judge)}）／ 勝者 <b>${esc2(d.winner)}</b>（論理 ${esc2(d.logic_winner)}・真偽 ${esc2(d.truth_winner)}）／ ${esc2(d.action_detail)}${d.applied?` ／ PF反映: ${esc2(d.applied)}`:""} <a href="${esc2(d.url)}">全文</a></p></div>`).join("")||`<div class="empty">まだ判定がありません</div>`;}catch(e){console.log("debate timeline",e)}};if(document.readyState!=="loading"){window.load();}})();</script></body></html>
+</script><script>
+(function(){
+  const E=s=>String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+  async function renderDebates(){
+    const box=document.getElementById("debateTimeline"); if(!box) return;
+    try{
+      const r=await fetch("mind.json?t="+Date.now(),{cache:"no-store"}); const m=await r.json();
+      const rows=(m.debates||[]).slice(0,12);
+      box.innerHTML=rows.map(d=>{
+        const k=/売|見送/.test(d.action||"")?"sell":/買|保有/.test(d.action||"")?"buy":"wait";
+        return '<div class="action"><span class="chip '+k+'">'+E(d.action||"—")+'</span> '
+          +'<strong>議題'+E(d.topic)+' '+E(d.stock)+'</strong> <span class="meta">'+E(String(d.at||"").slice(5,16))+'</span>'
+          +'<p>'+E(d.headline)+'</p>'
+          +'<p class="meta">'+E(d.opener)+' → '+E(d.opponent)+'（判定 '+E(d.judge)+'）／ 勝者 <b>'+E(d.winner)+'</b>'
+          +'（論理 '+E(d.logic_winner)+'・真偽 '+E(d.truth_winner)+'）／ '+E(d.action_detail)
+          +(d.applied?' ／ PF反映: '+E(d.applied):'')+' <a href="'+E(d.url)+'">全文</a></p></div>';
+      }).join("")||'<div class="empty">まだ判定がありません</div>';
+    }catch(e){ box.innerHTML='<div class="empty">判定の読み込みに失敗: '+E(e.message)+'</div>'; }
+  }
+  if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",renderDebates); else renderDebates();
+  setInterval(renderDebates,60000);
+})();
+</script></body></html>
