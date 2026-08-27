@@ -41,7 +41,51 @@ summary{cursor:pointer;color:var(--dim);font-size:12px;padding:4px 0}
 </style></head><body>
 <div id="sitenav" style="font-size:12px;margin:0 0 10px 0"><div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center"><a href="/watchlist-viewer/dash.html" style="background:#3fb950;color:#000;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700;">⚔️ダッシュ</a><a href="/watchlist-viewer/mind.html" style="background:#a371f7;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700;">🧠3人の思考</a><a href="/watchlist-viewer/portfolio.html" style="background:#d4a017;color:#000;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700;">💼今日のPF</a><a href="/watchlist-viewer/volume/" style="background:#8f6bbf;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700;">🐋AIテスタ</a><a href="/watchlist-viewer/kinouchi.html" style="background:#2ea0a0;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700;">🌐AI木野内</a><a href="/watchlist-viewer/activist.html" style="background:#d29922;color:#000;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700;box-shadow:0 0 0 2px #e6edf3;">🏴AI片山</a></div><div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-top:6px;padding-top:6px;border-top:1px solid #21262d"><a href="/watchlist-viewer/activist.html" style="background:#d29922;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none;">🏴アクティビスト</a><a href="/watchlist-viewer/banks.html" style="background:#1f6feb;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none;">🏦銀行</a><a href="/watchlist-viewer/" style="background:#2f6bd8;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none;">📋ウォッチリスト</a><a href="/watchlist-viewer/research.html" style="background:#c2452f;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700;box-shadow:0 0 0 2px #e6edf3;">🔬研究</a></div></div>
 <h1>🔬 研究レポート</h1>
-<div class=sub>122件 / 更新 2026-08-26 19:37 JST — 結論・期待値・根拠。判断エンジンの深堀り結果</div>
+<div class=sub>123件 / 更新 2026-08-27 11:35 JST — 結論・期待値・根拠。判断エンジンの深堀り結果</div>
+<article class=rep id="Q20260826_220811t">
+<div class=hd><span class=call style="background:#8b949e">見送り</span>
+<h2>契約価格の上昇は供給制約と整合しているか。数量は伸びているのか</h2></div>
+
+<p class=concl>価格上昇は供給制約と整合するが、数量は伸びていない。DRAM +109%・NAND +217%(202601→07)に対し、mem_qtyは48〜57千個の横ばい。金額のみYoY+173.1%で価格主導。実需拡大ではなく希少性への非弾力反応。</p>
+<div class=ev><span><i>1日</i><b>+0.0%</b><em>+0〜+0%</em></span><span><i>1〜2週</i><b>+0.0%</b><em>+0〜+0%</em></span><span><i>1年</i><b>+0.0%</b><em>+0〜+0%</em></span></div>
+
+<details><summary>根拠・事実を見る</summary><div class=detail><h3>結論</h3>
+<p>価格上昇は供給制約と整合するが、数量は伸びていない。DRAM +109%・NAND +217%(202601→07)に対し、mem_qtyは48〜57千個の横ばい。金額のみYoY+173.1%で価格主導。実需拡大ではなく希少性への非弾力反応。</p>
+<p>論理妥当性: 妥当 / 結論の真偽: 条件付き真 / 確信度: 中</p>
+<h3>答えられなかった部分</h3>
+<p>数量が伸びない構造要因(HBM実効ウエハ交換比率)、中華メモリの供給動向は担当材料に無く判定不可。mem_qty/valは202606で約2ヶ月古い。</p>
+<h3>担当ごとの答え</h3>
+<h4>半導体（問い: 半導体の契約価格上昇局面において、生産数量・金額の推移(数量×単価分解)は供給制約と整合しているか。数量は伸びているか）</h4>
+<p>数量×単価分解では「数量は伴っていない」。契約価格はDRAM 202601 $11.5→07 $24.0(+109%)、NAND$9.5→$30.1(+217%)と急騰継続。一方mem_qty(生産数量)は202606 48,008千個で、直近数ヶ月48〜57千個の横ばい圏。金額(mem_val)は前年比+173.1%(202606)と数量とは無関係に上昇。iip_balance(出荷在庫バランス、数量ベース)も202603時点9.71で過去好況局面の+40近辺に遠く、実需拡大の裏付けは無い。よって整合するのは「価格主導(数量→・金額↑)」であり、供給制約(ウエハ+2.4%/年)が示すのは生産量が増やせないという制約側の説明。需要が数量として顕在化しているわけではなく、価格上昇は不足の希少性への非弾力的な反応。数量が伸びているとは言えない。担当の材料では、需要側の「なぜ非弾力なのか」(HBM転換比率など)は答えられない。</p>
+<p>事実:</p>
+<ul>
+<li>DRAM(8Gb)契約価格 $24.0 (202607) yoy - — 202601 $11.5→202607 $24.0で+109%。7ヶ月連続高値更新</li>
+<li>NAND(128Gb)契約価格 $30.1 (202607) yoy - — 202601 $9.5→202607 $30.1で+217%。DRAMより上昇速度が速い</li>
+<li>メモリ生産数量 48,008千個 (202606) yoy -30.6% — 直近202601〜606は48,008〜56,790千個の横ばい圏。数量拡大の兆候なし</li>
+<li>メモリ生産金額 199,561百万円 (202606) yoy +173.1% — 数量が横ばいの中で金額だけ前年比+173%。単価上昇が金額を牽引</li>
+<li>出荷在庫バランス(数量ベース) 9.71 (202603) yoy +63.2% — 過去好況局面の+40近辺に対し低水準。数量側の実需拡大は見えない</li>
+<li>韓国半導体輸出額(金額) 410.2億$ (202607) yoy +178.7% — 金額は高水準継続。ただし本系列はDRAM主体の金額であり数量分解は不可</li>
+</ul>
+<p>材料の欠け:</p>
+<ul>
+<li>HBM実効ウエハ交換比率の系列が未提供(数量が伸びない構造的理由の直接検証不可)</li>
+<li>中華メモリ(懸念5)関連の供給・出荷データが未提供</li>
+<li>kr_semi_valueの202608分が未公表で2ヶ月連続減の判定に1ヶ月不足</li>
+<li>mem_qty/mem_valの最終観測が202606で約2ヶ月古い</li>
+</ul>
+<h3>未設置の担当(答えられていない)</h3>
+<ul>
+<li>メモリ: DRAM/NAND各社のLTA/take-or-pay契約や一次数値において、契約価格上昇と数量動向は供給制約(2027年キャパ等)と整合しているか</li>
+</ul>
+<h3>反証条件</h3>
+<p>mem_qtyが横ばい(48〜57千個)のまま、kr_semi_valueとtw_elecが2ヶ月連続前月比減(202608〜09公表)になった場合、価格主導→数量→金額↓の警戒フェーズへ判定変更</p>
+<h3>受付の振り分け</h3>
+<ul>
+<li>半導体: 半導体の契約価格上昇局面において、生産数量・金額の推移(数量×単価分解)は供給制約と整合しているか。数量は伸びているか（生産数量・金額の分解や局面判定の統計を持つため）</li>
+<li>メモリ: DRAM/NAND各社のLTA/take-or-pay契約や一次数値において、契約価格上昇と数量動向は供給制約(2027年キャパ等)と整合しているか（DRAM/NANDの契約数値・キャパ制約の材料を持つため）</li>
+</ul></div></details>
+<div class=anchor><a href="#Q20260826_220811t">#Q20260826_220811t</a></div>
+</article>
 <article class=rep id="Rdd2e9aec">
 <div class=hd><span class=call style="background:#8b949e">見送り</span>
 <h2>Nvidia HBM4の12-high→8-highシフトが実現した場合</h2></div>
