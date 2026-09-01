@@ -1,1 +1,11 @@
 desktop.ini
+
+# Notion 連携: 秘密情報と取得データは絶対にコミットしない
+# このリポジトリは public + GitHub Pages 有効のため、公開事故を防ぐ
+.notion_tanba_token
+*.notion_token
+notion_tanba_export/
+.notion_tanba_export/
+tools/notion_tanba/export/
+tools/notion_tanba/*.log
+.env
