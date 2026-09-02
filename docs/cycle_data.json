@@ -1,9 +1,9 @@
-<div id="sitenav" style="font-size:12px;margin:0 0 10px 0"><div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center"><a href="/watchlist-viewer/dash.html" style="background:#3fb950;color:#000;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700;">⚔️ダッシュ</a><a href="/watchlist-viewer/mind.html" style="background:#a371f7;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700;">🧠3人の思考</a><a href="/watchlist-viewer/portfolio.html" style="background:#d4a017;color:#000;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700;">💼今日のPF</a><a href="/watchlist-viewer/volume/" style="background:#8f6bbf;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700;">🐋AIテスタ</a><a href="/watchlist-viewer/kinouchi.html" style="background:#2ea0a0;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700;">🌐AI木野内</a><a href="/watchlist-viewer/activist.html" style="background:#d29922;color:#000;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700;">🏴AI片山</a></div></div>
+<div id="sitenav" style="font-size:12px;margin:0 0 10px 0"><div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center"><a href="/watchlist-viewer/mind.html" style="background:#a371f7;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700;">🧠3人の思考</a><a href="/watchlist-viewer/portfolio.html" style="background:#d4a017;color:#000;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700;">💼今日のPF</a><a href="/watchlist-viewer/volume/" style="background:#8f6bbf;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700;">🐋AIテスタ</a><a href="/watchlist-viewer/kinouchi.html" style="background:#2ea0a0;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700;">🌐AI木野内</a><a href="/watchlist-viewer/activist.html" style="background:#d29922;color:#000;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700;">🏴AI片山</a></div></div>
 {
  "meta": {
-  "生成": "2026-09-01 09:31 JST",
+  "生成": "2026-09-02 09:33 JST",
   "対象月": "2026年08月",
-  "仕様書": "半導体サイクル月次モニタリング仕様書 v1.0 (2026-08-19)",
+  "仕様書": "半導体サイクル月次モニタリング仕様書 v1.1 (2026-08-19作成/2026-09-01改訂)",
   "このファイルの使い方": "値・出所・時点・注意書き・判断ルールを1つにまとめてある。数値を引用する前に必ず同じキーの caveat を読むこと。"
  },
  "この統計を見る目的": {
@@ -72,124 +72,124 @@
  "最新値": {
   "sox": {
    "label": "SOX指数",
-   "value": 11535.05078125,
-   "yoy": 103.47809115064624,
+   "value": 11288.6123046875,
+   "yoy": 99.13092079587673,
    "mom": null,
    "diff_pt": null,
    "unit": "",
    "source": "yfinance ^SOX",
-   "asof": "2026-08-31",
+   "asof": "2026-09-01",
    "note": null,
    "caveat": null,
    "obtained": true
   },
   "n225": {
    "label": "日経平均",
-   "value": 65606.4375,
-   "yoy": 55.506803958767925,
+   "value": 64827.80078125,
+   "yoy": 53.219221556416315,
    "mom": null,
    "diff_pt": null,
    "unit": "円",
    "source": "yfinance ^N225",
-   "asof": "2026-09-01",
+   "asof": "2026-09-02",
    "note": null,
    "caveat": null,
    "obtained": true
   },
   "spx": {
    "label": "S&P500",
-   "value": 7686.14013671875,
-   "yoy": 18.975713292778895,
+   "value": 7631.47021484375,
+   "yoy": 18.129463701301198,
    "mom": null,
    "diff_pt": null,
    "unit": "",
    "source": "yfinance ^GSPC",
-   "asof": "2026-08-31",
+   "asof": "2026-09-01",
    "note": null,
    "caveat": null,
    "obtained": true
   },
   "us10": {
    "label": "米10年債利回り",
-   "value": 4.758000373840332,
+   "value": 4.796000003814697,
    "yoy": null,
    "mom": null,
-   "diff_pt": 0.5310001373291016,
+   "diff_pt": 0.5689997673034668,
    "unit": "%",
    "source": "yfinance ^TNX",
-   "asof": "2026-08-31",
+   "asof": "2026-09-01",
    "note": null,
    "caveat": "利回りは前年比%では意味を持たない。水準と前年差(pt)で見る。",
    "obtained": true
   },
   "us30": {
    "label": "米30年債利回り",
-   "value": 5.249000072479248,
+   "value": 5.26800012588501,
    "yoy": null,
    "mom": null,
-   "diff_pt": 0.3320002555847168,
+   "diff_pt": 0.3510003089904785,
    "unit": "%",
    "source": "yfinance ^TYX",
-   "asof": "2026-08-31",
+   "asof": "2026-09-01",
    "note": null,
    "caveat": "同上。",
    "obtained": true
   },
   "gold": {
    "label": "金先物",
-   "value": 4507.10009765625,
-   "yoy": 29.749263350616985,
+   "value": 4374.5,
+   "yoy": 25.93200510954421,
    "mom": null,
    "diff_pt": null,
    "unit": "ドル/oz",
    "source": "yfinance GC=F",
-   "asof": "2026-08-31",
+   "asof": "2026-09-01",
    "note": null,
    "caveat": null,
    "obtained": true
   },
   "dxy": {
    "label": "ドル指数",
-   "value": 99.37000274658203,
-   "yoy": 1.6365001109254873,
+   "value": 99.69200134277344,
+   "yoy": 1.9658430660725035,
    "mom": null,
    "diff_pt": null,
    "unit": "",
    "source": "yfinance DX-Y.NYB",
-   "asof": "2026-08-31",
+   "asof": "2026-09-01",
    "note": null,
    "caveat": null,
    "obtained": true
   },
   "jp10": {
    "label": "日本10年債利回り",
-   "value": 2.943,
+   "value": 2.987,
    "yoy": null,
    "mom": null,
-   "diff_pt": 1.33,
+   "diff_pt": 1.354,
    "unit": "%",
    "source": "財務省 国債金利情報",
-   "asof": "2026-08-31",
+   "asof": "2026-09-01",
    "note": null,
    "caveat": "同上。",
    "obtained": true
   },
   "us10_real": {
    "label": "米10年実質金利",
-   "value": 2.42,
+   "value": 2.44,
    "yoy": null,
    "mom": null,
-   "diff_pt": 0.6099999999999999,
+   "diff_pt": 0.6199999999999999,
    "unit": "%",
    "source": "FRED DFII10",
-   "asof": "2026-08-28",
+   "asof": "2026-08-31",
    "note": null,
    "caveat": null,
    "obtained": true
   },
   "spx_tpe": {
    "label": "S&P500 実績PER(参考・予想PERの代用ではない)",
-   "value": 25.83966,
+   "value": 25.662132,
    "yoy": null,
    "mom": null,
    "diff_pt": null,
@@ -209,7 +209,7 @@
    "unit": "千台湾ドル",
    "source": "",
    "asof": "",
-   "note": "取得失敗: Missing optional dependency 'html5lib'.  Use pip or conda to install html5lib.",
+   "note": "表に行が見つからない",
    "caveat": null,
    "obtained": false
   },
@@ -222,7 +222,7 @@
    "unit": "千台湾ドル",
    "source": "",
    "asof": "",
-   "note": "取得失敗: Missing optional dependency 'html5lib'.  Use pip or conda to install html5lib.",
+   "note": "表に行が見つからない",
    "caveat": null,
    "obtained": false
   },
@@ -235,7 +235,7 @@
    "unit": "千台湾ドル",
    "source": "",
    "asof": "",
-   "note": "取得失敗: Missing optional dependency 'html5lib'.  Use pip or conda to install html5lib.",
+   "note": "表に行が見つからない",
    "caveat": null,
    "obtained": false
   },
@@ -248,7 +248,7 @@
    "unit": "千台湾ドル",
    "source": "",
    "asof": "",
-   "note": "取得失敗: Missing optional dependency 'html5lib'.  Use pip or conda to install html5lib.",
+   "note": "表に行が見つからない",
    "caveat": null,
    "obtained": false
   },
@@ -356,6 +356,19 @@
    "caveat": "実現率は『前月の予測が実績からどれだけ外れたか』であって、当月の予測ではない。予測として扱うと企業回答とすり替わる。",
    "obtained": true
   },
+  "meti_actual": {
+   "label": "同 電子部品・デバイス工業 前月実績(季調前月比)",
+   "value": 7.1,
+   "yoy": null,
+   "mom": null,
+   "diff_pt": null,
+   "unit": "%",
+   "source": "同左 列7 ※実績。仕様書v1.1 ステップ4の答え合わせに使う",
+   "asof": "2026年08月調査",
+   "note": null,
+   "caveat": null,
+   "obtained": true
+  },
   "tw_orders": {
    "label": "台湾 輸出受注 前年比",
    "value": 979.4,
@@ -371,14 +384,14 @@
   },
   "kr_semi": {
    "label": "韓国 半導体輸出金額 前年比",
-   "value": 410.2,
-   "yoy": 178.8,
+   "value": 466.5,
+   "yoy": 209.0,
    "mom": null,
    "diff_pt": null,
    "unit": "億米ドル",
-   "source": "韓国 産業通商資源部・科技情通部 ICT輸出入動向",
-   "asof": "2026-7",
-   "note": null,
+   "source": "韓国 産業通商資源部 수출입동향(月初・全体版)",
+   "asof": "2026-08",
+   "note": "**月初の全体版**。ICT版(中旬)より2週間早い。ICT수지など似た行と取り違えない(禁止7)",
    "caveat": "金額ベース・輸出実績・半導体特化。前年比が非常に高い水準なので、鈍化してもベース効果である可能性が高い。",
    "obtained": true
   },
@@ -2676,6 +2689,10 @@
    "202401": {
     "value": 94.1,
     "yoy": 53.0
+   },
+   "202608": {
+    "value": 466.5,
+    "yoy": 209.0
    }
   },
   "日本_半導体関連輸出_千円": {
@@ -5657,13 +5674,20 @@
     "nand_1t": 31.917
    },
    "2026-09-01": {
-    "ddr5_16": 53.917,
-    "ddr4_16": 91.78,
-    "ddr4_8": 44.367,
+    "ddr5_16": 54.083,
+    "ddr4_16": 92.024,
+    "ddr4_8": 44.544,
     "nand_512": 20.896,
     "nand_256": 16.808,
-    "nand_128": 9.967,
-    "nand_1t": 31.917
+    "nand_128": 9.967
+   },
+   "2026-09-02": {
+    "ddr5_16": 54.083,
+    "ddr4_16": 92.024,
+    "ddr4_8": 44.544,
+    "nand_512": 20.896,
+    "nand_256": 16.808,
+    "nand_128": 9.967
    }
   }
  },
@@ -5691,13 +5715,13 @@
    },
    "sox": {
     "label": "SOX指数",
-    "値": 103.47809115064624,
-    "方向": "横ばい"
+    "値": 99.13092079587673,
+    "方向": "下"
    },
    "n225": {
     "label": "日経平均",
-    "値": 55.506803958767925,
-    "方向": "横ばい"
+    "値": 53.219221556416315,
+    "方向": "下"
    },
    "iip_prod": {
     "label": "電子部品・デバイス工業 生産前年比",
@@ -5721,8 +5745,8 @@
    },
    "kr_semi": {
     "label": "韓国 半導体輸出金額 前年比",
-    "値": 178.8,
-    "方向": "下"
+    "値": 209.0,
+    "方向": "上"
    }
   },
   "ステップ2": {
@@ -5739,14 +5763,14 @@
     {
      "key": "kr_semi",
      "label": "韓国 半導体輸出金額 前年比",
-     "yoy": 178.8,
-     "val_dir": "下",
-     "verdict": "最重要の警戒シグナル",
-     "why": "数量→・金額↓ — 価格反転の初期兆候"
+     "yoy": 209.0,
+     "val_dir": "上",
+     "verdict": "価格主導",
+     "why": "数量→・金額↑ — 業績を動かしているのは価格"
     }
    ],
-   "一致しているか": false,
-   "注記": "**金額系の2本が違う絵を出している。どちらか片方を選ばない**。台湾は受注(先行・全産業)、韓国は半導体輸出(実績・品目特化)で見ているものが違う。前年比の鈍化はベース効果でも起こるため(禁止9)、割れている月は前年同月の絶対水準を必ず確認する"
+   "一致しているか": true,
+   "注記": "数量→・金額↑ — 業績を動かしているのは価格"
   }
  },
  "禁止事項チェック": [
@@ -5796,13 +5820,13 @@
    "no": 8,
    "title": "業績指標だけで株価判断をしない",
    "status": "OK",
-   "detail": "バリュエーション側を併記: 米30年 5.25% (+0.33pt), 米10年 4.76% (+0.53pt), 日10年 2.94% (+1.33pt), S&P500実績PER 25.8倍。**予想PERは追っていない**ので、割高さが過去比でどの水準かは測れない(FactSetのForward 12M P/Eが要る)。実績PERは代用にならない"
+   "detail": "バリュエーション側を併記: 米30年 5.27% (+0.35pt), 米10年 4.80% (+0.57pt), 日10年 2.99% (+1.35pt), S&P500実績PER 25.7倍。**予想PERは追っていない**ので、割高さが過去比でどの水準かは測れない(FactSetのForward 12M P/Eが要る)。実績PERは代用にならない"
   },
   {
    "no": 9,
    "title": "ベース効果を需要の変化と混同しない",
    "status": "要注意",
-   "detail": "前年比が高水準: SOX指数 +103.5%。**需要が全く落ちなくてもベース効果だけで機械的に鈍化する**。前年同月の絶対水準を確認すること"
+   "detail": "前年比が高水準: SOX指数 +99.1%。**需要が全く落ちなくてもベース効果だけで機械的に鈍化する**。前年同月の絶対水準を確認すること"
   },
   {
    "no": 10,
@@ -5864,7 +5888,7 @@
   }
  ],
  "乖離ログ": {
-  "内容": "出荷在庫バランス 8.11 に対し 日経平均前年比 +55.5%",
+  "内容": "出荷在庫バランス 8.11 に対し 日経平均前年比 +53.2%",
   "大きさ": "日経平均前年比 − 出荷在庫バランス = +44.0pt。2016年9月以降の119ヶ月中 7番目の大きさ",
   "理由": "数量統計に価格上昇が反映されていないため。**確認済**: メモリ生産単価 4,295円(前年比 +455.6%)に対し生産数量は 54,341千個。金額=数量×単価のうち動いているのは単価の側",
   "予測力への帰結": "業績を動かしているのが価格なら、数量ベースの出荷在庫バランスは現局面において業績の代理変数として機能していない。したがって『連動するから見る価値がある』という根拠は成立しない。金額ベース(台湾・韓国)を主指標に切り替えるべき局面。ただし金額ベースは価格反転時に数量ベースより速く崩れることに留意"
