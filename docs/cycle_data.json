@@ -1,7 +1,7 @@
 <div id="sitenav" style="font-size:12px;margin:0 0 10px 0"><div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center"><a href="/watchlist-viewer/mind.html" style="background:#a371f7;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700;">🧠3人の思考</a><a href="/watchlist-viewer/portfolio.html" style="background:#d4a017;color:#000;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700;">💼今日のPF</a><a href="/watchlist-viewer/volume/" style="background:#8f6bbf;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700;">🐋AIテスタ</a><a href="/watchlist-viewer/kinouchi.html" style="background:#2ea0a0;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700;">🌐AI木野内</a><a href="/watchlist-viewer/activist.html" style="background:#d29922;color:#000;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700;">🏴AI片山</a></div></div>
 {
  "meta": {
-  "生成": "2026-09-04 14:06 JST",
+  "生成": "2026-09-07 09:31 JST",
   "対象月": "2026年08月",
   "仕様書": "半導体サイクル月次モニタリング仕様書 v1.1 (2026-08-19作成/2026-09-01改訂)",
   "このファイルの使い方": "値・出所・時点・注意書き・判断ルールを1つにまとめてある。数値を引用する前に必ず同じキーの caveat を読むこと。"
@@ -72,124 +72,124 @@
  "最新値": {
   "sox": {
    "label": "SOX指数",
-   "value": 11352.1298828125,
-   "yoy": 102.97685674861263,
+   "value": 11735.259765625,
+   "yoy": 107.04922225849103,
    "mom": null,
    "diff_pt": null,
    "unit": "",
    "source": "yfinance ^SOX",
-   "asof": "2026-09-03",
+   "asof": "2026-09-04",
    "note": null,
    "caveat": null,
    "obtained": true
   },
   "n225": {
    "label": "日経平均",
-   "value": 64920.2109375,
-   "yoy": 52.46547673883215,
+   "value": 66179.046875,
+   "yoy": 53.837679790788904,
    "mom": null,
    "diff_pt": null,
    "unit": "円",
    "source": "yfinance ^N225",
-   "asof": "2026-09-04",
+   "asof": "2026-09-07",
    "note": null,
    "caveat": null,
    "obtained": true
   },
   "spx": {
    "label": "S&P500",
-   "value": 7747.7099609375,
-   "yoy": 20.151951728739803,
+   "value": 7718.60009765625,
+   "yoy": 18.70970527760798,
    "mom": null,
    "diff_pt": null,
    "unit": "",
    "source": "yfinance ^GSPC",
-   "asof": "2026-09-03",
+   "asof": "2026-09-04",
    "note": null,
    "caveat": null,
    "obtained": true
   },
   "us10": {
    "label": "米10年債利回り",
-   "value": 4.76200008392334,
+   "value": 4.783999919891357,
    "yoy": null,
    "mom": null,
-   "diff_pt": 0.5510001182556152,
+   "diff_pt": 0.6079998016357422,
    "unit": "%",
    "source": "yfinance ^TNX",
-   "asof": "2026-09-03",
+   "asof": "2026-09-04",
    "note": null,
    "caveat": "利回りは前年比%では意味を持たない。水準と前年差(pt)で見る。",
    "obtained": true
   },
   "us30": {
    "label": "米30年債利回り",
-   "value": 5.243000030517578,
+   "value": 5.245999813079834,
    "yoy": null,
    "mom": null,
-   "diff_pt": 0.3509998321533203,
+   "diff_pt": 0.37199974060058594,
    "unit": "%",
    "source": "yfinance ^TYX",
-   "asof": "2026-09-03",
+   "asof": "2026-09-04",
    "note": null,
    "caveat": "同上。",
    "obtained": true
   },
   "gold": {
    "label": "金先物",
-   "value": 4520.60009765625,
-   "yoy": 26.776600924157634,
+   "value": 4476.60009765625,
+   "yoy": 23.895720086134364,
    "mom": null,
    "diff_pt": null,
    "unit": "ドル/oz",
    "source": "yfinance GC=F",
-   "asof": "2026-09-04",
+   "asof": "2026-09-06",
    "note": null,
    "caveat": null,
    "obtained": true
   },
   "dxy": {
    "label": "ドル指数",
-   "value": 99.0250015258789,
-   "yoy": 0.6863274654095974,
+   "value": 99.12699890136719,
+   "yoy": 1.3879536717740226,
    "mom": null,
    "diff_pt": null,
    "unit": "",
    "source": "yfinance DX-Y.NYB",
-   "asof": "2026-09-04",
+   "asof": "2026-09-06",
    "note": null,
    "caveat": null,
    "obtained": true
   },
   "jp10": {
    "label": "日本10年債利回り",
-   "value": 2.966,
+   "value": 2.91,
    "yoy": null,
    "mom": null,
-   "diff_pt": 1.3230000000000002,
+   "diff_pt": 1.2930000000000001,
    "unit": "%",
    "source": "財務省 国債金利情報",
-   "asof": "2026-09-03",
+   "asof": "2026-09-04",
    "note": null,
    "caveat": "同上。",
    "obtained": true
   },
   "us10_real": {
    "label": "米10年実質金利",
-   "value": 2.45,
+   "value": 2.42,
    "yoy": null,
    "mom": null,
-   "diff_pt": 0.5800000000000001,
+   "diff_pt": 0.5999999999999999,
    "unit": "%",
    "source": "FRED DFII10",
-   "asof": "2026-09-02",
+   "asof": "2026-09-03",
    "note": null,
    "caveat": null,
    "obtained": true
   },
   "spx_tpe": {
    "label": "S&P500 実績PER(参考・予想PERの代用ではない)",
-   "value": 26.045826,
+   "value": 24.884598,
    "yoy": null,
    "mom": null,
    "diff_pt": null,
@@ -241,16 +241,16 @@
   },
   "honhai": {
    "label": "鴻海",
-   "value": null,
-   "yoy": null,
-   "mom": null,
+   "value": 921766023.0,
+   "yoy": 51.97,
+   "mom": -2.61,
    "diff_pt": null,
    "unit": "千台湾ドル",
-   "source": "",
-   "asof": "",
-   "note": "表に行が見つからない",
+   "source": "公開資訊觀測站 月次営業収入",
+   "asof": "2026-08",
+   "note": null,
    "caveat": null,
-   "obtained": false
+   "obtained": true
   },
   "iip_prod": {
    "label": "電子部品・デバイス工業 生産前年比",
@@ -5704,6 +5704,14 @@
     "nand_512": 20.896,
     "nand_256": 16.808,
     "nand_128": 9.967
+   },
+   "2026-09-07": {
+    "ddr5_16": 54.067,
+    "ddr4_16": 93.5,
+    "ddr4_8": 45.0,
+    "nand_512": 20.708,
+    "nand_256": 16.808,
+    "nand_128": 9.967
    }
   }
  },
@@ -5726,18 +5734,18 @@
    },
    "honhai": {
     "label": "鴻海",
-    "値": null,
-    "方向": "不明"
+    "値": 51.97,
+    "方向": "下"
    },
    "sox": {
     "label": "SOX指数",
-    "値": 102.97685674861263,
-    "方向": "横ばい"
+    "値": 107.04922225849103,
+    "方向": "上"
    },
    "n225": {
     "label": "日経平均",
-    "値": 52.46547673883215,
-    "方向": "下"
+    "値": 53.837679790788904,
+    "方向": "横ばい"
    },
    "iip_prod": {
     "label": "電子部品・デバイス工業 生産前年比",
@@ -5791,8 +5799,8 @@
   {
    "no": 2,
    "title": "前月比を主指標にしない",
-   "status": "OK",
-   "detail": "前年比を主として記録している"
+   "status": "確認済",
+   "detail": "前月比マイナス: 鴻海。ただし前年比プラス: 鴻海。**四半期末プルインの反動を減収と読まない**"
   },
   {
    "no": 3,
@@ -5822,19 +5830,19 @@
    "no": 7,
    "title": "他人の作成したチャートは注釈まで読む / 加工値をデータ扱いしない",
    "status": "OK",
-   "detail": "未取得の5系列を推定で埋めていない。未取得のまま出している"
+   "detail": "未取得の4系列を推定で埋めていない。未取得のまま出している"
   },
   {
    "no": 8,
    "title": "業績指標だけで株価判断をしない",
    "status": "OK",
-   "detail": "バリュエーション側を併記: 米30年 5.24% (+0.35pt), 米10年 4.76% (+0.55pt), 日10年 2.97% (+1.32pt), S&P500実績PER 26.0倍。**予想PERは追っていない**ので、割高さが過去比でどの水準かは測れない(FactSetのForward 12M P/Eが要る)。実績PERは代用にならない"
+   "detail": "バリュエーション側を併記: 米30年 5.25% (+0.37pt), 米10年 4.78% (+0.61pt), 日10年 2.91% (+1.29pt), S&P500実績PER 24.9倍。**予想PERは追っていない**ので、割高さが過去比でどの水準かは測れない(FactSetのForward 12M P/Eが要る)。実績PERは代用にならない"
   },
   {
    "no": 9,
    "title": "ベース効果を需要の変化と混同しない",
    "status": "要注意",
-   "detail": "前年比が高水準: SOX指数 +103.0%。**需要が全く落ちなくてもベース効果だけで機械的に鈍化する**。前年同月の絶対水準を確認すること"
+   "detail": "前年比が高水準: 鴻海 +52.0%, SOX指数 +107.0%。**需要が全く落ちなくてもベース効果だけで機械的に鈍化する**。前年同月の絶対水準を確認すること"
   },
   {
    "no": 10,
@@ -5896,7 +5904,7 @@
   }
  ],
  "乖離ログ": {
-  "内容": "出荷在庫バランス 8.11 に対し 日経平均前年比 +52.5%",
+  "内容": "出荷在庫バランス 8.11 に対し 日経平均前年比 +53.8%",
   "大きさ": "日経平均前年比 − 出荷在庫バランス = +44.0pt。2016年9月以降の119ヶ月中 7番目の大きさ",
   "理由": "数量統計に価格上昇が反映されていないため。**確認済**: メモリ生産単価 4,295円(前年比 +455.6%)に対し生産数量は 54,341千個。金額=数量×単価のうち動いているのは単価の側",
   "予測力への帰結": "業績を動かしているのが価格なら、数量ベースの出荷在庫バランスは現局面において業績の代理変数として機能していない。したがって『連動するから見る価値がある』という根拠は成立しない。金額ベース(台湾・韓国)を主指標に切り替えるべき局面。ただし金額ベースは価格反転時に数量ベースより速く崩れることに留意"
