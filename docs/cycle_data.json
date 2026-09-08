@@ -1,7 +1,7 @@
 <div id="sitenav" style="font-size:12px;margin:0 0 10px 0"><div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center"><a href="/watchlist-viewer/mind.html" style="background:#a371f7;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700;">🧠3人の思考</a><a href="/watchlist-viewer/portfolio.html" style="background:#d4a017;color:#000;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700;">💼今日のPF</a><a href="/watchlist-viewer/volume/" style="background:#8f6bbf;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700;">🐋AIテスタ</a><a href="/watchlist-viewer/kinouchi.html" style="background:#2ea0a0;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700;">🌐AI木野内</a><a href="/watchlist-viewer/activist.html" style="background:#d29922;color:#000;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700;">🏴AI片山</a></div></div>
 {
  "meta": {
-  "生成": "2026-09-07 09:31 JST",
+  "生成": "2026-09-08 09:31 JST",
   "対象月": "2026年08月",
   "仕様書": "半導体サイクル月次モニタリング仕様書 v1.1 (2026-08-19作成/2026-09-01改訂)",
   "このファイルの使い方": "値・出所・時点・注意書き・判断ルールを1つにまとめてある。数値を引用する前に必ず同じキーの caveat を読むこと。"
@@ -85,13 +85,13 @@
   },
   "n225": {
    "label": "日経平均",
-   "value": 66179.046875,
-   "yoy": 53.837679790788904,
+   "value": 66049.53125,
+   "yoy": 51.33768884564902,
    "mom": null,
    "diff_pt": null,
    "unit": "円",
    "source": "yfinance ^N225",
-   "asof": "2026-09-07",
+   "asof": "2026-09-08",
    "note": null,
    "caveat": null,
    "obtained": true
@@ -137,39 +137,39 @@
   },
   "gold": {
    "label": "金先物",
-   "value": 4476.60009765625,
-   "yoy": 23.895720086134364,
+   "value": 4471.5,
+   "yoy": 23.754568261569673,
    "mom": null,
    "diff_pt": null,
    "unit": "ドル/oz",
    "source": "yfinance GC=F",
-   "asof": "2026-09-06",
+   "asof": "2026-09-07",
    "note": null,
    "caveat": null,
    "obtained": true
   },
   "dxy": {
    "label": "ドル指数",
-   "value": 99.12699890136719,
-   "yoy": 1.3879536717740226,
+   "value": 99.1760025024414,
+   "yoy": 1.438074979697479,
    "mom": null,
    "diff_pt": null,
    "unit": "",
    "source": "yfinance DX-Y.NYB",
-   "asof": "2026-09-06",
+   "asof": "2026-09-07",
    "note": null,
    "caveat": null,
    "obtained": true
   },
   "jp10": {
    "label": "日本10年債利回り",
-   "value": 2.91,
+   "value": 2.935,
    "yoy": null,
    "mom": null,
-   "diff_pt": 1.2930000000000001,
+   "diff_pt": 1.345,
    "unit": "%",
    "source": "財務省 国債金利情報",
-   "asof": "2026-09-04",
+   "asof": "2026-09-07",
    "note": null,
    "caveat": "同上。",
    "obtained": true
@@ -5712,6 +5712,14 @@
     "nand_512": 20.708,
     "nand_256": 16.808,
     "nand_128": 9.967
+   },
+   "2026-09-08": {
+    "ddr5_16": 54.3,
+    "ddr4_16": 93.25,
+    "ddr4_8": 45.357,
+    "nand_512": 20.708,
+    "nand_256": 16.808,
+    "nand_128": 9.967
    }
   }
  },
@@ -5744,8 +5752,8 @@
    },
    "n225": {
     "label": "日経平均",
-    "値": 53.837679790788904,
-    "方向": "横ばい"
+    "値": 51.33768884564902,
+    "方向": "下"
    },
    "iip_prod": {
     "label": "電子部品・デバイス工業 生産前年比",
@@ -5836,7 +5844,7 @@
    "no": 8,
    "title": "業績指標だけで株価判断をしない",
    "status": "OK",
-   "detail": "バリュエーション側を併記: 米30年 5.25% (+0.37pt), 米10年 4.78% (+0.61pt), 日10年 2.91% (+1.29pt), S&P500実績PER 24.9倍。**予想PERは追っていない**ので、割高さが過去比でどの水準かは測れない(FactSetのForward 12M P/Eが要る)。実績PERは代用にならない"
+   "detail": "バリュエーション側を併記: 米30年 5.25% (+0.37pt), 米10年 4.78% (+0.61pt), 日10年 2.94% (+1.34pt), S&P500実績PER 24.9倍。**予想PERは追っていない**ので、割高さが過去比でどの水準かは測れない(FactSetのForward 12M P/Eが要る)。実績PERは代用にならない"
   },
   {
    "no": 9,
@@ -5904,7 +5912,7 @@
   }
  ],
  "乖離ログ": {
-  "内容": "出荷在庫バランス 8.11 に対し 日経平均前年比 +53.8%",
+  "内容": "出荷在庫バランス 8.11 に対し 日経平均前年比 +51.3%",
   "大きさ": "日経平均前年比 − 出荷在庫バランス = +44.0pt。2016年9月以降の119ヶ月中 7番目の大きさ",
   "理由": "数量統計に価格上昇が反映されていないため。**確認済**: メモリ生産単価 4,295円(前年比 +455.6%)に対し生産数量は 54,341千個。金額=数量×単価のうち動いているのは単価の側",
   "予測力への帰結": "業績を動かしているのが価格なら、数量ベースの出荷在庫バランスは現局面において業績の代理変数として機能していない。したがって『連動するから見る価値がある』という根拠は成立しない。金額ベース(台湾・韓国)を主指標に切り替えるべき局面。ただし金額ベースは価格反転時に数量ベースより速く崩れることに留意"
