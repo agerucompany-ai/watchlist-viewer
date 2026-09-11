@@ -1,7 +1,7 @@
 <div id="sitenav" style="font-size:12px;margin:0 0 10px 0"><div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center"><a href="/watchlist-viewer/mind.html" style="background:#a371f7;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700;">🧠3人の思考</a><a href="/watchlist-viewer/portfolio.html" style="background:#d4a017;color:#000;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700;">💼今日のPF</a><a href="/watchlist-viewer/volume/" style="background:#8f6bbf;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700;">🐋AIテスタ</a><a href="/watchlist-viewer/kinouchi.html" style="background:#2ea0a0;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700;">🌐AI木野内</a><a href="/watchlist-viewer/activist.html" style="background:#d29922;color:#000;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700;">🏴AI片山</a></div></div>
 {
  "meta": {
-  "生成": "2026-09-11 09:31 JST",
+  "生成": "2026-09-11 13:13 JST",
   "対象月": "2026年08月",
   "仕様書": "半導体サイクル月次モニタリング仕様書 v1.1 (2026-08-19作成/2026-09-01改訂)",
   "このファイルの使い方": "値・出所・時点・注意書き・判断ルールを1つにまとめてある。数値を引用する前に必ず同じキーの caveat を読むこと。"
@@ -72,8 +72,8 @@
  "最新値": {
   "sox": {
    "label": "SOX指数",
-   "value": 11614.1669921875,
-   "yoy": 94.93104831862667,
+   "value": 11614.169921875,
+   "yoy": 94.93109749021649,
    "mom": null,
    "diff_pt": null,
    "unit": "",
@@ -85,8 +85,8 @@
   },
   "n225": {
    "label": "日経平均",
-   "value": 63387.48046875,
-   "yoy": 42.85307446898416,
+   "value": 63508.3984375,
+   "yoy": 43.12558101864894,
    "mom": null,
    "diff_pt": null,
    "unit": "円",
@@ -137,26 +137,26 @@
   },
   "gold": {
    "label": "金先物",
-   "value": 4360.2998046875,
-   "yoy": 19.670097920248388,
+   "value": 4344.2998046875,
+   "yoy": 19.45062886905069,
    "mom": null,
    "diff_pt": null,
    "unit": "ドル/oz",
    "source": "yfinance GC=F",
-   "asof": "2026-09-10",
+   "asof": "2026-09-11",
    "note": null,
    "caveat": null,
    "obtained": true
   },
   "dxy": {
    "label": "ドル指数",
-   "value": 99.052001953125,
-   "yoy": 1.3008827875925943,
+   "value": 99.1500015258789,
+   "yoy": 1.6506054903012268,
    "mom": null,
    "diff_pt": null,
    "unit": "",
    "source": "yfinance DX-Y.NYB",
-   "asof": "2026-09-10",
+   "asof": "2026-09-11",
    "note": null,
    "caveat": null,
    "obtained": true
@@ -5739,8 +5739,8 @@
    },
    "2026-09-11": {
     "ddr5_16": 54.333,
-    "ddr4_16": 90.5,
-    "ddr4_8": 45.279,
+    "ddr4_16": 89.75,
+    "ddr4_8": 45.214,
     "nand_512": 20.708,
     "nand_256": 16.808,
     "nand_128": 9.967
@@ -5771,12 +5771,12 @@
    },
    "sox": {
     "label": "SOX指数",
-    "値": 94.93104831862667,
+    "値": 94.93109749021649,
     "方向": "下"
    },
    "n225": {
     "label": "日経平均",
-    "値": 42.85307446898416,
+    "値": 43.12558101864894,
     "方向": "下"
    },
    "iip_prod": {
@@ -5936,7 +5936,7 @@
   }
  ],
  "乖離ログ": {
-  "内容": "出荷在庫バランス 8.11 に対し 日経平均前年比 +42.9%",
+  "内容": "出荷在庫バランス 8.11 に対し 日経平均前年比 +43.1%",
   "大きさ": "日経平均前年比 − 出荷在庫バランス = +44.0pt。2016年9月以降の119ヶ月中 7番目の大きさ",
   "理由": "数量統計に価格上昇が反映されていないため。**確認済**: メモリ生産単価 4,295円(前年比 +455.6%)に対し生産数量は 54,341千個。金額=数量×単価のうち動いているのは単価の側",
   "予測力への帰結": "業績を動かしているのが価格なら、数量ベースの出荷在庫バランスは現局面において業績の代理変数として機能していない。したがって『連動するから見る価値がある』という根拠は成立しない。金額ベース(台湾・韓国)を主指標に切り替えるべき局面。ただし金額ベースは価格反転時に数量ベースより速く崩れることに留意"
