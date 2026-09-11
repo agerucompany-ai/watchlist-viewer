@@ -22,6 +22,8 @@ nav a:hover{color:var(--blue)}
 .kpi .label{font-size:10px;color:var(--muted);margin-bottom:3px}
 .kpi .value{font-size:18px;font-weight:700;color:var(--text)}
 .kpi .sub{font-size:10px;color:var(--muted);margin-top:2px}
+.kpi.lit{border-color:var(--green);box-shadow:0 0 0 1px var(--green) inset}
+.kpi.lit .value{color:var(--green)}
 .up{color:var(--green)}.down{color:var(--red)}
 
 .chart-box{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:10px;margin-bottom:14px}
@@ -33,16 +35,13 @@ table{width:100%;border-collapse:collapse;font-size:11px;margin-top:10px}
 th{background:var(--bg3);color:var(--muted);font-weight:600;padding:5px 7px;text-align:right;border-bottom:1px solid var(--border)}
 th:first-child,td:first-child{text-align:left}
 td{padding:4px 7px;border-bottom:1px solid rgba(48,54,61,.5);text-align:right;color:var(--text)}
+#recent-table th,#recent-table td{white-space:nowrap}
+.verify th,.verify td{text-align:left;white-space:normal;vertical-align:top}
+.verify td.keep{color:var(--green);font-weight:700;white-space:nowrap}
+.verify td.drop{color:var(--muted);white-space:nowrap}
 .notes{font-size:11px;color:var(--muted);background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:10px;margin-top:14px;line-height:1.6}
 .notes b{color:var(--text)}
 .error{background:#3a1414;border:1px solid var(--red);color:#ffb4b4;padding:8px;border-radius:6px;margin-bottom:10px}
-.legend-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:6px;font-size:10px;color:var(--muted)}
-.legend-row .pill{padding:2px 7px;border-radius:10px;color:#000;font-weight:700}
-.signal-buy{background:#3fb950}
-.signal-test{background:#a5d6a7}
-.signal-cau{background:#FFD54F}
-.signal-sell{background:#ef5350;color:#fff}
-.signal-neutral{background:#888;color:#fff}
 </style>
 </head>
 <body>
@@ -66,112 +65,24 @@ td{padding:4px 7px;border-bottom:1px solid rgba(48,54,61,.5);text-align:right;co
 
 <!-- ── 日経平均 ── -->
 <div class="chart-box">
-  <h2>日経平均 直近1ヶ月ズーム（モメンタムマーカー着色）</h2>
+  <h2>日経平均 直近1ヶ月ズーム</h2>
   <div class="chart-wrap"><canvas id="chartN225Zoom"></canvas></div>
 </div>
 
 <div class="chart-box">
-  <h2>日経平均 長期（モメンタムでマーカー着色 / 2024-04 以降）</h2>
-  <div class="legend-row" id="signal-legend"></div>
+  <h2>日経平均 長期（2024-04 以降）<span style="color:var(--muted);font-weight:400"> 緑点 = 買い増しゾーン点灯日（PCR÷VI が過去750営業日の下位10%）</span></h2>
   <div class="chart-wrap"><canvas id="chartN225"></canvas></div>
-</div>
-
-<div class="chart-box">
-  <h2>日経モメンタム — PCR÷VI ROC(10営業日) <span style="color:var(--muted);font-weight:400">単位: %、Y軸 ±100% 固定</span></h2>
-  <div class="chart-wrap"><canvas id="chartMomentum"></canvas></div>
 </div>
 
 <!-- ── S&P500 ── -->
 <div class="chart-box">
-  <h2>S&amp;P500 直近1ヶ月ズーム（モメンタムマーカー着色）</h2>
+  <h2>S&amp;P500 直近1ヶ月ズーム</h2>
   <div class="chart-wrap"><canvas id="chartSp500Zoom"></canvas></div>
 </div>
 
 <div class="chart-box">
-  <h2>S&amp;P500 長期（モメンタムマーカー着色 / 2024-04 以降）</h2>
+  <h2>S&amp;P500 長期（2024-04 以降）</h2>
   <div class="chart-wrap"><canvas id="chartSp500"></canvas></div>
-</div>
-
-<div class="chart-box">
-  <h2>S&amp;P500 モメンタム — SKEW÷VIX の ROC(10営業日) <span style="color:var(--muted);font-weight:400">単位: %、Y軸 ±50% 固定 / 日経 PCR÷VI と並列の指標</span></h2>
-  <div class="chart-wrap"><canvas id="chartSp500Momentum"></canvas></div>
-</div>
-
-<!-- ── 試験: 強弱5段階シグナル (複数指標の組合せ条件) ── -->
-<div class="chart-box" style="border:1px dashed var(--blue)">
-  <h2>🧪 強弱5段階シグナル【試験】 <span style="color:var(--muted);font-weight:400">— 2指標 AND 条件で edge を強化</span></h2>
-  <div style="font-size:11.5px;line-height:1.7;color:var(--text)">
-
-  <b>なぜ SKEW と PCR の単独使用ではダメか</b><br>
-  単一指標の極端値（p10/p90）だけ見ると、edge の大半は <b>VIX/VI（=市場ボラ）の panic 検出</b>から来る。
-  SKEW（機関のヘッジコスト）や PCR（投資家のポジション）が持つ <b>独自情報は捨てられる</b>。
-  特に「市場は穏やかなのに機関だけがコッソリ暴落保険を買っている」という<b>暴落予兆</b>が、VIX が動いていないため検出できない。
-
-  <p style="margin:10px 0 6px 0"><b>3指標が答える質問はそれぞれ違う</b></p>
-  <table style="width:auto;font-size:11px">
-    <thead><tr><th style="text-align:left">指標</th><th style="text-align:left">何を測るか</th><th style="text-align:left">先行性</th></tr></thead>
-    <tbody>
-      <tr><td><b>VIX / VI</b></td><td>市場全体の予想ボラの大きさ</td><td>同期（=リアルタイム panic 計）</td></tr>
-      <tr><td><b>SKEW</b></td><td>下方テールの保険料（機関のヘッジ需要）</td><td><b>+20〜60営業日（先行）</b></td></tr>
-      <tr><td><b>PCR</b></td><td>投資家のポジション（建玉残高）</td><td>同期〜やや遅行</td></tr>
-    </tbody>
-  </table>
-
-  <p style="margin:10px 0 6px 0"><b>AND 条件で組み合わせると何が起きるか</b></p>
-  <ul style="margin:4px 0 6px 18px;padding:0">
-    <li><b>SKEW 極高 × VIX 極低</b>（米国ストロングセル）= 「市場は穏やかだが機関が密かに警戒」 → <b>calm before storm</b>。SKEW の先行性が活きる場面。</li>
-    <li><b>VIX 極高 × SKEW 既低</b>（米国ストロングバイ）= 「panic 真只中、機関のヘッジは既にアンワインド済み」 → <b>底値圏</b>。VIX 単独では「panic だが底かどうか不明」だが、SKEW が低くなっていることで底打ちを確認。</li>
-    <li><b>PCR 極高 × VI 極低</b>（日経ストロングセル）= 「市場穏やかなのに投資家のプット建玉が極端」 → 機関の SKEW 相当の警戒蓄積（日本版）。</li>
-    <li><b>VI 極高 × PCR 高</b>（日経ストロングバイ）= 「ボラ急騰 + retail 含む全員パニック買い」 → capitulation 完了の確度高い。</li>
-  </ul>
-
-  <p style="margin:10px 0 6px 0"><b>3年実証データで AND 条件の有効性が確認された</b></p>
-  <table style="width:auto;font-size:11px">
-    <thead><tr><th style="text-align:left">ラベル</th><th>米国 20d 平均/勝率</th><th>日経 20d 平均/勝率</th><th>baseline 比</th></tr></thead>
-    <tbody>
-      <tr><td><span class="pill signal-sell" style="background:#b71c1c">ストロングセル</span></td><td>-0.67% / 44% (n=18)</td><td><b>-7.36% / 10% (n=10)</b></td><td>大幅下回り(両国)</td></tr>
-      <tr><td><span class="pill signal-cau">セル</span></td><td>+0.10% / 67%</td><td>-1.84% / 39%</td><td>baseline以下</td></tr>
-      <tr><td><span class="pill signal-neutral" style="background:#888;color:#fff">中立</span></td><td>+1.29% / 73%</td><td>+2.32% / 68%</td><td>≒baseline</td></tr>
-      <tr><td><span class="pill signal-test">バイ</span></td><td>+1.96% / 73%</td><td>+2.93% / 69%</td><td>軽くbaseline上</td></tr>
-      <tr><td><span class="pill signal-buy" style="background:#1b5e20">ストロングバイ</span></td><td><b>+6.07% / 81% (n=27)</b></td><td><b>+5.19% / 80% (n=15)</b></td><td>大幅上回り(両国)</td></tr>
-      <tr style="border-top:1px solid var(--border)"><td>baseline (全日)</td><td>+1.48% / 73%</td><td>+2.09% / 65%</td><td>—</td></tr>
-    </tbody>
-  </table>
-
-  <p style="margin:10px 0 6px 0"><b>具体的な発動条件</b></p>
-  <table style="width:auto;font-size:11px">
-    <thead><tr><th style="text-align:left">ラベル</th><th>米国 (SKEW + VIX)</th><th>日経 (PCR + VI)</th></tr></thead>
-    <tbody>
-      <tr><td><span class="pill signal-sell" style="background:#b71c1c">ストロングセル</span></td><td>SKEW &gt; p90 <b>AND</b> VIX &lt; p25</td><td>PCR &gt; p90 <b>AND</b> VI &lt; p25</td></tr>
-      <tr><td><span class="pill signal-cau">セル</span></td><td>SKEW &gt; p75 <b>AND</b> VIX &lt; p50</td><td>PCR &gt; p75 <b>AND</b> VI &lt; p50</td></tr>
-      <tr><td><span class="pill signal-neutral" style="background:#888;color:#fff">中立</span></td><td colspan="2">上記/下記いずれにも該当しない</td></tr>
-      <tr><td><span class="pill signal-test">バイ</span></td><td>VIX &gt; p75</td><td>VI &gt; p75</td></tr>
-      <tr><td><span class="pill signal-buy" style="background:#1b5e20">ストロングバイ</span></td><td>VIX &gt; p90 <b>AND</b> SKEW &lt; p25</td><td>VI &gt; p90 <b>AND</b> PCR &gt; p75</td></tr>
-    </tbody>
-  </table>
-
-  <small style="color:var(--muted);display:block;margin-top:8px">
-  <b>注意点</b>: ストロングセル/ストロングバイのサンプル数は 10〜27 と少なく、effect size は大きいが標準誤差も大きい。
-  ただし両国で baseline からの逸脱方向が一致しており、シグナルとしての価値は高い。<br>
-  既存の単独 p10/p90 シグナル（PCR÷VI / SKEW÷VIX 絶対水準）は買い側のみ機能していた（売り側も多少効くが弱い）。
-  今回の <b>AND 条件で売り側に強烈な edge が出現</b>し、SKEW と PCR を分子に持つ価値が実証された。
-  </small>
-  </div>
-</div>
-
-<div class="chart-box" style="border:1px dashed var(--blue)">
-  <h2>S&amp;P500 強弱マーカー【試験】</h2>
-  <div class="chart-wrap"><canvas id="chartSp500Strength"></canvas></div>
-</div>
-
-<div class="chart-box" style="border:1px dashed var(--blue)">
-  <h2>日経平均 強弱マーカー【試験】</h2>
-  <div class="chart-wrap"><canvas id="chartN225Strength"></canvas></div>
-</div>
-
-<div class="chart-box" style="border:1px dashed var(--blue)">
-  <h2>強弱シグナル検証【試験】</h2>
-  <div id="strength-backtest" style="font-size:11.5px"></div>
 </div>
 
 <!-- ── その他資料 ── -->
@@ -181,7 +92,7 @@ td{padding:4px 7px;border-bottom:1px solid rgba(48,54,61,.5);text-align:right;co
 </div>
 
 <div class="chart-box">
-  <h2>PCR-VIスプレッド（PCR ÷ 日経VI）</h2>
+  <h2>PCR-VIスプレッド（PCR ÷ 日経VI）<span style="color:var(--muted);font-weight:400"> 破線 = 過去750営業日の下位10%閾値（当日を含まず算出）</span></h2>
   <div class="chart-wrap"><canvas id="chartSpread"></canvas></div>
 </div>
 
@@ -190,7 +101,7 @@ td{padding:4px 7px;border-bottom:1px solid rgba(48,54,61,.5);text-align:right;co
   <div style="overflow-x:auto">
     <table id="recent-table">
       <thead><tr>
-        <th>日付</th><th>PCR</th><th>VI</th><th>スプレッド</th><th>モメンタム%</th>
+        <th>日付</th><th>PCR</th><th>VI</th><th>スプレッド</th><th>下位10%閾値</th><th>買い増し</th>
         <th>日経225</th><th>TOPIX(1306)</th><th>USDJPY</th><th>VIX</th><th>米10Y</th><th>限月</th>
       </tr></thead>
       <tbody></tbody>
@@ -199,44 +110,31 @@ td{padding:4px 7px;border-bottom:1px solid rgba(48,54,61,.5);text-align:right;co
 </div>
 
 <div class="chart-box">
-  <h2>シグナル判定ロジック（記事準拠・絶対水準ベース）</h2>
-  <div style="font-size:11.5px;line-height:1.7;color:var(--text)">
-  記事「市場予測指標で市場の動きを考えてみる」(株おじさん) のロジックそのまま：
-  <b>SKEW÷VIX (米国) / PCR÷VI (日本)</b> の絶対水準でテールリスクと買い圧力を読む。
-  水準が高い = テールヘッジ全開 = 警戒、水準が低い = パニック終了 = 買い場。
-  <table style="margin-top:6px;width:auto">
-    <thead><tr><th style="text-align:left">ラベル</th><th style="text-align:left">水準</th><th style="text-align:left">意味</th></tr></thead>
+  <h2>シグナル検証結果</h2>
+  <div style="overflow-x:auto">
+  <table class="verify">
+    <thead><tr><th>指標</th><th>判定</th><th>根拠</th></tr></thead>
     <tbody>
-      <tr><td><span class="pill signal-sell">売り</span></td><td>&gt; p90</td><td>テールヘッジ買いが極端に厚い高値圏。下落リスク高い</td></tr>
-      <tr><td><span class="pill signal-cau">退避</span></td><td>p75 〜 p90</td><td>警戒寄り、利食い検討</td></tr>
-      <tr><td><span class="pill signal-neutral" style="background:#888;color:#fff">中立</span></td><td>p25 〜 p75</td><td>普通の状態</td></tr>
-      <tr><td><span class="pill signal-test">打診買い</span></td><td>p10 〜 p25</td><td>低水準、買い候補</td></tr>
-      <tr><td><span class="pill signal-buy">買い</span></td><td>&lt; p10</td><td>パニック終了サイン、強・買いゾーン</td></tr>
+      <tr><td>日経 PCR÷VI 下位10%（買い増しゾーン）</td><td class="keep">残す</td><td>20日後 平常比+2.2%・60日後+6.1%／3期間とも同じ向き／ただしリスクも同量増える</td></tr>
+      <tr><td>売り・退避（PCR÷VI 上位25%）</td><td class="drop">削除</td><td>手仕舞うと年率12.8%→8.4%／米国36年では点灯中の急落率が平常の半分</td></tr>
+      <tr><td>打診買い</td><td class="drop">削除</td><td>平常比+0.8%・偶然と区別できない</td></tr>
+      <tr><td>強弱5段階（PCR+VI / SKEW+VIX）</td><td class="drop">削除</td><td>ストロング系は独立5〜7回で検証不能／VI高は2026年92%点灯で機能停止</td></tr>
+      <tr><td>モメンタムROC10</td><td class="drop">削除</td><td>日経 年率−4.9%（買い持ち+12.8%）・172回中104回が往復びんた</td></tr>
+      <tr><td>米国 SKEW÷VIX</td><td class="drop">削除</td><td>VIXとほぼ同じ動き（順位相関0.96）・期間で向きが割れる</td></tr>
     </tbody>
   </table>
-  <small style="color:var(--muted)">
-  ※ 分位閾値は 3年(750日) のフルレンジで算出し全期間に適用。<br>
-  ※ 日経シグナル = PCR÷VI の絶対水準 (J-Quants 建玉から自前算出 + Yahoo 日経VI)<br>
-  ※ 米国シグナル = SKEW÷VIX の絶対水準 (Yahoo ^SKEW / ^VIX)<br>
-  ※ 旧バージョンの ROC10 + 状態マシン (買い→退避→売り→打) は廃止。
-  </small>
   </div>
-</div>
-
-<div class="chart-box">
-  <h2>シグナル別 N225 フォワードリターン検証 <span style="color:var(--muted);font-weight:400">(全データを後付けで集計)</span></h2>
-  <div id="backtest" style="font-size:11.5px"></div>
+  <small style="color:var(--muted);display:block;margin-top:6px">検証=2018-2026日経/1990-2026米国・閾値は各日より前の750営業日のみで算出・片道0.1%コスト（2026-09-11）</small>
 </div>
 
 <div class="notes">
 <b>指標の見方</b><br>
-・<b>PCR (全体OI)</b> = フロント限月の全プット建玉 ÷ 全コール建玉（メディア標準）。1.0以上で下落ヘッジ厚（弱気）、低位は強気・楽観。<br>
-&emsp;<small>補助: PCR(OTM) = ATM±20%レンジ内のみ。壁分析・センチメントの細かい温度感に。</small><br>
+・<b>PCR (全体OI)</b> = フロント限月の全プット建玉 ÷ 全コール建玉。1.0以上で下落ヘッジ厚（弱気）、低位は強気・楽観。<br>
+&emsp;<small>補助: PCR(OTM) = ATM±20%レンジ内のみ。</small><br>
 ・<b>日経VI</b> = 投資家が想定する向こう30日の日経平均ボラ。20以下は穏やか、30超は警戒。<br>
-・<b>PCR÷VI</b>（スプレッド）= テールリスクと買い圧力を一体評価。記事の SKEW÷VIX に倣う日本版。<br>
-・<b>モメンタム</b> = スプレッドの ROC(10営業日) = (今日 ÷ 10営業日前 − 1) × 100 [補助表示]。<br>
-・<b>シグナル</b> = スプレッドの<b>絶対水準</b>を5段階に分類（記事準拠の素朴解釈）。<br>
-・<b>市場指標</b> = USDJPY / VIX(米国) / TOPIX(1306) / 米10年金利。日経/オプション動向と合わせて環境判定に使用。<br>
+・<b>PCR÷VI</b>（スプレッド）= テールリスクと買い圧力を一体評価。<br>
+・<b>買い増しゾーン</b> = 当日の PCR÷VI が、当日を含まない直前750営業日（有効値）の下位10%を下回った日。有効値が250日たまるまでは判定しない。売りシグナルではない。<br>
+・<b>市場指標</b> = USDJPY / VIX(米国) / TOPIX(1306) / 米10年金利 / S&amp;P500 / SKEW（参考値）。<br>
 データ源: J-Quants V2（オプション建玉, T+1反映） / Yahoo Finance（^NKVI.OS, ^N225, 1306.T, USDJPY=X, ^VIX, ^TNX, ^GSPC, ^SKEW）。毎平日朝に自動更新。グラフ表示は2024-04-01以降。
 </div>
 
@@ -246,6 +144,37 @@ const fmtNum = (v, d=3) => v == null ? '-' : Number(v).toFixed(d);
 const fmtInt = v => v == null ? '-' : Number(v).toLocaleString();
 
 function dirClass(v){ return v == null ? '' : (v >= 0 ? 'up' : 'down'); }
+
+// ── 買い増しゾーン (ウォークフォワード) ──────────────────────
+// 各日の閾値 = その日より前の有効スプレッド値 (直近 WINDOW 件) の下位 QUANTILE。
+// 当日の値は含めない。有効値が MIN_OBS 件たまるまでは null (判定しない)。
+const WF_WINDOW  = 750;
+const WF_MIN_OBS = 250;
+const WF_Q       = 0.10;
+
+function quantileSorted(sorted, q){
+  const n = sorted.length;
+  if(n === 0) return null;
+  const pos = (n - 1) * q;
+  const lo = Math.floor(pos), hi = Math.ceil(pos);
+  if(lo === hi) return sorted[lo];
+  return sorted[lo] + (sorted[hi] - sorted[lo]) * (pos - lo);
+}
+
+// records 全体に対して {thr, lit} を返す (records と同じ長さ)
+function walkForwardBuyZone(records){
+  const valid = []; // 過去の有効スプレッド値 (時系列順)
+  return records.map(r => {
+    const win = valid.slice(-WF_WINDOW);
+    let thr = null, lit = false;
+    if(win.length >= WF_MIN_OBS){
+      thr = quantileSorted([...win].sort((a,b)=>a-b), WF_Q);
+      lit = r.spread != null && thr != null && r.spread < thr;
+    }
+    if(r.spread != null) valid.push(r.spread);
+    return { thr, lit };
+  });
+}
 
 async function load(){
   try{
@@ -276,89 +205,22 @@ function render(payload){
   const dVi  = prev && last.vi != null && prev.vi != null ? (last.vi - prev.vi) : null;
   const dSp  = prev && last.spread != null && prev.spread != null ? (last.spread - prev.spread) : null;
   const dN   = prev && last.n225 != null && prev.n225 != null ? (last.n225 - prev.n225) : null;
-
-  // モメンタム値の昇順配列(モメンタムチャート用)
-  const moms = records.map(r=>r.momentum).filter(v=>v!=null).sort((a,b)=>a-b);
-
-  // ── シグナルロジック (記事準拠の絶対水準ベース) ──────────────
-  // 記事「市場予測指標で市場の動きを考えてみる」(株おじさん):
-  //   ・SKEW÷VIX(米国) / PCR÷VI(日本) の "絶対水準" でテールリスクと買い圧力を判定
-  //   ・水準が高い = テールリスク高 = 警戒  ／ 水準が低い = パニック終了 = 買い場
-  //
-  // 5段階に分類 (フルレンジ=3年データ の分位閾値で判定):
-  //   警戒    : > p90  (極端高、テールヘッジ全開)
-  //   弱含み  : p75..p90
-  //   中立    : p25..p75
-  //   打診買い: p10..p25
-  //   買い場  : < p10  (極端低、パニック後の底値圏)
-  //
-  // 3年(750日)実証データ (SKEW÷VIX, SP500 20日先):
-  //   極端高 (>p90): 平均 -0.40%, 勝率 52% (baseline 73%)  ← 警戒明確
-  //   極端低 (<p10): 平均 +4.44%, 勝率 78% (baseline +1.48%) ← 買い場明確
-  // 同じ閾値ロジックを PCR÷VI (日経シグナル) にも適用。
-  //
-  // 旧ステートマシン(4状態 ROC10 ベース) は廃止。
-  // 記事(株おじさん)の用語: 売り / 退避 / 打診買い / 買い  +  中立(中央レンジ)
-  const LEVEL_DISPLAY = {
-    '売り':    { cls: 'signal-sell',    color: '#ef5149', radiusFull: 4.5, radiusZoom: 6   },
-    '退避':    { cls: 'signal-cau',     color: '#FFD54F', radiusFull: 3,   radiusZoom: 4.5 },
-    '中立':    { cls: 'signal-neutral', color: 'rgba(165,165,165,0.4)', radiusFull: 1.2, radiusZoom: 2.5 },
-    '打診買い':{ cls: 'signal-test',    color: '#a5d6a7', radiusFull: 3,   radiusZoom: 4.5 },
-    '買い':    { cls: 'signal-buy',     color: '#3fb950', radiusFull: 4.5, radiusZoom: 6   },
-  };
-  function makeLevelClassifier(values) {
-    const sorted = values.filter(v => v != null).sort((a,b)=>a-b);
-    const n = sorted.length;
-    if (n < 20) return { thresholds: null, classify: () => null };
-    const p = f => sorted[Math.max(0, Math.min(n-1, Math.floor(n*f)))];
-    const t = { p10: p(0.10), p25: p(0.25), p50: p(0.5), p75: p(0.75), p90: p(0.90) };
-    const classify = v => {
-      if (v == null) return null;
-      if (v > t.p90) return '売り';
-      if (v > t.p75) return '退避';
-      if (v < t.p10) return '買い';
-      if (v < t.p25) return '打診買い';
-      return '中立';
-    };
-    return { thresholds: t, classify };
-  }
-
-  // 日本側: PCR÷VI スプレッドの絶対水準
-  const jpClassifier = makeLevelClassifier(records.map(r => r.spread));
-  const jpSignalAll  = records.map(r => jpClassifier.classify(r.spread));
-  // 米国側: SKEW÷VIX の絶対水準
-  const usSpreadAll  = records.map(r => (r.skew != null && r.vix != null && r.vix > 0) ? r.skew/r.vix : null);
-  const usClassifier = makeLevelClassifier(usSpreadAll);
-  const usSignalAll  = usSpreadAll.map(v => usClassifier.classify(v));
-
-  function sigInfo(label) {
-    return label && LEVEL_DISPLAY[label] ? LEVEL_DISPLAY[label] : { cls:'', color:'rgba(255,255,255,0.2)', radiusFull:1.5, radiusZoom:3 };
-  }
-
-  const lastJpSig = jpSignalAll[records.length - 1] || '-';
-  const lastUsSig = usSignalAll[records.length - 1] || '-';
-
-  document.getElementById('signal-legend').innerHTML =
-    `<b>絶対水準ベース判定</b> (記事「市場予測指標」(株おじさん) 準拠 / 3年データ分位閾値): ` +
-    `<span class="pill signal-sell">売り (>p90)</span>` +
-    `<span class="pill signal-cau">退避 (p75〜p90)</span>` +
-    `<span class="pill signal-neutral" style="background:#888;color:#fff">中立 (p25〜p75)</span>` +
-    `<span class="pill signal-test">打診買い (p10〜p25)</span>` +
-    `<span class="pill signal-buy">買い (<p10)</span>` +
-    `<span style="margin-left:auto">最新: 日経 <b>${lastJpSig}</b> / 米国 <b>${lastUsSig}</b></span>`;
-
   const dT  = prev && last.topix != null && prev.topix != null ? (last.topix - prev.topix) : null;
   const dFx = prev && last.usdjpy != null && prev.usdjpy != null ? (last.usdjpy - prev.usdjpy) : null;
   const dVx = prev && last.vix != null && prev.vix != null ? (last.vix - prev.vix) : null;
   const dUs = prev && last.us10y != null && prev.us10y != null ? (last.us10y - prev.us10y) : null;
+  const dSpx = prev && last.sp500 != null && prev.sp500 != null ? (last.sp500 - prev.sp500) : null;
+
+  // 買い増しゾーン (全レコードでウォークフォワード計算)
+  const zoneAll = walkForwardBuyZone(records);
+  const zoneLast = zoneAll[zoneAll.length - 1];
 
   document.getElementById('summary').innerHTML = `
+    <div class="kpi ${zoneLast.lit ? 'lit' : ''}"><div class="label">日経 買い増しゾーン</div>
+      <div class="value">${zoneLast.thr == null ? '判定前' : (zoneLast.lit ? '点灯' : '未点灯')}</div>
+      <div class="sub">PCR÷VI ${fmtNum(last.spread,4)} / 閾値 ${zoneLast.thr == null ? '-' : fmtNum(zoneLast.thr,4)}（過去750日 下位10%）</div></div>
     <div class="kpi"><div class="label">日経平均</div><div class="value">${fmtNum(last.n225,0)}</div>
       <div class="sub ${dirClass(dN)}">${dN==null?'':(dN>=0?'+':'')+fmtNum(dN,0)}</div></div>
-    <div class="kpi"><div class="label">日経シグナル</div><div class="value"><span class="pill ${sigInfo(lastJpSig).cls}" style="font-size:14px">${lastJpSig}</span></div>
-      <div class="sub">PCR÷VI = ${fmtNum(last.spread,4)} <small style="color:var(--muted)">/ ROC10 ${last.momentum==null?'-':(last.momentum>=0?'+':'')+fmtNum(last.momentum,2)+'%'}</small></div></div>
-    <div class="kpi"><div class="label">米国シグナル</div><div class="value"><span class="pill ${sigInfo(lastUsSig).cls}" style="font-size:14px">${lastUsSig}</span></div>
-      <div class="sub">SKEW÷VIX = ${last.skew!=null && last.vix ? (last.skew/last.vix).toFixed(3) : '-'}</div></div>
     <div class="kpi"><div class="label">PCR (全体OI)</div><div class="value">${fmtNum(last.pcr,3)}</div>
       <div class="sub ${dirClass(dPcr)}">${dPcr==null?'':(dPcr>=0?'+':'')+fmtNum(dPcr,3)}${last.pcr_otm!=null?` / OTM ${fmtNum(last.pcr_otm,3)}`:''}</div></div>
     <div class="kpi"><div class="label">日経VI</div><div class="value">${fmtNum(last.vi,2)}</div>
@@ -370,47 +232,22 @@ function render(payload){
     <div class="kpi"><div class="label">USDJPY</div><div class="value">${fmtNum(last.usdjpy,2)}</div>
       <div class="sub ${dirClass(dFx)}">${dFx==null?'':(dFx>=0?'+':'')+fmtNum(dFx,2)}</div></div>
     <div class="kpi"><div class="label">VIX (米国)</div><div class="value">${fmtNum(last.vix,2)}</div>
-      <div class="sub ${dirClass(dVx)}">${dVx==null?'':(dVx>=0?'+':'')+fmtNum(dVx,2)}</div></div>
+      <div class="sub ${dirClass(dVx)}">${dVx==null?'':(dVx>=0?'+':'')+fmtNum(dVx,2)}${last.skew!=null?` / SKEW ${fmtNum(last.skew,1)}`:''}</div></div>
     <div class="kpi"><div class="label">S&P500</div><div class="value">${fmtNum(last.sp500,0)}</div>
-      <div class="sub ${dirClass(prev && last.sp500!=null && prev.sp500!=null ? last.sp500-prev.sp500 : null)}">${prev && last.sp500!=null && prev.sp500!=null ? ((last.sp500-prev.sp500>=0?'+':'')+fmtNum(last.sp500-prev.sp500,1)) : ''}</div></div>
+      <div class="sub ${dirClass(dSpx)}">${dSpx==null?'':(dSpx>=0?'+':'')+fmtNum(dSpx,1)}</div></div>
     <div class="kpi"><div class="label">米10年金利</div><div class="value">${fmtNum(last.us10y,2)}%</div>
       <div class="sub ${dirClass(dUs)}">${dUs==null?'':(dUs>=0?'+':'')+fmtNum(dUs,2)}</div></div>
     <div class="kpi"><div class="label">プット/コール建玉</div><div class="value">${fmtInt(last.put_oi)} / ${fmtInt(last.call_oi)}</div>
       <div class="sub">枚（フロント限月）</div></div>
   `;
 
-  // 全チャートで横軸の左端を統一 (バックテスト/テーブルはfullで残す)
+  // 全チャートで横軸の左端を統一 (テーブルはfullで残す)
   const DISPLAY_START = '2024-04-01';
   const startIdx = Math.max(0, records.findIndex(r => r.date >= DISPLAY_START));
   const dRecs = records.slice(startIdx);
   const labels = dRecs.map(r => r.date);
-
-  // 米国センチメント比率: SKEW ÷ VIX (記事で日経の PCR÷VI と並列に扱われる指標)
-  const skewVix = dRecs.map(r => (r.skew != null && r.vix != null && r.vix > 0) ? r.skew / r.vix : null);
-
-  // SP500 モメンタム = SKEW÷VIX の ROC(10営業日)
-  // dRecs 内の連続する有効 skewVix 値で 10ステップ前を参照
-  const sp500Mom = dRecs.map((_, i) => {
-    if (skewVix[i] == null) return null;
-    let count = 0;
-    for (let j = i - 1; j >= 0; j--) {
-      if (skewVix[j] != null) {
-        count++;
-        if (count === 10) {
-          const ago = skewVix[j];
-          if (ago > 0) return (skewVix[i] / ago - 1) * 100;
-          return null;
-        }
-      }
-    }
-    return null;
-  });
-
-  // 表示レンジに合わせて シグナル/スプレッド配列をスライス
-  const jpSig    = jpSignalAll.slice(startIdx);
-  const usSig    = usSignalAll.slice(startIdx);
-  const jpColors = jpSig.map(s => sigInfo(s).color);
-  const usColors = usSig.map(s => sigInfo(s).color);
+  const zone   = zoneAll.slice(startIdx);
+  const GREEN  = '#3fb950';
 
   Chart.defaults.color = '#8b949e';
   Chart.defaults.borderColor = 'rgba(48,54,61,0.6)';
@@ -420,6 +257,7 @@ function render(payload){
     x: { ticks: { maxTicksLimit: 10, autoSkip: true }, grid: { display: false } },
     ...extra,
   });
+  const numTick = { ticks: { callback: v => Number(v).toLocaleString() } };
 
   new Chart(document.getElementById('chartPcrVi'), {
     type: 'line',
@@ -442,16 +280,35 @@ function render(payload){
     }
   });
 
+  // スプレッド + ウォークフォワード p10 閾値 (破線)
   new Chart(document.getElementById('chartSpread'), {
     type: 'line',
     data: { labels, datasets: [
       { label: 'PCR ÷ 日経VI', data: dRecs.map(r=>r.spread),
-        borderColor: '#a371f7', backgroundColor: 'rgba(163,113,247,.18)', tension: .25, pointRadius: 0, borderWidth: 2, fill: true },
+        borderColor: '#a371f7', backgroundColor: 'rgba(163,113,247,.18)', tension: .25,
+        pointRadius: ctx => zone[ctx.dataIndex].lit ? 3.5 : 0,
+        pointBackgroundColor: GREEN, pointBorderColor: GREEN,
+        borderWidth: 2, fill: true },
+      { label: '下位10%閾値 (過去750日)', data: zone.map(z=>z.thr),
+        borderColor: GREEN, borderDash: [6,4], borderWidth: 1.5, pointRadius: 0, tension: 0, spanGaps: true, fill: false },
     ]},
-    options: { responsive:true, maintainAspectRatio:false, scales: commonScales({y:{}}) }
+    options: {
+      responsive:true, maintainAspectRatio:false, interaction: {mode:'index',intersect:false},
+      scales: commonScales({y:{}}),
+      plugins: {
+        legend: { position: 'top' },
+        tooltip: { callbacks: {
+          afterBody: items => {
+            const i = items[0]?.dataIndex;
+            if(i == null) return '';
+            return zone[i].thr == null ? '判定前 (有効値250日未満)' : (zone[i].lit ? '買い増しゾーン: 点灯' : '買い増しゾーン: 未点灯');
+          }
+        }}
+      }
+    }
   });
 
-  // 日経平均 + 日経シグナル(PCR÷VI 絶対水準)
+  // 日経平均 長期 (点灯日だけ緑点)
   const n225Pts = dRecs.map(r => r.n225);
 
   new Chart(document.getElementById('chartN225'), {
@@ -466,9 +323,10 @@ function render(payload){
           backgroundColor: 'rgba(88,166,255,.10)',
           borderWidth: 1.5,
           tension: .15,
-          pointRadius: ctx => sigInfo(jpSig[ctx.dataIndex]).radiusFull,
-          pointBackgroundColor: jpColors,
-          pointBorderColor: jpColors,
+          pointRadius: ctx => zone[ctx.dataIndex].lit ? 4.5 : 0,
+          pointHoverRadius: ctx => zone[ctx.dataIndex].lit ? 6 : 3,
+          pointBackgroundColor: GREEN,
+          pointBorderColor: GREEN,
           fill: false,
         }
       ]
@@ -476,7 +334,7 @@ function render(payload){
     options: {
       responsive:true, maintainAspectRatio:false,
       interaction: {mode:'index',intersect:false},
-      scales: commonScales({ y: { ticks: { callback: v => Number(v).toLocaleString() } } }),
+      scales: commonScales({ y: numTick }),
       plugins: {
         legend: { display: false },
         tooltip: {
@@ -484,9 +342,9 @@ function render(payload){
             afterBody: items => {
               const i = items[0]?.dataIndex;
               if(i == null) return '';
-              const r = dRecs[i];
-              const sig = jpSig[i] || '-';
-              return `日経シグナル: ${sig}\nPCR÷VI: ${fmtNum(r.spread,4)} / PCR: ${fmtNum(r.pcr,3)} / VI: ${fmtNum(r.vi,2)}`;
+              const r = dRecs[i], z = zone[i];
+              const st = z.thr == null ? '判定前' : (z.lit ? '点灯' : '未点灯');
+              return `買い増しゾーン: ${st}\nPCR÷VI: ${fmtNum(r.spread,4)} / 閾値: ${z.thr==null?'-':fmtNum(z.thr,4)}\nPCR: ${fmtNum(r.pcr,3)} / VI: ${fmtNum(r.vi,2)}`;
             }
           }
         }
@@ -494,71 +352,7 @@ function render(payload){
     }
   });
 
-  new Chart(document.getElementById('chartMomentum'), {
-    type: 'line',
-    data: { labels, datasets: [
-      { label: 'モメンタム ROC(10) %', data: dRecs.map(r=>r.momentum),
-        borderColor: '#3fb950',
-        segment: {
-          borderColor: ctx => (ctx.p1.parsed.y >= 0 ? '#3fb950' : '#f85149'),
-        },
-        backgroundColor: 'rgba(63,185,80,.10)',
-        tension: .2, pointRadius: 0, borderWidth: 2 },
-    ]},
-    options: {
-      responsive:true, maintainAspectRatio:false,
-      // Y軸は ±100% で固定。それ以上の異常値も折れ線とツールチップで実値確認可能。
-      scales: commonScales({
-        y: {
-          min: -100, max: 100,
-          ticks: { callback: v => Number(v).toFixed(0) + '%' },
-          grid: { color: ctx => ctx.tick.value === 0 ? 'rgba(255,255,255,.35)' : 'rgba(48,54,61,.6)' }
-        }
-      }),
-      plugins: {
-        legend: { display: false },
-        tooltip: {
-          callbacks: {
-            label: ctx => `ROC10: ${ctx.parsed.y == null ? '-' : ctx.parsed.y.toFixed(2) + '%'}`
-          }
-        }
-      },
-    }
-  });
-
-  // S&P500 モメンタム ROC(10営業日)
-  if (sp500Mom.some(v => v != null)) {
-    new Chart(document.getElementById('chartSp500Momentum'), {
-      type: 'line',
-      data: { labels, datasets: [
-        { label: 'SKEW÷VIX ROC(10) %', data: sp500Mom,
-          borderColor: '#FFD700',
-          segment: { borderColor: ctx => (ctx.p1.parsed.y >= 0 ? '#3fb950' : '#f85149') },
-          backgroundColor: 'rgba(255,215,0,.10)',
-          tension: .2, pointRadius: 0, borderWidth: 2 },
-      ]},
-      options: {
-        responsive:true, maintainAspectRatio:false,
-        scales: commonScales({
-          y: {
-            min: -50, max: 50,
-            ticks: { callback: v => Number(v).toFixed(0) + '%' },
-            grid: { color: ctx => ctx.tick.value === 0 ? 'rgba(255,255,255,.35)' : 'rgba(48,54,61,.6)' }
-          }
-        }),
-        plugins: {
-          legend: { display: false },
-          tooltip: {
-            callbacks: {
-              label: ctx => `SKEW÷VIX ROC10: ${ctx.parsed.y == null ? '-' : ctx.parsed.y.toFixed(2) + '%'}`
-            }
-          }
-        },
-      }
-    });
-  }
-
-  // S&P500 + 米国シグナル(SKEW÷VIX 絶対水準)
+  // S&P500 長期 (素の折れ線)
   const sp500Pts = dRecs.map(r => r.sp500);
   if (sp500Pts.some(v => v != null)) {
     new Chart(document.getElementById('chartSp500'), {
@@ -573,16 +367,14 @@ function render(payload){
           borderWidth: 1.5,
           tension: .15,
           spanGaps: true,
-          pointRadius: ctx => sigInfo(usSig[ctx.dataIndex]).radiusFull,
-          pointBackgroundColor: usColors,
-          pointBorderColor: usColors,
+          pointRadius: 0,
           fill: false,
         }]
       },
       options: {
         responsive:true, maintainAspectRatio:false,
         interaction: {mode:'index',intersect:false},
-        scales: commonScales({ y: { ticks: { callback: v => Number(v).toLocaleString() } } }),
+        scales: commonScales({ y: numTick }),
         plugins: {
           legend: { display: false },
           tooltip: {
@@ -591,9 +383,7 @@ function render(payload){
                 const i = items[0]?.dataIndex;
                 if(i == null) return '';
                 const r = dRecs[i];
-                const sig = usSig[i] || '-';
-                const sv  = skewVix[i];
-                return `米国シグナル: ${sig}\nSKEW: ${fmtNum(r.skew,2)} / VIX: ${fmtNum(r.vix,2)} / SKEW÷VIX: ${sv==null?'-':sv.toFixed(3)}`;
+                return `VIX: ${fmtNum(r.vix,2)} / SKEW: ${fmtNum(r.skew,2)}`;
               }
             }
           }
@@ -602,16 +392,12 @@ function render(payload){
     });
   }
 
-  // 日経平均 直近1ヶ月ズーム (フルチャートと同じシグナル着色)
+  // 直近1ヶ月ズーム (素の折れ線)
   const ZOOM_DAYS = 22; // 営業日換算で約1ヶ月
   const zoomStart = Math.max(0, dRecs.length - ZOOM_DAYS);
-  const zoomLabels   = labels.slice(zoomStart);
-  const zoomN225     = n225Pts.slice(zoomStart);
-  const zoomSp500    = sp500Pts.slice(zoomStart);
-  const zoomJpSig    = jpSig.slice(zoomStart);
-  const zoomJpColors = jpColors.slice(zoomStart);
-  const zoomUsSig    = usSig.slice(zoomStart);
-  const zoomUsColors = usColors.slice(zoomStart);
+  const zoomLabels = labels.slice(zoomStart);
+  const zoomN225   = n225Pts.slice(zoomStart);
+  const zoomSp500  = sp500Pts.slice(zoomStart);
 
   new Chart(document.getElementById('chartN225Zoom'), {
     type: 'line',
@@ -625,9 +411,8 @@ function render(payload){
           backgroundColor: 'rgba(88,166,255,.10)',
           borderWidth: 1.8,
           tension: .15,
-          pointRadius: ctx => sigInfo(zoomJpSig[ctx.dataIndex]).radiusZoom,
-          pointBackgroundColor: zoomJpColors,
-          pointBorderColor: zoomJpColors,
+          pointRadius: 2.5,
+          pointBackgroundColor: '#58a6ff',
           fill: false,
         }
       ]
@@ -635,7 +420,7 @@ function render(payload){
     options: {
       responsive:true, maintainAspectRatio:false,
       interaction: {mode:'index',intersect:false},
-      scales: commonScales({ y: { ticks: { callback: v => Number(v).toLocaleString() } } }),
+      scales: commonScales({ y: numTick }),
       plugins: {
         legend: { display: false },
         tooltip: {
@@ -644,8 +429,7 @@ function render(payload){
               const i = items[0]?.dataIndex;
               if(i == null) return '';
               const r = dRecs[zoomStart + i];
-              const sig = zoomJpSig[i] || '-';
-              return `日経シグナル: ${sig}\nPCR÷VI: ${fmtNum(r.spread,4)} / PCR: ${fmtNum(r.pcr,3)} / VI: ${fmtNum(r.vi,2)}`;
+              return `PCR÷VI: ${fmtNum(r.spread,4)} / PCR: ${fmtNum(r.pcr,3)} / VI: ${fmtNum(r.vi,2)}`;
             }
           }
         }
@@ -653,7 +437,6 @@ function render(payload){
     }
   });
 
-  // S&P500 直近1ヶ月ズーム (米国シグナル = SKEW÷VIX 絶対水準)
   if (zoomSp500.some(v => v != null)) {
     new Chart(document.getElementById('chartSp500Zoom'), {
       type: 'line',
@@ -667,16 +450,15 @@ function render(payload){
           borderWidth: 1.8,
           tension: .15,
           spanGaps: true,
-          pointRadius: ctx => sigInfo(zoomUsSig[ctx.dataIndex]).radiusZoom,
-          pointBackgroundColor: zoomUsColors,
-          pointBorderColor: zoomUsColors,
+          pointRadius: 2.5,
+          pointBackgroundColor: '#FFD700',
           fill: false,
         }]
       },
       options: {
         responsive:true, maintainAspectRatio:false,
         interaction: {mode:'index',intersect:false},
-        scales: commonScales({ y: { ticks: { callback: v => Number(v).toLocaleString() } } }),
+        scales: commonScales({ y: numTick }),
         plugins: {
           legend: { display: false },
           tooltip: {
@@ -685,9 +467,7 @@ function render(payload){
                 const i = items[0]?.dataIndex;
                 if(i == null) return '';
                 const r = dRecs[zoomStart + i];
-                const sig = zoomUsSig[i] || '-';
-                const sv  = skewVix[zoomStart + i];
-                return `米国シグナル: ${sig}\nSKEW: ${fmtNum(r.skew,2)} / VIX: ${fmtNum(r.vix,2)} / SKEW÷VIX: ${sv==null?'-':sv.toFixed(3)}`;
+                return `VIX: ${fmtNum(r.vix,2)} / SKEW: ${fmtNum(r.skew,2)}`;
               }
             }
           }
@@ -696,306 +476,29 @@ function render(payload){
     });
   }
 
-  // ── シグナル別フォワードリターン検証 (絶対水準ベース) ──────────
-  // 日経シグナル(jpSignalAll, PCR÷VI絶対水準) と 米国シグナル(usSignalAll, SKEW÷VIX絶対水準)
-  // を 20日先 N225/SP500 リターンで検証。
-  (() => {
-    const horizons = [5, 10, 20];
-    const LABELS5 = ['売り','退避','中立','打診買い','買い'];
-
-    function buildStats(signals, priceField) {
-      const stats = {};
-      LABELS5.forEach(s => { stats[s] = { n: 0, ret: {}, win: {} };
-        horizons.forEach(h => { stats[s].ret[h] = []; stats[s].win[h] = 0; }); });
-      for(let i = 0; i < records.length; i++){
-        const sig = signals[i];
-        const n0 = records[i]?.[priceField];
-        if(!sig || n0 == null || !LABELS5.includes(sig)) continue;
-        stats[sig].n++;
-        for(const h of horizons){
-          const j = i + h;
-          if(j >= records.length) continue;
-          const n1 = records[j]?.[priceField];
-          if(n1 == null) continue;
-          const r = (n1 / n0 - 1) * 100;
-          stats[sig].ret[h].push(r);
-          if(r > 0) stats[sig].win[h]++;
-        }
-      }
-      // baseline
-      const base = { n: 0, ret: {}, win: {} };
-      horizons.forEach(h => { base.ret[h] = []; base.win[h] = 0; });
-      for(let i = 0; i < records.length; i++){
-        const n0 = records[i]?.[priceField];
-        if(n0 == null) continue;
-        base.n++;
-        for(const h of horizons){
-          const j = i + h;
-          if(j >= records.length) continue;
-          const n1 = records[j]?.[priceField];
-          if(n1 == null) continue;
-          const r = (n1 / n0 - 1) * 100;
-          base.ret[h].push(r);
-          if(r > 0) base.win[h]++;
-        }
-      }
-      return { stats, base };
-    }
-
-    const mean = a => a.length ? a.reduce((x,y)=>x+y,0)/a.length : null;
-    const fmtR = v => v == null ? '-' : (v >= 0 ? '+' : '') + v.toFixed(2) + '%';
-    const cls = v => v == null ? '' : (v > 0 ? 'up' : v < 0 ? 'down' : '');
-    const sorted = a => [...a].sort((x,y)=>x-y);
-    const pct = (a, f) => { if(!a.length) return null; const s=sorted(a); return s[Math.max(0,Math.min(s.length-1,Math.floor(s.length*f)))]; };
-    const lossRate = a => a.length ? a.filter(x=>x<0).length/a.length*100 : null;
-    const bigLossRate = a => a.length ? a.filter(x=>x<-5).length/a.length*100 : null;
-    const minOf = a => a.length ? Math.min(...a) : null;
-
-    function renderTable(title, signals, priceField, indicator, classifier) {
-      const { stats, base } = buildStats(signals, priceField);
-      const H = 20;
-      const t = classifier.thresholds;
-      let html = `<div style="font-size:12px;color:var(--text);margin:6px 0 4px 0"><b>${title}</b>
-        <small style="color:var(--muted)"> &nbsp;閾値: p10=${t.p10.toFixed(3)}, p25=${t.p25.toFixed(3)}, p75=${t.p75.toFixed(3)}, p90=${t.p90.toFixed(3)} (${indicator})</small>
-      </div>
-      <table>
-        <thead><tr>
-          <th>ラベル</th><th>n</th>
-          <th>20d 中央値</th><th>20d 平均</th><th>勝率</th>
-          <th>マイナス率</th><th>大損率(<-5%)</th><th>最大損</th>
-        </tr></thead><tbody>`;
-      for(const s of LABELS5){
-        const arr = stats[s].ret[H];
-        const disp = LEVEL_DISPLAY[s] || {cls:''};
-        if (!arr.length) continue;
-        const med = pct(arr, 0.5);
-        const m = mean(arr);
-        const w = stats[s].win[H] / arr.length * 100;
-        const lr = lossRate(arr);
-        const blr = bigLossRate(arr);
-        const minL = minOf(arr);
-        html += `<tr>
-          <td><span class="pill ${disp.cls}">${s}</span></td>
-          <td>${stats[s].n}</td>
-          <td class="${cls(med)}">${fmtR(med)}</td>
-          <td class="${cls(m)}">${fmtR(m)}</td>
-          <td>${w.toFixed(0)}%</td>
-          <td>${lr.toFixed(0)}%</td>
-          <td>${blr.toFixed(0)}%</td>
-          <td class="down">${fmtR(minL)}</td>
-        </tr>`;
-      }
-      const arr = base.ret[H];
-      const med = pct(arr, 0.5);
-      const m = mean(arr);
-      const w = base.win[H] / arr.length * 100;
-      html += `<tr style="border-top:2px solid var(--border)">
-        <td><b>ベース</b></td>
-        <td>${arr.length}</td>
-        <td class="${cls(med)}">${fmtR(med)}</td>
-        <td class="${cls(m)}">${fmtR(m)}</td>
-        <td>${w.toFixed(0)}%</td>
-        <td>${lossRate(arr).toFixed(0)}%</td>
-        <td>${bigLossRate(arr).toFixed(0)}%</td>
-        <td class="down">${fmtR(minOf(arr))}</td>
-      </tr>`;
-      html += `</tbody></table>`;
-      return html;
-    }
-
-    let html = `<div style="font-size:11px;color:var(--muted);margin-bottom:6px">
-      ※ 全期間が強気相場(N225 28k→60k, SP500 4100→7100)のため baseline 平均自体が高い。
-      <b>baseline 比でどれだけ良いか/悪いか</b>で edge を見る。
-    </div>`;
-    html += renderTable('日経 (PCR÷VI 絶対水準) → N225 20日先', jpSignalAll, 'n225', 'PCR÷VI', jpClassifier);
-    html += renderTable('米国 (SKEW÷VIX 絶対水準) → SP500 20日先', usSignalAll, 'sp500', 'SKEW÷VIX', usClassifier);
-    html += `<small style="color:var(--muted);display:block;margin-top:6px">
-      <b>読み方</b>: 平均は強気バイアス込みで甘く出るので、<b>マイナス率と最大損</b>でダウンサイドを見る。<br>
-      → 売り(>p90)で 平均/勝率 が baseline 以下、買い(<p10)で baseline 以上 になっていれば signal 機能を実証できている。
-    </small>`;
-    document.getElementById('backtest').innerHTML = html;
-  })();
-
-  // ── 強弱5段階シグナル【試験】 ───────────────────────────
-  (() => {
-    const STRENGTH_DISPLAY = {
-      'ストロングセル':{ cls:'signal-sell',    color:'#b71c1c', radiusFull: 5.5, radiusZoom: 7 },
-      'セル':         { cls:'signal-cau',     color:'#FFD54F', radiusFull: 3.5, radiusZoom: 4.5 },
-      '中立':         { cls:'signal-neutral', color:'rgba(165,165,165,0.4)', radiusFull: 1.0, radiusZoom: 2 },
-      'バイ':         { cls:'signal-test',    color:'#66bb6a', radiusFull: 3.5, radiusZoom: 4.5 },
-      'ストロングバイ':{ cls:'signal-buy',     color:'#1b5e20', radiusFull: 5.5, radiusZoom: 7 },
-    };
-
-    function pct(arr, p){ const s=[...arr].filter(v=>v!=null).sort((a,b)=>a-b); return s.length? s[Math.max(0,Math.min(s.length-1,Math.floor(s.length*p)))] : null; }
-
-    // 米国側 (SKEW + VIX)
-    const skewThr = { p10:pct(records.map(r=>r.skew),0.10), p25:pct(records.map(r=>r.skew),0.25), p50:pct(records.map(r=>r.skew),0.50), p75:pct(records.map(r=>r.skew),0.75), p90:pct(records.map(r=>r.skew),0.90) };
-    const vixThr  = { p10:pct(records.map(r=>r.vix),0.10),  p25:pct(records.map(r=>r.vix),0.25),  p50:pct(records.map(r=>r.vix),0.50),  p75:pct(records.map(r=>r.vix),0.75),  p90:pct(records.map(r=>r.vix),0.90) };
-    function classifyUs(r) {
-      const s=r.skew, v=r.vix;
-      if(s==null || v==null) return null;
-      if(v > vixThr.p90 && s < skewThr.p25) return 'ストロングバイ';
-      if(s > skewThr.p90 && v < vixThr.p25) return 'ストロングセル';
-      if(v > vixThr.p75) return 'バイ';
-      if(s > skewThr.p75 && v < vixThr.p50) return 'セル';
-      return '中立';
-    }
-    // 日経側 (PCR + VI)
-    const pcrThr = { p10:pct(records.map(r=>r.pcr),0.10), p25:pct(records.map(r=>r.pcr),0.25), p50:pct(records.map(r=>r.pcr),0.50), p75:pct(records.map(r=>r.pcr),0.75), p90:pct(records.map(r=>r.pcr),0.90) };
-    const viThr  = { p10:pct(records.map(r=>r.vi),0.10),  p25:pct(records.map(r=>r.vi),0.25),  p50:pct(records.map(r=>r.vi),0.50),  p75:pct(records.map(r=>r.vi),0.75),  p90:pct(records.map(r=>r.vi),0.90) };
-    function classifyJp(r) {
-      const p=r.pcr, v=r.vi;
-      if(p==null || v==null) return null;
-      if(v > viThr.p90 && p > pcrThr.p75) return 'ストロングバイ';
-      if(p > pcrThr.p90 && v < viThr.p25) return 'ストロングセル';
-      if(v > viThr.p75) return 'バイ';
-      if(p > pcrThr.p75 && v < viThr.p50) return 'セル';
-      return '中立';
-    }
-
-    const usStrAll = records.map(classifyUs);
-    const jpStrAll = records.map(classifyJp);
-    const usStr    = usStrAll.slice(startIdx);
-    const jpStr    = jpStrAll.slice(startIdx);
-    const usStrColors = usStr.map(s => (STRENGTH_DISPLAY[s] || {}).color || 'rgba(255,255,255,0.2)');
-    const jpStrColors = jpStr.map(s => (STRENGTH_DISPLAY[s] || {}).color || 'rgba(255,255,255,0.2)');
-
-    // SP500 強弱チャート
-    if (sp500Pts.some(v => v != null)) {
-      new Chart(document.getElementById('chartSp500Strength'), {
-        type:'line',
-        data:{ labels, datasets:[{
-          label:'S&P500', data:sp500Pts, borderColor:'#FFD700',
-          backgroundColor:'rgba(255,215,0,.10)', borderWidth:1.5, tension:.15, spanGaps:true,
-          pointRadius: ctx => (STRENGTH_DISPLAY[usStr[ctx.dataIndex]] || {}).radiusFull || 1,
-          pointBackgroundColor: usStrColors,
-          pointBorderColor:     usStrColors,
-          fill:false,
-        }]},
-        options:{
-          responsive:true, maintainAspectRatio:false, interaction:{mode:'index',intersect:false},
-          scales: commonScales({ y:{ ticks:{ callback: v => Number(v).toLocaleString() } } }),
-          plugins:{
-            legend:{display:false},
-            tooltip:{ callbacks:{
-              afterBody: items => {
-                const i = items[0]?.dataIndex; if(i==null) return '';
-                const r = dRecs[i]; const sig = usStr[i] || '-';
-                return `強弱: ${sig}\nSKEW: ${fmtNum(r.skew,2)} (>${skewThr.p90.toFixed(0)}=極高 / <${skewThr.p25.toFixed(0)}=低)\nVIX: ${fmtNum(r.vix,2)} (>${vixThr.p90.toFixed(1)}=極高 / <${vixThr.p25.toFixed(1)}=低)`;
-              }
-            }}
-          }
-        }
-      });
-    }
-
-    // N225 強弱チャート
-    new Chart(document.getElementById('chartN225Strength'), {
-      type:'line',
-      data:{ labels, datasets:[{
-        label:'日経225', data:n225Pts, borderColor:'#58a6ff',
-        backgroundColor:'rgba(88,166,255,.10)', borderWidth:1.5, tension:.15,
-        pointRadius: ctx => (STRENGTH_DISPLAY[jpStr[ctx.dataIndex]] || {}).radiusFull || 1,
-        pointBackgroundColor: jpStrColors,
-        pointBorderColor:     jpStrColors,
-        fill:false,
-      }]},
-      options:{
-        responsive:true, maintainAspectRatio:false, interaction:{mode:'index',intersect:false},
-        scales: commonScales({ y:{ ticks:{ callback: v => Number(v).toLocaleString() } } }),
-        plugins:{
-          legend:{display:false},
-          tooltip:{ callbacks:{
-            afterBody: items => {
-              const i = items[0]?.dataIndex; if(i==null) return '';
-              const r = dRecs[i]; const sig = jpStr[i] || '-';
-              return `強弱: ${sig}\nPCR: ${fmtNum(r.pcr,3)} (>${pcrThr.p90.toFixed(2)}=極高 / <${pcrThr.p25.toFixed(2)}=低)\nVI: ${fmtNum(r.vi,2)} (>${viThr.p90.toFixed(1)}=極高 / <${viThr.p25.toFixed(1)}=低)`;
-            }
-          }}
-        }
-      }
-    });
-
-    // 検証統計 (5/10/20 日先 forward returns)
-    function strengthStats(signals, priceField, market) {
-      const horizons=[5,10,20];
-      const ORDER=['ストロングセル','セル','中立','バイ','ストロングバイ'];
-      const stats={}; ORDER.forEach(s => stats[s]={n:0, ret:{}, win:{}});
-      ORDER.forEach(s => horizons.forEach(h => { stats[s].ret[h]=[]; stats[s].win[h]=0; }));
-      const baseRet={}; horizons.forEach(h => baseRet[h]=[]);
-      for(let i=0;i<records.length;i++){
-        const sig = signals[i]; const p0 = records[i]?.[priceField];
-        if(p0==null) continue;
-        for(const h of horizons){
-          if(i+h>=records.length) continue;
-          const p1 = records[i+h]?.[priceField]; if(p1==null) continue;
-          const r = (p1/p0-1)*100;
-          baseRet[h].push(r);
-          if(sig && stats[sig]){
-            if(h===20) stats[sig].n++;
-            stats[sig].ret[h].push(r);
-            if(r>0) stats[sig].win[h]++;
-          }
-        }
-      }
-      const fmtR = v => v==null ? '-' : (v>=0?'+':'')+v.toFixed(2)+'%';
-      const cls = v => v==null ? '' : (v>0?'up':v<0?'down':'');
-      const mean = a => a.length ? a.reduce((x,y)=>x+y,0)/a.length : null;
-      let h = `<div style="font-size:11.5px;margin-bottom:4px"><b>${market}</b></div><table>
-        <thead><tr><th>強弱</th><th>n</th>`;
-      horizons.forEach(d => h += `<th>${d}d 平均</th><th>勝率</th>`);
-      h += `</tr></thead><tbody>`;
-      for(const s of ORDER){
-        const n20 = stats[s].ret[20].length;
-        if(n20<3) continue;
-        const disp = STRENGTH_DISPLAY[s];
-        h += `<tr><td><span class="pill ${disp.cls}" style="background:${disp.color};color:${s.includes('ストロング')?'#fff':''}">${s}</span></td><td>${stats[s].n}</td>`;
-        for(const d of horizons){
-          const arr = stats[s].ret[d];
-          const m = mean(arr);
-          const w = arr.length ? stats[s].win[d]/arr.length*100 : null;
-          h += `<td class="${cls(m)}">${fmtR(m)}</td><td>${w==null?'-':w.toFixed(0)+'%'}</td>`;
-        }
-        h += `</tr>`;
-      }
-      // baseline
-      const bm = mean(baseRet[20]);
-      const bw = baseRet[20].length ? baseRet[20].filter(x=>x>0).length/baseRet[20].length*100 : null;
-      h += `<tr style="border-top:2px solid var(--border)"><td><b>ベース</b></td><td>${baseRet[20].length}</td>`;
-      for(const d of horizons){
-        const arr = baseRet[d]; const m = mean(arr); const w = arr.filter(x=>x>0).length/arr.length*100;
-        h += `<td class="${cls(m)}">${fmtR(m)}</td><td>${w.toFixed(0)}%</td>`;
-      }
-      h += `</tr></tbody></table>`;
-      return h;
-    }
-    let sb = strengthStats(usStrAll, 'sp500', '🇺🇸 米国 (SKEW + VIX → SP500 20日先)');
-    sb += '<div style="height:12px"></div>';
-    sb += strengthStats(jpStrAll, 'n225',  '🇯🇵 日経 (PCR + VI → N225 20日先)');
-    sb += `<small style="color:var(--muted);display:block;margin-top:6px">
-      期待値: ストロングバイ で baseline を上回り、ストロングセル で baseline 以下に下がっていれば AND 条件の意味が実証できている。<br>
-      n が少ないラベル(ストロング系)は標本ばらつきが大きい点に注意。
-    </small>`;
-    document.getElementById('strength-backtest').innerHTML = sb;
-  })();
-
   // 直近20件テーブル
-  const tail = records.slice(-20).reverse();
+  const tailN = Math.min(20, records.length);
+  const tail = records.slice(-tailN);
+  const tailZone = zoneAll.slice(-tailN);
   const tbody = document.querySelector('#recent-table tbody');
-  tbody.innerHTML = tail.map(r => `
+  tbody.innerHTML = tail.map((r, k) => {
+    const z = tailZone[k];
+    return `
     <tr>
       <td>${r.date}</td>
       <td>${fmtNum(r.pcr,3)}</td>
       <td>${fmtNum(r.vi,2)}</td>
-      <td>${fmtNum(r.spread,4)}</td>
-      <td class="${dirClass(r.momentum)}">${r.momentum==null?'-':(r.momentum>=0?'+':'')+fmtNum(r.momentum,2)}%</td>
+      <td class="${z.lit ? 'up' : ''}">${fmtNum(r.spread,4)}</td>
+      <td>${z.thr == null ? '-' : fmtNum(z.thr,4)}</td>
+      <td class="${z.lit ? 'up' : ''}">${z.thr == null ? '-' : (z.lit ? '点灯' : '')}</td>
       <td>${fmtNum(r.n225,0)}</td>
       <td>${fmtNum(r.topix,1)}</td>
       <td>${fmtNum(r.usdjpy,2)}</td>
       <td>${fmtNum(r.vix,2)}</td>
       <td>${fmtNum(r.us10y,2)}</td>
       <td>${r.contract_month || '-'}</td>
-    </tr>`).join('');
+    </tr>`;
+  }).reverse().join('');
 }
 
 load();
