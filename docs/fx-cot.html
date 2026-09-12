@@ -1,0 +1,54 @@
+<title>シカゴの投機筋(円)</title><style>
+:root{--bg:#0d1117;--bg2:#161b22;--bg3:#21262d;--fg:#e6edf3;--muted:#8b949e;--border:#30363d;
+      --up:#3fb950;--down:#f85149;--warn:#d29922;--accent:#1f6feb}
+*{box-sizing:border-box}
+body{margin:0;padding:14px;background:var(--bg);color:var(--fg);
+     font-family:-apple-system,"Segoe UI","Hiragino Kaku Gothic ProN",Meiryo,sans-serif;font-size:14px;line-height:1.6}
+h1{font-size:20px;margin:0 0 2px}
+h2{font-size:15px;margin:22px 0 8px;padding-left:8px;border-left:4px solid var(--accent)}
+.sub{color:var(--muted);font-size:12px;margin-bottom:6px}
+.note{background:#1c1a12;border:1px solid #3a2f14;color:#d5c48a;border-radius:8px;padding:8px 12px;margin:10px 0;font-size:12px}
+.warn{background:#2a1416;border:1px solid #5a2226;color:#f8a5a9;border-radius:8px;padding:8px 12px;margin:10px 0;font-size:12px}
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:12px 14px;margin:10px 0}
+.head{font-size:16px;font-weight:700;line-height:1.5}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:700px){.grid{grid-template-columns:1fr}}
+.fact{border-left:4px solid var(--up)}.read{border-left:4px solid var(--warn)}
+.tbl{overflow-x:auto;-webkit-overflow-scrolling:touch}
+table{width:100%;border-collapse:collapse;font-size:13px;min-width:560px}
+.wide table{min-width:760px}
+th,td{padding:6px 8px;border-bottom:1px solid var(--border);text-align:left;vertical-align:top}
+th{color:var(--muted);font-weight:600;font-size:11px;white-space:nowrap}
+tr.today td{background:#0f2340}
+tr.b td{color:var(--muted)}
+.pill{display:inline-block;padding:1px 8px;border-radius:9px;font-size:10.5px;font-weight:700;white-space:nowrap}
+.pS{background:#3a1d1d;color:#ff7b72}.pA{background:#3a2f14;color:var(--warn)}.pB{background:#252c36;color:var(--muted)}
+.ok{color:var(--up)}.no{color:var(--muted)}
+.up{color:var(--down)}.dn{color:var(--up)}
+.muted{color:var(--muted)}.small{font-size:12px}.nw{white-space:nowrap}
+.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+ul{margin:6px 0 0;padding-left:20px}li{margin:4px 0}
+pre{white-space:pre-wrap;font-family:inherit;margin:0;font-size:12.5px}
+a{color:#79c0ff}
+</style><body>
+<div id="sitenav" style="font-size:12px;margin:0 0 10px 0"><div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center"><a href="/watchlist-viewer/mind.html" style="background:#a371f7;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700;">🧠3人の思考</a><a href="/watchlist-viewer/portfolio.html" style="background:#d4a017;color:#000;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700;">💼今日のPF</a><a href="/watchlist-viewer/volume/" style="background:#8f6bbf;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700;">🐋AIテスタ</a><a href="/watchlist-viewer/kinouchi.html" style="background:#2ea0a0;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700;">🌐AI木野内</a><a href="/watchlist-viewer/uchida.html" style="background:#1f6feb;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700;box-shadow:0 0 0 2px #e6edf3;">💱AI内田</a><a href="/watchlist-viewer/activist.html" style="background:#d29922;color:#000;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700;">🏴AI片山</a></div><div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-top:6px;padding-top:6px;border-top:1px solid #21262d"><a href="/watchlist-viewer/uchida.html" style="background:#1f6feb;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none;">💱ドル円の方向感</a><a href="/watchlist-viewer/fx-calendar.html" style="background:#2f6bd8;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none;">🗓イベント予定</a><a href="/watchlist-viewer/fx-cot.html" style="background:#5b6472;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700;box-shadow:0 0 0 2px #e6edf3;">🏦シカゴの投機筋</a></div></div>
+<h1>🏦 シカゴの投機筋(CFTC・円先物) — AI内田デスク</h1>
+<div class='sub'>2026-09-12 15:46 更新／CFTC 2026-09-08時点(火曜)・取得 2026-09-12 15:07</div>
+<div class='note'>⚠ このページは内田稔氏本人の発言・レポートではありません。氏が公開してきた分析の枠組みを借りたAIペルソナ(AI内田)の部下が、公式統計と実測値を並べ、AI内田の読みを添えたものです。左=機械の事実／右=AIの解釈、と分けて読んでください。</div>
+<div class='grid'>
+<div class='card fact'><div class='small muted'>事実(機械・fx_cot.json)</div><div class='head'>レバレッジドファンド ネット ▲49,098枚 <span class='small muted'>(前週 ▲102,188 → 前週差 +53,090・-52%)</span></div><div class='small'>52週パーセンタイル 90.0%(0=最もショート超／100=最も空)／アセットマネージャー ▲570枚(前週差 +23,951)／非商業(legacy) +10,796枚(前週差 +103,023)</div><div class='warn small'>⚠ 前週差の乖離: legacy 非商業 +103,023枚 に対し TFF レバ勢 +53,090枚(差 +49,933枚)。分類の取り方の違い(legacy にはアセットマネージャー等も混ざる)の可能性があるので、片方だけで『投機筋がロングに転換』と断定しない</div></div>
+<div class='card read'><div class='small muted'>AI内田の読み(確信度 中・政策・織り込み(当たる領域))</div><div class='head'>巻き戻し余地: 残っている／踏み上げリスク: 中</div><div class='small'>レバ勢ネット-49,098枚は52週%ile 90=空側寄りで踏み上げ余地は半減済。ただし解消レンジ上限-26,317枚まで約2.3万枚の余地は残る。legacyは既にロング転換で反落側の燃料も同時に存在(判別式5)。</div><div class='small'><b>踏み上げ:</b> ショートは前週から半減済で燃料は目減り。ただし完全払拭には至らず。</div><div class='small'><b>構造 vs ポジション:</b> 実質金利マイナス(判別式7)は生きるが、いまは日銀の利上げペース観変化=政策の方向の差(判別式1)が短期で勝ち、円高側に振れている。</div><div class='small'><b>乖離の扱い:</b> TFF+53,090 vs legacy+103,023(差+49,933)。legacyはアセマネ混在で分類が違う。片方で『投機筋ロング転換』と断定せず両方併記で読む。</div><div class='small'><b>マトリックス:</b> FRB『9月見送り・12月利上げ』×日銀『9月+12月とも利上げ』寄り(150円割れ側)。現値153.48はメイン155円と150円割れセルの間で、日銀12月織り込みが前のめり。</div><div class='small'><b>ドル円:</b> 153.48。20日高値160.20から-4.2%、年初来安値152.10まで1.4円弱。155円(旧サポート・年末メイン)を割った直後で、152円台攻防が最大の分岐。</div><div class='small'><b>反証(次週):</b> 9/19公表のCFTC 9/15分でレバ勢ネットが-20,000枚未満まで解消なら踏み上げ余地は尽き、ドル円は155円回帰。逆に-80,000枚超に再拡大なら150円割れシナリオへ寄る。</div></div>
+</div>
+<h2>直近8週(火曜時点・枚)</h2><div class='tbl'><table><tr><th>時点</th><th class='num'>レバ勢ロング</th><th class='num'>レバ勢ショート</th><th class='num'>レバ勢ネット</th><th class='num'>前週差</th><th class='num'>AMネット</th><th class='num'>非商業ネット</th><th class='num'>ドル円(火曜終値)</th></tr><tr><td class='nw'>2026-07-21</td><td class='num'>81,033</td><td class='num'>177,218</td><td class='num dn'>▲96,185</td><td class='num'>▲5,724</td><td class='num'>▲79,906</td><td class='num'>▲152,125</td><td class='num'>163.19</td></tr><tr><td class='nw'>2026-07-28</td><td class='num'>76,752</td><td class='num'>178,742</td><td class='num dn'>▲101,990</td><td class='num'>▲5,805</td><td class='num'>▲83,057</td><td class='num'>▲163,412</td><td class='num'>163.86</td></tr><tr><td class='nw'>2026-08-04</td><td class='num'>75,758</td><td class='num'>136,583</td><td class='num dn'>▲60,825</td><td class='num'>+41,165</td><td class='num'>▲42,422</td><td class='num'>▲45,473</td><td class='num'>157.69</td></tr><tr><td class='nw'>2026-08-11</td><td class='num'>74,973</td><td class='num'>128,043</td><td class='num dn'>▲53,070</td><td class='num'>+7,755</td><td class='num'>▲26,251</td><td class='num'>▲42,085</td><td class='num'>159.26</td></tr><tr><td class='nw'>2026-08-18</td><td class='num'>67,776</td><td class='num'>135,747</td><td class='num dn'>▲67,971</td><td class='num'>▲14,901</td><td class='num'>▲25,743</td><td class='num'>▲52,893</td><td class='num'>159.55</td></tr><tr><td class='nw'>2026-08-25</td><td class='num'>66,528</td><td class='num'>143,570</td><td class='num dn'>▲77,042</td><td class='num'>▲9,071</td><td class='num'>▲20,116</td><td class='num'>▲63,298</td><td class='num'>159.22</td></tr><tr><td class='nw'>2026-09-01</td><td class='num'>58,529</td><td class='num'>160,717</td><td class='num dn'>▲102,188</td><td class='num'>▲25,146</td><td class='num'>▲24,521</td><td class='num'>▲92,227</td><td class='num'>160.20</td></tr><tr><td class='nw'>2026-09-08</td><td class='num'>81,760</td><td class='num'>130,858</td><td class='num dn'>▲49,098</td><td class='num'>+53,090</td><td class='num'>▲570</td><td class='num'>+10,796</td><td class='num'>154.00</td></tr></table></div>
+<h2>機械の事実(LINE本文と同じ)</h2><div class='card'><pre>CFTC 円先物(CME・2026-09-08時点の火曜・単位 枚)
+レバレッジドファンド(TFF): ロング 81,760 / ショート 130,858 → ネット ▲49,098枚(円ショート超)
+ 前週 2026-09-01 ▲102,188枚 → 前週差 +53,090枚(ショート超の大きさ -52%・半減)
+ 52週パーセンタイル 90%(n=52・0=この1年で最もショート超/100=最も空。範囲 ▲115,400枚〜▲26,317枚)
+ 対OI: ロング 16.4% / ショート 26.2%(OI 499,635)・参加者 ロング側30 / ショート側42
+アセットマネージャー(性格が違う・分けて見る): ネット ▲570枚(前週差 +23,951枚)
+非商業(legacy・従来の『投機筋』): ロング 178,791 / ショート 167,995 → ネット +10,796枚(前週差 +103,023枚)
+⚠ 前週差の乖離: legacy 非商業 +103,023枚 に対し TFF レバ勢 +53,090枚(差 +49,933枚)。分類の取り方の違い(legacy にはアセットマネージャー等も混ざる)の可能性があるので、**片方だけで『投機筋がロングに転換』と断定しない**
+レバ勢ネットの推移(8週): 07-21 ▲96,185 → 07-28 ▲101,990 → 08-04 ▲60,825 → 08-11 ▲53,070 → 08-18 ▲67,971 → 08-25 ▲77,042 → 09-01 ▲102,188 → 09-08 ▲49,098
+ドル円(同じ火曜の終値・yfinance): 07-21 163.19 → 07-28 163.86 → 08-04 157.69 → 08-11 159.26 → 08-18 159.55 → 08-25 159.22 → 09-01 160.20 → 09-08 154.00
+出典 TFF https://publicreporting.cftc.gov/resource/gpe5-46if.json?commodity_name=JAPANESE%20YEN / legacy https://publicreporting.cftc.gov/resource/6dca-aqww.json?commodity_name=JAPANESE%20YEN</pre></div>
+<div class='sub' style='margin-top:18px'>出典: CFTC Traders in Financial Futures(https://publicreporting.cftc.gov/resource/gpe5-46if.json)・legacy(https://publicreporting.cftc.gov/resource/6dca-aqww.json)。公表は毎週金曜15:30ET(土曜04:30JST)・火曜時点。ドル円は yfinance JPY=X。生成: uchida_desk.py --cot</div>
