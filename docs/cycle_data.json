@@ -1,7 +1,7 @@
 <div id="sitenav" style="font-size:12px;margin:0 0 10px 0"><div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center"><a href="/watchlist-viewer/mind.html" style="background:#a371f7;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700;">🧠3人の思考</a><a href="/watchlist-viewer/proposals.html" style="background:#6e40c9;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700;">📝改善提案</a><a href="/watchlist-viewer/portfolio.html" style="background:#d4a017;color:#000;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700;">💼今日のPF</a><a href="/watchlist-viewer/volume/" style="background:#8f6bbf;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700;">🐋AIテスタ</a><a href="/watchlist-viewer/kinouchi.html" style="background:#2ea0a0;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700;">🌐AI木野内</a><a href="/watchlist-viewer/uchida.html" style="background:#1f6feb;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700;">💱AI内田</a><a href="/watchlist-viewer/katayama.html" style="background:#d29922;color:#000;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700;">🏴AI片山</a></div></div>
 {
  "meta": {
-  "生成": "2026-09-24 09:31 JST",
+  "生成": "2026-09-25 09:31 JST",
   "対象月": "2026年08月",
   "仕様書": "半導体サイクル月次モニタリング仕様書 v1.1 (2026-08-19作成/2026-09-01改訂)",
   "このファイルの使い方": "値・出所・時点・注意書き・判断ルールを1つにまとめてある。数値を引用する前に必ず同じキーの caveat を読むこと。"
@@ -72,124 +72,124 @@
  "最新値": {
   "sox": {
    "label": "SOX指数",
-   "value": 12534.2744140625,
-   "yoy": 98.69780003644183,
+   "value": 12492.5361328125,
+   "yoy": 98.38869513756552,
    "mom": null,
    "diff_pt": null,
    "unit": "",
    "source": "yfinance ^SOX",
-   "asof": "2026-09-23",
+   "asof": "2026-09-24",
    "note": null,
    "caveat": null,
    "obtained": true
   },
   "n225": {
    "label": "日経平均",
-   "value": 65788.5625,
-   "yoy": 44.17733416120504,
+   "value": 65793.7109375,
+   "yoy": 43.79589562668367,
    "mom": null,
    "diff_pt": null,
    "unit": "円",
    "source": "yfinance ^N225",
-   "asof": "2026-09-24",
+   "asof": "2026-09-25",
    "note": null,
    "caveat": null,
    "obtained": true
   },
   "spx": {
    "label": "S&P500",
-   "value": 7706.02978515625,
-   "yoy": 15.759688798926641,
+   "value": 7704.1298828125,
+   "yoy": 16.06153136367825,
    "mom": null,
    "diff_pt": null,
    "unit": "",
    "source": "yfinance ^GSPC",
-   "asof": "2026-09-23",
+   "asof": "2026-09-24",
    "note": null,
    "caveat": null,
    "obtained": true
   },
   "us10": {
    "label": "米10年債利回り",
-   "value": 5.113999843597412,
+   "value": 5.161999702453613,
    "yoy": null,
    "mom": null,
-   "diff_pt": 0.9939999580383301,
+   "diff_pt": 1.0149998664855957,
    "unit": "%",
    "source": "yfinance ^TNX",
-   "asof": "2026-09-23",
+   "asof": "2026-09-24",
    "note": null,
    "caveat": "利回りは前年比%では意味を持たない。水準と前年差(pt)で見る。",
    "obtained": true
   },
   "us30": {
    "label": "米30年債利回り",
-   "value": 5.401000022888184,
+   "value": 5.460999965667725,
    "yoy": null,
    "mom": null,
-   "diff_pt": 0.6630001068115234,
+   "diff_pt": 0.7030000686645508,
    "unit": "%",
    "source": "yfinance ^TYX",
-   "asof": "2026-09-23",
+   "asof": "2026-09-24",
    "note": null,
    "caveat": "同上。",
    "obtained": true
   },
   "gold": {
    "label": "金先物",
-   "value": 4324.10009765625,
-   "yoy": 13.32390263883918,
+   "value": 4302.60009765625,
+   "yoy": 14.184867337586326,
    "mom": null,
    "diff_pt": null,
    "unit": "ドル/oz",
    "source": "yfinance GC=F",
-   "asof": "2026-09-23",
+   "asof": "2026-09-24",
    "note": null,
    "caveat": null,
    "obtained": true
   },
   "dxy": {
    "label": "ドル指数",
-   "value": 101.15699768066406,
-   "yoy": 4.006781265514614,
+   "value": 101.2969970703125,
+   "yoy": 3.5015778354518856,
    "mom": null,
    "diff_pt": null,
    "unit": "",
    "source": "yfinance DX-Y.NYB",
-   "asof": "2026-09-23",
+   "asof": "2026-09-24",
    "note": null,
    "caveat": null,
    "obtained": true
   },
   "jp10": {
    "label": "日本10年債利回り",
-   "value": 2.981,
+   "value": 3.073,
    "yoy": null,
    "mom": null,
-   "diff_pt": 1.3659999999999999,
+   "diff_pt": 1.418,
    "unit": "%",
    "source": "財務省 国債金利情報",
-   "asof": "2026-09-18",
+   "asof": "2026-09-24",
    "note": null,
    "caveat": "同上。",
    "obtained": true
   },
   "us10_real": {
    "label": "米10年実質金利",
-   "value": 2.63,
+   "value": 2.76,
    "yoy": null,
    "mom": null,
-   "diff_pt": 0.8499999999999999,
+   "diff_pt": 1.0099999999999998,
    "unit": "%",
    "source": "FRED DFII10",
-   "asof": "2026-09-22",
+   "asof": "2026-09-23",
    "note": null,
    "caveat": null,
    "obtained": true
   },
   "spx_tpe": {
    "label": "S&P500 実績PER(参考・予想PERの代用ではない)",
-   "value": 24.807701,
+   "value": 24.787346,
    "yoy": null,
    "mom": null,
    "diff_pt": null,
@@ -5810,6 +5810,14 @@
     "nand_512": 20.083,
     "nand_256": 16.808,
     "nand_128": 9.967
+   },
+   "2026-09-25": {
+    "ddr5_16": 57.667,
+    "ddr4_16": 83.784,
+    "ddr4_8": 46.107,
+    "nand_512": 20.083,
+    "nand_256": 16.808,
+    "nand_128": 9.967
    }
   }
  },
@@ -5837,12 +5845,12 @@
    },
    "sox": {
     "label": "SOX指数",
-    "値": 98.69780003644183,
+    "値": 98.38869513756552,
     "方向": "下"
    },
    "n225": {
     "label": "日経平均",
-    "値": 44.17733416120504,
+    "値": 43.79589562668367,
     "方向": "下"
    },
    "iip_prod": {
@@ -5934,13 +5942,13 @@
    "no": 8,
    "title": "業績指標だけで株価判断をしない",
    "status": "OK",
-   "detail": "バリュエーション側を併記: 米30年 5.40% (+0.66pt), 米10年 5.11% (+0.99pt), 日10年 2.98% (+1.37pt), S&P500実績PER 24.8倍。**予想PERは追っていない**ので、割高さが過去比でどの水準かは測れない(FactSetのForward 12M P/Eが要る)。実績PERは代用にならない"
+   "detail": "バリュエーション側を併記: 米30年 5.46% (+0.70pt), 米10年 5.16% (+1.01pt), 日10年 3.07% (+1.42pt), S&P500実績PER 24.8倍。**予想PERは追っていない**ので、割高さが過去比でどの水準かは測れない(FactSetのForward 12M P/Eが要る)。実績PERは代用にならない"
   },
   {
    "no": 9,
    "title": "ベース効果を需要の変化と混同しない",
    "status": "要注意",
-   "detail": "前年比が高水準: TSMC +53.3%, 広達 +177.4%, 緯創 +166.5%, 鴻海 +52.0%, SOX指数 +98.7%。**需要が全く落ちなくてもベース効果だけで機械的に鈍化する**。前年同月の絶対水準を確認すること"
+   "detail": "前年比が高水準: TSMC +53.3%, 広達 +177.4%, 緯創 +166.5%, 鴻海 +52.0%, SOX指数 +98.4%。**需要が全く落ちなくてもベース効果だけで機械的に鈍化する**。前年同月の絶対水準を確認すること"
   },
   {
    "no": 10,
@@ -6002,7 +6010,7 @@
   }
  ],
  "乖離ログ": {
-  "内容": "出荷在庫バランス 8.11 に対し 日経平均前年比 +44.2%",
+  "内容": "出荷在庫バランス 8.11 に対し 日経平均前年比 +43.8%",
   "大きさ": "日経平均前年比 − 出荷在庫バランス = +44.0pt。2016年9月以降の119ヶ月中 7番目の大きさ",
   "理由": "数量統計に価格上昇が反映されていないため。**確認済**: メモリ生産単価 4,295円(前年比 +455.6%)に対し生産数量は 54,341千個。金額=数量×単価のうち動いているのは単価の側",
   "予測力への帰結": "業績を動かしているのが価格なら、数量ベースの出荷在庫バランスは現局面において業績の代理変数として機能していない。したがって『連動するから見る価値がある』という根拠は成立しない。金額ベース(台湾・韓国)を主指標に切り替えるべき局面。ただし金額ベースは価格反転時に数量ベースより速く崩れることに留意"
