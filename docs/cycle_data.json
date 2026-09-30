@@ -1,7 +1,7 @@
 <div id="sitenav" style="font-size:12px;margin:0 0 10px 0"><div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center"><a href="/watchlist-viewer/mind.html" style="background:#a371f7;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700;">🧠3人の思考</a><a href="/watchlist-viewer/proposals.html" style="background:#6e40c9;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700;">📝改善提案</a><a href="/watchlist-viewer/portfolio.html" style="background:#d4a017;color:#000;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700;">💼今日のPF</a><a href="/watchlist-viewer/volume/" style="background:#8f6bbf;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700;">🐋AIテスタ</a><a href="/watchlist-viewer/kinouchi.html" style="background:#2ea0a0;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700;">🌐AI木野内</a><a href="/watchlist-viewer/uchida.html" style="background:#1f6feb;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700;">💱AI内田</a><a href="/watchlist-viewer/katayama.html" style="background:#d29922;color:#000;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700;">🏴AI片山</a></div></div>
 {
  "meta": {
-  "生成": "2026-09-29 09:31 JST",
+  "生成": "2026-09-30 09:35 JST",
   "対象月": "2026年08月",
   "仕様書": "半導体サイクル月次モニタリング仕様書 v1.1 (2026-08-19作成/2026-09-01改訂)",
   "このファイルの使い方": "値・出所・時点・注意書き・判断ルールを1つにまとめてある。数値を引用する前に必ず同じキーの caveat を読むこと。"
@@ -72,91 +72,91 @@
  "最新値": {
   "sox": {
    "label": "SOX指数",
-   "value": 12465.2412109375,
-   "yoy": 97.7025019163242,
+   "value": 12629.1611328125,
+   "yoy": 99.98323712852321,
    "mom": null,
    "diff_pt": null,
    "unit": "",
    "source": "yfinance ^SOX",
-   "asof": "2026-09-28",
+   "asof": "2026-09-29",
    "note": null,
    "caveat": null,
    "obtained": true
   },
   "n225": {
    "label": "日経平均",
-   "value": 65499.30078125,
-   "yoy": 45.41262834744,
+   "value": 66403.1875,
+   "yoy": 47.783891386696745,
    "mom": null,
    "diff_pt": null,
    "unit": "円",
    "source": "yfinance ^N225",
-   "asof": "2026-09-29",
+   "asof": "2026-09-30",
    "note": null,
    "caveat": null,
    "obtained": true
   },
   "spx": {
    "label": "S&P500",
-   "value": 7683.68994140625,
-   "yoy": 15.653772980718195,
+   "value": 7670.83984375,
+   "yoy": 15.156854216173121,
    "mom": null,
    "diff_pt": null,
    "unit": "",
    "source": "yfinance ^GSPC",
-   "asof": "2026-09-28",
+   "asof": "2026-09-29",
    "note": null,
    "caveat": null,
    "obtained": true
   },
   "us10": {
    "label": "米10年債利回り",
-   "value": 5.240000247955322,
+   "value": 5.255000114440918,
    "yoy": null,
    "mom": null,
-   "diff_pt": 1.0530004501342773,
+   "diff_pt": 1.1140003204345703,
    "unit": "%",
    "source": "yfinance ^TNX",
-   "asof": "2026-09-28",
+   "asof": "2026-09-29",
    "note": null,
    "caveat": "利回りは前年比%では意味を持たない。水準と前年差(pt)で見る。",
    "obtained": true
   },
   "us30": {
    "label": "米30年債利回り",
-   "value": 5.560999870300293,
+   "value": 5.593999862670898,
    "yoy": null,
    "mom": null,
-   "diff_pt": 0.7950000762939453,
+   "diff_pt": 0.8899998664855957,
    "unit": "%",
    "source": "yfinance ^TYX",
-   "asof": "2026-09-28",
+   "asof": "2026-09-29",
    "note": null,
    "caveat": "同上。",
    "obtained": true
   },
   "gold": {
    "label": "金先物",
-   "value": 4149.7001953125,
-   "yoy": 8.944610010829624,
+   "value": 4214.7001953125,
+   "yoy": 9.325073892246415,
    "mom": null,
    "diff_pt": null,
    "unit": "ドル/oz",
    "source": "yfinance GC=F",
-   "asof": "2026-09-28",
+   "asof": "2026-09-29",
    "note": null,
    "caveat": null,
    "obtained": true
   },
   "dxy": {
    "label": "ドル指数",
-   "value": 101.25199890136719,
-   "yoy": 3.160465947288227,
+   "value": 101.4219970703125,
+   "yoy": 3.5869607566588746,
    "mom": null,
    "diff_pt": null,
    "unit": "",
    "source": "yfinance DX-Y.NYB",
-   "asof": "2026-09-28",
+   "asof": "2026-09-29",
    "note": null,
    "caveat": null,
    "obtained": true
@@ -166,30 +166,30 @@
    "value": 3.082,
    "yoy": null,
    "mom": null,
-   "diff_pt": 1.4129999999999998,
+   "diff_pt": 1.4249999999999998,
    "unit": "%",
    "source": "財務省 国債金利情報",
-   "asof": "2026-09-28",
+   "asof": "2026-09-29",
    "note": null,
    "caveat": "同上。",
    "obtained": true
   },
   "us10_real": {
    "label": "米10年実質金利",
-   "value": 2.83,
+   "value": 2.9,
    "yoy": null,
    "mom": null,
-   "diff_pt": 1.03,
+   "diff_pt": 1.0799999999999998,
    "unit": "%",
    "source": "FRED DFII10",
-   "asof": "2026-09-25",
+   "asof": "2026-09-28",
    "note": null,
    "caveat": null,
    "obtained": true
   },
   "spx_tpe": {
    "label": "S&P500 実績PER(参考・予想PERの代用ではない)",
-   "value": 24.73662,
+   "value": 24.691063,
    "yoy": null,
    "mom": null,
    "diff_pt": null,
@@ -254,26 +254,26 @@
   },
   "iip_prod": {
    "label": "電子部品・デバイス工業 生産前年比",
-   "value": 0.0,
+   "value": -2.41,
    "yoy": null,
    "mom": null,
    "diff_pt": null,
    "unit": "%",
    "source": "e-Stat 鉱工業指数 業種別原指数(2020=100)",
-   "asof": "2026-07",
+   "asof": "2026-08",
    "note": "数量ベース。価格は入っていない(禁止1)",
    "caveat": null,
    "obtained": true
   },
   "iip_bal": {
    "label": "出荷在庫バランス(電子部品・デバイス, 3ヶ月平均)",
-   "value": 8.11,
+   "value": 7.08,
    "yoy": null,
    "mom": null,
    "diff_pt": null,
    "unit": "",
    "source": "e-Stat 鉱工業指数(出荷前年比 − 在庫前年比)",
-   "asof": "2026-07",
+   "asof": "2026-08",
    "note": "数量ベース。**この系列に価格は入っていない**ので、価格主導の局面では業績の代理変数として機能しない(第6部)",
    "caveat": "数量ベース。価格が入っていないので、価格主導の局面では業績の代理変数として機能しない。",
    "obtained": true
@@ -293,78 +293,78 @@
   },
   "mem_qty": {
    "label": "生産動態統計 メモリ 生産数量",
-   "value": 54341.0,
-   "yoy": 0.7452863419789013,
+   "value": 46304.0,
+   "yoy": 3.3133269372364493,
    "mom": null,
    "diff_pt": null,
    "unit": "千個",
    "source": "経済産業省 生産動態統計 時系列表",
-   "asof": "2026-07",
-   "note": "**数量ベース**。金額の増減を生産抑制と読まないこと。金額=数量×単価なので必ずこの行と突き合わせる(禁止1)。前年同月(2025-07)は 53,939千個 = 直近24ヶ月中9番目の高さ",
+   "asof": "2026-08",
+   "note": "**数量ベース**。金額の増減を生産抑制と読まないこと。金額=数量×単価なので必ずこの行と突き合わせる(禁止1)。前年同月(2025-08)は 44,819千個 = 直近24ヶ月中19番目の高さ",
    "caveat": "数量ベース。金額=数量×単価なので、金額の増減を生産抑制と読まない。前年比を見るときは前年同月の水準を必ず確認する(スパイク月がある)。",
    "obtained": true
   },
   "mem_price": {
    "label": "生産動態統計 メモリ 生産単価",
-   "value": 4294.657809020813,
-   "yoy": 455.6477514050699,
+   "value": 5209.722702142363,
+   "yoy": 350.30965399081737,
    "mom": null,
    "diff_pt": null,
    "unit": "円",
    "source": "同左 (生産金額÷生産数量)",
-   "asof": "2026-07",
+   "asof": "2026-08",
    "note": "単価の変化から需要を推論しない(禁止1)",
    "caveat": "生産金額÷生産数量。単価の変化から需要を推論しない。",
    "obtained": true
   },
   "mem_value": {
    "label": "生産動態統計 メモリ 生産金額",
-   "value": 233376.0,
-   "yoy": 459.78891820580475,
+   "value": 241231.0,
+   "yoy": 365.2298850574713,
    "mom": null,
    "diff_pt": null,
    "unit": "百万円",
    "source": "経済産業省 生産動態統計 時系列表",
-   "asof": "2026-07",
+   "asof": "2026-08",
    "note": null,
    "caveat": null,
    "obtained": true
   },
   "meti_forecast": {
    "label": "生産予測調査 電子部品・デバイス工業 企業回答(原数値・季調前月比)",
-   "value": 3.1,
+   "value": -1.0,
    "yoy": null,
    "mom": null,
    "diff_pt": null,
    "unit": "%",
    "source": "経済産業省 製造工業生産予測指数",
-   "asof": "2026年08月調査",
-   "note": "翌月見込み -5.1%。**これが企業の回答そのもの**。他人が加工した値をこの行に入れない(禁止7)",
+   "asof": "2026年09月調査",
+   "note": "翌月見込み +9.5%。**これが企業の回答そのもの**。他人が加工した値をこの行に入れない(禁止7)",
    "caveat": "企業回答そのもの。他人が加工した値をこの値と入れ替えない。",
    "obtained": true
   },
   "meti_realized": {
    "label": "同 実現率(経産省)",
-   "value": 2.7,
+   "value": -0.6,
    "yoy": null,
    "mom": null,
    "diff_pt": null,
    "unit": "%",
    "source": "同左 ※前月の予測に対する実績の乖離率。予測値ではない",
-   "asof": "2026年08月調査",
-   "note": "予測修正率 +4.1%。**実現率は『前月の予測がどれだけ外れたか』であって当月の予測ではない**。これを予測として扱うと企業回答 +3.1% が +2.7% にすり替わる",
+   "asof": "2026年09月調査",
+   "note": "予測修正率 +3.7%。**実現率は『前月の予測がどれだけ外れたか』であって当月の予測ではない**。これを予測として扱うと企業回答 -1.0% が -0.6% にすり替わる",
    "caveat": "実現率は『前月の予測が実績からどれだけ外れたか』であって、当月の予測ではない。予測として扱うと企業回答とすり替わる。",
    "obtained": true
   },
   "meti_actual": {
    "label": "同 電子部品・デバイス工業 前月実績(季調前月比)",
-   "value": 7.1,
+   "value": 2.6,
    "yoy": null,
    "mom": null,
    "diff_pt": null,
    "unit": "%",
    "source": "同左 列7 ※実績。仕様書v1.1 ステップ4の答え合わせに使う",
-   "asof": "2026年08月調査",
+   "asof": "2026年09月調査",
    "note": null,
    "caveat": null,
    "obtained": true
@@ -391,7 +391,7 @@
    "unit": "%",
    "source": "韓国 産業通商資源部・科技情通部 ICT輸出入動向",
    "asof": "",
-   "note": "取得失敗: ICT輸出入動向の記事が見つからない",
+   "note": "取得失敗: Page.goto: net::ERR_TIMED_OUT at https://www.motie.go.kr/kor/article/ATCL3f49a5a8c\nCall log:\n  - navigating to \"https://www.motie.go.k",
    "caveat": "金額ベース・輸出実績・半導体特化。前年比が非常に高い水準なので、鈍化してもベース効果である可能性が高い。",
    "obtained": false
   },
@@ -426,51 +426,87 @@
   "メモリ生産": {
    "202401": {
     "qty": 52175.0,
-    "val": 35211.0
+    "val": 35211.0,
+    "sales_qty": 55488.0,
+    "sales_val": 35455.0,
+    "inv_qty": 72773.0
    },
    "202402": {
     "qty": 51308.0,
-    "val": 40182.0
+    "val": 40182.0,
+    "sales_qty": 56149.0,
+    "sales_val": 39874.0,
+    "inv_qty": 70384.0
    },
    "202403": {
     "qty": 66755.0,
-    "val": 54858.0
+    "val": 54858.0,
+    "sales_qty": 74456.0,
+    "sales_val": 59624.0,
+    "inv_qty": 63753.0
    },
    "202404": {
     "qty": 44545.0,
-    "val": 53840.0
+    "val": 53840.0,
+    "sales_qty": 48223.0,
+    "sales_val": 54732.0,
+    "inv_qty": 62008.0
    },
    "202405": {
     "qty": 52337.0,
-    "val": 59101.0
+    "val": 59101.0,
+    "sales_qty": 51409.0,
+    "sales_val": 55835.0,
+    "inv_qty": 63993.0
    },
    "202406": {
     "qty": 51032.0,
-    "val": 55125.0
+    "val": 55125.0,
+    "sales_qty": 55364.0,
+    "sales_val": 59394.0,
+    "inv_qty": 59852.0
    },
    "202407": {
     "qty": 46795.0,
-    "val": 66786.0
+    "val": 66786.0,
+    "sales_qty": 44086.0,
+    "sales_val": 64545.0,
+    "inv_qty": 62999.0
    },
    "202408": {
     "qty": 49985.0,
-    "val": 68988.0
+    "val": 68988.0,
+    "sales_qty": 47056.0,
+    "sales_val": 62010.0,
+    "inv_qty": 67340.0
    },
    "202409": {
     "qty": 53467.0,
-    "val": 69517.0
+    "val": 69517.0,
+    "sales_qty": 59949.0,
+    "sales_val": 77963.0,
+    "inv_qty": 60840.0
    },
    "202410": {
     "qty": 36549.0,
-    "val": 54385.0
+    "val": 54385.0,
+    "sales_qty": 38220.0,
+    "sales_val": 48332.0,
+    "inv_qty": 60693.0
    },
    "202411": {
     "qty": 33697.0,
-    "val": 54896.0
+    "val": 54896.0,
+    "sales_qty": 38490.0,
+    "sales_val": 66028.0,
+    "inv_qty": 56110.0
    },
    "202412": {
     "qty": 48847.0,
-    "val": 71253.0
+    "val": 71253.0,
+    "sales_qty": 48637.0,
+    "sales_val": 71193.0,
+    "inv_qty": 56908.0
    },
    "202501": {
     "qty": 39853.0,
@@ -604,6 +640,13 @@
     "sales_qty": 51671.0,
     "sales_val": 219801.0,
     "inv_qty": 39456.0
+   },
+   "202608": {
+    "qty": 46304.0,
+    "val": 241231.0,
+    "sales_qty": 51511.0,
+    "sales_val": 225485.0,
+    "inv_qty": 33991.0
    }
   },
   "メモリ価格_固定取引": {
@@ -885,7 +928,8 @@
     "202604": 0.0,
     "202605": 14.188,
     "202606": -0.38,
-    "202607": 0.0
+    "202607": -0.352,
+    "202608": -2.405
    },
    "ship": {
     "200901": -53.491,
@@ -1098,7 +1142,8 @@
     "202604": 4.954,
     "202605": 12.257,
     "202606": 8.898,
-    "202607": 3.635
+    "202607": 3.457,
+    "202608": 1.498
    },
    "inv": {
     "200901": 30.022,
@@ -1311,7 +1356,8 @@
     "202604": -4.06,
     "202605": 3.138,
     "202606": 1.644,
-    "202607": -4.33
+    "202607": -3.248,
+    "202608": -5.769
    }
   },
   "機械受注_電子計算機等_前年比": {
@@ -5839,6 +5885,14 @@
     "nand_512": 19.883,
     "nand_256": 17.885,
     "nand_128": 9.967
+   },
+   "2026-09-30": {
+    "ddr5_16": 57.833,
+    "ddr4_16": 83.66,
+    "ddr4_8": 46.321,
+    "nand_512": 19.883,
+    "nand_256": 17.885,
+    "nand_128": 9.967
    }
   }
  },
@@ -5866,22 +5920,22 @@
    },
    "sox": {
     "label": "SOX指数",
-    "値": 97.7025019163242,
+    "値": 99.98323712852321,
     "方向": "下"
    },
    "n225": {
     "label": "日経平均",
-    "値": 45.41262834744,
+    "値": 47.783891386696745,
     "方向": "下"
    },
    "iip_prod": {
     "label": "電子部品・デバイス工業 生産前年比",
-    "値": 0.0,
-    "方向": "横ばい"
+    "値": -2.41,
+    "方向": "下"
    },
    "iip_bal": {
     "label": "出荷在庫バランス(電子部品・デバイス, 3ヶ月平均)",
-    "値": 8.11,
+    "値": 7.08,
     "方向": "横ばい"
    },
    "machinery": {
@@ -5963,13 +6017,13 @@
    "no": 8,
    "title": "業績指標だけで株価判断をしない",
    "status": "OK",
-   "detail": "バリュエーション側を併記: 米30年 5.56% (+0.80pt), 米10年 5.24% (+1.05pt), 日10年 3.08% (+1.41pt), S&P500実績PER 24.7倍。**予想PERは追っていない**ので、割高さが過去比でどの水準かは測れない(FactSetのForward 12M P/Eが要る)。実績PERは代用にならない"
+   "detail": "バリュエーション側を併記: 米30年 5.59% (+0.89pt), 米10年 5.26% (+1.11pt), 日10年 3.08% (+1.42pt), S&P500実績PER 24.7倍。**予想PERは追っていない**ので、割高さが過去比でどの水準かは測れない(FactSetのForward 12M P/Eが要る)。実績PERは代用にならない"
   },
   {
    "no": 9,
    "title": "ベース効果を需要の変化と混同しない",
    "status": "要注意",
-   "detail": "前年比が高水準: TSMC +53.3%, 広達 +177.4%, 緯創 +166.5%, 鴻海 +52.0%, SOX指数 +97.7%。**需要が全く落ちなくてもベース効果だけで機械的に鈍化する**。前年同月の絶対水準を確認すること"
+   "detail": "前年比が高水準: TSMC +53.3%, 広達 +177.4%, 緯創 +166.5%, 鴻海 +52.0%, SOX指数 +100.0%。**需要が全く落ちなくてもベース効果だけで機械的に鈍化する**。前年同月の絶対水準を確認すること"
   },
   {
    "no": 10,
@@ -6031,9 +6085,9 @@
   }
  ],
  "乖離ログ": {
-  "内容": "出荷在庫バランス 8.11 に対し 日経平均前年比 +45.4%",
-  "大きさ": "日経平均前年比 − 出荷在庫バランス = +44.0pt。2016年9月以降の119ヶ月中 7番目の大きさ",
-  "理由": "数量統計に価格上昇が反映されていないため。**確認済**: メモリ生産単価 4,295円(前年比 +455.6%)に対し生産数量は 54,341千個。金額=数量×単価のうち動いているのは単価の側",
+  "内容": "出荷在庫バランス 7.08 に対し 日経平均前年比 +47.8%",
+  "大きさ": "日経平均前年比 − 出荷在庫バランス = +48.0pt。2016年10月以降の119ヶ月中 6番目の大きさ",
+  "理由": "数量統計に価格上昇が反映されていないため。**確認済**: メモリ生産単価 5,210円(前年比 +350.3%)に対し生産数量は 46,304千個。金額=数量×単価のうち動いているのは単価の側",
   "予測力への帰結": "業績を動かしているのが価格なら、数量ベースの出荷在庫バランスは現局面において業績の代理変数として機能していない。したがって『連動するから見る価値がある』という根拠は成立しない。金額ベース(台湾・韓国)を主指標に切り替えるべき局面。ただし金額ベースは価格反転時に数量ベースより速く崩れることに留意"
  }
 }
