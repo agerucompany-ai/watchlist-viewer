@@ -1,0 +1,65 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>仮説ボード｜株ライブ</title><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600&display=swap" rel="stylesheet"><script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script><style>
+:root{--navy:#0c1a38;--navy2:#13254d;--ink:#1a1a1a;--muted:#5b6475;--line:#e3e5ea;--cream:#f7f5f0;--accent:#b8975a;
+--serif:"Noto Serif JP","Hiragino Mincho ProN",serif;--sans:"Noto Sans JP","Hiragino Kaku Gothic ProN",sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);color:var(--ink);background:var(--cream);line-height:1.75;-webkit-font-smoothing:antialiased}
+header{position:sticky;top:0;z-index:20;background:var(--navy);color:#fff;display:flex;align-items:center;gap:18px;padding:0 16px;height:54px}
+header b{font-family:var(--serif);font-weight:500;letter-spacing:.2em;white-space:nowrap}
+header nav{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+header nav a{color:#cfd6e6;text-decoration:none;font-size:13px;white-space:nowrap;padding:6px 12px;border-radius:99px}
+header nav a.cur{background:#fff;color:var(--navy);font-weight:700}
+.hero{background:linear-gradient(180deg,var(--navy),var(--navy2));color:#fff;padding:26px 16px 30px}
+.hero .in{max-width:1080px;margin:0 auto;display:flex;gap:22px;align-items:center}
+.hero img{width:130px;height:130px;border-radius:20px;background:#f3e6cf;flex:none}
+.hero h1{font-family:var(--serif);font-weight:500;font-size:clamp(22px,3vw,30px);letter-spacing:.15em}
+.hero .tag{display:inline-block;font-size:11px;letter-spacing:.15em;padding:2px 10px;border-radius:99px;margin:4px 0 8px}
+.hero p{font-family:var(--serif);font-size:clamp(15px,2vw,18px);line-height:1.9}
+.hero .disc{font-family:var(--sans);font-size:11px;color:#9fb0cf;margin-top:6px}
+@media(max-width:640px){.hero .in{flex-direction:column;text-align:center}.hero img{width:110px;height:110px}}
+main{max-width:1080px;margin:0 auto;padding:22px 14px 40px}
+h2{font-family:var(--serif);font-weight:500;font-size:20px;letter-spacing:.15em;margin:30px 0 12px;display:flex;align-items:center;gap:10px}
+h2::before{content:"";width:5px;height:20px;background:var(--accent);border-radius:3px}
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
+.g4{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px}
+.card h3{font-size:15px;font-weight:700;margin-bottom:6px}
+.tile{background:#fff;border-radius:16px;padding:14px 16px;border:1px solid var(--line)}
+.tile .t{font-family:var(--serif);font-size:17px}
+.dir{display:flex;gap:8px;margin:8px 0}
+.dir span{flex:1;text-align:center;border-radius:10px;padding:6px 4px;font-weight:700;color:#fff;font-size:14px}
+.dir small{display:block;font-weight:400;font-size:10px;opacity:.85}
+.pos{background:#c0392b}.neg{background:#2c5aa0}.rng{background:#8a8f99}
+.tile p{font-size:12.5px;color:var(--muted);line-height:1.7}
+.gauge{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+.gauge .v{font-size:24px;font-weight:700;font-family:var(--serif)}
+.gauge .l{font-size:12px;color:var(--muted)}
+.gauge .r{font-size:12px;margin-top:6px;color:#333}
+.bar{height:8px;background:#eceef2;border-radius:99px;overflow:hidden;margin-top:6px}
+.bar i{display:block;height:100%;border-radius:99px}
+canvas{max-width:100%}
+.chart{position:relative;height:260px}
+.matrix{display:grid;grid-template-columns:110px repeat(3,1fr);gap:6px;font-size:12.5px}
+.matrix .h{font-weight:700;color:var(--muted);text-align:center;align-self:end}
+.matrix .c{background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px;text-align:center}
+.matrix .c b{display:block;font-size:17px;font-family:var(--serif)}
+.matrix .main{background:var(--navy);color:#fff;border-color:var(--navy)}
+details{background:#fff;border:1px solid var(--line);border-radius:14px;margin-top:12px}
+details summary{cursor:pointer;padding:12px 16px;font-weight:700;font-size:14px;list-style:none}
+details summary::before{content:"＋ ";color:var(--accent)}
+details[open] summary::before{content:"－ "}
+details .in{padding:0 16px 14px;font-size:13px;overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th,td{padding:7px 8px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{color:var(--muted);font-weight:500;font-size:11.5px;white-space:nowrap}
+.hyp{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px 16px}
+.hyp .top{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.hyp .top img{width:40px;height:40px;border-radius:50%;background:#f3e6cf}
+.st{font-size:11px;font-weight:700;padding:2px 10px;border-radius:99px;color:#fff}
+.cand{border-top:1px dashed var(--line);padding:8px 0 4px}
+.cand .n{font-size:13.5px;font-weight:700}
+.chk{font-size:12px;color:var(--muted)}
+.ok{color:#1e8e5a;font-weight:700}.ng{color:#999}
+.pill{display:inline-block;font-size:11px;background:#eef1f6;border-radius:99px;padding:1px 9px;margin:2px 4px 2px 0}
+footer{background:var(--navy);color:#cfd5e2;text-align:center;font-size:11.5px;padding:20px 16px;line-height:1.9}
+</style></head><body><header><b>株ライブ</b><nav><a href="council.html">4人会議</a><a href="macro.html">木野内</a><a href="fx.html">内田</a><a href="trade.html">テスタ</a><a href="fund.html">片山</a><a href="board.html" class="cur">仮説ボード</a></nav></header><div class="hero"><div class="in"><div><h1>仮説ボード</h1><p>4人が持ち越している仮説と、計器による採点</p></div></div></div><main><p style="font-size:13px;color:#5b6475">統計が出るたびに、各候補の予測を計器で採点します。条件を全部満たした候補に ✓。1回目は保留、2回目で確信。</p><div class="grid g2" style="margin-top:12px"><div class="hyp"><div class="top"><img src="img/council/kinouchi.png"><div><b>us30</b> <span class="st" style="background:#8a8f99">保留</span><div class="chk">期日 2026-10-30 ・ O-K-0001</div></div></div><div class="chk" style="margin-bottom:4px">普通なら: 四半期末の需給による金利上昇なら、末を過ぎた10月第1週に30年は戻るはず ／ 実際: 30年は9/30 5.638%→10/1 5.61%で、ほぼ戻らない。5日で2年-9bp・30年+14bp。10年13週乖離+50.5bp(順位0.964)</div><div class="cand"><div class="n">四半期末の需給で、13週乖離の限界から一巡(本人)</div><div class="chk">10月中に30年が5.45%割れ、30年の5日変化がマイナス</div><div class="chk"><span class="ng">us30 &lt; 5.45(いま 5.603)</span> ・ <span class="ng">us_curve.chg5_y30_bp &lt; 0(いま 14.0)</span></div></div><div class="cand"><div class="n">TP(財政)主導の上昇</div><div class="chk">入札でテールが出て、30年5.75%超へ。乖離順位は0.98超</div><div class="chk"><span class="ng">us30 &gt; 5.75(いま 5.603)</span> ・ <span class="ng">us10_13w_dev_rank &gt; 0.98(いま 0.964)</span></div></div><div class="cand"><div class="n">✓ 損出し期限(10月末)までの需給が続く</div><div class="chk">10月末までは5.55〜5.75%で高止まり、2年は下げたまま</div><div class="chk"><span class="ok">us30 &gt;= 5.55(いま 5.603)</span> ・ <span class="ok">us30 &lt;= 5.75(いま 5.603)</span> ・ <span class="ok">us_curve.chg5_y2_bp &lt; 0(いま -9.0)</span></div></div></div><div class="hyp"><div class="top"><img src="img/council/kinouchi.png"><div><b>n225</b> <span class="st" style="background:#8a8f99">保留</span><div class="chk">期日 2026-10-16 ・ O-K-0002</div></div></div><div class="chk" style="margin-bottom:4px">普通なら: テック強気の転換で指数が上がるなら、騰落レシオと新高値も伴うはず ／ 実際: 日経は10/2に68,367円。騰落は96.7→91.3へ低下。KOSPI−日経の5日差-4.02pt。3兄弟20日+14〜20%、日経+3.16%</div><div class="cand"><div class="n">アジア休場中の代替の買いと先物で3兄弟に集中</div><div class="chk">10/9の休み明けにKOSPIが日経を上回り、騰落は90割れ</div><div class="chk"><span class="ng">kospi_rel_5d &gt; 0(いま -4.02)</span> ・ <span class="ng">jp_adr25 &lt; 90(いま 91.3)</span></div></div><div class="cand"><div class="n">テック実需の転換が先行し、幅は遅れて来る</div><div class="chk">10/16までに騰落100超、日経67,000以上を維持</div><div class="chk"><span class="ng">jp_adr25 &gt; 100(いま 91.3)</span> ・ <span class="ok">n225 &gt;= 67000(いま 68367.281)</span></div></div></div><div class="hyp"><div class="top"><img src="img/council/kinouchi.png"><div><b>日経VI</b> <span class="st" style="background:#8a8f99">保留</span><div class="chk">期日 2026-10-16 ・ O-K-0003</div></div></div><div class="chk" style="margin-bottom:4px">普通なら: 日経が週+2.9%上がる週は、ヘッジが外れて日経VIは下がるはず ／ 実際: 日経66,364→68,309(+2.93%)なのにVIは20.3→22.58(+2.28)に上昇(9/25→10/2・日経CSV)</div><div class="cand"><div class="n">上値を追うコール需要(踏み上げ型)でVIが上がった</div><div class="chk">10/16までに日経70,000超、騰落100回復</div><div class="chk"><span class="ng">n225 &gt; 70000(いま 68367.281)</span> ・ <span class="ng">jp_adr25 &gt; 100(いま 91.3)</span></div></div><div class="cand"><div class="n">指数高の裏で下落ヘッジが積み上がっている</div><div class="chk">10/16までに日経65,000割れ、騰落85割れ</div><div class="chk"><span class="ng">n225 &lt; 65000(いま 68367.281)</span> ・ <span class="ng">jp_adr25 &lt; 85(いま 91.3)</span></div></div></div><div class="hyp"><div class="top"><img src="img/council/uchida.png"><div><b>usdjpy</b> <span class="st" style="background:#8a8f99">保留</span><div class="chk">期日 2026-10-16 ・ O-U-0001</div></div></div><div class="chk" style="margin-bottom:4px">普通なら: コアPCEが鈍化し、FRBの10月利上げの織り込みが剥がれれば、ドル安でドル円は155円方向へ下がるはず ／ 実際: 9/30の157.13から10/3に157.83へ上昇。日米2年差は5日で−11.7bp。DXY101.93のうちユーロの寄与が0.59%。金利差から見た期待値との差は−0.9円</div><div class="cand"><div class="n">ユーロ(フランス)発のドル高で、ドル円は連れ高しているだけ</div><div class="chk">ユーロが戻るとDXYは101を割り、ドル円も155円未満へ下がる</div><div class="chk"><span class="ng">dxy.値 &lt; 101(いま 101.93)</span> ・ <span class="ng">usdjpy_box.値 &lt; 155(いま 157.83)</span></div></div><div class="cand"><div class="n">構造の円売り(実質金利マイナス・円ロングの整理)が主導</div><div class="chk">DXYが101を割っても、ドル円は156円以上を保ち、ユーロ円も175円以上</div><div class="chk"><span class="ng">dxy.値 &lt; 101(いま 101.93)</span> ・ <span class="ok">usdjpy_box.値 &gt;= 156(いま 157.83)</span> ・ <span class="ok">eurjpy.値 &gt;= 175(いま 177.25)</span></div></div><div class="cand"><div class="n">12月の米利上げが本線で、10月の剥落は重要でない</div><div class="chk">10/14のCPI後に米2年が4.78%を超え、ドル円は158.89を上抜ける</div><div class="chk"><span class="ng">us_jp_2y.米2年 &gt; 4.78(いま 4.78)</span> ・ <span class="ng">usdjpy_box.値 &gt; 158.89(いま 157.83)</span></div></div></div><div class="hyp"><div class="top"><img src="img/council/uchida.png"><div><b>lmci</b> <span class="st" style="background:#8a8f99">保留</span><div class="chk">期日 2026-10-09 ・ O-U-0002</div></div></div><div class="chk" style="margin-bottom:4px">普通なら: 本人の台本では、ISM雇用・人員削減数が改善すれば9月分LMCIのモメンタムは上向き、FRBはインフレを重視する(12月利上げ) ／ 実際: 8月分のモメンタムは0.252で、前月0.391から低下。雇用統計9月分は+29千人・失業率4.2%・平均時給+3.0%。発表直後のドル円は−9銭</div><div class="cand"><div class="n">労働市場は緩やかに改善している(本人の台本)</div><div class="chk">9月分モメンタムが0.252を上回り、米2年は4.78%以上を保つ</div><div class="chk"><span class="ng">lmci.モメンタム &gt; 0.252(いま 0.252)</span> ・ <span class="ok">us_jp_2y.米2年 &gt;= 4.78(いま 4.78)</span></div></div><div class="cand"><div class="n">雇用のモメンタムは鈍化を続けている</div><div class="chk">9月分モメンタムが0.252を下回り、米2年は4.78%を割る</div><div class="chk"><span class="ng">lmci.モメンタム &lt; 0.252(いま 0.252)</span> ・ <span class="ng">us_jp_2y.米2年 &lt; 4.78(いま 4.78)</span></div></div></div><div class="hyp"><div class="top"><img src="img/council/uchida.png"><div><b>eurjpy</b> <span class="st" style="background:#8a8f99">保留</span><div class="chk">期日 2026-11-02 ・ O-U-0003</div></div></div><div class="chk" style="margin-bottom:4px">普通なら: 本人の台本では、ユーロドルの下落が続けばユーロ円の上値は抑えられ、1か月以内に175円へ下落する ／ 実際: 10/3時点のユーロ円は177.25(5日で−1.06%)、175円まで2.25円。仏独10年差は8月に82bp(前月78bp)</div><div class="cand"><div class="n">仏財政不安によるユーロ安が続き、ユーロ円は175円へ下がる(台本)</div><div class="chk">11/2までにユーロ円が175円以下になり、DXYは102を超える</div><div class="chk"><span class="ng">eurjpy.値 &lt;= 175(いま 177.25)</span> ・ <span class="ng">dxy.値 &gt; 102(いま 101.93)</span></div></div><div class="cand"><div class="n">構造の円売りが勝ち、ユーロ安を円安が相殺する</div><div class="chk">DXYが102を超えても、ユーロ円は177円以上を保つ</div><div class="chk"><span class="ok">eurjpy.値 &gt;= 177(いま 177.25)</span> ・ <span class="ng">dxy.値 &gt; 102(いま 101.93)</span></div></div></div></div></main><footer>片山・テスタ・木野内・内田は、実在の投資家が公開してきた考え方を借りたAIのペルソナです(本人ではありません)。<br>イラストはオリジナルです。投資判断はご自身で。</footer><script>Chart.defaults.font.family='"Noto Sans JP",sans-serif';Chart.defaults.font.size=11;Chart.defaults.plugins.legend.labels.boxWidth=10;</script></body></html>
