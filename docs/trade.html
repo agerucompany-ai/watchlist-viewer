@@ -1,0 +1,65 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>テスタ｜株ライブ</title><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600&display=swap" rel="stylesheet"><script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script><style>
+:root{--navy:#0c1a38;--navy2:#13254d;--ink:#1a1a1a;--muted:#5b6475;--line:#e3e5ea;--cream:#f7f5f0;--accent:#b8975a;
+--serif:"Noto Serif JP","Hiragino Mincho ProN",serif;--sans:"Noto Sans JP","Hiragino Kaku Gothic ProN",sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);color:var(--ink);background:var(--cream);line-height:1.75;-webkit-font-smoothing:antialiased}
+header{position:sticky;top:0;z-index:20;background:var(--navy);color:#fff;display:flex;align-items:center;gap:18px;padding:0 16px;height:54px}
+header b{font-family:var(--serif);font-weight:500;letter-spacing:.2em;white-space:nowrap}
+header nav{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+header nav a{color:#cfd6e6;text-decoration:none;font-size:13px;white-space:nowrap;padding:6px 12px;border-radius:99px}
+header nav a.cur{background:#fff;color:var(--navy);font-weight:700}
+.hero{background:linear-gradient(180deg,var(--navy),var(--navy2));color:#fff;padding:26px 16px 30px}
+.hero .in{max-width:1080px;margin:0 auto;display:flex;gap:22px;align-items:center}
+.hero img{width:130px;height:130px;border-radius:20px;background:#f3e6cf;flex:none}
+.hero h1{font-family:var(--serif);font-weight:500;font-size:clamp(22px,3vw,30px);letter-spacing:.15em}
+.hero .tag{display:inline-block;font-size:11px;letter-spacing:.15em;padding:2px 10px;border-radius:99px;margin:4px 0 8px}
+.hero p{font-family:var(--serif);font-size:clamp(15px,2vw,18px);line-height:1.9}
+.hero .disc{font-family:var(--sans);font-size:11px;color:#9fb0cf;margin-top:6px}
+@media(max-width:640px){.hero .in{flex-direction:column;text-align:center}.hero img{width:110px;height:110px}}
+main{max-width:1080px;margin:0 auto;padding:22px 14px 40px}
+h2{font-family:var(--serif);font-weight:500;font-size:20px;letter-spacing:.15em;margin:30px 0 12px;display:flex;align-items:center;gap:10px}
+h2::before{content:"";width:5px;height:20px;background:var(--accent);border-radius:3px}
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
+.g4{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px}
+.card h3{font-size:15px;font-weight:700;margin-bottom:6px}
+.tile{background:#fff;border-radius:16px;padding:14px 16px;border:1px solid var(--line)}
+.tile .t{font-family:var(--serif);font-size:17px}
+.dir{display:flex;gap:8px;margin:8px 0}
+.dir span{flex:1;text-align:center;border-radius:10px;padding:6px 4px;font-weight:700;color:#fff;font-size:14px}
+.dir small{display:block;font-weight:400;font-size:10px;opacity:.85}
+.pos{background:#c0392b}.neg{background:#2c5aa0}.rng{background:#8a8f99}
+.tile p{font-size:12.5px;color:var(--muted);line-height:1.7}
+.gauge{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+.gauge .v{font-size:24px;font-weight:700;font-family:var(--serif)}
+.gauge .l{font-size:12px;color:var(--muted)}
+.gauge .r{font-size:12px;margin-top:6px;color:#333}
+.bar{height:8px;background:#eceef2;border-radius:99px;overflow:hidden;margin-top:6px}
+.bar i{display:block;height:100%;border-radius:99px}
+canvas{max-width:100%}
+.chart{position:relative;height:260px}
+.matrix{display:grid;grid-template-columns:110px repeat(3,1fr);gap:6px;font-size:12.5px}
+.matrix .h{font-weight:700;color:var(--muted);text-align:center;align-self:end}
+.matrix .c{background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px;text-align:center}
+.matrix .c b{display:block;font-size:17px;font-family:var(--serif)}
+.matrix .main{background:var(--navy);color:#fff;border-color:var(--navy)}
+details{background:#fff;border:1px solid var(--line);border-radius:14px;margin-top:12px}
+details summary{cursor:pointer;padding:12px 16px;font-weight:700;font-size:14px;list-style:none}
+details summary::before{content:"＋ ";color:var(--accent)}
+details[open] summary::before{content:"－ "}
+details .in{padding:0 16px 14px;font-size:13px;overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th,td{padding:7px 8px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{color:var(--muted);font-weight:500;font-size:11.5px;white-space:nowrap}
+.hyp{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px 16px}
+.hyp .top{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.hyp .top img{width:40px;height:40px;border-radius:50%;background:#f3e6cf}
+.st{font-size:11px;font-weight:700;padding:2px 10px;border-radius:99px;color:#fff}
+.cand{border-top:1px dashed var(--line);padding:8px 0 4px}
+.cand .n{font-size:13.5px;font-weight:700}
+.chk{font-size:12px;color:var(--muted)}
+.ok{color:#1e8e5a;font-weight:700}.ng{color:#999}
+.pill{display:inline-block;font-size:11px;background:#eef1f6;border-radius:99px;padding:1px 9px;margin:2px 4px 2px 0}
+footer{background:var(--navy);color:#cfd5e2;text-align:center;font-size:11.5px;padding:20px 16px;line-height:1.9}
+</style></head><body><header><b>株ライブ</b><nav><a href="council.html">4人会議</a><a href="macro.html">木野内</a><a href="fx.html">内田</a><a href="trade.html" class="cur">テスタ</a><a href="fund.html">片山</a><a href="board.html">仮説ボード</a></nav></header><div class="hero"><div class="in"><img src="img/council/tesuta.png" alt=""><div><h1>テスタ</h1><span class="tag" style="background:#7b5cc4">需給・短期</span><p>今週はR2sだけを動かします。シーズン外の実測(平均+1.19%・n=1,472)×週の平均発動8.3回×1本100万円で約+9.9万円(推定)なので、届くかは</p><div class="disc">AIのペルソナです(本人ではありません)・10/04 10:04 更新</div></div></div></div><main><div class="grid g4"><div class="gauge"><div class="l">今週の門番(木野内)</div><div class="v">張らない</div><div class="r">上限 0円</div></div><div class="card" style="grid-column:span 3"><h3>今週の作戦</h3><p style="font-size:13.5px">今週はR2sだけを動かします。シーズン外の実測(平均+1.19%・n=1,472)×週の平均発動8.3回×1本100万円で約+9.9万円(推定)なので、届くかは五分です。1本ごとのp10は-9.9%と振れが大きく、届かない週もありえます。</p></div></div><h2>アドバンテスト 4時間足RSI</h2><div class="card"><div class="chart" style="height:300px"><canvas id="c9"></canvas></div><script>new Chart(document.getElementById("c9"),{"type": "line", "data": {"labels": ["07/06前", "07/06後", "07/07前", "07/07後", "07/08前", "07/08後", "07/09前", "07/09後", "07/10前", "07/10後", "07/13前", "07/13後", "07/14前", "07/14後", "07/15前", "07/15後", "07/16前", "07/16後", "07/17前", "07/17後", "07/21前", "07/21後", "07/22前", "07/22後", "07/23前", "07/23後", "07/24前", "07/24後", "07/27前", "07/27後", "07/28前", "07/28後", "07/29前", "07/29後", "07/30前", "07/30後", "07/31前", "07/31後", "08/03前", "08/03後", "08/04前", "08/04後", "08/05前", "08/05後", "08/06前", "08/06後", "08/07前", "08/07後", "08/10前", "08/10後", "08/12前", "08/12後", "08/13前", "08/13後", "08/14前", "08/14後", "08/17前", "08/17後", "08/18前", "08/18後", "08/19前", "08/19後", "08/20前", "08/20後", "08/21前", "08/21後", "08/24前", "08/24後", "08/25前", "08/25後", "08/26前", "08/26後", "08/27前", "08/27後", "08/28前", "08/28後", "08/31前", "08/31後", "09/01前", "09/01後", "09/02前", "09/02後", "09/03前", "09/03後", "09/04前", "09/04後", "09/07前", "09/07後", "09/08前", "09/08後", "09/09前", "09/09後", "09/10前", "09/10後", "09/11前", "09/11後", "09/14前", "09/14後", "09/15前", "09/15後", "09/16前", "09/16後", "09/17前", "09/17後", "09/18前", "09/18後", "09/24前", "09/24後", "09/25前", "09/25後", "09/28前", "09/28後", "09/29前", "09/29後", "09/30前", "09/30後", "10/01前", "10/01後", "10/02前", "10/02後"], "datasets": [{"label": "株価", "data": [29270, 29550, 29130, 28920, 28475, 27785, 29420, 29125, 30370, 29845, 28735, 28770, 28965, 29775, 31390, 31450, 29920, 29835, 26455, 27500, 29380, 29630, 30600, 29570, 30910, 30860, 28545, 29005, 28185, 28480, 25590, 25505, 24680, 25200, 27880, 27975, 32440, 32330, 31570, 31520, 30530, 31100, 33230, 33810, 32860, 32830, 31290, 32340, 33940, 34130, 34630, 34600, 36400, 35840, 36490, 36850, 37660, 37700, 36310, 35920, 35630, 35200, 34630, 35390, 35650, 35840, 35020, 34550, 33950, 34500, 35320, 35780, 35350, 34560, 35510, 35480, 33250, 33850, 33320, 33430, 32420, 32430, 32590, 32330, 32470, 32900, 34450, 34300, 35580, 33880, 32850, 32800, 33410, 33900, 31160, 31750, 30760, 31240, 30650, 30330, 30460, 30450, 30540, 30240, 32380, 32470, 33160, 33090, 33890, 33890, 34210, 33900, 33310, 33510, 34200, 34090, 36960, 37430, 38620, 38430], "borderColor": "#0c1a38", "backgroundColor": "#0c1a38", "pointRadius": 0, "borderWidth": 2, "tension": 0.2}, {"label": "RSI(4時間)", "data": [42.5, 44.2, 42.2, 41.1, 39.0, 35.8, 46.8, 45.3, 52.3, 49.4, 43.9, 44.1, 45.4, 50.3, 58.3, 58.6, 49.8, 49.3, 35.7, 41.1, 49.4, 50.4, 54.1, 49.8, 54.9, 54.7, 45.5, 47.4, 44.4, 45.8, 36.7, 36.4, 34.2, 36.8, 48.3, 48.7, 61.9, 61.5, 58.5, 58.3, 54.4, 56.2, 62.3, 63.8, 59.7, 59.6, 53.1, 56.6, 61.2, 61.8, 63.2, 63.0, 68.0, 65.1, 66.9, 67.8, 70.0, 70.1, 61.9, 59.8, 58.2, 55.8, 52.8, 56.2, 57.4, 58.2, 53.2, 50.5, 47.3, 50.4, 54.8, 57.1, 54.3, 49.6, 54.7, 54.5, 42.7, 46.1, 43.7, 44.3, 39.7, 39.8, 40.9, 39.6, 40.7, 44.0, 54.1, 53.1, 59.9, 49.6, 44.6, 44.4, 48.0, 50.7, 38.5, 41.8, 38.1, 40.8, 38.6, 37.4, 38.2, 38.2, 38.8, 37.4, 51.1, 51.6, 55.3, 54.8, 58.9, 58.9, 60.6, 58.1, 53.7, 54.9, 59.1, 58.2, 70.9, 72.4, 75.7, 74.2], "borderColor": "#7b5cc4", "backgroundColor": "#7b5cc4", "pointRadius": 0, "borderWidth": 2, "tension": 0.2, "yAxisID": "y2"}, {"label": "70(減らす)", "data": [70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70], "yAxisID": "y2", "borderColor": "#c0392b", "borderDash": [5, 4], "pointRadius": 0, "borderWidth": 1}, {"label": "40(足す)", "data": [40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40], "yAxisID": "y2", "borderColor": "#2c5aa0", "borderDash": [5, 4], "pointRadius": 0, "borderWidth": 1}]}, "options": {"maintainAspectRatio": false, "interaction": {"mode": "index", "intersect": false}, "scales": {"x": {"ticks": {"maxTicksLimit": 7}, "grid": {"display": false}}, "y": {"title": {"display": false, "text": ""}}, "y2": {"position": "right", "grid": {"display": false}}}}})</script><p class="chk">実測3年: RSI40以下で買い・70以上で売り=15回・勝率86.7%・1回+13.5%。持ちっぱなし(+858%)には負けるので『芯は持ち、40で足し70で減らす』。いまのRSI 74</p></div><h2>後場の強制売り拾い(T1・紙)</h2><div class="grid g2"><div class="card"><div class="chart" style="height:220px"><canvas id="c10"></canvas></div><script>new Chart(document.getElementById("c10"),{"type": "bar", "data": {"labels": ["3486 ", "625A ", "6740 ", "6787 ", "6904 ", "7806 ", "8129 "], "datasets": [{"label": "損益", "data": [0, 0, 0, 0, 0, 0, 0], "backgroundColor": ["#c0392b", "#c0392b", "#c0392b", "#c0392b", "#c0392b", "#c0392b", "#c0392b"], "borderRadius": 6}]}, "options": {"maintainAspectRatio": false, "indexAxis": "x", "plugins": {"legend": {"display": false}}, "scales": {"x": {"grid": {"display": false}}}}})</script></div><div class="grid g4" style="grid-template-columns:1fr 1fr"><div class="gauge"><div class="l">今週のシグナル</div><div class="v">7</div></div><div class="gauge"><div class="l">入った分の損益</div><div class="v">0円</div></div><div class="gauge"><div class="l">見送った分(逸失)</div><div class="v">0円</div></div><div class="gauge"><div class="l">目標</div><div class="v">+10万円</div></div></div></div><h2>くわしく</h2><details><summary>今週の型(ルール)</summary><div class="in"><table><tr><th>型</th><th>今週</th><th>中身</th><th>出口</th></tr><tr><td>R2s</td><td>動かす</td><td>+15%で引けたが張り付いていない銘柄の空売り→翌営業日の引けで買い戻し</td><td>翌営業日の引けで買い戻し(1日)</td></tr><tr><td>R1</td><td>止める</td><td>-10%投げ買い(高ボラ×トレンド限定)</td><td>+5% or 3日</td></tr><tr><td>R3</td><td>止める</td><td>決算-10%×出来高2倍未満のショート</td><td>10日目の引けで買い戻し</td></tr><tr><td>R2</td><td>止める</td><td>+15%の引け買い(失効)</td><td>+20% or 4日</td></tr><tr><td>R4</td><td>止める</td><td>仕込み検知(試験運用)</td><td>実測ルール無し</td></tr></table></div></details></main><footer>片山・テスタ・木野内・内田は、実在の投資家が公開してきた考え方を借りたAIのペルソナです(本人ではありません)。<br>イラストはオリジナルです。投資判断はご自身で。</footer><script>Chart.defaults.font.family='"Noto Sans JP",sans-serif';Chart.defaults.font.size=11;Chart.defaults.plugins.legend.labels.boxWidth=10;</script></body></html>
