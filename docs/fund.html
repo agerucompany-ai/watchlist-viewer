@@ -1,0 +1,65 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>片山｜株ライブ</title><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600&display=swap" rel="stylesheet"><script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script><style>
+:root{--navy:#0c1a38;--navy2:#13254d;--ink:#1a1a1a;--muted:#5b6475;--line:#e3e5ea;--cream:#f7f5f0;--accent:#b8975a;
+--serif:"Noto Serif JP","Hiragino Mincho ProN",serif;--sans:"Noto Sans JP","Hiragino Kaku Gothic ProN",sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);color:var(--ink);background:var(--cream);line-height:1.75;-webkit-font-smoothing:antialiased}
+header{position:sticky;top:0;z-index:20;background:var(--navy);color:#fff;display:flex;align-items:center;gap:18px;padding:0 16px;height:54px}
+header b{font-family:var(--serif);font-weight:500;letter-spacing:.2em;white-space:nowrap}
+header nav{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+header nav a{color:#cfd6e6;text-decoration:none;font-size:13px;white-space:nowrap;padding:6px 12px;border-radius:99px}
+header nav a.cur{background:#fff;color:var(--navy);font-weight:700}
+.hero{background:linear-gradient(180deg,var(--navy),var(--navy2));color:#fff;padding:26px 16px 30px}
+.hero .in{max-width:1080px;margin:0 auto;display:flex;gap:22px;align-items:center}
+.hero img{width:130px;height:130px;border-radius:20px;background:#f3e6cf;flex:none}
+.hero h1{font-family:var(--serif);font-weight:500;font-size:clamp(22px,3vw,30px);letter-spacing:.15em}
+.hero .tag{display:inline-block;font-size:11px;letter-spacing:.15em;padding:2px 10px;border-radius:99px;margin:4px 0 8px}
+.hero p{font-family:var(--serif);font-size:clamp(15px,2vw,18px);line-height:1.9}
+.hero .disc{font-family:var(--sans);font-size:11px;color:#9fb0cf;margin-top:6px}
+@media(max-width:640px){.hero .in{flex-direction:column;text-align:center}.hero img{width:110px;height:110px}}
+main{max-width:1080px;margin:0 auto;padding:22px 14px 40px}
+h2{font-family:var(--serif);font-weight:500;font-size:20px;letter-spacing:.15em;margin:30px 0 12px;display:flex;align-items:center;gap:10px}
+h2::before{content:"";width:5px;height:20px;background:var(--accent);border-radius:3px}
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
+.g4{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px}
+.card h3{font-size:15px;font-weight:700;margin-bottom:6px}
+.tile{background:#fff;border-radius:16px;padding:14px 16px;border:1px solid var(--line)}
+.tile .t{font-family:var(--serif);font-size:17px}
+.dir{display:flex;gap:8px;margin:8px 0}
+.dir span{flex:1;text-align:center;border-radius:10px;padding:6px 4px;font-weight:700;color:#fff;font-size:14px}
+.dir small{display:block;font-weight:400;font-size:10px;opacity:.85}
+.pos{background:#c0392b}.neg{background:#2c5aa0}.rng{background:#8a8f99}
+.tile p{font-size:12.5px;color:var(--muted);line-height:1.7}
+.gauge{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+.gauge .v{font-size:24px;font-weight:700;font-family:var(--serif)}
+.gauge .l{font-size:12px;color:var(--muted)}
+.gauge .r{font-size:12px;margin-top:6px;color:#333}
+.bar{height:8px;background:#eceef2;border-radius:99px;overflow:hidden;margin-top:6px}
+.bar i{display:block;height:100%;border-radius:99px}
+canvas{max-width:100%}
+.chart{position:relative;height:260px}
+.matrix{display:grid;grid-template-columns:110px repeat(3,1fr);gap:6px;font-size:12.5px}
+.matrix .h{font-weight:700;color:var(--muted);text-align:center;align-self:end}
+.matrix .c{background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px;text-align:center}
+.matrix .c b{display:block;font-size:17px;font-family:var(--serif)}
+.matrix .main{background:var(--navy);color:#fff;border-color:var(--navy)}
+details{background:#fff;border:1px solid var(--line);border-radius:14px;margin-top:12px}
+details summary{cursor:pointer;padding:12px 16px;font-weight:700;font-size:14px;list-style:none}
+details summary::before{content:"＋ ";color:var(--accent)}
+details[open] summary::before{content:"－ "}
+details .in{padding:0 16px 14px;font-size:13px;overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th,td{padding:7px 8px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{color:var(--muted);font-weight:500;font-size:11.5px;white-space:nowrap}
+.hyp{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px 16px}
+.hyp .top{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.hyp .top img{width:40px;height:40px;border-radius:50%;background:#f3e6cf}
+.st{font-size:11px;font-weight:700;padding:2px 10px;border-radius:99px;color:#fff}
+.cand{border-top:1px dashed var(--line);padding:8px 0 4px}
+.cand .n{font-size:13.5px;font-weight:700}
+.chk{font-size:12px;color:var(--muted)}
+.ok{color:#1e8e5a;font-weight:700}.ng{color:#999}
+.pill{display:inline-block;font-size:11px;background:#eef1f6;border-radius:99px;padding:1px 9px;margin:2px 4px 2px 0}
+footer{background:var(--navy);color:#cfd5e2;text-align:center;font-size:11.5px;padding:20px 16px;line-height:1.9}
+</style></head><body><header><b>株ライブ</b><nav><a href="council.html">4人会議</a><a href="macro.html">木野内</a><a href="fx.html">内田</a><a href="trade.html">テスタ</a><a href="fund.html" class="cur">片山</a><a href="board.html">仮説ボード</a></nav></header><div class="hero"><div class="in"><img src="img/council/katayama.png" alt=""><div><h1>片山</h1><span class="tag" style="background:#b8975a">ファンダ・1年で倍</span><p>真水NC厚い連増益+50%成長×カタリスト近い3本柱で組む</p><div class="disc">AIのペルソナです(本人ではありません)・10/04 10:04 更新</div></div></div></div><main><h2>監視している銘柄(買う値段までの距離)</h2><div class="grid g2"><div class="card"><h3>日本ピグメントホールディングス <span class="chk">4119</span></h3><div class="chk">いま 5860.0円 → 以下で買う 4900.0円(あと19.6%)</div><div class="bar"><i style="width:41%;background:#b8975a"></i></div><p class="chk" style="margin-top:6px">ディベート判定→監視(条件付き)/タイミング(RSI/水準): PER5倍相当の押し目+2Q開示でfnp進捗の裏取りAND条件。片方欠けたら見送り</p></div><div class="card"><h3>兼房 <span class="chk">5984</span></h3><div class="chk">いま 774.0円 → 以下で買う 720円(あと7.5%)</div><div class="bar"><i style="width:78%;background:#b8975a"></i></div><p class="chk" style="margin-top:6px">連増益+50%成長・PER9・CNPER-2.38・木材金属刃物で工作機械テーマ。会社予想fnp=900だがnp1=1032で通期減益、押し目とfnp修正待ち</p></div><div class="card"><h3>高橋カーテンウォール工業 <span class="chk">1994</span></h3><div class="chk">いま 602.0円 → 以下で買う 560円(あと7.5%)</div><div class="bar"><i style="width:78%;background:#b8975a"></i></div><p class="chk" style="margin-top:6px">50%成長・CNPER-0.41・NC106%。営業利益YoY+716%と2Q黒字転換、fnp550は前期190を大きく超え。RSI67.3の押し目待ち</p></div><div class="card"><h3>ガンホー・オンライン・エンターテイメント <span class="chk">3765</span></h3><div class="chk">いま 0円 →  0円(あと—)</div><div class="bar"><i style="width:0%;background:#b8975a"></i></div><p class="chk" style="margin-top:6px"></p></div></div><h2>くわしく</h2><details><summary>考え方</summary><div class="in"><p>今日の材料から、赤旗(2345)・除外(cooldown10銘柄)・機械の判定でPFへ格上げ相当が無い状態を確認し、候補一覧から自分の枠組みで組み直した。優先順位は(1)カタリストの近さ:直近決算で通期ガイダンスが確定、(2)真水NC(CNPER≤-1程度)、(3)連増益+50%成長判定、(4)注目セクター(不動産・食品・防衛・電気)の4条件を同時に満たすもの。8904はRSI29.6の押し目+通期増益+CNPER-14.7で確信度高。8917/5189/4119は真水厚い割安連増益で分散。cooldown中の8891/8935/1758/5697/4629/9867/7266/7628/2999は入れず。監視リスト機械昇格銘柄は前日裁定を再確認し全件現状維持。等株比率でなくカタリスト確度×真水厚さで加重。株式比率55%は好決算銘柄で組める中で無理せず現金45%を残す。</p></div></details></main><footer>片山・テスタ・木野内・内田は、実在の投資家が公開してきた考え方を借りたAIのペルソナです(本人ではありません)。<br>イラストはオリジナルです。投資判断はご自身で。</footer><script>Chart.defaults.font.family='"Noto Sans JP",sans-serif';Chart.defaults.font.size=11;Chart.defaults.plugins.legend.labels.boxWidth=10;</script></body></html>
