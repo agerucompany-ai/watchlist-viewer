@@ -1,7 +1,7 @@
 <div id="sitenav" style="font-size:12px;margin:0 0 10px 0"><div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center"><a href="/watchlist-viewer/mind.html" style="background:#a371f7;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700;">🧠3人の思考</a><a href="/watchlist-viewer/proposals.html" style="background:#6e40c9;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700;">📝改善提案</a><a href="/watchlist-viewer/portfolio.html" style="background:#d4a017;color:#000;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700;">💼今日のPF</a><a href="/watchlist-viewer/volume/" style="background:#8f6bbf;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700;">🐋AIテスタ</a><a href="/watchlist-viewer/kinouchi.html" style="background:#2ea0a0;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700;">🌐AI木野内</a><a href="/watchlist-viewer/uchida.html" style="background:#1f6feb;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700;">💱AI内田</a><a href="/watchlist-viewer/katayama.html" style="background:#d29922;color:#000;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700;">🏴AI片山</a></div></div>
 {
  "meta": {
-  "生成": "2026-10-02 09:31 JST",
+  "生成": "2026-10-05 09:31 JST",
   "対象月": "2026年09月",
   "仕様書": "半導体サイクル月次モニタリング仕様書 v1.1 (2026-08-19作成/2026-09-01改訂)",
   "このファイルの使い方": "値・出所・時点・注意書き・判断ルールを1つにまとめてある。数値を引用する前に必ず同じキーの caveat を読むこと。"
@@ -72,124 +72,124 @@
  "最新値": {
   "sox": {
    "label": "SOX指数",
-   "value": 12829.0,
-   "yoy": 97.36073559934657,
+   "value": 13136.669921875,
+   "yoy": 98.24806537199726,
    "mom": null,
    "diff_pt": null,
    "unit": "",
    "source": "yfinance ^SOX",
-   "asof": "2026-10-01",
+   "asof": "2026-10-02",
    "note": null,
    "caveat": null,
    "obtained": true
   },
   "n225": {
    "label": "日経平均",
-   "value": 68367.28125,
-   "yoy": 52.14120060992005,
+   "value": 69779.1484375,
+   "yoy": 52.457746834682496,
    "mom": null,
    "diff_pt": null,
    "unit": "円",
    "source": "yfinance ^N225",
-   "asof": "2026-10-02",
+   "asof": "2026-10-05",
    "note": null,
    "caveat": null,
    "obtained": true
   },
   "spx": {
    "label": "S&P500",
-   "value": 7666.4501953125,
-   "yoy": 14.233668676240697,
+   "value": 7722.72021484375,
+   "yoy": 15.00100668674127,
    "mom": null,
    "diff_pt": null,
    "unit": "",
    "source": "yfinance ^GSPC",
-   "asof": "2026-10-01",
+   "asof": "2026-10-02",
    "note": null,
    "caveat": null,
    "obtained": true
   },
   "us10": {
    "label": "米10年債利回り",
-   "value": 5.236999988555908,
+   "value": 5.2769999504089355,
    "yoy": null,
    "mom": null,
-   "diff_pt": 1.13100004196167,
+   "diff_pt": 1.189000129699707,
    "unit": "%",
    "source": "yfinance ^TNX",
-   "asof": "2026-10-01",
+   "asof": "2026-10-02",
    "note": null,
    "caveat": "利回りは前年比%では意味を持たない。水準と前年差(pt)で見る。",
    "obtained": true
   },
   "us30": {
    "label": "米30年債利回り",
-   "value": 5.602999687194824,
+   "value": 5.630000114440918,
    "yoy": null,
    "mom": null,
-   "diff_pt": 0.8879995346069336,
+   "diff_pt": 0.934999942779541,
    "unit": "%",
    "source": "yfinance ^TYX",
-   "asof": "2026-10-01",
+   "asof": "2026-10-02",
    "note": null,
    "caveat": "同上。",
    "obtained": true
   },
   "gold": {
    "label": "金先物",
-   "value": 4199.0,
-   "yoy": 7.735728030788969,
+   "value": 4179.89990234375,
+   "yoy": 6.93289689606813,
    "mom": null,
    "diff_pt": null,
    "unit": "ドル/oz",
    "source": "yfinance GC=F",
-   "asof": "2026-10-01",
+   "asof": "2026-10-04",
    "note": null,
    "caveat": null,
    "obtained": true
   },
   "dxy": {
    "label": "ドル指数",
-   "value": 102.03700256347656,
-   "yoy": 4.428414204838038,
+   "value": 101.95099639892578,
+   "yoy": 4.329712572011579,
    "mom": null,
    "diff_pt": null,
    "unit": "",
    "source": "yfinance DX-Y.NYB",
-   "asof": "2026-10-01",
+   "asof": "2026-10-04",
    "note": null,
    "caveat": null,
    "obtained": true
   },
   "jp10": {
    "label": "日本10年債利回り",
-   "value": 3.092,
+   "value": 3.097,
    "yoy": null,
    "mom": null,
-   "diff_pt": 1.429,
+   "diff_pt": 1.422,
    "unit": "%",
    "source": "財務省 国債金利情報",
-   "asof": "2026-10-01",
+   "asof": "2026-10-02",
    "note": null,
    "caveat": "同上。",
    "obtained": true
   },
   "us10_real": {
    "label": "米10年実質金利",
-   "value": 2.93,
+   "value": 2.88,
    "yoy": null,
    "mom": null,
-   "diff_pt": 1.1300000000000001,
+   "diff_pt": 1.1099999999999999,
    "unit": "%",
    "source": "FRED DFII10",
-   "asof": "2026-09-30",
+   "asof": "2026-10-01",
    "note": null,
    "caveat": null,
    "obtained": true
   },
   "spx_tpe": {
    "label": "S&P500 実績PER(参考・予想PERの代用ではない)",
-   "value": 24.684277,
+   "value": 24.866829,
    "yoy": null,
    "mom": null,
    "diff_pt": null,
@@ -364,6 +364,71 @@
    "diff_pt": null,
    "unit": "%",
    "source": "同左 列7 ※実績。仕様書v1.1 ステップ4の答え合わせに使う",
+   "asof": "2026年09月調査",
+   "note": null,
+   "caveat": null,
+   "obtained": true
+  },
+  "meti_forecast_next": {
+   "label": "生産予測調査 電子部品・デバイス工業 翌月見込み(企業回答・季調前月比)",
+   "value": 9.5,
+   "yoy": null,
+   "mom": null,
+   "diff_pt": null,
+   "unit": "%",
+   "source": "経済産業省 製造工業生産予測指数 列9 ※期間キーは見込みの対象月",
+   "asof": "2026年09月調査",
+   "note": null,
+   "caveat": null,
+   "obtained": true
+  },
+  "meti_mach_forecast": {
+   "label": "生産予測調査 生産用機械工業 企業回答(原数値・季調前月比)",
+   "value": 6.4,
+   "yoy": null,
+   "mom": null,
+   "diff_pt": null,
+   "unit": "%",
+   "source": "経済産業省 製造工業生産予測指数",
+   "asof": "2026年09月調査",
+   "note": "翌月見込み +12.9%。**これが企業の回答そのもの**。他人が加工した値をこの行に入れない(禁止7)",
+   "caveat": null,
+   "obtained": true
+  },
+  "meti_mach_realized": {
+   "label": "同 実現率(経産省)",
+   "value": -21.6,
+   "yoy": null,
+   "mom": null,
+   "diff_pt": null,
+   "unit": "%",
+   "source": "同左 ※前月の予測に対する実績の乖離率。予測値ではない",
+   "asof": "2026年09月調査",
+   "note": "予測修正率 -9.3%。**実現率は『前月の予測がどれだけ外れたか』であって当月の予測ではない**。これを予測として扱うと企業回答 +6.4% が -21.6% にすり替わる",
+   "caveat": null,
+   "obtained": true
+  },
+  "meti_mach_actual": {
+   "label": "同 生産用機械工業 前月実績(季調前月比)",
+   "value": -11.8,
+   "yoy": null,
+   "mom": null,
+   "diff_pt": null,
+   "unit": "%",
+   "source": "同左 列7 ※実績。仕様書v1.1 ステップ4の答え合わせに使う",
+   "asof": "2026年09月調査",
+   "note": null,
+   "caveat": null,
+   "obtained": true
+  },
+  "meti_mach_forecast_next": {
+   "label": "生産予測調査 生産用機械工業 翌月見込み(企業回答・季調前月比)",
+   "value": 12.9,
+   "yoy": null,
+   "mom": null,
+   "diff_pt": null,
+   "unit": "%",
+   "source": "経済産業省 製造工業生産予測指数 列9 ※期間キーは見込みの対象月",
    "asof": "2026年09月調査",
    "note": null,
    "caveat": null,
@@ -5909,6 +5974,14 @@
     "nand_512": 19.883,
     "nand_256": 17.885,
     "nand_128": 9.967
+   },
+   "2026-10-05": {
+    "ddr5_16": 58.0,
+    "ddr4_16": 83.588,
+    "ddr4_8": 46.321,
+    "nand_512": 19.396,
+    "nand_256": 17.885,
+    "nand_128": 9.967
    }
   }
  },
@@ -5936,12 +6009,12 @@
    },
    "sox": {
     "label": "SOX指数",
-    "値": 97.36073559934657,
+    "値": 98.24806537199726,
     "方向": "下"
    },
    "n225": {
     "label": "日経平均",
-    "値": 52.14120060992005,
+    "値": 52.457746834682496,
     "方向": "下"
    },
    "iip_prod": {
@@ -6033,13 +6106,13 @@
    "no": 8,
    "title": "業績指標だけで株価判断をしない",
    "status": "OK",
-   "detail": "バリュエーション側を併記: 米30年 5.60% (+0.89pt), 米10年 5.24% (+1.13pt), 日10年 3.09% (+1.43pt), S&P500実績PER 24.7倍。**予想PERは追っていない**ので、割高さが過去比でどの水準かは測れない(FactSetのForward 12M P/Eが要る)。実績PERは代用にならない"
+   "detail": "バリュエーション側を併記: 米30年 5.63% (+0.93pt), 米10年 5.28% (+1.19pt), 日10年 3.10% (+1.42pt), S&P500実績PER 24.9倍。**予想PERは追っていない**ので、割高さが過去比でどの水準かは測れない(FactSetのForward 12M P/Eが要る)。実績PERは代用にならない"
   },
   {
    "no": 9,
    "title": "ベース効果を需要の変化と混同しない",
    "status": "要注意",
-   "detail": "前年比が高水準: SOX指数 +97.4%。**需要が全く落ちなくてもベース効果だけで機械的に鈍化する**。前年同月の絶対水準を確認すること"
+   "detail": "前年比が高水準: SOX指数 +98.2%。**需要が全く落ちなくてもベース効果だけで機械的に鈍化する**。前年同月の絶対水準を確認すること"
   },
   {
    "no": 10,
@@ -6101,7 +6174,7 @@
   }
  ],
  "乖離ログ": {
-  "内容": "出荷在庫バランス 7.08 に対し 日経平均前年比 +52.1%",
+  "内容": "出荷在庫バランス 7.08 に対し 日経平均前年比 +52.5%",
   "大きさ": "日経平均前年比 − 出荷在庫バランス = +48.0pt。2016年10月以降の119ヶ月中 6番目の大きさ",
   "理由": "数量統計に価格上昇が反映されていないため。**確認済**: メモリ生産単価 5,210円(前年比 +350.3%)に対し生産数量は 46,304千個。金額=数量×単価のうち動いているのは単価の側",
   "予測力への帰結": "業績を動かしているのが価格なら、数量ベースの出荷在庫バランスは現局面において業績の代理変数として機能していない。したがって『連動するから見る価値がある』という根拠は成立しない。金額ベース(台湾・韓国)を主指標に切り替えるべき局面。ただし金額ベースは価格反転時に数量ベースより速く崩れることに留意"
