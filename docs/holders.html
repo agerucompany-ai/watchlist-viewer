@@ -1,0 +1,79 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>信用の建値｜株ライブ</title><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600&display=swap" rel="stylesheet"><script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script><style>
+:root{--navy:#0c1a38;--navy2:#13254d;--ink:#1a1a1a;--muted:#5b6475;--line:#e3e5ea;--cream:#f7f5f0;--accent:#b8975a;
+--serif:"Noto Serif JP","Hiragino Mincho ProN",serif;--sans:"Noto Sans JP","Hiragino Kaku Gothic ProN",sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);color:var(--ink);background:var(--cream);line-height:1.75;-webkit-font-smoothing:antialiased}
+header{position:sticky;top:0;z-index:20;background:var(--navy);color:#fff;display:flex;align-items:center;gap:18px;padding:0 16px;height:54px}
+header b{font-family:var(--serif);font-weight:500;letter-spacing:.2em;white-space:nowrap}
+header nav{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+header nav a{color:#cfd6e6;text-decoration:none;font-size:13px;white-space:nowrap;padding:6px 12px;border-radius:99px}
+header nav a.cur{background:#fff;color:var(--navy);font-weight:700}
+.hero{background:linear-gradient(180deg,var(--navy),var(--navy2));color:#fff;padding:26px 16px 30px}
+.hero .in{max-width:1080px;margin:0 auto;display:flex;gap:22px;align-items:center}
+.hero img{width:130px;height:130px;border-radius:20px;background:#f3e6cf;flex:none}
+.hero h1{font-family:var(--serif);font-weight:500;font-size:clamp(22px,3vw,30px);letter-spacing:.15em}
+.hero .tag{display:inline-block;font-size:11px;letter-spacing:.15em;padding:2px 10px;border-radius:99px;margin:4px 0 8px}
+.hero p{font-family:var(--serif);font-size:clamp(15px,2vw,18px);line-height:1.9}
+.hero .disc{font-family:var(--sans);font-size:11px;color:#9fb0cf;margin-top:6px}
+@media(max-width:640px){.hero .in{flex-direction:column;text-align:center}.hero img{width:110px;height:110px}}
+main{max-width:1080px;margin:0 auto;padding:22px 14px 40px}
+h2{font-family:var(--serif);font-weight:500;font-size:20px;letter-spacing:.15em;margin:30px 0 12px;display:flex;align-items:center;gap:10px}
+h2::before{content:"";width:5px;height:20px;background:var(--accent);border-radius:3px}
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
+.g4{grid-template-columns:repeat(auto-fit,minmax(160px,1fr))}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px}
+.card h3{font-size:15px;font-weight:700;margin-bottom:6px}
+.tile{background:#fff;border-radius:16px;padding:14px 16px;border:1px solid var(--line)}
+.tile .t{font-family:var(--serif);font-size:17px}
+.dir{display:flex;gap:8px;margin:8px 0}
+.dir span{flex:1;text-align:center;border-radius:10px;padding:6px 4px;font-weight:700;color:#fff;font-size:14px}
+.dir small{display:block;font-weight:400;font-size:10px;opacity:.85}
+.pos{background:#c0392b}.neg{background:#2c5aa0}.rng{background:#8a8f99}
+.tile p{font-size:12.5px;color:var(--muted);line-height:1.7}
+.gauge{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+.gauge .v{font-size:24px;font-weight:700;font-family:var(--serif)}
+.gauge .l{font-size:12px;color:var(--muted)}
+.gauge .r{font-size:12px;margin-top:6px;color:#333}
+.bar{height:8px;background:#eceef2;border-radius:99px;overflow:hidden;margin-top:6px}
+.bar i{display:block;height:100%;border-radius:99px}
+canvas{max-width:100%}
+.chart{position:relative;height:260px}
+.matrix{display:grid;grid-template-columns:110px repeat(3,1fr);gap:6px;font-size:12.5px}
+.matrix .h{font-weight:700;color:var(--muted);text-align:center;align-self:end}
+.matrix .c{background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px;text-align:center}
+.matrix .c b{display:block;font-size:17px;font-family:var(--serif)}
+.matrix .main{background:var(--navy);color:#fff;border-color:var(--navy)}
+details{background:#fff;border:1px solid var(--line);border-radius:14px;margin-top:12px}
+details summary{cursor:pointer;padding:12px 16px;font-weight:700;font-size:14px;list-style:none}
+details summary::before{content:"＋ ";color:var(--accent)}
+details[open] summary::before{content:"－ "}
+details .in{padding:0 16px 14px;font-size:13px;overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th,td{padding:7px 8px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{color:var(--muted);font-weight:500;font-size:11.5px;white-space:nowrap}
+.hyp{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px 16px}
+.hyp .top{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.hyp .top img{width:40px;height:40px;border-radius:50%;background:#f3e6cf}
+.st{font-size:11px;font-weight:700;padding:2px 10px;border-radius:99px;color:#fff}
+.cand{border-top:1px dashed var(--line);padding:8px 0 4px}
+.cand .n{font-size:13.5px;font-weight:700}
+.chk{font-size:12px;color:var(--muted)}
+.ok{color:#1e8e5a;font-weight:700}.ng{color:#999}
+.pill{display:inline-block;font-size:11px;background:#eef1f6;border-radius:99px;padding:1px 9px;margin:2px 4px 2px 0}
+.voice{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px 18px;font-size:14px;line-height:1.95}
+.voice h3{font-family:var(--serif);font-weight:600;font-size:16px;margin:10px 0 4px}
+.voice .spine{font-family:var(--serif);font-size:17px;line-height:1.9;border-left:4px solid var(--accent);padding-left:12px;margin:4px 0 10px}
+.trade{border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin:8px 0;background:var(--cream)}
+.trade b{font-size:15px}
+.obj{font-size:13px;margin:6px 0;padding-left:10px;border-left:3px solid #ddd}
+.obj.agree{border-color:#1e8e5a}.obj.cond{border-color:#e6a23c}.obj.no{border-color:#c0392b}
+.list li{margin:6px 0 6px 18px;font-size:13.5px}
+footer{background:var(--navy);color:#cfd5e2;text-align:center;font-size:11.5px;padding:20px 16px;line-height:1.9}
+.mb{display:grid;grid-template-columns:44px 1fr 48px;align-items:center;gap:6px;font-size:11.5px;color:var(--muted)}
+.mb .bar{margin:0}.mb b{text-align:right;color:var(--ink)}
+.one{font-size:13px;color:#333;margin:6px 0 2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hl{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+main,.card,.tile,.gauge,.voice{min-width:0}
+html,body{overflow-x:hidden}
+</style></head><body><header><b>株ライブ</b><nav><a href="council.html">4人会議</a><a href="macro.html">木下</a><a href="fx.html">内山</a><a href="trade.html">哲太</a><a href="fund.html">片岡</a><a href="board.html">仮説ボード</a><a href="holders.html" class="cur">信用の建値</a></nav></header><div class="hero"><div class="in"><div><h1>信用の建値</h1><p>信用で買った人がいくらで買ったか(推定)と、含み損の重さ</p><div class="disc">AIのペルソナです(本人ではありません)</div></div></div></div><main><h2>キオクシア(285A) いま12,715円・信用買い残4,683万株(2026-10-19時点)</h2><div class="grid g4"><div class="gauge"><div class="l">平均建値(推定)</div><div class="v">18,557円</div></div><div class="gauge"><div class="l">含み損の割合</div><div class="v">100%</div></div><div class="gauge"><div class="l">平均損益率</div><div class="v">-27.5%</div></div><div class="gauge"><div class="l">4週以内に6ヶ月期日</div><div class="v">219.8万株</div></div></div><div class="card"><div class="one">信用で買った人のほぼ全員が含み損(平均-28%)。投げが出切るまで戻りは17,073円付近の売りで重い</div><div class="chart" style="height:260px"><canvas id="c12"></canvas></div><script>new Chart(document.getElementById("c12"),{"type": "bar", "data": {"labels": ["33,394円", "25,588円", "22,040円", "20,621円", "19,202円", "18,492円 ●平均建値", "17,783円", "17,073円", "16,364円", "15,654円", "14,944円", "13,525円", "12,816円 ◀いま"], "datasets": [{"label": "万株", "data": [444.8, 82.5, 183.3, 105.5, 236.7, 593.1, 457.6, 926.2, 195.5, 671.4, 218.8, 567.1, 0.0], "backgroundColor": ["#c0392b", "#c0392b", "#c0392b", "#c0392b", "#c0392b", "#c0392b", "#c0392b", "#c0392b", "#c0392b", "#c0392b", "#c0392b", "#c0392b", "#c0392b"], "borderRadius": 6}]}, "options": {"maintainAspectRatio": false, "indexAxis": "y", "plugins": {"legend": {"display": false}}, "scales": {"x": {"grid": {"display": false}}}}})</script></div><details><summary>キオクシアの数字の詳細</summary><div class="in"><p>赤=今より上で買った玉(含み損・戻ると売りたい人) / 青=今より下で買った玉(含み益)</p><p>上の一番厚い帯(抵抗): 16,718〜17,428円 926.2万株 / 下の一番厚い帯(支え): なし(全員が含み損)</p><p>15,367円より下になると、信用買いの8割が含み損</p><p>6ヶ月期日(制度信用の返済期限): 2026-11-14 219.8万株(建値15,367円)</p></div></details><h2>レゾナック(4004) いま13,000円・信用買い残81万株(2026-10-19時点)</h2><div class="grid g4"><div class="gauge"><div class="l">平均建値(推定)</div><div class="v">15,885円</div></div><div class="gauge"><div class="l">含み損の割合</div><div class="v">100%</div></div><div class="gauge"><div class="l">平均損益率</div><div class="v">-17.6%</div></div><div class="gauge"><div class="l">4週以内に6ヶ月期日</div><div class="v">6.9万株</div></div></div><div class="card"><div class="one">信用で買った人のほぼ全員が含み損(平均-18%)。投げが出切るまで戻りは16,158円付近の売りで重い</div><div class="chart" style="height:288px"><canvas id="c13"></canvas></div><script>new Chart(document.getElementById("c13"),{"type": "bar", "data": {"labels": ["18,306円", "18,111円", "17,720円", "17,525円", "17,135円", "16,939円", "16,353円", "16,158円", "15,963円 ●平均建値", "15,767円", "15,572円", "15,181円", "14,986円", "14,205円", "13,619円", "13,033円 ◀いま"], "datasets": [{"label": "万株", "data": [0.7, 4.8, 6.4, 0.3, 0.0, 13.0, 4.7, 15.0, 0.0, 0.7, 2.0, 14.4, 5.7, 6.8, 6.8, 0.0], "backgroundColor": ["#c0392b", "#c0392b", "#c0392b", "#c0392b", "#c0392b", "#c0392b", "#c0392b", "#c0392b", "#c0392b", "#c0392b", "#c0392b", "#c0392b", "#c0392b", "#c0392b", "#c0392b", "#c0392b"], "borderRadius": 6}]}, "options": {"maintainAspectRatio": false, "indexAxis": "y", "plugins": {"legend": {"display": false}}, "scales": {"x": {"grid": {"display": false}}}}})</script></div><details><summary>レゾナックの数字の詳細</summary><div class="in"><p>赤=今より上で買った玉(含み損・戻ると売りたい人) / 青=今より下で買った玉(含み益)</p><p>上の一番厚い帯(抵抗): 16,060〜16,256円 15.0万株 / 下の一番厚い帯(支え): なし(全員が含み損)</p><p>15,055円より下になると、信用買いの8割が含み損</p><p>6ヶ月期日(制度信用の返済期限): 2026-10-24 6.8万株(建値13,591円) / 2026-11-14 0.0万株(建値17,142円)</p></div></details><details><summary>この図の作り方と限界</summary><div class="in"><p>これは週次・日次の信用残の増減を、その期間の平均株価で積んだ推定(実際の建値は公表されない)。減った分は含み損の玉から2倍の重みで返済されたとみなし、6ヶ月を過ぎた玉は期日で消している。一般信用(無期限)と制度信用は分けていない。株価は分割調整済み。10/20の信用残は壊れたデータのため使っていない。</p></div></details></main><footer>片岡・哲太・木下・内山は、実在の投資家が公開してきた考え方を借りたAIのペルソナです(本人ではありません)。<br>イラストはオリジナルです。投資判断はご自身で。</footer><script>Chart.defaults.font.family='"Noto Sans JP",sans-serif';Chart.defaults.font.size=11;Chart.defaults.plugins.legend.labels.boxWidth=10;</script></body></html>
