@@ -1,7 +1,7 @@
 <div id="sitenav" style="font-size:12px;margin:0 0 10px 0"><div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center"><a href="/watchlist-viewer/mind.html" style="background:#a371f7;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700;">🧠3人の思考</a><a href="/watchlist-viewer/proposals.html" style="background:#6e40c9;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700;">📝改善提案</a><a href="/watchlist-viewer/portfolio.html" style="background:#d4a017;color:#000;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700;">💼今日のPF</a><a href="/watchlist-viewer/volume/" style="background:#8f6bbf;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700;">🐋AIテスタ</a><a href="/watchlist-viewer/kinouchi.html" style="background:#2ea0a0;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700;">🌐AI木野内</a><a href="/watchlist-viewer/uchida.html" style="background:#1f6feb;color:#fff;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700;">💱AI内田</a><a href="/watchlist-viewer/katayama.html" style="background:#d29922;color:#000;padding:3px 10px;border-radius:10px;text-decoration:none;font-weight:700;">🏴AI片山</a></div></div>
 {
  "meta": {
-  "生成": "2026-11-26 09:31 JST",
+  "生成": "2026-11-27 09:31 JST",
   "対象月": "2026年10月",
   "仕様書": "半導体サイクル月次モニタリング仕様書 v1.1 (2026-08-19作成/2026-09-01改訂)",
   "このファイルの使い方": "値・出所・時点・注意書き・判断ルールを1つにまとめてある。数値を引用する前に必ず同じキーの caveat を読むこと。"
@@ -72,8 +72,8 @@
  "最新値": {
   "sox": {
    "label": "SOX指数",
-   "value": 8774.8623046875,
-   "yoy": 30.691492854769464,
+   "value": 8774.8603515625,
+   "yoy": 30.691463765216476,
    "mom": null,
    "diff_pt": null,
    "unit": "",
@@ -85,13 +85,13 @@
   },
   "n225": {
    "label": "日経平均",
-   "value": 57789.16015625,
-   "yoy": 16.6066267826541,
+   "value": 57664.80859375,
+   "yoy": 14.945465848588203,
    "mom": null,
    "diff_pt": null,
    "unit": "円",
    "source": "yfinance ^N225",
-   "asof": "2026-11-26",
+   "asof": "2026-11-27",
    "note": null,
    "caveat": null,
    "obtained": true
@@ -124,10 +124,10 @@
   },
   "us30": {
    "label": "米30年債利回り",
-   "value": 5.234999656677246,
+   "value": 5.235000133514404,
    "yoy": null,
    "mom": null,
-   "diff_pt": 0.5769996643066406,
+   "diff_pt": 0.5770001411437988,
    "unit": "%",
    "source": "yfinance ^TYX",
    "asof": "2026-11-25",
@@ -137,39 +137,39 @@
   },
   "gold": {
    "label": "金先物",
-   "value": 3607.5,
-   "yoy": -12.86231884057971,
+   "value": 3598.199951171875,
+   "yoy": -13.612796925793024,
    "mom": null,
    "diff_pt": null,
    "unit": "ドル/oz",
    "source": "yfinance GC=F",
-   "asof": "2026-11-25",
+   "asof": "2026-11-26",
    "note": null,
    "caveat": null,
    "obtained": true
   },
   "dxy": {
    "label": "ドル指数",
-   "value": 103.69599914550781,
-   "yoy": 4.0497645345089595,
+   "value": 103.7770004272461,
+   "yoy": 4.193777125619436,
    "mom": null,
    "diff_pt": null,
    "unit": "",
    "source": "yfinance DX-Y.NYB",
-   "asof": "2026-11-25",
+   "asof": "2026-11-26",
    "note": null,
    "caveat": null,
    "obtained": true
   },
   "jp10": {
    "label": "日本10年債利回り",
-   "value": 2.713,
+   "value": 2.704,
    "yoy": null,
    "mom": null,
-   "diff_pt": 0.9020000000000001,
+   "diff_pt": 0.8790000000000002,
    "unit": "%",
    "source": "財務省 国債金利情報",
-   "asof": "2026-11-25",
+   "asof": "2026-11-26",
    "note": null,
    "caveat": "同上。",
    "obtained": true
@@ -4690,6 +4690,11 @@
     "spe": 553333067.0,
     "parts": 933636044.0,
     "dc": 2181544901.0
+   },
+   "202610": {
+    "spe": 544155229.0,
+    "parts": 929565354.0,
+    "dc": 2208191846.0
    }
   },
   "スポット価格_日次": {
@@ -6296,6 +6301,14 @@
     "nand_512": 14.238,
     "nand_256": 18.142,
     "nand_128": 9.967
+   },
+   "2026-11-27": {
+    "ddr5_16": 60.767,
+    "ddr4_16": 77.5,
+    "ddr4_8": 43.125,
+    "nand_512": 14.238,
+    "nand_256": 18.142,
+    "nand_128": 9.967
    }
   }
  },
@@ -6323,12 +6336,12 @@
    },
    "sox": {
     "label": "SOX指数",
-    "値": 30.691492854769464,
+    "値": 30.691463765216476,
     "方向": "下"
    },
    "n225": {
     "label": "日経平均",
-    "値": 16.6066267826541,
+    "値": 14.945465848588203,
     "方向": "下"
    },
    "iip_prod": {
@@ -6411,7 +6424,7 @@
    "no": 8,
    "title": "業績指標だけで株価判断をしない",
    "status": "OK",
-   "detail": "バリュエーション側を併記: 米30年 5.23% (+0.58pt), 米10年 4.85% (+0.85pt), 日10年 2.71% (+0.90pt), S&P500実績PER 22.8倍。**予想PERは追っていない**ので、割高さが過去比でどの水準かは測れない(FactSetのForward 12M P/Eが要る)。実績PERは代用にならない"
+   "detail": "バリュエーション側を併記: 米30年 5.24% (+0.58pt), 米10年 4.85% (+0.85pt), 日10年 2.70% (+0.88pt), S&P500実績PER 22.8倍。**予想PERは追っていない**ので、割高さが過去比でどの水準かは測れない(FactSetのForward 12M P/Eが要る)。実績PERは代用にならない"
   },
   {
    "no": 9,
@@ -6479,7 +6492,7 @@
   }
  ],
  "乖離ログ": {
-  "内容": "出荷在庫バランス 7.0 に対し 日経平均前年比 +16.6%",
+  "内容": "出荷在庫バランス 7.0 に対し 日経平均前年比 +14.9%",
   "大きさ": "日経平均前年比 − 出荷在庫バランス = +38.2pt。2016年11月以降の119ヶ月中 11番目の大きさ",
   "理由": null,
   "予測力への帰結": null
